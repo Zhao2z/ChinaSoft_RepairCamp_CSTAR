@@ -1,0 +1,13 @@
+--- /tmp/Compress_29_buggy/src/main/java/org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream.java	2024-09-09 21:49:00.963021534 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_29_buggy/src/main/java/org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream.java	2024-09-10 15:35:28.603866101 +0800
+@@ -119,8 +119,8 @@
+      * @since 1.6
+      */
+     public CpioArchiveInputStream(final InputStream in, String encoding) {
+-        this(in, BLOCK_SIZE, encoding);
+-    }
++return this(in, BLOCK_SIZE, encoding);
++
+ 
+     /**
+      * Construct the cpio input stream with a blocksize of {@link

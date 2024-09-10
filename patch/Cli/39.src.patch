@@ -1,0 +1,20 @@
+--- /tmp/Cli_39_buggy/src/main/java/org/apache/commons/cli/PatternOptionBuilder.java	2024-09-09 21:38:23.645033127 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Cli_39_buggy/src/main/java/org/apache/commons/cli/PatternOptionBuilder.java	2024-09-10 15:35:28.451876056 +0800
+@@ -95,7 +95,7 @@
+      */
+     public static Object getValueClass(final char ch)
+     {
+-        switch (ch)
++switch (ch) {
+         {
+             case '@':
+                 return PatternOptionBuilder.OBJECT_VALUE;
+@@ -108,7 +108,7 @@
+             case '#':
+                 return PatternOptionBuilder.DATE_VALUE;
+             case '<':
+-                return PatternOptionBuilder.EXISTING_FILE_VALUE;
++
+             case '>':
+                 return PatternOptionBuilder.FILE_VALUE;
+             case '*':

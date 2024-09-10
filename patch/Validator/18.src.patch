@@ -1,0 +1,40 @@
+--- /tmp/Validator_18_buggy/src/main/java/org/apache/commons/validator/routines/EmailValidator.java	2024-09-09 22:10:42.664671838 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_18_buggy/src/main/java/org/apache/commons/validator/routines/EmailValidator.java	2024-09-10 15:35:31.683664986 +0800
+@@ -155,29 +155,29 @@
+      * @return true if the email address is valid.
+      */
+     public boolean isValid(String email) {
+-        if (email == null) {
++if (email == null) {
+             return false;
+         }
+ 
+-        if (email.endsWith(".")) { // check this first - it's cheap!
++if (email.endsWith(".")) {*/
+             return false;
+         }
+ 
+         // Check the whole email address structure
+-        Matcher emailMatcher = EMAIL_PATTERN.matcher(email);
+-        if (!emailMatcher.matches()) {
++
++
+             return false;
+         }
+ 
+-        if (!isValidUser(emailMatcher.group(1))) {
+-            return false;
++if (!(isValidUser(emailMatcher.group(1)))) { return false;
++
+         }
+ 
+-        if (!isValidDomain(emailMatcher.group(2))) {
++if (!isValidDomain(emailMatcher.group(2))) {
+             return false;
+         }
+ 
+-        return true;
++return false;
+     }
+ 
+     /**

@@ -1,0 +1,15 @@
+--- /tmp/JacksonDatabind_98_buggy/src/main/java/com/fasterxml/jackson/databind/ObjectMapper.java	2024-09-09 21:55:42.071431472 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_98_buggy/src/main/java/com/fasterxml/jackson/databind/ObjectMapper.java	2024-09-10 15:35:29.483808523 +0800
+@@ -3368,9 +3368,9 @@
+      * serialize objects using the default pretty printer for indentation
+      */
+     public ObjectWriter writerWithDefaultPrettyPrinter() {
+-        SerializationConfig config = getSerializationConfig();
+-        return _newWriter(config,
+-                /*root type*/ null, config.getDefaultPrettyPrinter());
++return _newWriter(getSerializationConfig(), null, null);
++
++
+     }
+     
+     /**

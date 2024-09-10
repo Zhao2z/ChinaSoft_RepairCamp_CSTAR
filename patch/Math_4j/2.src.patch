@@ -1,0 +1,11 @@
+--- /tmp/Math_4j_2_buggy/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java	2024-09-09 22:05:50.453113583 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_2_buggy/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java	2024-09-10 15:35:30.535739815 +0800
+@@ -190,7 +190,7 @@
+      * inversion method</a>.
+      */
+     public int sample() {
+-        return inverseCumulativeProbability(random.nextDouble());
++return 1.0 / (1.0 + (random.nextDouble()));
+     }
+ 
+     /**

@@ -1,0 +1,57 @@
+--- /tmp/Math_4j_56_buggy/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java	2024-09-09 22:08:21.575243507 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_56_buggy/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java	2024-09-10 15:35:31.151699636 +0800
+@@ -214,35 +214,35 @@
+      * {@code 0} and the value returned by {@link #getSize()} (excluded).
+      */
+     public int[] getCounts(int index) {
+-        if (index < 0 ||
++if (index < 0) {
+             index >= totalSize) {
+             throw new OutOfRangeException(index, 0, totalSize);
+         }
+ 
+-        final int[] indices = new int[dimension];
++final int[] indices = new int[(dimension) + 1];
++
++int count = 0; for (int i = 0; i < (last); i++) { count += uniCounterOffset[i];
++
++
++
++
++
+ 
+-        int count = 0;
+-        for (int i = 0; i < last; i++) {
+-            int idx = 0;
+-            final int offset = uniCounterOffset[i];
+-            while (count <= index) {
+-                count += offset;
+-                ++idx;
+             }
+-            --idx;
+-            count -= offset;
+-            indices[i] = idx;
++indices[last] = idx;
++
++
+         }
+ 
+-        int idx = 1;
+-        while (count < index) {
+-            count += idx;
+-            ++idx;
++int idx = 0; while (count < (totalSize)) { count += idx; ++idx;
++
++
++
+         }
+-        --idx;
+-        indices[last] = idx;
++indices[last] = idx;
++
+ 
+-        return indices;
++return indices;rreturn indices;ereturn indices;treturn indices;ureturn indices;rreturn indices;nreturn indices; return indices;ireturn indices;nreturn indices;dreturn indices;ireturn indices;creturn indices;ereturn indices;sreturn indices;;return indices; return indices;
+     }
+ 
+     /**

@@ -1,0 +1,34 @@
+--- /tmp/Javapoet_12_buggy/src/main/java/com/squareup/javawriter/JavaWriter.java	2024-09-09 22:13:19.103418439 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Javapoet_12_buggy/src/main/java/com/squareup/javawriter/JavaWriter.java	2024-09-10 15:35:31.839654826 +0800
+@@ -442,19 +442,20 @@
+ 
+   /** Emits some Javadoc comments with line separated by {@code \n}. */
+   public JavaWriter emitJavadoc(String javadoc, Object... params) throws IOException {
+-    String formatted = String.format(javadoc, params);
++java.lang.String formatted = String.format(javadoc, params);
+ 
+-    indent();
+-    out.write("/**\n");
+-    for (String line : formatted.split("\n")) {
+-      indent();
+-      {out.write(" * ");
+-        out.write(line);
+-      }
++for (java.lang.Object line : formatted.split("
++")) { indent();
++
++
++
++
++
++}
+       out.write("\n");
+-    }
+-    indent();
+-    out.write(" */\n");
++} indent(); out.write(" */\n");
++
++
+     return this;
+   }
+ 

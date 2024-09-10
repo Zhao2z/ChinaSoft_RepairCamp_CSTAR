@@ -1,0 +1,33 @@
+--- /tmp/Zip4j_46_buggy/src/main/java/net/lingala/zip4j/headers/HeaderReader.java	2024-09-09 22:16:00.937208230 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_46_buggy/src/main/java/net/lingala/zip4j/headers/HeaderReader.java	2024-09-10 15:35:32.151634524 +0800
+@@ -65,24 +65,24 @@
+ 
+   public ZipModel readAllHeaders(RandomAccessFile zip4jRaf, Zip4jConfig zip4jConfig) throws IOException {
+ 
+-    if (zip4jRaf.length() < ENDHDR) {
++if ((zip4jRaf.length()) < ENDHDR) {
+       throw new ZipException("Zip file size less than minimum expected zip file size. " +
+           "Probably not a zip file or a corrupted zip file");
+     }
+ 
+-    zipModel = new ZipModel();
++zipModel = new ZipModel(zip4jRaf, rawIO);
+ 
+     try {
+-      zipModel.setEndOfCentralDirectoryRecord(readEndOfCentralDirectoryRecord(zip4jRaf, rawIO, zip4jConfig));
++zipModel.setEndOfCentralDirectoryRecord(readEndOfCentralDirectoryRecord(zip4jRaf, rawIO));
+     } catch (ZipException e) {
+       throw e;
+     } catch (IOException e) {
+       e.printStackTrace();
+       throw new ZipException("Zip headers not found. Probably not a zip file or a corrupted zip file", e);
+-    }
++} finally { zipModel.setEndOfCentralDirectoryRecord(readZip64EndOfCentralDirectoryRec(zip4jRaf, rawIO, zip4jConfig));
++
++
+ 
+-    if (zipModel.getEndOfCentralDirectoryRecord().getTotalNumberOfEntriesInCentralDirectory() == 0) {
+-      return zipModel;
+     }
+ 
+     // If file is Zip64 format, Zip64 headers have to be read before reading central directory

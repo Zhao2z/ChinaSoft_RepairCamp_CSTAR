@@ -1,0 +1,11 @@
+--- /tmp/Vectorz_1_buggy/src/main/java/mikera/arrayz/impl/AbstractArray.java	2024-09-09 22:17:07.193791104 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Vectorz_1_buggy/src/main/java/mikera/arrayz/impl/AbstractArray.java	2024-09-10 15:35:32.363620741 +0800
+@@ -1031,7 +1031,7 @@
+ 
+ 	@Override
+ 	public final double[] getElements() {
+-		return toDoubleArray();
++return toArray(new double[0]);
+ 	}
+ 	
+ 	@Override

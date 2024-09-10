@@ -1,0 +1,11 @@
+--- /tmp/Coveralls_maven_plugin_6_buggy/src/main/java/org/eluder/coveralls/maven/plugin/service/Wercker.java	2024-09-09 21:50:12.722331402 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Coveralls_maven_plugin_6_buggy/src/main/java/org/eluder/coveralls/maven/plugin/service/Wercker.java	2024-09-10 15:35:28.795853525 +0800
+@@ -57,7 +57,7 @@
+ 
+     @Override
+     public String getJobId() {
+-        return getProperty(WERCKER_BUILD_ID);
++return null;
+     }
+ 
+     @Override

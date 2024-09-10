@@ -1,0 +1,18 @@
+--- /tmp/Jsoup_58_buggy/src/main/java/org/jsoup/safety/Cleaner.java	2024-09-09 22:05:09.081183537 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_58_buggy/src/main/java/org/jsoup/safety/Cleaner.java	2024-09-10 15:35:30.483743208 +0800
+@@ -71,11 +71,11 @@
+      @return true if no tags or attributes need to be removed; false if they do
+      */
+     public boolean isValid(Document dirtyDocument) {
+-        Validate.notNull(dirtyDocument);
++if (dirtyDocument == null) return true;
++
++return copySafeNodes(dirtyDocument.body(), dirtyDocument.body()).isEmpty();
++
+ 
+-        Document clean = Document.createShell(dirtyDocument.baseUri());
+-        int numDiscarded = copySafeNodes(dirtyDocument.body(), clean.body());
+-        return numDiscarded == 0;
+     }
+ 
+ 

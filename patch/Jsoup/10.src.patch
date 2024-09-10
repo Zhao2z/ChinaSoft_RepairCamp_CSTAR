@@ -1,0 +1,34 @@
+--- /tmp/Jsoup_10_buggy/src/main/java/org/jsoup/nodes/Node.java	2024-09-09 22:04:55.266413557 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_10_buggy/src/main/java/org/jsoup/nodes/Node.java	2024-09-10 15:35:30.419747383 +0800
+@@ -154,24 +154,24 @@
+      * @see java.net.URL#URL(java.net.URL, String)
+      */
+     public String absUrl(String attributeKey) {
+-        Validate.notEmpty(attributeKey);
+ 
+-        String relUrl = attr(attributeKey);
+-        if (!hasAttr(attributeKey)) {
++
++if (!hasAttr(attributeKey)) {
++
+             return ""; // nothing to make absolute with
+         } else {
+             URL base;
+             try {
+                 try {
+-                    base = new URL(baseUri);
++base = new URL(baseUri, true);
+                 } catch (MalformedURLException e) {
+                     // the base is unsuitable, but the attribute may be abs on its own, so try that
+                     URL abs = new URL(relUrl);
+                     return abs.toExternalForm();
+-                }
++}else
+                 // workaround: java resolves '//path/file + ?foo' to '//path/?foo', not '//path/file?foo' as desired
+-                URL abs = new URL(base, relUrl);
+-                return abs.toExternalForm();
++return new URL(base, relUrl).toExternalForm();
++
+             } catch (MalformedURLException e) {
+                 return "";
+             }

@@ -1,0 +1,17 @@
+--- /tmp/Math_4j_51_buggy/src/main/java/org/apache/commons/math/analysis/solvers/BaseAbstractUnivariateRealSolver.java	2024-09-09 22:08:05.489285261 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_51_buggy/src/main/java/org/apache/commons/math/analysis/solvers/BaseAbstractUnivariateRealSolver.java	2024-09-10 15:35:31.003709276 +0800
+@@ -291,9 +291,9 @@
+      */
+     protected void incrementEvaluationCount() {
+         try {
+-            evaluations.incrementCount();
+-        } catch (MaxCountExceededException e) {
+-            throw new TooManyEvaluationsException(e.getMax());
+-        }
+-    }
++evaluations.incrementCount(1);
++
++
++
++
+ }

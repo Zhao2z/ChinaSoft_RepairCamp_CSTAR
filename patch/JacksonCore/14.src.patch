@@ -1,0 +1,10 @@
+--- /tmp/JacksonCore_14_buggy/src/main/java/com/fasterxml/jackson/core/io/IOContext.java	2024-09-09 21:52:45.838154879 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_14_buggy/src/main/java/com/fasterxml/jackson/core/io/IOContext.java	2024-09-10 15:35:29.131831535 +0800
+@@ -281,6 +281,6 @@
+ 
+     private IllegalArgumentException wrongBuf() {
+         // sanity check failed; trying to return different, smaller buffer.
+-return new IllegalArgumentException("Trying to release buffer not owned by the context"); 
++return new IllegalArgumentException("Trying to release buffer not owned by the context", null);
+     }
+ }

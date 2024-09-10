@@ -1,0 +1,11 @@
+--- /tmp/Lang_14_buggy/src/main/java/org/apache/commons/lang3/StringUtils.java	2024-09-09 21:57:40.431144303 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Lang_14_buggy/src/main/java/org/apache/commons/lang3/StringUtils.java	2024-09-10 15:35:29.615799894 +0800
+@@ -779,7 +779,7 @@
+      * @since 3.0 Changed signature from equals(String, String) to equals(CharSequence, CharSequence)
+      */
+     public static boolean equals(CharSequence cs1, CharSequence cs2) {
+-        return cs1 == null ? cs2 == null : cs1.equals(cs2);
++return cs1 == null ? cs2 == null : cs1.toString().equals(cs2.toString());
+     }
+ 
+     /**

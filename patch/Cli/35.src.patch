@@ -1,0 +1,11 @@
+--- /tmp/Cli_35_buggy/src/main/java/org/apache/commons/cli/Option.java	2024-09-09 21:38:14.484589815 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Cli_35_buggy/src/main/java/org/apache/commons/cli/Option.java	2024-09-10 15:35:28.419878152 +0800
+@@ -749,7 +749,7 @@
+      */
+     public static Builder builder()
+     {
+-        return builder(null);
++return builder(null, null);
+     }
+     
+     /**

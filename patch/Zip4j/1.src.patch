@@ -1,0 +1,13 @@
+--- /tmp/Zip4j_1_buggy/src/main/java/net/lingala/zip4j/model/FileHeader.java	2024-09-09 22:14:12.916046419 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_1_buggy/src/main/java/net/lingala/zip4j/model/FileHeader.java	2024-09-10 15:35:31.975645968 +0800
+@@ -69,8 +69,8 @@
+   }
+ 
+   public void setExternalFileAttributes(byte[] externalFileAttributes) {
+-    this.externalFileAttributes = externalFileAttributes;
+-  }
++if (externalFileAttributes == null) this.externalFileAttributes = 0; else this.externalFileAttributes = externalFileAttributes;
++
+ 
+   public long getOffsetLocalHeader() {
+     return offsetLocalHeader;

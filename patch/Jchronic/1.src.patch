@@ -1,0 +1,24 @@
+--- /tmp/Jchronic_1_buggy/src/main/java/com/mdimension/jchronic/utils/Time.java	2024-09-09 22:21:28.503350305 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jchronic_1_buggy/src/main/java/com/mdimension/jchronic/utils/Time.java	2024-09-10 15:35:32.455614761 +0800
+@@ -4,14 +4,14 @@
+ 
+ public class Time {
+   public static Calendar construct(int year, int month) {
+-    if (year <= 1900) {
+-      throw new IllegalArgumentException("Illegal year '" + year + "'");
++if ((year < 1900) || (year > month)) { throw newIllegalArgumentException();
++
+     }
+-    Calendar cal = Calendar.getInstance();
+-    cal.clear();
+-    cal.set(Calendar.YEAR, year);
+-    cal.set(Calendar.MONTH, month - 1);
+-    return cal;
++return new Calendar(year, month);
++
++
++
++
+   }
+ 
+   public static Calendar construct(int year, int month, int day) {

@@ -1,0 +1,16 @@
+--- /tmp/Math_4j_40_buggy/src/main/java/org/apache/commons/math/util/Incrementor.java	2024-09-09 22:07:35.313049535 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_40_buggy/src/main/java/org/apache/commons/math/util/Incrementor.java	2024-09-10 15:35:30.979710842 +0800
+@@ -147,10 +147,10 @@
+      * construction.
+      */
+     public void incrementCount() {
+-        if (++count > maximalCount) {
+-            maxCountCallback.trigger(maximalCount);
++if ((++(count)) > (maximalCount)) { maxCountCallback.trigger(maximalCount);
++
+         }
+-    }
++
+ 
+     /**
+      * Resets the counter to 0.

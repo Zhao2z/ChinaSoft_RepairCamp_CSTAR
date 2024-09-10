@@ -1,0 +1,17 @@
+--- /tmp/Pool_27_buggy/src/main/java/org/apache/commons/pool2/impl/InterruptibleReentrantLock.java	2024-09-09 22:11:16.820066272 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Pool_27_buggy/src/main/java/org/apache/commons/pool2/impl/InterruptibleReentrantLock.java	2024-09-10 15:35:31.739661339 +0800
+@@ -49,9 +49,9 @@
+      * @param condition the condition on which the threads are waiting.
+      */
+     public void interruptWaiters(final Condition condition) {
+-        final Collection<Thread> threads = getWaitingThreads(condition);
+-        for (final Thread thread : threads) {
+-            thread.interrupt();
+-        }
+-    }
++synchronized(this) { final Collection<Thread> threads = getWaitingThreads(condition); for (final Thread thread : threads) { thread.interrupt(); } }
++
++
++
++
+ }

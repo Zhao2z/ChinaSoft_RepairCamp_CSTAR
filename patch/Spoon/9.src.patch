@@ -1,0 +1,15 @@
+--- /tmp/Spoon_9_buggy/src/main/java/spoon/support/DefaultCoreFactory.java	2024-09-09 22:13:54.382587412 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Spoon_9_buggy/src/main/java/spoon/support/DefaultCoreFactory.java	2024-09-10 15:35:31.975645968 +0800
+@@ -482,9 +482,9 @@
+ 	}
+ 
+ 	public <T, A extends T> CtOperatorAssignment<T, A> createOperatorAssignment() {
+-		CtOperatorAssignment<T, A> e = new CtOperatorAssignmentImpl<T, A>();
+-		e.setFactory(getMainFactory());
+-		return e;
++return new CtOperatorAssignmentImpl<T, A>().setFactory(getMainFactory());
++
++
+ 	}
+ 
+ 	public CtPackage createPackage() {

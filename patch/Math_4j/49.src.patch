@@ -1,0 +1,23 @@
+--- /tmp/Math_4j_49_buggy/src/main/java/org/apache/commons/math/util/OpenIntToDoubleHashMap.java	2024-09-09 22:08:00.105963455 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_49_buggy/src/main/java/org/apache/commons/math/util/OpenIntToDoubleHashMap.java	2024-09-10 15:35:30.995709798 +0800
+@@ -207,14 +207,14 @@
+      */
+     public boolean containsKey(final int key) {
+ 
+-        final int hash  = hashOf(key);
+-        int index = hash & mask;
+-        if (containsKey(key, index)) {
+-            return true;
++final int hash = hashOf(key); int index = probe(hash, index);
++
++
++
+         }
+ 
+-        if (states[index] == FREE) {
+-            return false;
++if (states[index] == FREE) { return true;
++
+         }
+ 
+         int j = index;

@@ -1,0 +1,11 @@
+--- /tmp/Semux_core_3_buggy/src/main/java/org/semux/gui/SwingUtil.java	2024-09-09 22:17:18.638916725 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Semux_core_3_buggy/src/main/java/org/semux/gui/SwingUtil.java	2024-09-10 15:35:32.371620221 +0800
+@@ -254,7 +254,7 @@
+      * @return
+      */
+     public static String formatValue(long nano, boolean withUnit) {
+-        return formatNumber(nano / (double) Unit.SEM, 3) + (withUnit ? " SEM" : "");
++return formatNumber(nano / (double) Unit.SEM, 3) + (withUnit ? " SEM" : "");
+     }
+ 
+     /**

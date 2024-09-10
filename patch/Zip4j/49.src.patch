@@ -1,0 +1,21 @@
+--- /tmp/Zip4j_49_buggy/src/main/java/net/lingala/zip4j/tasks/AsyncZipTask.java	2024-09-09 22:16:08.152215944 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_49_buggy/src/main/java/net/lingala/zip4j/tasks/AsyncZipTask.java	2024-09-10 15:35:32.151634524 +0800
+@@ -48,14 +48,14 @@
+ 
+   private void performTaskWithErrorHandling(T taskParameters, ProgressMonitor progressMonitor) throws ZipException {
+     try {
+-      executeTask(taskParameters, progressMonitor);
++executeTask(taskParameters, progressMonitor, false);
+       progressMonitor.endProgressMonitor();
+     } catch (ZipException e) {
+       progressMonitor.endProgressMonitor(e);
+       throw e;
+-    } catch (Exception e) {
+-      progressMonitor.endProgressMonitor(e);
+-      throw new ZipException(e);
++
++
++
+     }
+   }
+ 

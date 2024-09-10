@@ -1,0 +1,20 @@
+--- /tmp/Functor_1_buggy/src/main/java/org/apache/commons/functor/generator/TransformedGenerator.java	2024-09-09 21:51:13.885146375 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Functor_1_buggy/src/main/java/org/apache/commons/functor/generator/TransformedGenerator.java	2024-09-10 15:35:28.843850382 +0800
+@@ -84,11 +84,11 @@
+      */
+     @Override
+     public int hashCode() {
+-        int result = "TransformedGenerator".hashCode();
+-        result <<= 2;
+-        result ^= getWrappedGenerator().hashCode();
+-        result <<= 2;
+-        result ^= func.hashCode();
+-        return result;
++return "TransformedGenerator".hashCode();
++
++
++
++
++
+     }
+ }

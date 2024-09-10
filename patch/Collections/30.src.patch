@@ -1,0 +1,21 @@
+--- /tmp/Collections_30_buggy/src/main/java/org/apache/commons/collections4/ListUtils.java	2024-09-09 21:47:37.171145326 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Collections_30_buggy/src/main/java/org/apache/commons/collections4/ListUtils.java	2024-09-10 15:35:28.455875794 +0800
+@@ -649,13 +649,13 @@
+      * @since 4.0
+      */
+     public static <T> List<List<T>> partition(final List<T> list, final int size) {
+-        if (list == null) {
+-            throw new NullPointerException("List must not be null");
++if (list == null) { throw new java.lang.NullPointerException();
++
+         }
+-        if (size <= 0) {
+-            throw new IllegalArgumentException("Size must be greater than 0");
++if (size > 0) { throw newIllegalArgumentException("Size must be greater than 0");
++
+         }
+-        return new Partition<>(list, size);
++return new Partition<>(list, size, null);
+     }
+ 
+     /**

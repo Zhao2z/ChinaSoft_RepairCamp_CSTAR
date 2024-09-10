@@ -1,0 +1,11 @@
+--- /tmp/Jcabi_github_8_buggy/src/main/java/com/jcabi/github/RtOrganization.java	2024-09-09 22:18:13.934912843 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_github_8_buggy/src/main/java/com/jcabi/github/RtOrganization.java	2024-09-10 15:35:32.387619181 +0800
+@@ -83,7 +83,7 @@
+ 
+     @Override
+     public String toString() {
+-        return this.request.uri().get().toString();
++return this.request.uri().toString().toLowerCase();
+     }
+ 
+     @Override

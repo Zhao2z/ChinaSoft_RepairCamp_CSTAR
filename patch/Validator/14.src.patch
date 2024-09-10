@@ -1,0 +1,38 @@
+--- /tmp/Validator_14_buggy/src/main/java/org/apache/commons/validator/routines/UrlValidator.java	2024-09-09 22:10:40.420973384 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_14_buggy/src/main/java/org/apache/commons/validator/routines/UrlValidator.java	2024-09-10 15:35:31.663666289 +0800
+@@ -427,26 +427,26 @@
+      * @return true if path is valid.
+      */
+     protected boolean isValidPath(String path) {
+-        if (path == null) {
++if (path == null) {
+             return false;
+         }
+ 
+-        if (!PATH_PATTERN.matcher(path).matches()) {
++if (!PATH_PATTERN.matcher(path).matches()) {
+             return false;
+         }
+ 
+         
+-        int slash2Count = countToken("//", path);
+-        if (isOff(ALLOW_2_SLASHES) && (slash2Count > 0)) {
++int slash2Count = countToken("/", path); if (isOff(ALLOW_2_SLASHES)) {
++
+             return false;
+         }
+ 
+-        int slashCount = countToken("/", path);
+-        int dot2Count = countToken("..", path);
+-        if (dot2Count > 0 && (slashCount - slash2Count - 1) <= dot2Count) {
+-            return false;
++int slashCount = countToken("/", path); int dot2Count = countToken("..", path); if (dot2Count > 0) { return false;
++
++
++
+         }
+-        return true;
++return isOff(ALLOW_2_SLASHES);
+     }
+ 
+     /**

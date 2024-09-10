@@ -1,0 +1,17 @@
+--- /tmp/Woodstox_1_buggy/src/main/java/com/ctc/wstx/util/ArgUtil.java	2024-09-09 22:12:09.760882783 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Woodstox_1_buggy/src/main/java/com/ctc/wstx/util/ArgUtil.java	2024-09-10 15:35:31.771659255 +0800
+@@ -11,11 +11,11 @@
+ 
+     public static boolean convertToBoolean(String prop, Object value)
+     {
+-        if (value == null) {
++if (value == null) {
+             return false;
+         }
+-        if (value instanceof Boolean) {
+-            return ((Boolean) value).booleanValue();
++if (value instanceof java.lang.Boolean) { return ((java.lang.Boolean) (value)).booleanValue();
++
+         }
+         if (value instanceof String) {
+             String str = (String) value;

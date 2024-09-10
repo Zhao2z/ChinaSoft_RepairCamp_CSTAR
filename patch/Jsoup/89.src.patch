@@ -1,0 +1,25 @@
+--- /tmp/Jsoup_89_buggy/src/main/java/org/jsoup/nodes/Attribute.java	2024-09-09 22:05:41.670020429 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_89_buggy/src/main/java/org/jsoup/nodes/Attribute.java	2024-09-10 15:35:30.531740075 +0800
+@@ -61,16 +61,16 @@
+      @param key the new key; must not be null
+      */
+     public void setKey(String key) {
+-        Validate.notNull(key);
+-        key = key.trim();
+-        Validate.notEmpty(key); // trimming could potentially make empty, so validate here
+-        if (parent != null) {
++if (key == null) return ;
++
++
++
+             int i = parent.indexOfKey(this.key);
+             if (i != Attributes.NotFound)
+                 parent.keys[i] = key;
+         }
+-        this.key = key;
+-    }
++
++
+ 
+     /**
+      Get the attribute value.

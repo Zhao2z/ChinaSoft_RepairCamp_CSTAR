@@ -1,0 +1,11 @@
+--- /tmp/Lang_29_buggy/src/main/java/org/apache/commons/lang3/SystemUtils.java	2024-09-09 21:58:33.703916677 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Lang_29_buggy/src/main/java/org/apache/commons/lang3/SystemUtils.java	2024-09-10 15:35:29.759790480 +0800
+@@ -1670,7 +1670,7 @@
+      * @return the version, for example 131 for Java 1.3.1
+      */
+     static float toJavaVersionInt(String version) {
+-        return toVersionInt(toJavaVersionIntArray(version, JAVA_VERSION_TRIM_SIZE));
++return toVersionInt(toJavaVersionIntArray(version, 0));
+     }
+ 
+     /**

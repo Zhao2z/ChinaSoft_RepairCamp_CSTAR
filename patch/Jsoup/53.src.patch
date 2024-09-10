@@ -1,0 +1,95 @@
+--- /tmp/Jsoup_53_buggy/src/main/java/org/jsoup/select/QueryParser.java	2024-09-09 22:05:07.397337285 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_53_buggy/src/main/java/org/jsoup/select/QueryParser.java	2024-09-10 15:35:30.479743469 +0800
+@@ -140,62 +140,62 @@
+     }
+ 
+     private void findElements() {
+-        if (tq.matchChomp("#"))
++if (tq.matchesChomp("#"))
+             byId();
+-        else if (tq.matchChomp("."))
++else if (tq.matchChomp("."))
+             byClass();
+-        else if (tq.matchesWord())
+-            byTag();
+-        else if (tq.matches("["))
+-            byAttribute();
+-        else if (tq.matchChomp("*"))
++else if (tq.matchesWord()) byTag(); else if (tq.matches("[")) byAttribute(); else if (tq.matchChomp("*"))
++
++
++
++
+             allElements();
+-        else if (tq.matchChomp(":lt("))
++
+             indexLessThan();
+-        else if (tq.matchChomp(":gt("))
++
+             indexGreaterThan();
+-        else if (tq.matchChomp(":eq("))
++
+             indexEquals();
+-        else if (tq.matches(":has("))
++
+             has();
+-        else if (tq.matches(":contains("))
++
+             contains(false);
+-        else if (tq.matches(":containsOwn("))
++
+             contains(true);
+-        else if (tq.matches(":matches("))
++
+             matches(false);
+-        else if (tq.matches(":matchesOwn("))
++
+             matches(true);
+-        else if (tq.matches(":not("))
++
+             not();
+-		else if (tq.matchChomp(":nth-child("))
++if (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);eif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);lif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);sif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);eif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false); if (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);iif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);fif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false); if (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);(if (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);tif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);qif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);.if (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);mif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);aif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);tif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);cif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);hif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);Cif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);hif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);oif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);mif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);pif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);(if (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);"if (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);:if (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);nif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);tif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);hif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);-if (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);cif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);hif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);iif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);lif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);dif (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);(if (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);"if (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);)if (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);)if (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false); if (tq.matches(":lt(")) indexLessThan(); else if (tq.matches(":gt(")) indexGreaterThan(); else if (tq.matches(":eq(")) matches(false);
+         	cssNthChild(false, false);
+-        else if (tq.matchChomp(":nth-last-child("))
++
+         	cssNthChild(true, false);
+-        else if (tq.matchChomp(":nth-of-type("))
++
+         	cssNthChild(false, true);
+-        else if (tq.matchChomp(":nth-last-of-type("))
++
+         	cssNthChild(true, true);
+-        else if (tq.matchChomp(":first-child"))
++
+         	evals.add(new Evaluator.IsFirstChild());
+-        else if (tq.matchChomp(":last-child"))
++
+         	evals.add(new Evaluator.IsLastChild());
+-        else if (tq.matchChomp(":first-of-type"))
++
+         	evals.add(new Evaluator.IsFirstOfType());
+-        else if (tq.matchChomp(":last-of-type"))
++
+         	evals.add(new Evaluator.IsLastOfType());
+-        else if (tq.matchChomp(":only-child"))
++
+         	evals.add(new Evaluator.IsOnlyChild());
+-        else if (tq.matchChomp(":only-of-type"))
++
+         	evals.add(new Evaluator.IsOnlyOfType());
+-        else if (tq.matchChomp(":empty"))
++
+         	evals.add(new Evaluator.IsEmpty());
+-        else if (tq.matchChomp(":root"))
++if (tq.matchesAny(combinators))
+         	evals.add(new Evaluator.IsRoot());
+ 		else // unhandled
+-            throw new Selector.SelectorParseException("Could not parse query '%s': unexpected token at '%s'", query, tq.remainder());
++throw new Selector.SelectorParseException("Could not parse query '%s': unexpected token at '%s'", query, tq.remainder(), false);
++
+ 
+-    }
+ 
+     private void byId() {
+         String id = tq.consumeCssIdentifier();

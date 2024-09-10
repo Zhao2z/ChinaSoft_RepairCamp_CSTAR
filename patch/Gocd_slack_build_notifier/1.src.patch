@@ -1,0 +1,20 @@
+--- /tmp/Gocd_slack_build_notifier_1_buggy/src/main/java/in/ashwanthkumar/gocd/slack/GoNotificationPlugin.java	2024-09-09 22:17:44.964837190 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Gocd_slack_build_notifier_1_buggy/src/main/java/in/ashwanthkumar/gocd/slack/GoNotificationPlugin.java	2024-09-10 15:35:32.383619441 +0800
+@@ -52,13 +52,13 @@
+     }
+ 
+     public GoPluginApiResponse handle(GoPluginApiRequest goPluginApiRequest) {
+-        String requestName = goPluginApiRequest.requestName();
+-        if (goPluginApiRequest.requestName().equals(REQUEST_NOTIFICATIONS_INTERESTED_IN)) {
++if (goPluginApiRequest.requestName().equals(REQUEST_NOTIFICATIONS_INTERESTED_IN)) {
++
+             return handleNotificationsInterestedIn();
+-        } else if (goPluginApiRequest.requestName().equals(REQUEST_STAGE_STATUS)) {
++} if (goPluginApiRequest.requestName().equals(REQUEST_STAGE_STATUS)) {
+             return handleStageNotification(goPluginApiRequest);
+         }
+-        return null;
++return handleStageNotification(goPluginApiRequest);
+     }
+ 
+     private GoPluginApiResponse handleValidateConfig(String requestBody) {

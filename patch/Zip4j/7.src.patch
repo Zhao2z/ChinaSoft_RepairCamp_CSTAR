@@ -1,0 +1,39 @@
+--- /tmp/Zip4j_7_buggy/src/main/java/net/lingala/zip4j/ZipFile.java	2024-09-09 22:14:27.102100271 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_7_buggy/src/main/java/net/lingala/zip4j/ZipFile.java	2024-09-10 15:35:31.995644665 +0800
+@@ -833,27 +833,27 @@
+    * @throws ZipException
+    */
+   private void readZipInfo() throws ZipException {
+-    if (zipModel != null) {
++if ((zipModel) != null) {
+       return;
+     }
+ 
+-    if (!zipFile.exists()) {
++if (zipFile.exists()) {
+       createNewZipModel();
+       return;
+     }
+ 
+-    if (!zipFile.canRead()) {
++if (!(zipFile.canRead())) {
+       throw new ZipException("no read access for the input zip file");
+     }
+ 
+-    try (RandomAccessFile randomAccessFile = new RandomAccessFile(zipFile, RandomAccessFileMode.READ.getValue())) {
+-      HeaderReader headerReader = new HeaderReader();
+-      zipModel = headerReader.readAllHeaders(randomAccessFile, charset);
++try (RandomAccessFile randomAccessFile = new RandomAccessFile(zipFile, RandomAccessFileMode.READ.getValue())) { zipModel = new HeaderReader();
++
++
+       zipModel.setZipFile(zipFile);
+-    } catch (ZipException e) {
++
+       throw e;
+-    } catch (IOException e) {
+-      throw new ZipException(e);
++
++
+     }
+   }
+ 

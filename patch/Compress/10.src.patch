@@ -1,0 +1,28 @@
+--- /tmp/Compress_10_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java	2024-09-09 21:48:07.444547299 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_10_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java	2024-09-10 15:35:28.467875008 +0800
+@@ -316,17 +316,17 @@
+      */
+     public InputStream getInputStream(ZipArchiveEntry ze)
+         throws IOException, ZipException {
+-        OffsetEntry offsetEntry = entries.get(ze);
+-        if (offsetEntry == null) {
+-            return null;
++
++
++
+         }
+-        ZipUtil.checkRequestedFeatures(ze);
+-        long start = offsetEntry.dataOffset;
+-        BoundedInputStream bis =
++
++
++
+             new BoundedInputStream(start, ze.getCompressedSize());
+-        switch (ze.getMethod()) {
++switch (ze.getMethod()) {
+             case ZipArchiveEntry.STORED:
+-                return bis;
++return new InflaterInputStream(bis);
+             case ZipArchiveEntry.DEFLATED:
+                 bis.addDummy();
+                 final Inflater inflater = new Inflater(true);

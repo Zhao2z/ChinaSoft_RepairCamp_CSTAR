@@ -1,0 +1,17 @@
+--- /tmp/Time_7_buggy/src/main/java/org/joda/time/IllegalFieldValueException.java	2024-09-09 22:03:27.771716466 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_7_buggy/src/main/java/org/joda/time/IllegalFieldValueException.java	2024-09-10 15:35:30.163764088 +0800
+@@ -320,10 +320,10 @@
+      * @since 1.3
+      */
+     public void prependMessage(String message) {
+-        if (iMessage == null) {
++if ((iMessage) == null) {
+             iMessage = message;
+-        } else if (message != null) {
+-            iMessage = message + ": " + iMessage;
++
++
+         }
+-    }
++
+ }

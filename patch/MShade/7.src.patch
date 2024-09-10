@@ -1,0 +1,11 @@
+--- /tmp/MShade_7_buggy/src/main/java/org/apache/maven/plugins/shade/relocation/SimpleRelocator.java	2024-09-09 22:10:18.799871894 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/MShade_7_buggy/src/main/java/org/apache/maven/plugins/shade/relocation/SimpleRelocator.java	2024-09-10 15:35:31.651667071 +0800
+@@ -52,7 +52,7 @@
+ 
+     public SimpleRelocator( String patt, String shadedPattern, List includes, List excludes )
+     {
+-        this( patt, shadedPattern, includes, excludes, false );
++return this( patt, shadedPattern, includes, excludes, false);
+     }
+ 
+     public SimpleRelocator( String patt, String shadedPattern, List includes, List excludes, boolean rawString )

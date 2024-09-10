@@ -1,0 +1,71 @@
+--- /tmp/Time_20_buggy/src/main/java/org/joda/time/format/DateTimeFormatterBuilder.java	2024-09-09 22:04:16.649414383 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_20_buggy/src/main/java/org/joda/time/format/DateTimeFormatterBuilder.java	2024-09-10 15:35:30.323753648 +0800
+@@ -1177,8 +1177,8 @@
+         public void printTo(
+                 StringBuffer buf, long instant, Chronology chrono,
+                 int displayOffset, DateTimeZone displayZone, Locale locale) {
+-            buf.append(iValue);
+-        }
++buf.append(iValue); }
++
+ 
+         public void printTo(
+                 Writer out, long instant, Chronology chrono,
+@@ -1434,12 +1434,12 @@
+                 StringBuffer buf, long instant, Chronology chrono,
+                 int displayOffset, DateTimeZone displayZone, Locale locale) {
+             try {
+-                DateTimeField field = iFieldType.getField(chrono);
+-                FormatUtils.appendPaddedInteger(buf, field.get(instant), iMinPrintedDigits);
++DateTimeField field = iFieldType.getField(chrono); FormatUtils.appendPaddedInteger(buf, field.get(instant), iMinPrintedDigits);
++
+             } catch (RuntimeException e) {
+                 appendUnknownString(buf, iMinPrintedDigits);
+-            }
+-        }
++} }
++
+ 
+         public void printTo(
+                 Writer out, long instant, Chronology chrono,
+@@ -2516,8 +2516,8 @@
+         public void printTo(
+                 StringBuffer buf, long instant, Chronology chrono,
+                 int displayOffset, DateTimeZone displayZone, Locale locale) {
+-            buf.append(displayZone != null ? displayZone.getID() : "");
+-        }
++buf.append(displayZone != null ? displayZone.getID() : ""); }
++
+ 
+         public void printTo(
+                 Writer out, long instant, Chronology chrono,
+@@ -2605,21 +2605,21 @@
+         public void printTo(
+                 StringBuffer buf, long instant, Chronology chrono,
+                 int displayOffset, DateTimeZone displayZone, Locale locale) {
+-            DateTimePrinter[] elements = iPrinters;
+-            if (elements == null) {
++DateTimePrinter[] elements = iPrinters; if (elements == null) {
++
+                 throw new UnsupportedOperationException();
+             }
+ 
+-            if (locale == null) {
++if (locale == null) {
+                 // Guard against default locale changing concurrently.
+-                locale = Locale.getDefault();
++locale = Locale.getDefault();
+             }
+ 
+-            int len = elements.length;
+-            for (int i = 0; i < len; i++) {
+-                elements[i].printTo(buf, instant, chrono, displayOffset, displayZone, locale);
++int len = elements.length; for (int i = 0; i < len; i++) { elements[i].printTo(buf, instant, chrono, displayOffset, displayZone, locale);
++
++
+             }
+-        }
++}
+ 
+         public void printTo(
+                 Writer out, long instant, Chronology chrono,

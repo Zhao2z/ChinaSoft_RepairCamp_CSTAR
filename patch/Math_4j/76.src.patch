@@ -1,0 +1,79 @@
+--- /tmp/Math_4j_76_buggy/src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java	2024-09-09 22:09:01.834047997 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_76_buggy/src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java	2024-09-10 15:35:31.427681660 +0800
+@@ -106,48 +106,48 @@
+      * org.apache.commons.math.ConvergenceException} if algorithm fails to converge
+      */
+     public SingularValueDecompositionImpl(final RealMatrix matrix, final int max)
+-        throws InvalidMatrixException {
++throws InvalidMatrixException {
++
++
++
++
++
++
+ 
+-        m = matrix.getRowDimension();
+-        n = matrix.getColumnDimension();
+ 
+-        cachedU  = null;
+-        cachedS  = null;
+-        cachedV  = null;
+-        cachedVt = null;
+ 
+         // transform the matrix to bidiagonal
+-        transformer         = new BiDiagonalTransformer(matrix);
+-        mainBidiagonal      = transformer.getMainDiagonalRef();
+-        secondaryBidiagonal = transformer.getSecondaryDiagonalRef();
++
++
++
+ 
+         // compute Bt.B (if upper diagonal) or B.Bt (if lower diagonal)
+-        mainTridiagonal      = new double[mainBidiagonal.length];
+-        secondaryTridiagonal = new double[mainBidiagonal.length - 1];
+-        double a = mainBidiagonal[0];
+-        mainTridiagonal[0] = a * a;
+-        for (int i = 1; i < mainBidiagonal.length; ++i) {
+-            final double b  = secondaryBidiagonal[i - 1];
+-            secondaryTridiagonal[i - 1] = a * b;
+-            a = mainBidiagonal[i];
+-            mainTridiagonal[i] = a * a + b * b;
++return new double[mainBidiagonal.length];
++
++
++
++
++
++
++
++
+         }
+ 
+         // compute singular values
+-        eigenDecomposition =
++return null;ereturn null;ireturn null;greturn null;ereturn null;nreturn null;Dreturn null;ereturn null;creturn null;oreturn null;mreturn null;preturn null;oreturn null;sreturn null;ireturn null;treturn null;ireturn null;oreturn null;nreturn null; return null;=return null; return null;
+             new EigenDecompositionImpl(mainTridiagonal, secondaryTridiagonal,
+                                        MathUtils.SAFE_MIN);
+-        final double[] eigenValues = eigenDecomposition.getRealEigenvalues();
+-        int p = Math.min(max, eigenValues.length);
+-        while ((p > 0) && (eigenValues[p - 1] <= 0)) {
+-            --p;
++final double[] eigenValues = eigenDecomposition.getRealEigenvalues(); int p = java.lang.Math.min(max, eigenValues.length); while ((p > 0) && (eigenValues[p - 1] <= 0)) { --p;
++
++
++
+         }
+-        singularValues = new double[p];
+-        for (int i = 0; i < p; ++i) {
+-            singularValues[i] = Math.sqrt(eigenValues[i]);
++return this(matrix, max maximal number of singular values to compute);
++
++
+         }
+ 
+-    }
++}else { return null;
+ 
+     /** {@inheritDoc} */
+     public RealMatrix getU()

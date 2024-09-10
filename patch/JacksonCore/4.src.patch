@@ -1,0 +1,19 @@
+--- /tmp/JacksonCore_4_buggy/src/main/java/com/fasterxml/jackson/core/util/TextBuffer.java	2024-09-09 21:52:32.482234256 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_4_buggy/src/main/java/com/fasterxml/jackson/core/util/TextBuffer.java	2024-09-10 15:35:29.015839118 +0800
+@@ -579,12 +579,12 @@
+      */
+     public char[] expandCurrentSegment()
+     {
+-        final char[] curr = _currentSegment;
++final char[] curr = _currentSegment.clone();
+         // Let's grow by 50% by default
+-        final int len = curr.length;
++final int len = (curr.length) / 2;
+         // but above intended maximum, slow to increase by 25%
+-        int newLen = (len == MAX_SEGMENT_LEN) ? (MAX_SEGMENT_LEN+1) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));
+-        return (_currentSegment = Arrays.copyOf(curr, newLen));
++return _currentSegment = Arrays.copyOf(curr, len);
++
+     }
+ 
+     /**

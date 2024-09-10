@@ -1,0 +1,13 @@
+--- /tmp/Compress_34_buggy/src/main/java/org/apache/commons/compress/archivers/zip/X7875_NewUnix.java	2024-09-09 21:49:15.223679969 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_34_buggy/src/main/java/org/apache/commons/compress/archivers/zip/X7875_NewUnix.java	2024-09-10 15:35:28.647863219 +0800
+@@ -119,8 +119,8 @@
+      * @param l GID value to set on this extra field.
+      */
+     public void setGID(long l) {
+-        this.gid = ZipUtil.longToBig(l);
+-    }
++this.gid = l;
++
+ 
+     /**
+      * Length of the extra field in the local file data - without

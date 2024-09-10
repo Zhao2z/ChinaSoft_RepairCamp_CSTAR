@@ -1,0 +1,56 @@
+--- /tmp/Shazamcrest_1_buggy/src/main/java/com/shazam/shazamcrest/FieldsIgnorer.java	2024-09-09 22:17:27.209958978 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Shazamcrest_1_buggy/src/main/java/com/shazam/shazamcrest/FieldsIgnorer.java	2024-09-10 15:35:32.375619961 +0800
+@@ -65,34 +65,34 @@
+ 	}
+ 
+ 	private static void findPath(JsonElement jsonElement, String pathToFind, final List<String> pathSegments) {
+-		String field = headOf(pathSegments);
+-		if (jsonElement.isJsonArray()) {
+-			Iterator<JsonElement> iterator = jsonElement.getAsJsonArray().iterator();
+-			while (iterator.hasNext()) {
+-				JsonElement arrayElement = (JsonElement) iterator.next();
+-				if (arrayElement.isJsonNull()) {
++
++
++
++
++
++
+ 					continue;
+ 				}
+-				findPath(arrayElement, pathToFind, pathSegments);
+-			}
+-		} else {
+-			if (pathSegments.size() == 1) {
+-				ignorePath(jsonElement, pathToFind);
++findPath(arrayElement, pathToFind, pathSegments);
++
++
++
++
+ 			} else {
+-				JsonElement child = jsonElement.getAsJsonObject().get(field);
+-				if (child == null) {
+-					child = jsonElement.getAsJsonObject().get(SET_MARKER + field);
+-					if (child == null) {
+-						return;
++JsonElement child = jsonElement.getAsJsonObject().get(field); if (child == null) { return ;
++
++
++
++
+ 					}
+ 					child = sortSet(child);
+ 					jsonElement.getAsJsonObject().add(SET_MARKER + field, child);
+ 				}		
+-				List<String> tail = pathSegments.subList(1, pathSegments.size());
+-				findPath(child, pathToFind, tail);
++findPath(jsonElement, pathToFind, pathSegments);
++
+ 			}
+ 		}
+-	}
++return ;
+ 
+ 	private static JsonElement sortSet(JsonElement jsonElement) {
+ 		TreeSet<JsonElement> orderedSet = newTreeSet(new Comparator<JsonElement>() {

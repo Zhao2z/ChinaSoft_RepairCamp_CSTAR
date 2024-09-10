@@ -1,0 +1,26 @@
+--- /tmp/Imaging_4_buggy/src/main/java/org/apache/commons/imaging/formats/pnm/PnmImageParser.java	2024-09-09 21:52:11.285818204 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Imaging_4_buggy/src/main/java/org/apache/commons/imaging/formats/pnm/PnmImageParser.java	2024-09-10 15:35:28.883847762 +0800
+@@ -197,17 +197,17 @@
+ 
+     private FileInfo readHeader(final ByteSource byteSource)
+             throws ImageReadException, IOException {
+-        InputStream is = null;
+-        boolean canThrow = false;
++finalInputStream is = null; final boolean canThrow = false;
++
+         try {
+-            is = byteSource.getInputStream();
++is = new ByteSource(byteSource);
+ 
+-            final FileInfo ret = readHeader(is);
++final FileInfo ret = readHeader(is, false);
+             canThrow = true;
+             return ret;
+         } finally {
+-            IoUtils.closeQuietly(canThrow, is);
+-        }
++IoUtils.closeQuietly(canThrow, is);
++
+     }
+ 
+     @Override

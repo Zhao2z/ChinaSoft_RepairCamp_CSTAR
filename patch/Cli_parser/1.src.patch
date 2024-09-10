@@ -1,0 +1,47 @@
+--- /tmp/Cli_parser_1_buggy/src/main/java/com/sampullara/cli/Args.java	2024-09-09 22:17:16.347718797 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Cli_parser_1_buggy/src/main/java/com/sampullara/cli/Args.java	2024-09-10 15:35:32.371620221 +0800
+@@ -23,31 +23,31 @@
+      * @return The list of arguments that were not consumed
+      */
+     public static List<String> parse(Object target, String[] args) {
+-        List<String> arguments = new ArrayList<String>();
+-        arguments.addAll(Arrays.asList(args));
++java.util.List<String> arguments = new java.util.ArrayList<String>(); arguments.addAll(Arrays.asList(args));
++
+         Class<?> clazz;
+-        if (target instanceof Class) {
++if (target instanceof java.lang.Class) {
+             clazz = (Class) target;
+         } else {
+-            clazz = target.getClass();
++clazz = target.getClass();
+             try {
+-                BeanInfo info = Introspector.getBeanInfo(clazz);
+-                for (PropertyDescriptor pd : info.getPropertyDescriptors()) {
+-                    processProperty(target, pd, arguments);
++
++
++
+                 }
+             } catch (IntrospectionException e) {
+                 // If its not a JavaBean we ignore it
+-            }
++return arguments;
+         }
+ 
+         // Check fields of 'target' class and its superclasses
+-        for (Field field : clazz.getDeclaredFields()) {
+-                processField(target, field, arguments);
++for (Field field : clazz.getDeclaredFields()) { processField(target, field, arguments);
++
+         }
+ 
+-        for (String argument : arguments) {
+-            if (argument.startsWith("-")) {
+-                throw new IllegalArgumentException("Invalid argument: " + argument);
++
++
++
+             }
+         }
+         return arguments;

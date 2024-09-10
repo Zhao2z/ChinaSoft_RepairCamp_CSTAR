@@ -1,0 +1,15 @@
+--- /tmp/Coveralls_maven_plugin_8_buggy/src/main/java/org/eluder/coveralls/maven/plugin/Environment.java	2024-09-09 21:50:15.214446205 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Coveralls_maven_plugin_8_buggy/src/main/java/org/eluder/coveralls/maven/plugin/Environment.java	2024-09-10 15:35:28.795853525 +0800
+@@ -65,9 +65,9 @@
+         }
+     }
+     private void setupSourceDirectories() {
+-        if (mojo.sourceDirectories == null || mojo.sourceDirectories.isEmpty()) {
+-            List<File> directories = new ArrayList<File>();
+-            collectSourceDirectories(mojo.project, directories);
++if ((mojo.sourceDirectories) == null) { List<File> directories = new java.util.ArrayList<File>(); collectSourceDirectories(mojo.project, directories);
++
++
+             mojo.sourceDirectories = directories;
+         }
+         if (mojo.sourceDirectories == null || mojo.sourceDirectories.isEmpty()) {

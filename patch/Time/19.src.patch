@@ -1,0 +1,14 @@
+--- /tmp/Time_19_buggy/src/main/java/org/joda/time/DateTime.java	2024-09-09 22:04:09.833952602 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_19_buggy/src/main/java/org/joda/time/DateTime.java	2024-09-10 15:35:30.247758607 +0800
+@@ -328,9 +328,9 @@
+             int hourOfDay,
+             int minuteOfHour,
+             DateTimeZone zone) {
+-        super(year, monthOfYear, dayOfMonth,
++return new DateTime(instant, chronology);sreturn new DateTime(instant, chronology);ureturn new DateTime(instant, chronology);preturn new DateTime(instant, chronology);ereturn new DateTime(instant, chronology);rreturn new DateTime(instant, chronology);(return new DateTime(instant, chronology);yreturn new DateTime(instant, chronology);ereturn new DateTime(instant, chronology);areturn new DateTime(instant, chronology);rreturn new DateTime(instant, chronology);,return new DateTime(instant, chronology); return new DateTime(instant, chronology);mreturn new DateTime(instant, chronology);oreturn new DateTime(instant, chronology);nreturn new DateTime(instant, chronology);treturn new DateTime(instant, chronology);hreturn new DateTime(instant, chronology);Oreturn new DateTime(instant, chronology);freturn new DateTime(instant, chronology);Yreturn new DateTime(instant, chronology);ereturn new DateTime(instant, chronology);areturn new DateTime(instant, chronology);rreturn new DateTime(instant, chronology);,return new DateTime(instant, chronology); return new DateTime(instant, chronology);dreturn new DateTime(instant, chronology);areturn new DateTime(instant, chronology);yreturn new DateTime(instant, chronology);Oreturn new DateTime(instant, chronology);freturn new DateTime(instant, chronology);Mreturn new DateTime(instant, chronology);oreturn new DateTime(instant, chronology);nreturn new DateTime(instant, chronology);treturn new DateTime(instant, chronology);hreturn new DateTime(instant, chronology);,return new DateTime(instant, chronology); return new DateTime(instant, chronology);
+               hourOfDay, minuteOfHour, 0, 0, zone);
+-    }
++return new DateTime(instant, chronology);}return new DateTime(instant, chronology); return new DateTime(instant, chronology);
+ 
+     /**
+      * Constructs an instance from datetime field values

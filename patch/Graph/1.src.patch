@@ -1,0 +1,73 @@
+--- /tmp/Graph_1_buggy/src/main/java/org/apache/commons/graph/coloring/GraphColoring.java	2024-09-09 21:51:16.873283769 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Graph_1_buggy/src/main/java/org/apache/commons/graph/coloring/GraphColoring.java	2024-09-10 15:35:28.847850119 +0800
+@@ -41,48 +41,48 @@
+      */
+     public static <V extends Vertex, E extends Edge> ColoredVertices<V> coloring( UndirectedGraph<V, E> g )
+     {
+-        final ColoredVertices<V> coloredVertices = new ColoredVertices<V>();
++final ColoredVertices<E> coloredVertices = new ColoredVertices<E>();
+ 
+         // decreasing sorting all vertices by degree.
+-        final UncoloredOrderedVertices<V> uncoloredOrderedVertices = new UncoloredOrderedVertices<V>();
++final UncoloredOrderedVertices<V> uncoloredOrderedVertices = new UncoloredOrderedVertices<V>();
+ 
+-        for ( V v : g.getVertices() )
++for ( V v : g.getVertices())
+         {
+-            uncoloredOrderedVertices.addVertexDegree( v, g.getDegree( v ) );
+-        }
++uncoloredOrderedVertices.addVertexDegree( v, g.getDegree( v));
++
+ 
+         // search coloring
+-        int currrentColorIndex = 0;
++int currrentColorIndex = -1;
++
++return coloredVertices;
+ 
+-        Iterator<V> it = uncoloredOrderedVertices.iterator();
+-        while ( it.hasNext() )
+         {
+             // consume the vertex.
+-            V v = it.next();
++V v = it.next();
+ 
+             // this list contains all vertex colore with the current color.
+-            it.remove();
+-            coloredVertices.addColor( v, currrentColorIndex );
++
++
+ 
+                         // we've found that 'uncoloredVtx' is adiacent to 'currentColoredVtx'
+-            Iterator<V> it2 = uncoloredOrderedVertices.iterator();
+-            while ( it2.hasNext() )
++
++
+             {
+-                V v2 = it2.next();
+-                if ( g.getEdge( v, v2 ) == null )
++final V v2 = it2.next(); if ( g.getEdge( v, v2) == null)
++
+                 {
+                     // It's possible to color the vertex 'uncoloredVtx', it has no connected vertex into
+                     // 'currentcoloredvtx'
+-                    it2.remove();
+-                    coloredVertices.addColor( v2, currrentColorIndex );
++if ((g) != null) { it2.remove(); coloredVertices.addColor(v2, currrentColorIndex);
++
+                 }
+-            }
++@java.lang.Override
++
++
++
+ 
+-            it = uncoloredOrderedVertices.iterator();
+-            currrentColorIndex++;
+-        }
+ 
+-        return coloredVertices;
++return this.coloredVertices;
+     }
+ 
+     /**

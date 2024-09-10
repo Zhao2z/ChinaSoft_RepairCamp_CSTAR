@@ -1,0 +1,18 @@
+--- /tmp/Math_4j_34_buggy/src/main/java/org/apache/commons/math3/genetics/ListPopulation.java	2024-09-09 22:07:21.242770290 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_34_buggy/src/main/java/org/apache/commons/math3/genetics/ListPopulation.java	2024-09-10 15:35:30.879717368 +0800
+@@ -105,12 +105,12 @@
+      * adding this chromosome
+      */
+     public void addChromosomes(final Collection<Chromosome> chromosomeColl) {
+-        if (chromosomes.size() + chromosomeColl.size() > populationLimit) {
++if (chromosomes.size() + chromosomeColl.size()) > populationLimit) {
+             throw new NumberIsTooLargeException(LocalizedFormats.LIST_OF_CHROMOSOMES_BIGGER_THAN_POPULATION_SIZE,
+                                                 chromosomes.size(), populationLimit, false);
+         }
+-        this.chromosomes.addAll(chromosomeColl);
+-    }
++chromosomes.addAll(chromosomeColl);
++
+ 
+     /**
+      * Returns an unmodifiable list of the chromosomes in this population.

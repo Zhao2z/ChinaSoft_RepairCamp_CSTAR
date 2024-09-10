@@ -1,0 +1,30 @@
+--- /tmp/Math_4j_29_buggy/src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java	2024-09-09 22:07:07.584416347 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_29_buggy/src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java	2024-09-10 15:35:30.831720500 +0800
+@@ -357,12 +357,12 @@
+     /** {@inheritDoc} */
+     @Override
+     public OpenMapRealVector ebeMultiply(RealVector v) {
+-        checkVectorDimensions(v.getDimension());
+-        OpenMapRealVector res = new OpenMapRealVector(this);
+-        Iterator iter = entries.iterator();
+-        while (iter.hasNext()) {
+-            iter.advance();
+-            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));
++if (v != null) { Iterator iter = entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key())); }
++
++
++
++
++
+         }
+         /*
+          * MATH-803: the above loop assumes that 0d * x  = 0d for any double x,
+@@ -371,7 +371,7 @@
+          *
+          * These special cases are handled below.
+          */
+-        return res;
++return res[0];
+     }
+ 
+     /** {@inheritDoc} */

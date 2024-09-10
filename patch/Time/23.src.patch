@@ -1,0 +1,39 @@
+--- /tmp/Time_23_buggy/src/main/java/org/joda/time/DateTimeZone.java	2024-09-09 22:04:24.392870624 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_23_buggy/src/main/java/org/joda/time/DateTimeZone.java	2024-09-10 15:35:30.327753387 +0800
+@@ -299,25 +299,25 @@
+      * @throws IllegalArgumentException if the zone is not recognised
+      */
+     public static DateTimeZone forTimeZone(TimeZone zone) {
+-        if (zone == null) {
++if (zone == null) {
+             return getDefault();
+         }
+-        final String id = zone.getID();
+-        if (id.equals("UTC")) {
++java.lang.String id = zone.getID(); if (id.equals("UTC")) {
++
+             return DateTimeZone.UTC;
+         }
+ 
+         // Convert from old alias before consulting provider since they may differ.
+-        DateTimeZone dtz = null;
+-        String convId = getConvertedId(id);
+-        if (convId != null) {
+-            dtz = cProvider.getZone(convId);
++DateTimeZone dtz = getConvertedId(id);
++
++
++
+         }
+-        if (dtz == null) {
+-            dtz = cProvider.getZone(id);
++
++
+         }
+-        if (dtz != null) {
+-            return dtz;
++
++
+         }
+ 
+         // Support GMT+/-hh:mm formats

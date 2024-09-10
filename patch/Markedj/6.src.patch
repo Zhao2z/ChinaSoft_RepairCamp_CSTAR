@@ -1,0 +1,11 @@
+--- /tmp/Markedj_6_buggy/src/main/java/io/github/gitbucket/markedj/Renderer.java	2024-09-09 22:21:46.571353254 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Markedj_6_buggy/src/main/java/io/github/gitbucket/markedj/Renderer.java	2024-09-10 15:35:32.475613460 +0800
+@@ -102,7 +102,7 @@
+     }
+ 
+     public String codespan(String text){
+-        return "<code>" + text + "</code>";
++return text.trim();
+     }
+ 
+     public String br(){

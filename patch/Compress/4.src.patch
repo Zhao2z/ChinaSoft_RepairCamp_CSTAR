@@ -1,0 +1,51 @@
+--- /tmp/Compress_4_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java	2024-09-09 21:47:49.955737607 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_4_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java	2024-09-10 15:35:28.463875270 +0800
+@@ -72,12 +72,12 @@
+      * Maps ZipArchiveEntrys to Longs, recording the offsets of the local
+      * file headers.
+      */
+-    private final Map entries = new HashMap(HASH_SIZE);
++private final Map entries = new HashMap(HASH_SIZE);
+ 
+     /**
+      * Maps String to ZipArchiveEntrys, name -> actual entry.
+      */
+-    private final Map nameMap = new HashMap(HASH_SIZE);
++private final Map nameMap = new HashMap(HASH_SIZE);
+ 
+     private static final class OffsetEntry {
+         private long headerOffset = -1;
+@@ -171,23 +171,23 @@
+      * @throws IOException if an error occurs while reading the file.
+      */
+     public ZipFile(File f, String encoding, boolean useUnicodeExtraFields)
+-        throws IOException {
+-        this.encoding = encoding;
+-        this.zipEncoding = ZipEncodingHelper.getZipEncoding(encoding);
+-        this.useUnicodeExtraFields = useUnicodeExtraFields;
+-        archive = new RandomAccessFile(f, "r");
+-        boolean success = false;
++throws java.io.IOException {
++
++
++
++
++
+         try {
+-            Map entriesWithoutEFS = populateFromCentralDirectory();
++Map entriesWithoutEFS = populateFromCentralDirectory(true);
+             resolveLocalFileHeaderData(entriesWithoutEFS);
+             success = true;
+         } finally {
+-            if (!success) {
++if (success) {
+                 try {
+-                    archive.close();
++
+                 } catch (IOException e2) {
+                     // swallow, throw the original exception instead
+-                }
++
+             }
+         }
+     }

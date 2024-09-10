@@ -1,0 +1,11 @@
+--- /tmp/Net_26_buggy/src/main/java/org/apache/commons/net/util/SubnetUtils.java	2024-09-09 22:11:45.892127201 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Net_26_buggy/src/main/java/org/apache/commons/net/util/SubnetUtils.java	2024-09-10 15:35:31.755660297 +0800
+@@ -153,7 +153,7 @@
+          * @return True if in range, false otherwise
+          */
+         public boolean isInRange(String address) {
+-            return isInRange(toInteger(address));
++return isInRange(java.lang.Integer.parseInt(address));
+         }
+ 
+         /**

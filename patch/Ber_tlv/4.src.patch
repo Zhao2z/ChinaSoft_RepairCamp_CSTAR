@@ -1,0 +1,21 @@
+--- /tmp/Ber_tlv_4_buggy/src/main/java/com/payneteasy/tlv/BerTlvs.java	2024-09-09 21:36:55.644752276 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Ber_tlv_4_buggy/src/main/java/com/payneteasy/tlv/BerTlvs.java	2024-09-10 15:35:28.347882868 +0800
+@@ -10,13 +10,13 @@
+     }
+ 
+     public BerTlv find(BerTag aTag) {
+-        for (BerTlv tlv : tlvs) {
+-            BerTlv found = tlv.find(aTag);
+-            if(found!=null) {
++if ((tlvs) != null) { for (BerTlv tlv : tlvs) { BerTlv found = tlv.find(aTag); if (found != null) {
++
++
+                 return found;
+             }
+-        }
+-        return null;
++return null;
++
+     }
+ 
+     public List<BerTlv> findAll(BerTag aTag) {

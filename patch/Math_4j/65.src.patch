@@ -1,0 +1,20 @@
+--- /tmp/Math_4j_65_buggy/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java	2024-09-09 22:08:39.552937226 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_65_buggy/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java	2024-09-10 15:35:31.363685829 +0800
+@@ -252,12 +252,12 @@
+      * @return chi-square value
+      */
+     public double getChiSquare() {
+-        double chiSquare = 0;
+-        for (int i = 0; i < rows; ++i) {
+-            final double residual = residuals[i];
+-            chiSquare += residual * residual / residualsWeights[i];
++double chiSquare = 0; for (int i = 0; i < (rows); ++i) { final double residual = residuals[i]; chiSquare += residual * (residualsWeights[i]);
++
++
++
+         }
+-        return chiSquare;
++return chiSquare / (rows);
+     }
+ 
+     /**

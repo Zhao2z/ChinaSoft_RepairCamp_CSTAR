@@ -1,0 +1,15 @@
+--- /tmp/Streamex_3_buggy/src/main/java/one/util/streamex/StreamEx.java	2024-09-09 22:12:59.302125890 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Streamex_3_buggy/src/main/java/one/util/streamex/StreamEx.java	2024-09-10 15:35:31.807656911 +0800
+@@ -2281,9 +2281,9 @@
+      * @since 0.3.8
+      */
+     public static <T> StreamEx<List<T>> cartesianProduct(Collection<? extends Collection<T>> source) {
+-        if (source.isEmpty())
+-            return StreamEx.<List<T>>of(Collections.emptyList());
+-        return of(new CrossSpliterator.ToList<>(source));
++return of(new CrossSpliterator.ToList<>(source));
++
++
+     }
+ 
+     /**

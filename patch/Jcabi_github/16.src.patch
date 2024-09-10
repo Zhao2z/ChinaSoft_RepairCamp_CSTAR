@@ -1,0 +1,11 @@
+--- /tmp/Jcabi_github_16_buggy/src/main/java/com/jcabi/github/mock/MkStorage.java	2024-09-09 22:18:30.956270863 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_github_16_buggy/src/main/java/com/jcabi/github/mock/MkStorage.java	2024-09-10 15:35:32.391618921 +0800
+@@ -123,7 +123,7 @@
+         @Override
+         public void apply(final Iterable<Directive> dirs) throws IOException {
+             try {
+-                FileUtils.write(
++FileUtils.write(
+                     new File(this.name),
+                     new XMLDocument(
+                         new Xembler(dirs).apply(this.xml().node())

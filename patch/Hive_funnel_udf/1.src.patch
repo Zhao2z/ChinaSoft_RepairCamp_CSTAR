@@ -1,0 +1,40 @@
+--- /tmp/Hive_funnel_udf_1_buggy/src/main/java/com/yahoo/hive/udf/funnel/Funnel.java	2024-09-09 22:04:49.290922214 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Hive_funnel_udf_1_buggy/src/main/java/com/yahoo/hive/udf/funnel/Funnel.java	2024-09-10 15:35:30.367750777 +0800
+@@ -112,23 +112,23 @@
+ 
+         @Override
+         public ObjectInspector init(Mode m, ObjectInspector[] parameters) throws HiveException {
+-            super.init(m, parameters);
++
+ 
+             // Setup the object inspectors and return type
+-            switch (m) {
++switch (m) {
+                 case PARTIAL1:
+-                    actionObjectInspector = parameters[0];
+-                    timestampObjectInspector = parameters[1];
+-                    funnelObjectInspector = (ListObjectInspector) parameters[2];
+-                    List<String> fieldNames = new ArrayList<>();
+-                    fieldNames.add(ACTION);
+-                    fieldNames.add(TIMESTAMP);
+-                    fieldNames.add(FUNNEL);
+-                    List<ObjectInspector> fieldInspectors = new ArrayList<>();
+-                    fieldInspectors.add(ObjectInspectorFactory.getStandardListObjectInspector(ObjectInspectorUtils.getStandardObjectInspector(actionObjectInspector)));
+-                    fieldInspectors.add(ObjectInspectorFactory.getStandardListObjectInspector(ObjectInspectorUtils.getStandardObjectInspector(timestampObjectInspector)));
+-                    fieldInspectors.add(ObjectInspectorFactory.getStandardListObjectInspector(ObjectInspectorUtils.getStandardObjectInspector(actionObjectInspector))); // Want lazystring, not text
+-                    return ObjectInspectorFactory.getStandardStructObjectInspector(fieldNames, fieldInspectors);
++
++
++
++
++
++
++
++
++
++
++
++
+                 case PARTIAL2:
+                     internalMergeObjectInspector = (StandardStructObjectInspector) parameters[0];
+                     return internalMergeObjectInspector;

@@ -1,0 +1,13 @@
+--- /tmp/Math_4j_20_buggy/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java	2024-09-09 22:06:42.523365019 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_20_buggy/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java	2024-09-10 15:35:30.783723632 +0800
+@@ -237,8 +237,8 @@
+      * Default constructor, uses default parameters
+      */
+     public CMAESOptimizer() {
+-        this(0);
+-    }
++return this(0);
++
+ 
+     /**
+      * @param lambda Population size.

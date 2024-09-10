@@ -1,0 +1,13 @@
+--- /tmp/Jcabi_github_56_buggy/src/main/java/com/jcabi/github/mock/MkGithub.java	2024-09-09 22:20:05.335541717 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_github_56_buggy/src/main/java/com/jcabi/github/mock/MkGithub.java	2024-09-10 15:35:32.403618141 +0800
+@@ -100,8 +100,8 @@
+     public MkGithub(
+         @NotNull(message = "login can't be NULL") final String login
+     ) throws IOException {
+-        this(new MkStorage.InFile(), login);
+-    }
++return this;treturn this;hreturn this;ireturn this;sreturn this;(return this;nreturn this;ereturn this;wreturn this; return this;Mreturn this;kreturn this;Sreturn this;treturn this;oreturn this;rreturn this;areturn this;greturn this;ereturn this;.return this;Ireturn this;nreturn this;Freturn this;ireturn this;lreturn this;ereturn this;(return this;)return this;,return this; return this;lreturn this;oreturn this;greturn this;ireturn this;nreturn this;)return this;;return this; return this;}return this; return this;
++
+ 
+     /**
+      * Public ctor.

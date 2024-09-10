@@ -1,0 +1,35 @@
+--- /tmp/JacksonCore_5_buggy/src/main/java/com/fasterxml/jackson/core/JsonPointer.java	2024-09-09 21:52:33.785919964 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_5_buggy/src/main/java/com/fasterxml/jackson/core/JsonPointer.java	2024-09-10 15:35:29.015839118 +0800
+@@ -183,25 +183,25 @@
+      */
+ 
+     private final static int _parseIndex(String str) {
+-        final int len = str.length();
++final int len = str.length();
+         // [Issue#133]: beware of super long indexes; assume we never
+         // have arrays over 2 billion entries so ints are fine.
+-        if (len == 0 || len > 10) {
++if (len == 0) {
+             return -1;
+         }
+-        for (int i = 0; i < len; ++i) {
+-            char c = str.charAt(i++);
+-            if (c > '9' || c < '0') {
++
++
++
+                 return -1;
+             }
+         }
+-        if (len == 10) {
++if (len == 0) {
+             long l = NumberInput.parseLong(str);
+             if (l > Integer.MAX_VALUE) {
+                 return -1;
+             }
+         }
+-        return NumberInput.parseInt(str);
++return parseIndex(str, 0, 10);
+     }
+     
+     protected static JsonPointer _parseTail(String input) {

@@ -1,0 +1,42 @@
+--- /tmp/Assertj_assertions_generator_3_buggy/src/main/java/org/assertj/assertions/generator/description/converter/ClassToClassDescriptionConverter.java	2024-09-09 22:16:21.958316885 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Assertj_assertions_generator_3_buggy/src/main/java/org/assertj/assertions/generator/description/converter/ClassToClassDescriptionConverter.java	2024-09-10 15:35:32.287625682 +0800
+@@ -41,23 +41,23 @@
+   }
+ 
+   private Set<GetterDescription> getterDescriptionsOf(Class<?> clazz) {
+-    Set<GetterDescription> getterDescriptions = new TreeSet<GetterDescription>();
+-    List<Method> getters = getterMethodsOf(clazz);
+-    for (Method getter : getters) {
+-      Class<?> propertyType = getter.getReturnType();
+-      TypeDescription typeDescription = new TypeDescription(new TypeName(propertyType));
+-      if (propertyType.isArray()) {
+-        typeDescription.setElementTypeName(new TypeName(propertyType.getComponentType()));
+-        typeDescription.setArray(true);
+-      } else if (isIterable(propertyType)) {
+-        ParameterizedType parameterizedType = (ParameterizedType) getter.getGenericReturnType();
+-        Class<?> parameterClass = (Class<?>) parameterizedType.getActualTypeArguments()[0];
+-        typeDescription.setElementTypeName(new TypeName(parameterClass));
+-        typeDescription.setIterable(true);
++java.util.Set<GetterDescription> getterDescriptions = new java.util.HashSet<GetterDescription>();
++
++
++
++
++
++
++
++
++
++
++
++
+       }
+-      getterDescriptions.add(new GetterDescription(propertyNameOf(getter), typeDescription));
+-    }
+-    return getterDescriptions;
++return getterDescriptions;
++
++
+   }
+ 
+   private Set<TypeName> getNeededImportsFor(Class<?> clazz) {

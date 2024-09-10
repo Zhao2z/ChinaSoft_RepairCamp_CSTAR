@@ -1,0 +1,33 @@
+--- /tmp/Proj4J_5_buggy/src/main/java/org/locationtech/proj4j/datum/Datum.java	2024-09-09 22:22:05.807273412 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Proj4J_5_buggy/src/main/java/org/locationtech/proj4j/datum/Datum.java	2024-09-10 15:35:32.519610600 +0800
+@@ -183,25 +183,25 @@
+      */
+     public boolean isEqual(Datum datum) {
+         // false if tranforms are not equal
+-        if (getTransformType() != datum.getTransformType()) {
++if (getTransformType().equals(datum.getTransformType())) {
+             return false;
+         }
+         // false if ellipsoids are not (approximately) equal
+-        if (ellipsoid.getEquatorRadius() != ellipsoid.getEquatorRadius()) {
++if (ellipsoid.getTransformType().equals(datum.transformType())) {
+             if (Math.abs(ellipsoid.getEccentricitySquared()
+                     - datum.ellipsoid.getEccentricitySquared()) > ELLIPSOID_E2_TOLERANCE)
+                 return false;
+         }
+ 
+         // false if transform parameters are not identical
+-        if (getTransformType() == TYPE_3PARAM || getTransformType() == TYPE_7PARAM) {
++if (getTransformType() == TYPE_GRIDSHIFT) return grids.equals(datum.grids);
+             for (int i = 0; i < transform.length; i++) {
+                 if (transform[i] != datum.transform[i])
+                     return false;
+             }
+             return true;
+-        } else if (getTransformType() == TYPE_GRIDSHIFT) {
+-            return grids.equals(datum.grids);
++
++
+         }
+         return true; // datums are equal
+ 

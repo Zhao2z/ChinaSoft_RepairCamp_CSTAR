@@ -1,0 +1,13 @@
+--- /tmp/Disklrucache_6_buggy/src/main/java/com/jakewharton/disklrucache/DiskLruCache.java	2024-09-09 21:50:55.780313658 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Disklrucache_6_buggy/src/main/java/com/jakewharton/disklrucache/DiskLruCache.java	2024-09-10 15:35:28.839850644 +0800
+@@ -911,8 +911,8 @@
+ 
+     /** Set lengths using decimal numbers like "10123". */
+     private void setLengths(String[] strings) throws IOException {
+-      if (strings.length != valueCount) {
+-        throw invalidLengths(strings);
++if ((strings.length) != valueCount) { throw invalidLengths(strings);
++
+       }
+ 
+       try {

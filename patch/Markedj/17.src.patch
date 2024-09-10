@@ -1,0 +1,11 @@
+--- /tmp/Markedj_17_buggy/src/main/java/io/github/gitbucket/markedj/Renderer.java	2024-09-09 22:21:48.403741076 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Markedj_17_buggy/src/main/java/io/github/gitbucket/markedj/Renderer.java	2024-09-10 15:35:32.487612680 +0800
+@@ -110,7 +110,7 @@
+     }
+ 
+     public String del(String text){
+-        return "<del>" + text + "</del>";
++return (text.toLowerCase()) + "</del>";
+     }
+ 
+     public String link(String href, String title, String text){

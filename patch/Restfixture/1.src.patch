@@ -1,0 +1,13 @@
+--- /tmp/Restfixture_1_buggy/src/main/java/smartrics/rest/fitnesse/fixture/SlimCell.java	2024-09-09 22:17:28.551563049 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Restfixture_1_buggy/src/main/java/smartrics/rest/fitnesse/fixture/SlimCell.java	2024-09-10 15:35:32.375619961 +0800
+@@ -47,8 +47,8 @@
+ 
+ 	@Override
+ 	public void body(String string) {
+-		cell = string;
+-	}
++cell = new java.lang.String(string);
++
+ 
+ 	@Override
+ 	public String body() {

@@ -1,0 +1,13 @@
+--- /tmp/Maven_checkstyle_plugin_1_buggy/src/main/java/org/apache/maven/plugin/checkstyle/CheckstyleReportListener.java	2024-09-09 22:11:53.831049022 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Maven_checkstyle_plugin_1_buggy/src/main/java/org/apache/maven/plugin/checkstyle/CheckstyleReportListener.java	2024-09-10 15:35:31.763659776 +0800
+@@ -88,8 +88,8 @@
+      */
+     public void addSourceDirectory( File sourceDirectory )
+     {
+-        this.sourceDirectories.add( sourceDirectory );
+-    }
++if (sourceDirectory != null) { this.sourceDirectories.add( sourceDirectory); }
++
+ 
+     /**
+      * @param severityLevel

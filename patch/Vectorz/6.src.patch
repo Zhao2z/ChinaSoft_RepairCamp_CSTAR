@@ -1,0 +1,11 @@
+--- /tmp/Vectorz_6_buggy/src/main/java/mikera/vectorz/impl/ZeroVector.java	2024-09-09 22:17:13.952258228 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Vectorz_6_buggy/src/main/java/mikera/vectorz/impl/ZeroVector.java	2024-09-10 15:35:32.367620481 +0800
+@@ -19,7 +19,7 @@
+ 	}
+ 	
+ 	public static ZeroVector create(int dimensions) {
+-		return new ZeroVector(dimensions);
++return new ZeroVector(dimensions, false);
+ 	}
+ 
+ 	@Override

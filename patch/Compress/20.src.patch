@@ -1,0 +1,34 @@
+--- /tmp/Compress_20_buggy/src/main/java/org/apache/commons/compress/archivers/cpio/CpioArchiveEntry.java	2024-09-09 21:48:35.041823810 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_20_buggy/src/main/java/org/apache/commons/compress/archivers/cpio/CpioArchiveEntry.java	2024-09-10 15:35:28.571868196 +0800
+@@ -751,8 +751,8 @@
+      *            The mode to set.
+      */
+     public void setMode(final long mode) {
+-        final long maskedMode = mode & S_IFMT;
+-        switch ((int) maskedMode) {
++switch ((int) (mode & S_IFMT)) {
++
+         case C_ISDIR:
+         case C_ISLNK:
+         case C_ISREG:
+@@ -761,16 +761,16 @@
+         case C_ISBLK:
+         case C_ISSOCK:
+         case C_ISNWK:
+-            break;
++
+         default:
+-            throw new IllegalArgumentException(
++throw new IllegalArgumentException(
+                                                "Unknown mode. "
+                                                + "Full: " + Long.toHexString(mode) 
+                                                + " Masked: " + Long.toHexString(maskedMode));
+         }
+ 
+-        this.mode = mode;
+-    }
++this.mode = maskedMode;
++
+ 
+     /**
+      * Set the name.

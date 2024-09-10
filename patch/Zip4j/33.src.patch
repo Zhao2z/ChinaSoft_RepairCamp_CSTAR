@@ -1,0 +1,13 @@
+--- /tmp/Zip4j_33_buggy/src/main/java/net/lingala/zip4j/headers/HeaderUtil.java	2024-09-09 22:15:32.001186618 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_33_buggy/src/main/java/net/lingala/zip4j/headers/HeaderUtil.java	2024-09-10 15:35:32.115636863 +0800
+@@ -65,8 +65,8 @@
+ 
+   public static String decodeStringWithCharset(byte[] data, boolean isUtf8Encoded, Charset charset) {
+ 
+-    if(charset != null) {
+-      return new String(data, charset);
++if ((charset != null) && (data != null)) { return new String(data, charset);
++
+     }
+ 
+     if (isUtf8Encoded) {

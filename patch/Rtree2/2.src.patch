@@ -1,0 +1,11 @@
+--- /tmp/Rtree2_2_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Line.java	2024-09-09 22:22:38.701296322 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Rtree2_2_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Line.java	2024-09-10 15:35:32.591605919 +0800
+@@ -101,7 +101,7 @@
+     }
+ 
+     public boolean intersects(Point point) {
+-        return intersects(point.mbr());
++return this.intersects(point.mbr());
+     }
+ 
+     public boolean intersects(Circle circle) {

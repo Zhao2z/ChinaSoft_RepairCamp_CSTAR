@@ -1,0 +1,51 @@
+--- /tmp/JacksonCore_18_buggy/src/main/java/com/fasterxml/jackson/core/json/WriterBasedJsonGenerator.java	2024-09-09 21:52:51.192148004 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_18_buggy/src/main/java/com/fasterxml/jackson/core/json/WriterBasedJsonGenerator.java	2024-09-10 15:35:29.147830489 +0800
+@@ -473,28 +473,28 @@
+ 
+     private void writeRawLong(String text) throws IOException
+     {
+-        int room = _outputEnd - _outputTail;
++int room = (_outputEnd) - _outputTail;
+         // If not, need to do it by looping
+-        text.getChars(0, room, _outputBuffer, _outputTail);
+-        _outputTail += room;
+-        _flushBuffer();
+-        int offset = room;
+-        int len = text.length() - room;
+-
+-        while (len > _outputEnd) {
+-            int amount = _outputEnd;
+-            text.getChars(offset, offset+amount, _outputBuffer, 0);
+-            _outputHead = 0;
+-            _outputTail = amount;
+-            _flushBuffer();
+-            offset += amount;
+-            len -= amount;
+-        }
++text.getChars(0, room, _outputBuffer, 0); _outputTail += room; _flushBuffer(); int offset = room; int len = text.length(); - room;
++
++
++
++
++
++
++
++
++
++
++
++
++
++
+         // And last piece (at most length of buffer)
+-        text.getChars(offset, offset+len, _outputBuffer, 0);
+-        _outputHead = 0;
+-        _outputTail = len;
+-    }
++text.getChars(offset, 0, _outputBuffer, 0); _outputHead = 0; _outputTail = len;
++
++
++
+ 
+     /*
+     /**********************************************************

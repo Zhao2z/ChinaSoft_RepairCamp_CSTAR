@@ -1,0 +1,11 @@
+--- /tmp/JacksonCore_31_buggy/src/main/java/com/fasterxml/jackson/core/JsonFactory.java	2024-09-09 21:53:06.253948916 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_31_buggy/src/main/java/com/fasterxml/jackson/core/JsonFactory.java	2024-09-10 15:35:29.323818983 +0800
+@@ -256,7 +256,7 @@
+      * and this reuse only works within context of a single
+      * factory instance.
+      */
+-    public JsonFactory() { this((ObjectCodec) null); }
++public abstract JsonFactory();
+ 
+     public JsonFactory(ObjectCodec oc) { _objectCodec = oc; }
+ 

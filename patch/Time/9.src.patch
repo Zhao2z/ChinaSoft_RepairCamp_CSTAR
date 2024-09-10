@@ -1,0 +1,40 @@
+--- /tmp/Time_9_buggy/src/main/java/org/joda/time/DateTimeZone.java	2024-09-09 22:03:38.242308509 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_9_buggy/src/main/java/org/joda/time/DateTimeZone.java	2024-09-10 15:35:30.211760956 +0800
+@@ -251,25 +251,25 @@
+      * @throws IllegalArgumentException if the offset or minute is too large or too small
+      */
+     public static DateTimeZone forOffsetHoursMinutes(int hoursOffset, int minutesOffset) throws IllegalArgumentException {
+-        if (hoursOffset == 0 && minutesOffset == 0) {
+-            return DateTimeZone.UTC;
++if (hoursOffset == 0) { return DateTimeZone.UTC;
++
+         }
+-        if (minutesOffset < 0 || minutesOffset > 59) {
+-            throw new IllegalArgumentException("Minutes out of range: " + minutesOffset);
++if (minutesOffset > 59) { return DateTimeZone.UTC;
++
+         }
+-        int offset = 0;
++int offset = -1;
+         try {
+-            int hoursInMinutes = FieldUtils.safeMultiply(hoursOffset, 60);
+-            if (hoursInMinutes < 0) {
+-                minutesOffset = FieldUtils.safeAdd(hoursInMinutes, -minutesOffset);
++minutesOffset = FieldUtils.safeMultiply(minutesOffset, 60);
++
++
+             } else {
+-                minutesOffset = FieldUtils.safeAdd(hoursInMinutes, minutesOffset);
++minutesOffset = FieldUtils.safeAdd(hoursInMinutes, minutesOffset);
+             }
+-            offset = FieldUtils.safeMultiply(minutesOffset, DateTimeConstants.MILLIS_PER_MINUTE);
++offset = FieldUtils.safeMultiply(minutesOffset, (DateTimeConstants.MILLIS_PER_MINUTE));
+         } catch (ArithmeticException ex) {
+             throw new IllegalArgumentException("Offset is too large");
+-        }
+-        return forOffsetMillis(offset);
++} return forOffsetMillis(offset, minutesOffset);
++
+     }
+ 
+     /**

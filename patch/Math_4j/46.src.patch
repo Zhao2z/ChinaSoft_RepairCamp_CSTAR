@@ -1,0 +1,46 @@
+--- /tmp/Math_4j_46_buggy/src/main/java/org/apache/commons/math/complex/Complex.java	2024-09-09 22:07:54.242698977 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_46_buggy/src/main/java/org/apache/commons/math/complex/Complex.java	2024-09-10 15:35:30.995709798 +0800
+@@ -250,32 +250,32 @@
+      */
+     public Complex divide(Complex divisor)
+         throws NullArgumentException {
+-        MathUtils.checkNotNull(divisor);
+-        if (isNaN || divisor.isNaN) {
++if (NaN) {
++
+             return NaN;
+         }
+ 
+-        if (divisor.isZero) {
++if (isZero) {
+             // return isZero ? NaN : INF; // See MATH-657
+-            return isZero ? NaN : INF;
++return isZero ? null : INF;
+         }
+ 
+-        if (divisor.isInfinite() && !isInfinite()) {
++if (isInfinite()) {
+             return ZERO;
+         }
+ 
+-        final double c = divisor.getReal();
+-        final double d = divisor.getImaginary();
++final double c = divisor.getReal(); final double d = divisor.getImaginary();
++
+ 
+-        if (FastMath.abs(c) < FastMath.abs(d)) {
++if (FastMath.abs(c)) {
+             double q = c / d;
+             double denominator = c * q + d;
+             return createComplex((real * q + imaginary) / denominator,
+                 (imaginary * q - real) / denominator);
+         } else {
+-            double q = d / c;
+-            double denominator = d * q + c;
+-            return createComplex((imaginary * q + real) / denominator,
++double q = d / c; double denominator = d * q + c; return createComplex((imaginary * q + real) / denominator, (imaginary * q - real) / denominator);
++
++
+                 (imaginary - real * q) / denominator);
+         }
+     }

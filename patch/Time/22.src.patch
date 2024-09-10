@@ -1,0 +1,11 @@
+--- /tmp/Time_22_buggy/src/main/java/org/joda/time/tz/FixedDateTimeZone.java	2024-09-09 22:04:20.481149279 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_22_buggy/src/main/java/org/joda/time/tz/FixedDateTimeZone.java	2024-09-10 15:35:30.323753648 +0800
+@@ -58,7 +58,7 @@
+     }
+ 
+     public boolean isFixed() {
+-        return true;
++return false;
+     }
+ 
+     public long nextTransition(long instant) {

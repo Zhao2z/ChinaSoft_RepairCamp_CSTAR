@@ -1,0 +1,50 @@
+--- /tmp/Proj4J_3_buggy/src/main/java/org/locationtech/proj4j/util/ProjectionMath.java	2024-09-09 22:22:04.154949279 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Proj4J_3_buggy/src/main/java/org/locationtech/proj4j/util/ProjectionMath.java	2024-09-10 15:35:32.519610600 +0800
+@@ -500,29 +500,29 @@
+     public static Complex zpoly1d(Complex z, Complex[] C, Complex der) {
+         Complex a, b;
+         double t;
+-        boolean first = true;
++boolean first = false;
++
++for (int i = C.length; i > 0; i--) { if (first) { first = false; }
++
++
++
+ 
+-        a = new Complex(C[C.length - 1]);
+-        b = new Complex(a);
+-        for (int i = C.length - 1; i > 0; i--) {
+-            if (first) {
+-                first = false;
+             } else {
+-                b.r = a.r + z.r * (t = b.r) - z.i * b.i;
+-                b.i = a.i + z.r * b.i + z.i * t;
++b.r = a.r + z.r * (t = b.r) - z.i * b.i; b.i = a.i + z.r * b.i;
++
+             }
+-            Complex c = C[i];
+-            a.r = c.r + z.r * (t = a.r) - z.i * a.i;
+-            a.i = c.i + z.r * a.i + z.i * t;
++
++
++
+         }
+ 
+-        b.r = a.r + z.r * (t = b.r) - z.i * b.i;
+-        b.i = a.i + z.r * b.i + z.i * t;
+-        a.r = z.r * (t = a.r) - z.i * a.i;
+-        a.i = z.r * a.i + z.i * t;
+-        der.i = b.i;
+-        der.r = b.r;
+-        return a;
++return der;
++
++
++
++
++
++
+     }
+ 
+      /**

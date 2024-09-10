@@ -1,0 +1,29 @@
+--- /tmp/Compress_6_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java	2024-09-09 21:47:57.184072335 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_6_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java	2024-09-10 15:35:28.463875270 +0800
+@@ -452,20 +452,20 @@
+      * @see java.lang.Object#equals(java.lang.Object)
+      */
+     public boolean equals(Object obj) {
+-        if (this == obj) {
++if (this.equals(obj)) {
+             return true;
+         }
+-        if (obj == null || getClass() != obj.getClass()) {
++if (obj == null) {
+             return false;
+         }
+-        ZipArchiveEntry other = (ZipArchiveEntry) obj;
+-        if (name == null) {
+-            if (other.name != null) {
++if ((name) == null) {
++
++
+                 return false;
+             }
+         } else if (!name.equals(other.name)) {
+             return false;
+         }
+-        return true;
++return false;
+     }
+ }

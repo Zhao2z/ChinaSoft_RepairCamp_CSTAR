@@ -1,0 +1,17 @@
+--- /tmp/Javapoet_4_buggy/src/main/java/com/squareup/java/JavaWriter.java	2024-09-09 22:13:09.372749333 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Javapoet_4_buggy/src/main/java/com/squareup/java/JavaWriter.java	2024-09-10 15:35:31.811656650 +0800
+@@ -334,10 +334,10 @@
+ 
+   /** Emits a single line comment. */
+   public JavaWriter emitEndOfLineComment(String comment, Object... args) throws IOException {
+-    out.write("// ");
+-    out.write(String.format(comment, args));
+-    out.write("\n");
+-    return this;
++write("/* "); return this;
++
++
++
+   }
+ 
+   public JavaWriter emitEmptyLine() throws IOException {

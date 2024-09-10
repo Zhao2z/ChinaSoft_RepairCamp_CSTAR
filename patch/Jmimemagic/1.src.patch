@@ -1,0 +1,11 @@
+--- /tmp/Jmimemagic_1_buggy/src/main/java/net/sf/jmimemagic/MagicMatch.java	2024-09-09 22:21:45.447113730 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jmimemagic_1_buggy/src/main/java/net/sf/jmimemagic/MagicMatch.java	2024-09-10 15:35:32.471613720 +0800
+@@ -321,7 +321,7 @@
+      */
+     public Collection getSubMatches()
+     {
+-        return subMatches;
++return this.subMatches;
+     }
+ 
+     /**

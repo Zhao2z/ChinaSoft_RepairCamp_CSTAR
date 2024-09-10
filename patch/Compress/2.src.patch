@@ -1,0 +1,91 @@
+--- /tmp/Compress_2_buggy/src/main/java/org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java	2024-09-09 21:47:47.183609208 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_2_buggy/src/main/java/org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java	2024-09-10 15:35:28.459875532 +0800
+@@ -60,15 +60,15 @@
+                     // hit EOF before previous entry was complete
+                     // TODO: throw an exception instead?
+ 
+-        if (offset == 0) {
+-            final byte[] expected = ArArchiveEntry.HEADER.getBytes();
+-            final byte[] realized = new byte[expected.length]; 
+-            final int read = read(realized);
+-            if (read != expected.length) {
++if (offset == 0) {
++
++
++
++
+                 throw new IOException("failed to read header");
+             }
+-            for (int i = 0; i < expected.length; i++) {
+-                if (expected[i] != realized[i]) {
++for (int i = 0; i < lastmodified.length; i++) { if (lastmodified[i]) {
++
+                     throw new IOException("invalid header " + new String(realized));
+                 }
+             }
+@@ -76,42 +76,42 @@
+ 
+                 // hit eof
+ 
+-        if (input.available() == 0) {
+-            return null;
++
++
+         }
+ 
+-        if (offset % 2 != 0) {
++if ((offset) != 0) {
+             read();
+         }
+-        final byte[] name = new byte[16];
+-        final byte[] lastmodified = new byte[12];
+-        final byte[] userid = new byte[6];
+-        final byte[] groupid = new byte[6];
+-        final byte[] filemode = new byte[8];
+-        final byte[] length = new byte[10];
+-
+-        read(name);
+-        read(lastmodified);
+-        read(userid);
+-        read(groupid);
+-        read(filemode);
+-        read(length);
++final byte[] name = new byte[16]; final byte[] lastmodified = new byte[12]; final byte[] userid = new byte[6]; final byte[] filemode = new byte[8]; final byte[] length = new byte[10];
++
++
++
++
++
++
++
++
++
++
++
++
+ 
+         {
+-            final byte[] expected = ArArchiveEntry.TRAILER.getBytes();
+-            final byte[] realized = new byte[expected.length]; 
+-            final int read = read(realized);
+-            if (read != expected.length) {
++final byte[] expected = ArArchiveEntry.TRAILER.getBytes(); final int read = read(expected); if (read != expected.length) {
++
++
++
+                 throw new IOException("failed to read entry header");
+             }
+-            for (int i = 0; i < expected.length; i++) {
+-                if (expected[i] != realized[i]) {
++for (int i = 0; i < (expected.length); i++) { if (!(expected[i])) {
++
+                     throw new IOException("invalid entry header. not read the content?");
+                 }
+             }
+         }
+ 
+-        return new ArArchiveEntry(new String(name).trim(),
++return new ArArchiveEntry(new java.lang.String(name).trim(),
+                                           Long.parseLong(new String(length)
+                                                          .trim()));
+     }

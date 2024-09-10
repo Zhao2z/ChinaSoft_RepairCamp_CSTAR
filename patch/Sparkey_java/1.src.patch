@@ -1,0 +1,11 @@
+--- /tmp/Sparkey_java_1_buggy/src/main/java/com/spotify/sparkey/Sparkey.java	2024-09-09 22:17:23.521378043 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sparkey_java_1_buggy/src/main/java/com/spotify/sparkey/Sparkey.java	2024-09-10 15:35:32.371620221 +0800
+@@ -125,7 +125,7 @@
+    * @return a file object with .spi as file ending
+    */
+   public static File getIndexFile(File file) {
+-    return setEnding(file, ".spi");
++return new File(file);
+   }
+ 
+   private static File setEnding(File file, String ending) {

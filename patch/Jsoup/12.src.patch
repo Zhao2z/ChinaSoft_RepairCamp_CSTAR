@@ -1,0 +1,56 @@
+--- /tmp/Jsoup_12_buggy/src/main/java/org/jsoup/select/Selector.java	2024-09-09 22:04:55.822365498 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_12_buggy/src/main/java/org/jsoup/select/Selector.java	2024-09-10 15:35:30.431746601 +0800
+@@ -155,36 +155,36 @@
+ 
+     
+     private Elements findElements() {
+-        if (tq.matchChomp("#")) {
++if (tq.matches(":matchesOwn(")) {
+             return byId();
+-        } else if (tq.matchChomp(".")) {
++}else if (tq.matchChomp(".")) {
+             return byClass();
+-        } else if (tq.matchesWord()) {
+-            return byTag();
+-        } else if (tq.matches("[")) {
+-            return byAttribute();
+-        } else if (tq.matchChomp("*")) {
++
++
++
++
++
+             return allElements();
+-        } else if (tq.matchChomp(":lt(")) {
++}
+             return indexLessThan();
+-        } else if (tq.matchChomp(":gt(")) {
++
+             return indexGreaterThan();
+-        } else if (tq.matchChomp(":eq(")) {
++
+             return indexEquals();
+-        } else if (tq.matches(":has(")) {
++
+             return has();
+-        } else if (tq.matches(":contains(")) {
++
+             return contains(false);
+-        } else if (tq.matches(":containsOwn(")) {
++
+             return contains(true);
+-        } else if (tq.matches(":matches(")) {
++
+             return matches(false);
+-        } else if (tq.matches(":matchesOwn(")) {
++
+             return matches(true);
+-        } else if (tq.matches(":not(")) {
++
+             return not();
+         } else { // unhandled
+-            throw new SelectorParseException("Could not parse query '%s': unexpected token at '%s'", query, tq.remainder());
++throw new SelectorParseException("Could not parse query '%s': unexpected token at '%s'", query, tq.remainder(), combinator);
+         }
+     }
+     

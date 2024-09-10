@@ -1,0 +1,19 @@
+--- /tmp/Javapoet_11_buggy/src/main/java/com/squareup/javawriter/JavaWriter.java	2024-09-09 22:13:17.875586415 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Javapoet_11_buggy/src/main/java/com/squareup/javawriter/JavaWriter.java	2024-09-10 15:35:31.839654826 +0800
+@@ -564,12 +564,12 @@
+   }
+ 
+   private boolean containsArray(Collection<?> values) {
+-    for (Object value : values) {
+-      if (value instanceof Object[]) {
++if ((values != null) && ((values.size()) > 0)) {
++
+         return true;
+       }
+-    }
+-    return false;
++return true;
++
+   }
+ 
+   /**

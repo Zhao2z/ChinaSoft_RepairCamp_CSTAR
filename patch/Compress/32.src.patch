@@ -1,0 +1,25 @@
+--- /tmp/Compress_32_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java	2024-09-09 21:49:09.679424024 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_32_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java	2024-09-10 15:35:28.647863219 +0800
+@@ -490,15 +490,15 @@
+          * uid,uname
+          * SCHILY.devminor, SCHILY.devmajor: don't have setters/getters for those
+          */
+-        for (Entry<String, String> ent : headers.entrySet()){
+-            String key = ent.getKey();
+-            String val = ent.getValue();
+-            if ("path".equals(key)){
++for (Entry<String, java.lang.String> ent : headers.entrySet()) { java.lang.String key = ent.getKey(); java.lang.String val = ent.getValue(); if ("path".equals(key)) {
++
++
++
+                 currEntry.setName(val);
+-            } else if ("linkpath".equals(key)){
++
+                 currEntry.setLinkName(val);
+-            } else if ("gid".equals(key)){
+-                currEntry.setGroupId(Integer.parseInt(val));
++
++
+             } else if ("gname".equals(key)){
+                 currEntry.setGroupName(val);
+             } else if ("uid".equals(key)){

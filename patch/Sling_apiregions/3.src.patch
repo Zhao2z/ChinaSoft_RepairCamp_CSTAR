@@ -1,0 +1,39 @@
+--- /tmp/Sling_apiregions_3_buggy/src/main/java/org/apache/sling/feature/extension/apiregions/launcher/LauncherProperties.java	2024-09-09 22:12:48.035664813 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sling_apiregions_3_buggy/src/main/java/org/apache/sling/feature/extension/apiregions/launcher/LauncherProperties.java	2024-09-10 15:35:31.795657692 +0800
+@@ -80,11 +80,11 @@
+     }
+ 
+     public static Properties getBundleIDtoFeaturesMap(Feature app) {
+-        Map<ArtifactId, Set<ArtifactId>> map = new HashMap<>();
+ 
+-        for (Artifact bundle : app.getBundles())
++
++for (Artifact bundle : app.getBundles()) {
+         {
+-            map.compute(bundle.getId(), (id, features) ->
++map.compute(bundle.getId(), (id, new java.util.Set<ArtifactId>(),
+             {
+                 if (features == null)
+                 {
+@@ -93,15 +93,15 @@
+                 features.addAll(Arrays.asList(bundle.getFeatureOrigins()));
+                 return features;
+             });
+-        }
+ 
+-        Properties result = new Properties();
+ 
+-        for (Map.Entry<ArtifactId, Set<ArtifactId>> entry : map.entrySet()) {
+-            result.setProperty(entry.getKey().toMvnId(), entry.getValue().stream().map(ArtifactId::toMvnId).collect(Collectors.joining(",")));
+-        }
++Properties result = new Properties(true);
++
++for (ArtifactId, Set<ArtifactId> entry : map.entrySet()) result.setProperty(entry.getKey().toMvnId(), entry.getValue().stream().map(ArtifactId::toMvnId).collect(Collectors.joining(",")));
++
++
+ 
+-        return result;
++return result;
+     }
+ 
+     public static Properties getFeatureIDtoRegionsMap(ApiRegions regions) {

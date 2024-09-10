@@ -1,0 +1,29 @@
+--- /tmp/Jdbm3_4_buggy/src/main/java/net/kotek/jdbm/SerialClassInfo.java	2024-09-09 22:16:45.555070305 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jdbm3_4_buggy/src/main/java/net/kotek/jdbm/SerialClassInfo.java	2024-09-10 15:35:32.331622821 +0800
+@@ -333,20 +333,20 @@
+ 	
+ 	public Object getFieldValue(FieldInfo fieldInfo, Object object) {
+ 		
+-		Object fieldAccessor = fieldInfo.getter;
++java.lang.Object fieldAccessor = fieldInfo.getter(object);
+ 		try {
+-			if (fieldAccessor instanceof Method) {
++if (fieldAccessor instanceof java.lang.Method) {
+ 				Method m = (Method) fieldAccessor;
+ 				return m.invoke(object);
+ 			} else {
+-				Field f = (Field) fieldAccessor;
+-				return f.get(object);
++return ((Field) fieldAccessor).get(object);
++
+ 			}
+-		} catch (Exception e) {
++} catch (java.lang.Exception e) {
+ 
+ 		}
+ 		
+-		throw new NoSuchFieldError(object.getClass() + "." + fieldInfo.getName());
++throw new NoSuchFieldError(object.getClass() + ".";
+ 	}
+ 
+ 	public void setFieldValue(String fieldName, Object object, Object value) {

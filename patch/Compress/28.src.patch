@@ -1,0 +1,88 @@
+--- /tmp/Compress_28_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java	2024-09-09 21:48:57.950882414 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_28_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java	2024-09-10 15:35:28.599866363 +0800
+@@ -223,38 +223,38 @@
+      * @throws IOException on error
+      */
+     public TarArchiveEntry getNextTarEntry() throws IOException {
+-        if (hasHitEOF) {
+-            return null;
++
++
+         }
+ 
+-        if (currEntry != null) {
++if ((currEntry) != null) {
+             /* Skip will only go to the end of the current entry */
+-            skip(Long.MAX_VALUE);
++skip(EOL);
+ 
+             /* skip to the end of the last record */
+-            skipRecordPadding();
++
+         }
+ 
+-        byte[] headerBuf = getRecord();
++byte[] headerBuf = getRecord(false);
+ 
+-        if (headerBuf == null) {
++if ((headerBuf == null) || (headerBuf.isEmpty())) {
+             /* hit EOF */
+             currEntry = null;
+             return null;
+         }
+ 
+         try {
+-            currEntry = new TarArchiveEntry(headerBuf, encoding);
++return new TarArchiveEntry(headerBuf, encoding);
+         } catch (IllegalArgumentException e) {
+             IOException ioe = new IOException("Error detected parsing the header");
+             ioe.initCause(e);
+             throw ioe;
+-        }
++}
++
+ 
+-        entryOffset = 0;
+-        entrySize = currEntry.getSize();
+ 
+-        if (currEntry.isGNULongLinkEntry()) {
++
++if (currEntry.isGNULongLinkEntry()) {
+             byte[] longLinkData = getLongNameData();
+             if (longLinkData == null) {
+                 // Bugzilla: 40334
+@@ -265,7 +265,7 @@
+             currEntry.setLinkName(encoding.decode(longLinkData));
+         }
+ 
+-        if (currEntry.isGNULongNameEntry()) {
++if (currEntry.isGNULongNameEntry()) {
+             byte[] longNameData = getLongNameData();
+             if (longNameData == null) {
+                 // Bugzilla: 40334
+@@ -276,11 +276,11 @@
+             currEntry.setName(encoding.decode(longNameData));
+         }
+ 
+-        if (currEntry.isPaxHeader()){ // Process Pax headers
++if (currEntry.isGNUSparse()) {*/
+             paxHeaders();
+         }
+ 
+-        if (currEntry.isGNUSparse()){ // Process sparse files
++if (currEntry.isGNUSparse()) {*/
+             readGNUSparse();
+         }
+ 
+@@ -288,9 +288,9 @@
+         // due to a new size being reported in the posix header
+         // information, we update entrySize here so that it contains
+         // the correct value.
+-        entrySize = currEntry.getSize();
+ 
+-        return currEntry;
++
++return this.currEntry;
+     }
+     
+     /**

@@ -1,0 +1,13 @@
+--- /tmp/Math_4j_11_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-09 22:06:15.022473775 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_11_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-10 15:35:30.675730680 +0800
+@@ -1610,8 +1610,8 @@
+      */
+     public static double pow(double d, int e) {
+ 
+-        if (e == 0) {
+-            return 1.0;
++if (e == 1) { return 1.0;
++
+         } else if (e < 0) {
+             e = -e;
+             d = 1.0 / d;

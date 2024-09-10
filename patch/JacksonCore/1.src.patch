@@ -1,0 +1,27 @@
+--- /tmp/JacksonCore_1_buggy/src/main/java/com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java	2024-09-09 21:52:27.303223341 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_1_buggy/src/main/java/com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java	2024-09-10 15:35:28.923845142 +0800
+@@ -1349,7 +1349,7 @@
+         throws IOException, JsonParseException
+     {
+         // Most likely an error, unless we are to allow single-quote-strings
+-        switch (i) {
++switch (i) {
+         case '\'':
+             /* [JACKSON-173]: allow single quotes. Unlike with regular
+              * Strings, we'll eagerly parse contents; this so that there's
+@@ -1363,11 +1363,11 @@
+             }
+             break;
+         case 'N':
+-            _matchToken("NaN", 1);
+-            if (isEnabled(Feature.ALLOW_NON_NUMERIC_NUMBERS)) {
+-                return resetAsNaN("NaN", Double.NaN);
++
++
++
+             }
+-            _reportError("Non-standard token 'NaN': enable JsonParser.Feature.ALLOW_NON_NUMERIC_NUMBERS to allow");
++_reportError("Non-standard token 'NaN': enable JsonParser.Feature.ALLOW_NON_NUMERIC_NUMBERS to allow");
+             break;
+         case 'I':
+             _matchToken("Infinity", 1);

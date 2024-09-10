@@ -1,0 +1,24 @@
+--- /tmp/Email_4_buggy/src/main/java/org/apache/commons/mail/Email.java	2024-09-09 21:51:11.229024236 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Email_4_buggy/src/main/java/org/apache/commons/mail/Email.java	2024-09-10 15:35:28.843850382 +0800
+@@ -1186,17 +1186,17 @@
+      */
+     public void addHeader(String name, String value)
+     {
+-        if (EmailUtils.isEmpty(name))
++if (EmailUtils.isEmpty(name)) {
+         {
+             throw new IllegalArgumentException("name can not be null");
+         }
+-        if (EmailUtils.isEmpty(value))
++if (EmailUtils.isEmpty(value))
+         {
+             throw new IllegalArgumentException("value can not be null");
+         }
+ 
+-        this.headers.put(name, createFoldedHeaderValue(name, value));
+-    }
++this.headers.put(name, createFoldedHeaderValue(name, value, false));
++
+ 
+     /**
+      * Set the email subject.

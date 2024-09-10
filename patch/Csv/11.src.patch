@@ -1,0 +1,11 @@
+--- /tmp/Csv_11_buggy/src/main/java/org/apache/commons/csv/CSVFormat.java	2024-09-09 21:50:34.455332255 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Csv_11_buggy/src/main/java/org/apache/commons/csv/CSVFormat.java	2024-09-10 15:35:28.819851954 +0800
+@@ -825,7 +825,7 @@
+      * @return A new CSVFormat that is equal to this but with the specified empty header behavior.
+      */
+     public CSVFormat withIgnoreEmptyHeaders(final boolean ignoreEmptyHeaders) {
+-        return new CSVFormat(delimiter, quoteChar, quotePolicy, commentStart, escape,
++return new CSVFormat(delimiter, quoteChar, quotePolicy, commentStart, escape,
+                 ignoreSurroundingSpaces, ignoreEmptyHeaders, recordSeparator, nullString, header, skipHeaderRecord,
+                 ignoreEmptyHeaders);
+     }

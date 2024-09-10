@@ -1,0 +1,10 @@
+--- /tmp/Jsoup_79_buggy/src/main/java/org/jsoup/nodes/LeafNode.java	2024-09-09 22:05:28.587330609 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_79_buggy/src/main/java/org/jsoup/nodes/LeafNode.java	2024-09-10 15:35:30.527740336 +0800
+@@ -91,6 +91,6 @@
+ 
+     @Override
+     protected List<Node> ensureChildNodes() {
+-        throw new UnsupportedOperationException("Leaf Nodes do not have child nodes.");
++return null;
+     }
+ }

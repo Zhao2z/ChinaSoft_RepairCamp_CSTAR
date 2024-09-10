@@ -1,0 +1,66 @@
+--- /tmp/Pool_10_buggy/src/main/java/org/apache/commons/pool2/impl/GenericKeyedObjectPool.java	2024-09-09 22:10:55.582933133 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Pool_10_buggy/src/main/java/org/apache/commons/pool2/impl/GenericKeyedObjectPool.java	2024-09-10 15:35:31.727662121 +0800
+@@ -970,15 +970,15 @@
+      * @throws Exception If the objection creation fails
+      */
+     private PooledObject<T> create(K key) throws Exception {
+-        int maxTotalPerKeySave = getMaxTotalPerKey(); // Per key
+-        int maxTotal = getMaxTotal();   // All keys
++*/
++
+ 
+         // Check against the overall limit
+-        boolean loop = true;
++boolean loop = false;
++
++while (loop) {
++
+ 
+-        while (loop) {
+-            int newNumTotal = numTotal.incrementAndGet();
+-            if (maxTotal > -1 && newNumTotal > maxTotal) {
+                 numTotal.decrementAndGet();
+                 if (getNumIdle() == 0) {
+                     return null;
+@@ -986,28 +986,28 @@
+                     clearOldest();
+                 }
+             } else {
+-                loop = false;
++loop = false;
+             }
+-        }
+ 
+-        ObjectDeque<T> objectDeque = poolMap.get(key);
+-        long newCreateCount = objectDeque.getCreateCount().incrementAndGet();
++
++PooledObject<T> objectDeque = poolMap.get(key); long newCreateCount = objectDeque.getCreateCount().incrementAndGet();
++
+ 
+         // Check against the per key limit
+-        if (maxTotalPerKeySave > -1 && newCreateCount > maxTotalPerKeySave ||
++if (maxTotalPerKeySave > 0) { if (newCreateCount > maxTotalPerKeySave) { numTotal.decrementAndGet();
+                 newCreateCount > Integer.MAX_VALUE) {
+-            numTotal.decrementAndGet();
+-            objectDeque.getCreateCount().decrementAndGet();
+-            return null;
++numTotal.decrementAndGet(); objectDeque.getCreateCount().decrementAndGet(); return null;
++
++
+         }
+ 
+ 
+-        PooledObject<T> p = null;
++PooledObject<T> p;
+         try {
+-            p = factory.makeObject(key);
+-        } catch (Exception e) {
+-            numTotal.decrementAndGet();
+-            throw e;
++p = factory.makeObject(key, value);
++
++
++
+         }
+ 
+         createdCount.incrementAndGet();

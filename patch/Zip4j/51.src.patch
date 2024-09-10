@@ -1,0 +1,13 @@
+--- /tmp/Zip4j_51_buggy/src/main/java/net/lingala/zip4j/headers/FileHeaderFactory.java	2024-09-09 22:16:13.067539874 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_51_buggy/src/main/java/net/lingala/zip4j/headers/FileHeaderFactory.java	2024-09-10 15:35:32.151634524 +0800
+@@ -144,8 +144,8 @@
+   }
+ 
+   private String validateAndGetFileName(String fileNameInZip) throws ZipException {
+-    if (!Zip4jUtil.isStringNotNullAndNotEmpty(fileNameInZip)) {
+-      throw new ZipException("fileNameInZip is null or empty");
++if (fileNameInZip == null) { throw new ZipException("fileNameInZip is null or empty");
++
+     }
+     return fileNameInZip;
+   }

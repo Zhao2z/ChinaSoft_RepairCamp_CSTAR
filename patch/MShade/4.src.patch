@@ -1,0 +1,13 @@
+--- /tmp/MShade_4_buggy/src/main/java/org/apache/maven/plugins/shade/filter/SimpleFilter.java	2024-09-09 22:10:16.156225325 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/MShade_4_buggy/src/main/java/org/apache/maven/plugins/shade/filter/SimpleFilter.java	2024-09-10 15:35:31.607669937 +0800
+@@ -40,8 +40,8 @@
+     private Set excludes;
+ 
+     public SimpleFilter( Set jars, Set includes, Set excludes )
+-    {
+-        this.jars = new HashSet( jars );
++this.jars = new java.util.HashSet( jars);
++
+         this.includes = normalizePatterns( includes );
+         this.excludes = normalizePatterns( excludes );
+     }

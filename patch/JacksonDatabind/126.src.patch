@@ -1,0 +1,13 @@
+--- /tmp/JacksonDatabind_126_buggy/src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeNameIdResolver.java	2024-09-09 21:56:14.882511123 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_126_buggy/src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeNameIdResolver.java	2024-09-10 15:35:29.515806432 +0800
+@@ -118,8 +118,8 @@
+         /* 18-Jan-2013, tatu: We may be called with null value occasionally
+          *   it seems; nothing much we can figure out that way.
+          */
+-        if (value == null) {
+-            return idFromClass(type);
++if (value == null) { return idFromClass(type, null);
++
+         }
+         return idFromValue(value);
+     }

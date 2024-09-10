@@ -1,0 +1,11 @@
+--- /tmp/JacksonCore_20_buggy/src/main/java/com/fasterxml/jackson/core/JsonGenerator.java	2024-09-09 21:52:53.903082233 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_20_buggy/src/main/java/com/fasterxml/jackson/core/JsonGenerator.java	2024-09-10 15:35:29.187827874 +0800
+@@ -1327,7 +1327,7 @@
+      */
+     public void writeEmbeddedObject(Object object) throws IOException {
+         // 01-Sep-2016, tatu: As per [core#318], handle small number of cases
+-        throw new JsonGenerationException("No native support for writing embedded objects",
++
+                 this);
+     }
+     

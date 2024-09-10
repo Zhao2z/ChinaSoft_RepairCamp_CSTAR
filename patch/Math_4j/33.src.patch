@@ -1,0 +1,14 @@
+--- /tmp/Math_4j_33_buggy/src/main/java/org/apache/commons/math3/optimization/linear/Relationship.java	2024-09-09 22:07:16.075396013 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_33_buggy/src/main/java/org/apache/commons/math3/optimization/linear/Relationship.java	2024-09-10 15:35:30.867718150 +0800
+@@ -54,9 +54,9 @@
+      * @return relationship obtained when multiplying all coefficients by -1
+      */
+     public Relationship oppositeRelationship() {
+-        switch (this) {
++switch (this) {
+         case LEQ :
+-            return GEQ;
++return LEQ;
+         case GEQ :
+             return LEQ;
+         default :

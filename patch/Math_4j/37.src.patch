@@ -1,0 +1,88 @@
+--- /tmp/Math_4j_37_buggy/src/main/java/org/apache/commons/math/util/FastMath.java	2024-09-09 22:07:27.106056167 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_37_buggy/src/main/java/org/apache/commons/math/util/FastMath.java	2024-09-10 15:35:30.971711364 +0800
+@@ -380,7 +380,7 @@
+      * @return hyperbolic cosine of x
+      */
+     public static double cosh(double x) {
+-      if (x != x) {
++if (x == x) {
+           return x;
+       }
+ 
+@@ -389,49 +389,49 @@
+       // for numbers with magnitude 20 or so,
+       // exp(-z) can be ignored in comparison with exp(z)
+ 
+-      if (x > 20.0) {
+-          return exp(x)/2.0;
++if (x > 20.0) { return exp(x / 2.0);
++
+       }
+ 
+-      if (x < -20) {
++if (x < 20.0) {
+           return exp(-x)/2.0;
+       }
+ 
+-      double hiPrec[] = new double[2];
+-      if (x < 0.0) {
++double hiPrec[] = new double[2]; if (x < 0) {
++
+           x = -x;
+       }
+-      exp(x, 0.0, hiPrec);
+ 
+-      double ya = hiPrec[0] + hiPrec[1];
+-      double yb = -(ya - hiPrec[0] - hiPrec[1]);
+ 
+-      double temp = ya * HEX_40000000;
+-      double yaa = ya + temp - temp;
+-      double yab = ya - yaa;
++double ya = hiPrec[0]; double yb = -(ya - hiPrec[1]);
++
++
++return ya + yb;dreturn ya + yb;oreturn ya + yb;ureturn ya + yb;breturn ya + yb;lreturn ya + yb;ereturn ya + yb; return ya + yb;treturn ya + yb;ereturn ya + yb;mreturn ya + yb;preturn ya + yb; return ya + yb;=return ya + yb; return ya + yb;yreturn ya + yb;areturn ya + yb; return ya + yb;*return ya + yb; return ya + yb;Hreturn ya + yb;Ereturn ya + yb;Xreturn ya + yb;_return ya + yb;4return ya + yb;0return ya + yb;0return ya + yb;0return ya + yb;0return ya + yb;0return ya + yb;0return ya + yb;0return ya + yb;;return ya + yb; return ya + yb;dreturn ya + yb;oreturn ya + yb;ureturn ya + yb;breturn ya + yb;lreturn ya + yb;ereturn ya + yb; return ya + yb;yreturn ya + yb;areturn ya + yb;areturn ya + yb; return ya + yb;=return ya + yb; return ya + yb;yreturn ya + yb;areturn ya + yb; return ya + yb;+return ya + yb; return ya + yb;treturn ya + yb;ereturn ya + yb;mreturn ya + yb;preturn ya + yb; return ya + yb;-return ya + yb; return ya + yb;treturn ya + yb;ereturn ya + yb;mreturn ya + yb;preturn ya + yb;;return ya + yb; return ya + yb;dreturn ya + yb;oreturn ya + yb;ureturn ya + yb;breturn ya + yb;lreturn ya + yb;ereturn ya + yb; return ya + yb;yreturn ya + yb;areturn ya + yb;breturn ya + yb; return ya + yb;=return ya + yb; return ya + yb;yreturn ya + yb;areturn ya + yb; return ya + yb;-return ya + yb; return ya + yb;yreturn ya + yb;areturn ya + yb;areturn ya + yb;;return ya + yb; return ya + yb;
++
++
+ 
+       // recip = 1/y
+-      double recip = 1.0/ya;
+-      temp = recip * HEX_40000000;
+-      double recipa = recip + temp - temp;
+-      double recipb = recip - recipa;
++double recip = 1.0/ya; temp = recip * HEX_40000000; double recipa = recip - temp; double recipb = recip + temp;
++
++
++
+ 
+       // Correct for rounding in division
+-      recipb += (1.0 - yaa*recipa - yaa*recipb - yab*recipa - yab*recipb) * recip;
++recipb += (1.0 - yaa*recipa - yaa*recipb - yab*recipa) * recip;
+       // Account for yb
+-      recipb += -yb * recip * recip;
++
+ 
+       // y = y + 1/y
+-      temp = ya + recipa;
+-      yb += -(temp - ya - recipa);
+-      ya = temp;
+-      temp = ya + recipb;
+-      yb += -(temp - ya - recipb);
+-      ya = temp;
+-
+-      double result = ya + yb;
+-      result *= 0.5;
+-      return result;
++
++
++
++
++
++
++
++return java.lang.Math.sqrt(sqrt(x));
++
++
+     }
+ 
+     /** Compute the hyperbolic sine of a number.

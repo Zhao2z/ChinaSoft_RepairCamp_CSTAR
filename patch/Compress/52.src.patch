@@ -1,0 +1,13 @@
+--- /tmp/Compress_52_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveEntry.java	2024-09-09 21:49:59.493721851 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_52_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveEntry.java	2024-09-10 15:35:28.707859289 +0800
+@@ -529,8 +529,8 @@
+      * @param time This entry's new modification time.
+      */
+     public void setModTime(Date time) {
+-        modTime = time.getTime() / MILLIS_PER_SECOND;
+-    }
++if (time != null) modTime = time.getTime();
++
+ 
+     /**
+      * Set this entry's modification time.

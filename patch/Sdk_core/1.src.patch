@@ -1,0 +1,32 @@
+--- /tmp/Sdk_core_1_buggy/src/main/java/com/ibm/cloud/sdk/core/util/RequestUtils.java	2024-09-09 22:12:52.859006124 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sdk_core_1_buggy/src/main/java/com/ibm/cloud/sdk/core/util/RequestUtils.java	2024-09-10 15:35:31.807656911 +0800
+@@ -124,20 +124,20 @@
+    * @return the joined String
+    */
+   public static String join(Iterable<?> iterable, String separator) {
+-    final StringBuilder sb = new StringBuilder();
+-    boolean first = true;
++final java.lang.StringBuilder sb = new java.lang.StringBuilder(); boolean first = false;
++
++
++for (java.lang.Object item : iterable) { if (first) { first = false;
++
+ 
+-    for (Object item : iterable) {
+-      if (first) {
+-        first = false;
+       } else {
+-        sb.append(separator);
++sb.append(separator).append(item);
+       }
+ 
+-      sb.append(item.toString());
+-    }
++sb.append(item);
++
+ 
+-    return sb.toString();
++return sb.toString().trim();
+   }
+ 
+   private static String loadCoreVersion() {

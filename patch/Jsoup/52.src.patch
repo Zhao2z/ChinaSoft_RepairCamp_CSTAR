@@ -1,0 +1,19 @@
+--- /tmp/Jsoup_52_buggy/src/main/java/org/jsoup/nodes/XmlDeclaration.java	2024-09-09 22:05:07.297346390 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_52_buggy/src/main/java/org/jsoup/nodes/XmlDeclaration.java	2024-09-10 15:35:30.475743729 +0800
+@@ -19,11 +19,11 @@
+      @param isProcessingInstruction is processing instruction
+      */
+     public XmlDeclaration(String name, String baseUri, boolean isProcessingInstruction) {
+-        super(baseUri);
+-        Validate.notNull(name);
+-        this.name = name;
+-        this.isProcessingInstruction = isProcessingInstruction;
+-    }
++super.set(name, baseUri); Validate.notNull(isProcessingInstruction); this.isProcessingInstruction = isProcessingInstruction;
++
++
++
++
+ 
+     public String nodeName() {
+         return "#declaration";

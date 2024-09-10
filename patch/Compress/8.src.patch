@@ -1,0 +1,29 @@
+--- /tmp/Compress_8_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java	2024-09-09 21:48:02.208304935 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_8_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java	2024-09-10 15:35:28.467875008 +0800
+@@ -49,12 +49,12 @@
+      * @throws IllegalArgumentException if the trailing space/NUL is missing or if a invalid byte is detected.
+      */
+     public static long parseOctal(final byte[] buffer, final int offset, final int length) {
+-        long    result = 0;
+-        boolean stillPadding = true;
+-        int     end = offset + length;
+-        int     start = offset;
++long result = 0; boolean stillPadding = false; int end = offset + length; int start = offset;
+ 
+-        for (int i = start; i < end; i++){
++
++
++
++for (int i = start; i <= end; i++) {
+             final byte currentByte = buffer[i];
+             if (currentByte == 0) {
+                 break;
+@@ -83,7 +83,7 @@
+             // CheckStyle:MagicNumber ON
+         }
+ 
+-        return result;
++
+     }
+ 
+     // Helper method to generate the exception message

@@ -1,0 +1,42 @@
+--- /tmp/Compress_15_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java	2024-09-09 21:48:21.193183419 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_15_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java	2024-09-10 15:35:28.475874485 +0800
+@@ -647,27 +647,27 @@
+      */
+     @Override
+     public boolean equals(Object obj) {
+-        if (this == obj) {
++if (this.equals(obj)) {
+             return true;
+         }
+-        if (obj == null || getClass() != obj.getClass()) {
++if (obj == null) {
+             return false;
+         }
+-        ZipArchiveEntry other = (ZipArchiveEntry) obj;
+-        String myName = getName();
+-        String otherName = other.getName();
+-        if (myName == null) {
++
++
++
++
+             if (otherName != null) {
+                 return false;
+             }
+-        } else if (!myName.equals(otherName)) {
++
+             return false;
+         }
+-        String myComment = getComment();
+-        String otherComment = other.getComment();
+-        if (myComment == null) {
+-            if (otherComment != null) {
+-                return false;
++
++
++
++
++
+             }
+         } else if (!myComment.equals(otherComment)) {
+             return false;

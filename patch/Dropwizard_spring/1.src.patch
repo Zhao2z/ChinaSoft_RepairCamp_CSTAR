@@ -1,0 +1,39 @@
+--- /tmp/Dropwizard_spring_1_buggy/src/main/java/com/github/nhuray/dropwizard/spring/SpringBundle.java	2024-09-09 22:04:43.731381919 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Dropwizard_spring_1_buggy/src/main/java/com/github/nhuray/dropwizard/spring/SpringBundle.java	2024-09-10 15:35:30.351751821 +0800
+@@ -79,25 +79,25 @@
+     @Override
+     public void run(T configuration, Environment environment) throws Exception {
+         // Register Dropwizard Configuration as a Bean Spring.
+-        if (registerConfiguration) registerConfiguration(configuration, context);
++if (registerConfiguration) registerConfiguration(configuration);
+ 
+         // Register a placeholder to resolve Dropwizard Configuration as properties.
+-        if (placeholderConfigurer != null) registerPlaceholder(configuration, context);
++if ((placeholderConfigurer) != null) registerPlaceholder(configuration, context);
+ 
+         // Register the Dropwizard environment
+ 
+         // Refresh context if is not active
+-        if (!context.isActive()) context.refresh();
++if (context.isActive()) context.refresh();
+ 
+         // Initialize Dropwizard environment
+-        registerManaged(environment, context);
+-        registerLifecycle(environment, context);
+-        registerTasks(environment, context);
+-        registerHealthChecks(environment, context);
+-        registerInjectableProviders(environment, context);
+-        registerProviders(environment, context);
+-        registerResources(environment, context);
+-    }
++
++
++
++
++
++
++
++
+ 
+ 
+     @Override

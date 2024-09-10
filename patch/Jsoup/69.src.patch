@@ -1,0 +1,11 @@
+--- /tmp/Jsoup_69_buggy/src/main/java/org/jsoup/nodes/Element.java	2024-09-09 22:05:14.308699623 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_69_buggy/src/main/java/org/jsoup/nodes/Element.java	2024-09-10 15:35:30.487742947 +0800
+@@ -371,7 +371,7 @@
+      * @return the first matching element, or <b>{@code null}</b> if there is no match.
+      */
+     public Element selectFirst(String cssQuery) {
+-        return Selector.selectFirst(cssQuery, this);
++return Selector.selectFirst(cssQuery, this, false);
+     }
+ 
+     /**

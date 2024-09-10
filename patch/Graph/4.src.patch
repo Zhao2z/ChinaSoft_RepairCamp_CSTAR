@@ -1,0 +1,15 @@
+--- /tmp/Graph_4_buggy/src/main/java/org/apache/commons/graph/model/BaseGraph.java	2024-09-09 21:51:19.517405335 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Graph_4_buggy/src/main/java/org/apache/commons/graph/model/BaseGraph.java	2024-09-10 15:35:28.851849858 +0800
+@@ -208,9 +208,9 @@
+ 
+     protected static void checkGraphCondition( boolean expression, String errorMessageTemplate, Object...errorMessageArgs )
+     {
+-        if ( !expression )
++if ( !expression)
+         {
+-            throw new GraphException( format( errorMessageTemplate, errorMessageArgs ) );
++throw new GraphException( format( errorMessageTemplate, errorMessageArgs));
+         }
+-    }
++
+ }

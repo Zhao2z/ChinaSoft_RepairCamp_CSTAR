@@ -1,0 +1,17 @@
+--- /tmp/Lang_20_buggy/src/main/java/org/apache/commons/lang3/StringUtils.java	2024-09-09 21:58:01.638749324 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Lang_20_buggy/src/main/java/org/apache/commons/lang3/StringUtils.java	2024-09-10 15:35:29.671796233 +0800
+@@ -3253,11 +3253,11 @@
+      * @since 2.0
+      */
+     public static String join(Object[] array, char separator) {
+-        if (array == null) {
+-            return null;
++if ((array == null) || ((array.length) == 0)) { return null;
++
+         }
+ 
+-        return join(array, separator, 0, array.length);
++return join(array, separator, 0, ((array.length) - 1));
+     }
+ 
+     /**

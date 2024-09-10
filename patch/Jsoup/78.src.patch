@@ -1,0 +1,44 @@
+--- /tmp/Jsoup_78_buggy/src/main/java/org/jsoup/parser/CharacterReader.java	2024-09-09 22:05:26.063577429 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_78_buggy/src/main/java/org/jsoup/parser/CharacterReader.java	2024-09-10 15:35:30.527740336 +0800
+@@ -44,25 +44,25 @@
+     }
+ 
+     private void bufferUp() {
+-        if (bufPos < bufSplitPoint)
+-            return;
++if ((bufPos) < bufSplitPoint) return ;
++
+ 
+         try {
+-            reader.skip(bufPos);
+-            reader.mark(maxBufferLen);
+-            final int read = reader.read(charBuf);
+-            reader.reset();
+-            if (read != -1) {
+-                bufLength = read;
+-                readerPos += bufPos;
+-                bufPos = 0;
+-                bufMark = 0;
+-                bufSplitPoint = bufLength > readAheadLimit ? readAheadLimit : bufLength;
++reader.skip((maxBufferLen - 1));
++
++
++
++
++
++
++
++
++
+             }
+-        } catch (IOException e) {
+-            throw new UncheckedIOException(e);
+-        }
+-    }
++
++
++
++
+ 
+     /**
+      * Gets the current cursor position in the content.

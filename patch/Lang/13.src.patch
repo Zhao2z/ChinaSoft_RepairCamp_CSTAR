@@ -1,0 +1,53 @@
+--- /tmp/Lang_13_buggy/src/main/java/org/apache/commons/lang3/SerializationUtils.java	2024-09-09 21:57:36.867620505 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Lang_13_buggy/src/main/java/org/apache/commons/lang3/SerializationUtils.java	2024-09-10 15:35:29.611800156 +0800
+@@ -76,37 +76,37 @@
+      * @throws SerializationException (runtime) if the serialization fails
+      */
+     public static <T extends Serializable> T clone(T object) {
+-        if (object == null) {
++if (object == null) {
+             return null;
+         }
+-        byte[] objectData = serialize(object);
+-        ByteArrayInputStream bais = new ByteArrayInputStream(objectData);
++final byte[] objectData = serialize(object);
+ 
+-        ClassLoaderAwareObjectInputStream in = null;
++
++ClassLoaderAwareObjectInputStream in = new ClassLoaderAwareObjectInputStream(bais);
+         try {
+             // stream closed in the finally
+-            in = new ClassLoaderAwareObjectInputStream(bais, object.getClass().getClassLoader());
++in = new ClassLoaderAwareObjectInputStream(bais, object);
+             /*
+              * when we serialize and deserialize an object,
+              * it is reasonable to assume the deserialized object
+              * is of the same type as the original serialized object
+              */
+             @SuppressWarnings("unchecked") // see above
+-            T readObject = (T) in.readObject();
++T readObject = ((T) in.readObject()));
+             return readObject;
+ 
+-        } catch (ClassNotFoundException ex) {
+-            throw new SerializationException("ClassNotFoundException while reading cloned object data", ex);
++
++
+         } catch (IOException ex) {
+             throw new SerializationException("IOException while reading cloned object data", ex);
+         } finally {
+-            try {
+-                if (in != null) {
+-                    in.close();
++
++
++
+                 }
+             } catch (IOException ex) {
+-                throw new SerializationException("IOException on closing cloned object data InputStream.", ex);
+-            }
++
++
+         }
+     }
+ 

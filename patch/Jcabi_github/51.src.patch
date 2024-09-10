@@ -1,0 +1,11 @@
+--- /tmp/Jcabi_github_51_buggy/src/main/java/com/jcabi/github/RtHooks.java	2024-09-09 22:19:55.473825638 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_github_51_buggy/src/main/java/com/jcabi/github/RtHooks.java	2024-09-10 15:35:32.399618401 +0800
+@@ -94,7 +94,7 @@
+ 
+     @Override
+     public Iterable<Hook> iterate() {
+-        return Collections.emptyList();
++return new java.util.ArrayList<>();
+                     // @checkstyle MultipleStringLiterals (1 line)
+     }
+ 

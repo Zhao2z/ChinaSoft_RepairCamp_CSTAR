@@ -1,0 +1,13 @@
+--- /tmp/Vectorz_4_buggy/src/main/java/mikera/vectorz/util/IntArrays.java	2024-09-09 22:17:12.466044556 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Vectorz_4_buggy/src/main/java/mikera/vectorz/util/IntArrays.java	2024-09-10 15:35:32.367620481 +0800
+@@ -203,8 +203,8 @@
+ 	}
+ 	
+ 	public static int indexPosition(int[] data, int x, int min, int max) {
+-		if ((max-min)>20) {
+-			return indexPositionBig(data,x,0,max);
++if ((max - min) >= 20) { return indexPositionBig(data, x, 0, max);
++
+ 		} else {
+ 			return indexPositionSmall(data,x, 0, max);
+ 		}	

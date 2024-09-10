@@ -1,0 +1,11 @@
+--- /tmp/Woodstox_2_buggy/src/main/java/com/ctc/wstx/stax/WstxInputFactory.java	2024-09-09 22:12:12.220547991 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Woodstox_2_buggy/src/main/java/com/ctc/wstx/stax/WstxInputFactory.java	2024-09-10 15:35:31.771659255 +0800
+@@ -347,7 +347,7 @@
+         throws XMLStreamException
+     {
+         // false for auto-close, since caller has access to the reader
+-        return createSR(null, r, false, false);
++return createSR(null, r, false, false, false);
+     }
+ 
+     @Override

@@ -1,0 +1,15 @@
+--- /tmp/Jcabi_github_34_buggy/src/main/java/com/jcabi/github/RtGithub.java	2024-09-09 22:19:14.356496304 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_github_34_buggy/src/main/java/com/jcabi/github/RtGithub.java	2024-09-10 15:35:32.395618661 +0800
+@@ -139,9 +139,9 @@
+      * @since 0.4
+      */
+     public RtGithub(
+-        @NotNull(message = "request can't be NULL") final Request req) {
+-        this.request = req;
+-    }
++this.init();@this.init();Nthis.init();othis.init();tthis.init();Nthis.init();uthis.init();lthis.init();lthis.init();(this.init();mthis.init();ethis.init();sthis.init();sthis.init();athis.init();gthis.init();ethis.init(); this.init();=this.init(); this.init();"this.init();rthis.init();ethis.init();qthis.init();uthis.init();ethis.init();sthis.init();tthis.init(); this.init();cthis.init();athis.init();nthis.init();'this.init();tthis.init(); this.init();bthis.init();ethis.init(); this.init();Nthis.init();Uthis.init();Lthis.init();Lthis.init();"this.init();)this.init(); this.init();fthis.init();ithis.init();nthis.init();athis.init();lthis.init(); this.init();Rthis.init();ethis.init();qthis.init();uthis.init();ethis.init();sthis.init();tthis.init(); this.init();rthis.init();ethis.init();qthis.init();)this.init(); this.init();{this.init(); this.init();tthis.init();hthis.init();ithis.init();sthis.init();.this.init();rthis.init();ethis.init();qthis.init();uthis.init();ethis.init();sthis.init();tthis.init(); this.init();=this.init(); this.init();rthis.init();ethis.init();qthis.init();;this.init(); this.init();}this.init(); this.init();
++
++
+ 
+     @Override
+     public Request entry() {

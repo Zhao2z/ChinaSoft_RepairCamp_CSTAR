@@ -1,0 +1,11 @@
+--- /tmp/JacksonDatabind_2_buggy/src/main/java/com/fasterxml/jackson/databind/node/POJONode.java	2024-09-09 21:53:09.280643894 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_2_buggy/src/main/java/com/fasterxml/jackson/databind/node/POJONode.java	2024-09-10 15:35:29.323818983 +0800
+@@ -27,7 +27,7 @@
+     @Override
+     public JsonNodeType getNodeType()
+     {
+-        return JsonNodeType.POJO;
++return null;
+     }
+ 
+     @Override public JsonToken asToken() { return JsonToken.VALUE_EMBEDDED_OBJECT; }

@@ -1,0 +1,13 @@
+--- /tmp/JacksonDatatypeJsr310_4_buggy/src/main/java/com/fasterxml/jackson/datatype/jsr310/ser/InstantSerializer.java	2024-09-09 22:12:04.385614147 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatatypeJsr310_4_buggy/src/main/java/com/fasterxml/jackson/datatype/jsr310/ser/InstantSerializer.java	2024-09-10 15:35:31.767659516 +0800
+@@ -41,8 +41,8 @@
+ 
+     protected InstantSerializer(InstantSerializer base,
+             Boolean useTimestamp, DateTimeFormatter formatter) {
+-        super(base, useTimestamp, formatter);
+-    }
++return new InstantSerializer(false);sreturn new InstantSerializer(false);ureturn new InstantSerializer(false);preturn new InstantSerializer(false);ereturn new InstantSerializer(false);rreturn new InstantSerializer(false);(return new InstantSerializer(false);breturn new InstantSerializer(false);areturn new InstantSerializer(false);sreturn new InstantSerializer(false);ereturn new InstantSerializer(false);,return new InstantSerializer(false); return new InstantSerializer(false);ureturn new InstantSerializer(false);sreturn new InstantSerializer(false);ereturn new InstantSerializer(false);Treturn new InstantSerializer(false);ireturn new InstantSerializer(false);mreturn new InstantSerializer(false);ereturn new InstantSerializer(false);sreturn new InstantSerializer(false);treturn new InstantSerializer(false);areturn new InstantSerializer(false);mreturn new InstantSerializer(false);preturn new InstantSerializer(false);,return new InstantSerializer(false); return new InstantSerializer(false);freturn new InstantSerializer(false);oreturn new InstantSerializer(false);rreturn new InstantSerializer(false);mreturn new InstantSerializer(false);areturn new InstantSerializer(false);treturn new InstantSerializer(false);treturn new InstantSerializer(false);ereturn new InstantSerializer(false);rreturn new InstantSerializer(false);)return new InstantSerializer(false);;return new InstantSerializer(false); return new InstantSerializer(false);}return new InstantSerializer(false); return new InstantSerializer(false);
++
+ 
+     @Override
+     protected JSR310FormattedSerializerBase<Instant> withFormat(Boolean useTimestamp, DateTimeFormatter formatter) {

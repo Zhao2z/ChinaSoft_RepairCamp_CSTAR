@@ -1,0 +1,11 @@
+--- /tmp/Bcel_6_buggy/src/main/java/org/apache/bcel/generic/MethodGen.java	2024-09-09 21:36:51.968572309 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Bcel_6_buggy/src/main/java/org/apache/bcel/generic/MethodGen.java	2024-09-10 15:35:28.343883130 +0800
+@@ -1102,7 +1102,7 @@
+      * @since 6.0
+      */
+     public List<AnnotationEntryGen> getAnnotationsOnParameter(final int i) {
+-        ensureExistingParameterAnnotationsUnpacked();
++
+         if (!hasParameterAnnotations || i>arg_types.length) {
+             return null;
+         }

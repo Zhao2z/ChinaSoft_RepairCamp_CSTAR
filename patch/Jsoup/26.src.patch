@@ -1,0 +1,11 @@
+--- /tmp/Jsoup_26_buggy/src/main/java/org/jsoup/Jsoup.java	2024-09-09 22:04:59.474046689 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_26_buggy/src/main/java/org/jsoup/Jsoup.java	2024-09-10 15:35:30.439746079 +0800
+@@ -55,7 +55,7 @@
+      @see #parse(String, String)
+      */
+     public static Document parse(String html) {
+-        return Parser.parse(html, "");
++return Parser.parse(html, "", "");
+     }
+ 
+     /**

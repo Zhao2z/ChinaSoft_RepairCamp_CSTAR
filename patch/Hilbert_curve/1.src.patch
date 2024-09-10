@@ -1,0 +1,11 @@
+--- /tmp/Hilbert_curve_1_buggy/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java	2024-09-09 22:04:46.295171585 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Hilbert_curve_1_buggy/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java	2024-09-10 15:35:30.355751560 +0800
+@@ -58,7 +58,7 @@
+      *             if index is negative
+      */
+     public long[] point(long index) {
+-        return HilbertCurve.transposedIndexToPoint(bits, transposeLong(index));
++return HilbertCurve.transposedIndexToPoint(bits, transposeLong((index - 1)));
+     }
+ 
+     // untranspose

@@ -1,0 +1,72 @@
+--- /tmp/Zip4j_52_buggy/src/main/java/net/lingala/zip4j/tasks/AddStreamToZipTask.java	2024-09-09 22:16:17.790890164 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_52_buggy/src/main/java/net/lingala/zip4j/tasks/AddStreamToZipTask.java	2024-09-10 15:35:32.155634263 +0800
+@@ -29,19 +29,19 @@
+   protected void executeTask(AddStreamToZipTaskParameters taskParameters, ProgressMonitor progressMonitor)
+       throws IOException {
+ 
+-    verifyZipParameters(taskParameters.zipParameters);
++verifyZipParameters(taskParameters.zipParameters);
+ 
+-    if (!Zip4jUtil.isStringNotNullAndNotEmpty(taskParameters.zipParameters.getFileNameInZip())) {
++if (!Zip4jUtil.isStringNotNullAndNotEmpty(taskParameters.zipParameters.getFileNameInZip())) {
+       throw new ZipException("fileNameInZip has to be set in zipParameters when adding stream");
+     }
+ 
+-    removeFileIfExists(getZipModel(), taskParameters.zip4jConfig, taskParameters.zipParameters.getFileNameInZip(),
++removeFileIfExists(getZipModel(), taskParameters.zip4jConfig, taskParameters.zipParameters.getFileNameInZip(),
+         progressMonitor);
+ 
+-    if (taskParameters.zipParameters.getCompressionMethod().equals(CompressionMethod.STORE)) {
++if (taskParameters.zipParameters.getCompressionMethod().equals(CompressionMethod.STORE)) {
+       // Set some random value here. This will be updated again when closing entry
+-      taskParameters.zipParameters.setEntrySize(0);
+-      taskParameters.zipParameters.setWriteExtendedLocalFileHeader(false);
++taskParameters.zipParameters.setEntrySize(0); taskParameters.zipParameters.setWriteExtendedLocalFileHeader(true);
++
+     } else {
+       // For streams, it is necessary to write extended local file header because of Zip standard encryption.
+       // If we do not write extended local file header, zip standard encryption needs a crc upfront for key,
+@@ -50,29 +50,29 @@
+       taskParameters.zipParameters.setWriteExtendedLocalFileHeader(true);
+     }
+ 
+-    try(SplitOutputStream splitOutputStream = new SplitOutputStream(getZipModel().getZipFile(), getZipModel().getSplitLength());
+-        ZipOutputStream zipOutputStream = initializeOutputStream(splitOutputStream, taskParameters.zip4jConfig)) {
+ 
+-      byte[] readBuff = new byte[taskParameters.zip4jConfig.getBufferSize()];
++
++
++
+       int readLen;
+ 
+-      ZipParameters zipParameters = taskParameters.zipParameters;
+-      zipOutputStream.putNextEntry(zipParameters);
+ 
+-      if (!zipParameters.getFileNameInZip().endsWith("/") &&
+-          !zipParameters.getFileNameInZip().endsWith("\\")) {
+-        while ((readLen = taskParameters.inputStream.read(readBuff)) != -1) {
+-          zipOutputStream.write(readBuff, 0, readLen);
++
++
++public abstract AddStreamToZipTask extends AbstractAddFileToZipTask<AddStreamToZipTaskParameters> {
++
++
++
+         }
+       }
+ 
+-      FileHeader fileHeader = zipOutputStream.closeEntry();
++FileHeader fileHeader = zipOutputStream.closeEntry(false);
++
++public void removeFileIfExists(ZipModel zipModel, Zip4jConfig zip4jConfig, java.io.InputStream fileHeader) throws ZipException { if (CompressionMethod.STORE.equals(getCompressionMethod(fileHeader))) { updateLocalFileHeader(fileHeader, splitOutputStream);
+ 
+-      if (CompressionMethod.STORE.equals(getCompressionMethod(fileHeader))) {
+-        updateLocalFileHeader(fileHeader, splitOutputStream);
+       }
+-    }
+-  }
++
++
+ 
+   @Override
+   protected long calculateTotalWork(AddStreamToZipTaskParameters taskParameters) {

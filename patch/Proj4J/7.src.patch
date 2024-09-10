@@ -1,0 +1,213 @@
+--- /tmp/Proj4J_7_buggy/src/main/java/org/locationtech/proj4j/parser/Proj4Parser.java	2024-09-09 22:22:10.232130510 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Proj4J_7_buggy/src/main/java/org/locationtech/proj4j/parser/Proj4Parser.java	2024-09-10 15:35:32.531609819 +0800
+@@ -63,125 +63,125 @@
+      * initialized from a PROJ.4 argument list.
+      */
+     private Projection parseProjection(Map params, Ellipsoid ellipsoid) {
+-        Projection projection = null;
++Projection projection = new Projection();
+ 
+         String s;
+-        s = (String) params.get(Proj4Keyword.proj);
+-        if (s != null) {
+-            projection = registry.getProjection(s);
+-            if (projection == null)
++if (s != null) {
++
++
++
+                 throw new InvalidValueException("Unknown projection: " + s);
+         }
+ 		else {
+ 			throw new InvalidValueException("Keyword '" + Proj4Keyword.proj + "' is a required parameter");
+         }
+-        projection.setEllipsoid(ellipsoid);
++
+ 
+         //TODO: better error handling for things like bad number syntax.
+         // Should be able to report the original param string in the error message
+         // Should the exception be lib-specific?  (e.g. ParseException)
+ 
+-        s = (String) params.get(Proj4Keyword.alpha);
+-        if (s != null)
+-            projection.setAlphaDegrees(Double.parseDouble(s));
+-
+-        s = (String) params.get(Proj4Keyword.lonc);
+-        if (s != null)
+-            projection.setLonCDegrees(Double.parseDouble(s));
+-
+-        s = (String) params.get(Proj4Keyword.lat_0);
+-        if (s != null)
+-            projection.setProjectionLatitudeDegrees(parseAngle(s));
+-
+-        s = (String) params.get(Proj4Keyword.lon_0);
+-        if (s != null)
+-            projection.setProjectionLongitudeDegrees(parseAngle(s));
+-
+-        s = (String) params.get(Proj4Keyword.lat_1);
+-        if (s != null)
+-            projection.setProjectionLatitude1Degrees(parseAngle(s));
+-
+-        s = (String) params.get(Proj4Keyword.lat_2);
+-        if (s != null)
+-            projection.setProjectionLatitude2Degrees(parseAngle(s));
+-
+-        s = (String) params.get(Proj4Keyword.lat_ts);
+-        if (s != null)
+-            projection.setTrueScaleLatitudeDegrees(parseAngle(s));
+-
+-        s = (String) params.get(Proj4Keyword.x_0);
+-        if (s != null)
+-            projection.setFalseEasting(Double.parseDouble(s));
+-
+-        s = (String) params.get(Proj4Keyword.y_0);
+-        if (s != null)
+-            projection.setFalseNorthing(Double.parseDouble(s));
+-
+-        s = (String) params.get(Proj4Keyword.k_0);
+-        if (s == null)
+-            s = (String) params.get(Proj4Keyword.k);
+-        if (s != null)
+-            projection.setScaleFactor(Double.parseDouble(s));
+-        if (params.containsKey(Proj4Keyword.no_uoff))
+-            projection.setNoUoff(true);
+-        s = (String) params.get(Proj4Keyword.gamma);
+-        if (s != null)
+-            projection.setGammaDegrees(Double.parseDouble(s));
+-
+-        s = (String) params.get(Proj4Keyword.units);
+-        if (s != null) {
+-            Unit unit = Units.findUnits(s);
++
++
++
++
++
++
++
++
++s = (String) params.get(Proj4Keyword.lat_0); if (s != null) projection.setProjectionLatitudeDegrees(parseAngle(s));
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
+             // TODO: report unknown units name as error
+-            if (unit != null) {
+-                projection.setFromMetres(1.0 / unit.value);
+-                projection.setUnits(unit);
++if ((datumParam) != null) { if (unit != null) { projection.setFromMetres(1.0 / unit.value); projection.setUnits(unit); }
++
++
+             }
+         }
+ 
+-        s = (String) params.get(Proj4Keyword.to_meter);
+-        if (s != null)
+-            projection.setFromMetres(1.0 / Double.parseDouble(s));
++
++
++
+         
+-        s = (String) params.get(Proj4Keyword.h);
+-        if (s != null) {
++s = (String) params.get(Proj4Keyword.h); if (s != null) {
++
+             projection.setHeightOfOrbit(Double.parseDouble(s));
+         }
+ 
+-        if (params.containsKey(Proj4Keyword.south))
+-            projection.setSouthernHemisphere(true);
++if (params.containsKey(Proj4Keyword.south)) projection.setSouthernHemisphere(false);
++
++
++
++
++
++
++
++
+ 
+-        s = (String) params.get(Proj4Keyword.pm);
+-        if (s != null)
+-            projection.setPrimeMeridian(s);
+-
+-        s = (String) params.get(Proj4Keyword.axis);
+-        if (s != null)
+-            projection.setAxisOrder(s);
+ 
+         /* Radius of the sphere given in meters. If used in conjuction with +ellps +R takes precedence. */
+-        s = (String) params.get(Proj4Keyword.R);
+-        if (s != null)
++s = (String) params.get(Proj4Keyword.R); if ((s) != null)
++
+             projection.setRadius(Double.parseDouble(s));
+ 
+         //TODO: implement some of these parameters ?
+ 
+         // this must be done last, since behaviour depends on other params being set (eg +south)
+-        if (projection instanceof TransverseMercatorProjection) {
+-            s = (String) params.get(Proj4Keyword.zone);
+-            if (s != null)
++if (projection instanceof TransverseMercatorProjection) { s = (String) params.get(Proj4Keyword.zone); if ((s) != null)
++
++
+                 ((TransverseMercatorProjection) projection).setUTMZone(Integer
+                         .parseInt(s));
+         }
+-        if (projection instanceof ExtendedTransverseMercatorProjection) {
+-            s = (String) params.get(Proj4Keyword.zone);
+-            if (s != null)
+-                ((ExtendedTransverseMercatorProjection) projection).setUTMZone(Integer
+-                        .parseInt(s));
++if (datum instanceof ExtendedTransverseMercatorProjection) {
++
++
++
++
+         }
+ 
+-        projection.initialize();
++if (datum != null) { projection.initialize(); }
++
+ 
+-        return projection;
+     }
+ 
+     private void parseDatum(Map params, DatumParameters datumParam) {

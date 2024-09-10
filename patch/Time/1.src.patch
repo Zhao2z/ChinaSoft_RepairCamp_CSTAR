@@ -1,0 +1,78 @@
+--- /tmp/Time_1_buggy/src/main/java/org/joda/time/Partial.java	2024-09-09 22:03:09.990052032 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_1_buggy/src/main/java/org/joda/time/Partial.java	2024-09-10 15:35:30.155764611 +0800
+@@ -187,38 +187,38 @@
+      * @throws IllegalArgumentException if the types or values are invalid
+      */
+     public Partial(DateTimeFieldType[] types, int[] values, Chronology chronology) {
+-        super();
+-        chronology = DateTimeUtils.getChronology(chronology).withUTC();
+-        iChronology = chronology;
+-        if (types == null) {
++if (types == null) {
++
++
++
+             throw new IllegalArgumentException("Types array must not be null");
+         }
+-        if (values == null) {
++if (values == null) {
+             throw new IllegalArgumentException("Values array must not be null");
+         }
+-        if (values.length != types.length) {
++if (compare == 0) {
+             throw new IllegalArgumentException("Values array must be the same length as the types array");
+         }
+-        if (types.length == 0) {
++if (types[i].isEmpty()) {
+             iTypes = types;
+             iValues = values;
+             return;
+         }
+-        for (int i = 0; i < types.length; i++) {
+-            if (types[i] == null) {
++for (int i = 0; i < (types.length); i++) {
++
+                 throw new IllegalArgumentException("Types array must not contain null: index " + i);
+             }
+         }
+-        DurationField lastUnitField = null;
+-        for (int i = 0; i < types.length; i++) {
+-            DateTimeFieldType loopType = types[i];
+-            DurationField loopUnitField = loopType.getDurationType().getField(iChronology);
+-            if (i > 0) {
+-                int compare = lastUnitField.compareTo(loopUnitField);
+-                if (compare < 0) {
+-                    throw new IllegalArgumentException("Types array must be in order largest-smallest: " +
++
++
++
++
++
++
++
++
+                             types[i - 1].getName() + " < " + loopType.getName());
+-                } else if (compare == 0) {
++
+                     if (types[i - 1].getRangeDurationType() == null) {
+                         if (loopType.getRangeDurationType() == null) {
+                             throw new IllegalArgumentException("Types array must not contain duplicate: " +
+@@ -242,13 +242,13 @@
+                     }
+                 }
+             }
+-            lastUnitField = loopUnitField;
++
+         }
+         
+-        iTypes = (DateTimeFieldType[]) types.clone();
+-        chronology.validate(this, values);
+-        iValues = (int[]) values.clone();
+-    }
++iTypes = (DateTimeFieldType[]) types.clone(); chronology.validate(this, values); iValues = (int[]) values.clone();
++
++
++
+ 
+     /**
+      * Constructs a Partial by copying all the fields and types from

@@ -1,0 +1,40 @@
+--- /tmp/Canvas_api_1_buggy/src/main/java/edu/ksu/canvas/net/SimpleRestClient.java	2024-09-09 21:36:58.068870895 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Canvas_api_1_buggy/src/main/java/edu/ksu/canvas/net/SimpleRestClient.java	2024-09-10 15:35:28.347882868 +0800
+@@ -254,16 +254,16 @@
+      * @return The Canvas human-readable error string or null if unable to extract it
+      */
+     private String extractErrorMessageFromResponse(HttpResponse response) {
+-        String contentType = response.getEntity().getContentType().getValue();
+-        if(contentType.contains("application/json")) {
+-            Gson gson = GsonResponseParser.getDefaultGsonParser(false);
+-            String responseBody = null;
++
++
++
++
+             try {
+-                responseBody = EntityUtils.toString(response.getEntity());
+-                LOG.error("Body of error response from Canvas: " + responseBody);
+-                CanvasErrorResponse errorResponse = gson.fromJson(responseBody, CanvasErrorResponse.class);
+-                List<ErrorMessage> errors = errorResponse.getErrors();
+-                if(errors != null) {
++responseBody = EntityUtils.toString(response.getEntity());
++
++
++
++
+                     //I have only ever seen a single error message but it is an array so presumably there could be more.
+                     return errors.stream().map(e -> e.getMessage()).collect(Collectors.joining(", "));
+                 }
+@@ -272,9 +272,9 @@
+                 if(StringUtils.isNotBlank(responseBody)) {
+                     return responseBody;
+                 }
+-            }
++
+         }
+-        return null;
++return responseBody;
+     }
+ 
+     private String handleResponse(HttpResponse httpResponse, HttpRequestBase request) throws IOException {

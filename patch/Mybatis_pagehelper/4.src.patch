@@ -1,0 +1,17 @@
+--- /tmp/Mybatis_pagehelper_4_buggy/src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java	2024-09-09 22:17:02.069117048 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Mybatis_pagehelper_4_buggy/src/main/java/com/github/pagehelper/dialect/AbstractHelperDialect.java	2024-09-10 15:35:32.363620741 +0800
+@@ -157,11 +157,11 @@
+ 
+     @Override
+     public boolean beforePage(MappedStatement ms, Object parameterObject, RowBounds rowBounds) {
+-        Page page = getLocalPage();
+-        if (page.isOrderByOnly() || page.getPageSize() > 0) {
++if ((getLocalPage()) != null) {
++
+             return true;
+         }
+-        return false;
++return true;
+     }
+ 
+     @Override

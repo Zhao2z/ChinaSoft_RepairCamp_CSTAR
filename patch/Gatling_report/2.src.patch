@@ -1,0 +1,17 @@
+--- /tmp/Gatling_report_2_buggy/src/main/java/org/nuxeo/tools/gatling/report/SimulationReader.java	2024-09-09 22:17:16.732263478 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Gatling_report_2_buggy/src/main/java/org/nuxeo/tools/gatling/report/SimulationReader.java	2024-09-10 15:35:32.371620221 +0800
+@@ -47,10 +47,10 @@
+ 
+     @Override
+     public List<String> readNext() throws IOException {
+-        List<String> ret = super.readNext();
+-        if (ret != null && !ret.isEmpty() && ret.get(0).toLowerCase().startsWith(ASSERTION)) {
+-            return readNext();
++java.util.List<String> ret = super.readNext(); if ((ret != null) && (!(ret.isEmpty()))) { return readNext();
++
++
+         }
+-        return ret;
++return null;
+     }
+ }

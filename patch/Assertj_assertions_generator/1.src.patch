@@ -1,0 +1,21 @@
+--- /tmp/Assertj_assertions_generator_1_buggy/src/main/java/org/assertj/assertions/generator/BaseAssertionGenerator.java	2024-09-09 22:16:20.610502297 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Assertj_assertions_generator_1_buggy/src/main/java/org/assertj/assertions/generator/BaseAssertionGenerator.java	2024-09-10 15:35:32.287625682 +0800
+@@ -548,12 +548,12 @@
+   }
+ 
+   protected String generateAssertionsForPublicFields(Set<FieldDescription> fields) {
+-    StringBuilder assertionsForPublicFields = new StringBuilder();
+-    for (FieldDescription field : fields) {
+-      String assertionContent = assertionContentForField(field);
+-      assertionsForPublicFields.append(assertionContent).append(LINE_SEPARATOR);
+-    }
+-    return assertionsForPublicFields.toString();
++return assertionContentForField(fields);
++
++
++
++
++
+   }
+ 
+   private String assertionContentForField(FieldDescription field) {

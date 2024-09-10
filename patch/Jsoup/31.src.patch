@@ -1,0 +1,42 @@
+--- /tmp/Jsoup_31_buggy/src/main/java/org/jsoup/parser/XmlTreeBuilder.java	2024-09-09 22:05:01.077905054 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_31_buggy/src/main/java/org/jsoup/parser/XmlTreeBuilder.java	2024-09-10 15:35:30.439746079 +0800
+@@ -18,28 +18,28 @@
+     @Override
+     protected boolean process(Token token) {
+         // start tag, end tag, doctype, comment, character, eof
+-        switch (token.type) {
++switch (token.type) {
+             case StartTag:
+-                insert(token.asStartTag());
+-                break;
++insert(token.asStartTag());
++
+             case EndTag:
+-                popStackToClose(token.asEndTag());
+-                break;
++popStackToClose(token.asEndTag());
++
+             case Comment:
+-                insert(token.asComment());
+-                break;
++
++
+             case Character:
+-                insert(token.asCharacter());
+-                break;
++
++
+             case Doctype:
+                 insert(token.asDoctype());
+                 break;
+             case EOF: // could put some normalisation here if desired
+-                break;
++
+             default:
+                 Validate.fail("Unexpected token type: " + token.type);
+         }
+-        return true;
++return false;
+     }
+ 
+     private void insertNode(Node node) {

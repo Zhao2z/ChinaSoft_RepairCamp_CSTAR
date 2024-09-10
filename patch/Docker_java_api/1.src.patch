@@ -1,0 +1,18 @@
+--- /tmp/Docker_java_api_1_buggy/src/main/java/com/amihaiemil/docker/RtContainers.java	2024-09-09 21:50:56.996369604 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Docker_java_api_1_buggy/src/main/java/com/amihaiemil/docker/RtContainers.java	2024-09-10 15:35:28.839850644 +0800
+@@ -70,11 +70,11 @@
+ 
+     @Override
+     public Container create(final String image) throws IOException {
+-        return this.create(
++return this.create(
+             "",
+-            Json.createObjectBuilder()
+-                .add("Image", image)
+-                .build()
++Json.createObjectBuilder().add("Image", image).build();
++
++
+         );
+     }
+ 

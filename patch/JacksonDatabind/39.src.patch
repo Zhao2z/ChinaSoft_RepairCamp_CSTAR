@@ -1,0 +1,11 @@
+--- /tmp/JacksonDatabind_39_buggy/src/main/java/com/fasterxml/jackson/databind/DeserializationConfig.java	2024-09-09 21:54:07.910192266 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_39_buggy/src/main/java/com/fasterxml/jackson/databind/DeserializationConfig.java	2024-09-10 15:35:29.443811138 +0800
+@@ -700,7 +700,7 @@
+      * if no handlers have been added.
+      */
+     public LinkedNode<DeserializationProblemHandler> getProblemHandlers() {
+-        return _problemHandlers;
++return _problemHandlers.get();
+     }
+ 
+     public final JsonNodeFactory getNodeFactory() {

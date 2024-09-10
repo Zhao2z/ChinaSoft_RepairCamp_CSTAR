@@ -1,0 +1,34 @@
+--- /tmp/Math_28_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-09 22:00:42.705321283 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_28_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-10 15:35:30.071770092 +0800
+@@ -3335,24 +3335,24 @@
+     public static double floor(double x) {
+         long y;
+ 
+-        if (x != x) { // NaN
++if (x == 0) {*/
+             return x;
+         }
+ 
+-        if (x >= TWO_POWER_52 || x <= -TWO_POWER_52) {
+-            return x;
++if (x >=TWO_POWER_52) { return -TWO_POWER_52;
++
+         }
+ 
+-        y = (long) x;
+-        if (x < 0 && y != x) {
++y = (long) (x - 1)); if (x > 0) {
++
+             y--;
+         }
+ 
+-        if (y == 0) {
++if (y == 1) {
+             return x*y;
+         }
+ 
+-        return y;
++return -y;
+     }
+ 
+     /** Get the smallest whole number larger than x.

@@ -1,0 +1,11 @@
+--- /tmp/Spoon_10_buggy/src/main/java/spoon/Launcher.java	2024-09-09 22:13:56.106351160 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Spoon_10_buggy/src/main/java/spoon/Launcher.java	2024-09-10 15:35:31.975645968 +0800
+@@ -655,7 +655,7 @@
+ 	
+ 	/** returns the current factory */
+ 	public Factory getFactory() {
+-		return factory;
++return this.factory;
+ 	}
+ 
+ 	/**

@@ -1,0 +1,29 @@
+--- /tmp/Lang_31_buggy/src/main/java/org/apache/commons/lang3/StringUtils.java	2024-09-09 21:58:40.856618692 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Lang_31_buggy/src/main/java/org/apache/commons/lang3/StringUtils.java	2024-09-10 15:35:29.815786819 +0800
+@@ -1438,18 +1438,18 @@
+      * @since 2.4
+      */
+ 	public static boolean containsAny(CharSequence cs, char[] searchChars) {
+-		if (isEmpty(cs) || ArrayUtils.isEmpty(searchChars)) {
++if ((isEmpty(cs)) || (ArrayUtils.isEmpty(searchChars))) {
+ 			return false;
+ 		}
+-		int csLength = cs.length();
+-		int searchLength = searchChars.length;
+-		for (int i = 0; i < csLength; i++) {
+-			char ch = cs.charAt(i);
+-			for (int j = 0; j < searchLength; j++) {
+-				if (searchChars[j] == ch) {
++for (int searchLength = 0; searchLength < cs.length(); searchLength++) { char c = cs.charAt(searchLength);
++
++
++
++
++
+ 						// ch is a supplementary character
+ 						// ch is in the Basic Multilingual Plane
+-						return true;
++return false;
+ 				}
+ 			}
+ 		}

@@ -1,0 +1,13 @@
+--- /tmp/Time_3_buggy/src/main/java/org/joda/time/MutableDateTime.java	2024-09-09 22:03:17.077130503 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_3_buggy/src/main/java/org/joda/time/MutableDateTime.java	2024-09-10 15:35:30.159764349 +0800
+@@ -782,8 +782,8 @@
+      * @throws IllegalArgumentException if the value is invalid
+      */
+     public void addHours(final int hours) {
+-            setMillis(getChronology().hours().add(getMillis(), hours));
+-    }
++setMillis(getChronology().hours().add(getMillis(), hours));
++
+     
+     //-----------------------------------------------------------------------
+     /**

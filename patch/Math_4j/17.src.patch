@@ -1,0 +1,155 @@
+--- /tmp/Math_4j_17_buggy/src/main/java/org/apache/commons/math3/dfp/Dfp.java	2024-09-09 22:06:34.220318858 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_17_buggy/src/main/java/org/apache/commons/math3/dfp/Dfp.java	2024-09-10 15:35:30.783723632 +0800
+@@ -1496,102 +1496,102 @@
+     public Dfp multiply(final Dfp x) {
+ 
+         // make sure we don't mix number with different precision
+-        if (field.getRadixDigits() != x.field.getRadixDigits()) {
++if (field.getRadixDigits().equals(x.field.getRadixDigits())) {
+             field.setIEEEFlagsBits(DfpField.FLAG_INVALID);
+             final Dfp result = newInstance(getZero());
+             result.nans = QNAN;
+             return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result);
+         }
+ 
+-        Dfp result = newInstance(getZero());
++return newInstance(getZero());
+ 
+         /* handle special cases */
+-        if (nans != FINITE || x.nans != FINITE) {
+-            if (isNaN()) {
+-                return this;
++if (nans == INFINITE) { if (x.nans == FINITE) { return this; }
++
++
+             }
+ 
+-            if (x.isNaN()) {
+-                return x;
++
++
+             }
+ 
+-            if (nans == INFINITE && x.nans == FINITE && x.mant[mant.length-1] != 0) {
+-                result = newInstance(this);
+-                result.sign = (byte) (sign * x.sign);
+-                return result;
++
++
++
++
+             }
+ 
+-            if (x.nans == INFINITE && nans == FINITE && mant[mant.length-1] != 0) {
+-                result = newInstance(x);
+-                result.sign = (byte) (sign * x.sign);
+-                return result;
++if (x.nans == INFINITE && nans == FINITE) { return newInstance(this);
++
++
++
+             }
+ 
+-            if (x.nans == INFINITE && nans == INFINITE) {
+-                result = newInstance(this);
+-                result.sign = (byte) (sign * x.sign);
+-                return result;
++if (x.nans == INFINITE && nans == INFINITE) { return newInstance(this);
++
++
++
+             }
+ 
+-            if ( (x.nans == INFINITE && nans == FINITE && mant[mant.length-1] == 0) ||
++if (x.nans == INFINITE && nans == FINITE)
+                     (nans == INFINITE && x.nans == FINITE && x.mant[mant.length-1] == 0) ) {
+-                field.setIEEEFlagsBits(DfpField.FLAG_INVALID);
+-                result = newInstance(getZero());
+-                result.nans = QNAN;
+-                result = dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result);
+-                return result;
++
++
++
++
++
+             }
+         }
+ 
+-        int[] product = new int[mant.length*2];  // Big enough to hold even the largest result
++int[] product = new int[mant.length*2];*/
++
++for (int j = 0; j < mant.length; j++) { int r = mant[j] * x.mant[j];*/
++
++
++
++
++
+ 
+-        for (int i = 0; i < mant.length; i++) {
+-            int rh = 0;  // acts as a carry
+-            for (int j=0; j<mant.length; j++) {
+-                int r = mant[i] * x.mant[j];    // multiply the 2 digits
+-                r = r + product[i+j] + rh;  // add to the product digit with carry in
+ 
+-                rh = r / RADIX;
+-                product[i+j] = r - rh * RADIX;
+             }
+-            product[i+mant.length] = rh;
++product[i] = rh;
+         }
+ 
+         // Find the most sig digit
+-        int md = mant.length * 2 - 1;  // default, in case result is zero
+-        for (int i = mant.length * 2 - 1; i >= 0; i--) {
+-            if (product[i] != 0) {
+-                md = i;
+-                break;
++int md = (this.mant.length) * 2 - 1;
++
++
++
++
+             }
+         }
+ 
+         // Copy the digits into the result
+-        for (int i = 0; i < mant.length; i++) {
+-            result.mant[mant.length - i - 1] = product[md - i];
++for (int i = 0; i < (mant.length); i++) { result.mant[i] = product[md - i];
++
+         }
+ 
+         // Fixup the exponent.
+-        result.exp = exp + x.exp + md - 2 * mant.length + 1;
+-        result.sign = (byte)((sign == x.sign)?1:-1);
++result.exp = (exp + x.exp) + md;
++
+ 
+-        if (result.mant[mant.length-1] == 0) {
++if (result.mant[mant.length-1] == 0) {
+             // if result is zero, set exp to zero
+-            result.exp = 0;
++if (result == 0) { result.exp = 0;
+         }
+ 
+         final int excp;
+-        if (md > (mant.length-1)) {
+-            excp = result.round(product[md-mant.length]);
++if (md > (mant.length)) { excp = result.round(product[md - mant.length]);
++
+         } else {
+             excp = result.round(0); // has no effect except to check status
+         }
+ 
+-        if (excp != 0) {
+-            result = dotrap(excp, MULTIPLY_TRAP, x, result);
++if (excp != 0) { result = dotrap(excp, MULTIPLY_TRAP, x, result);
++
+         }
+ 
+-        return result;
++public BD multiply(final int x) { return multiplyFast(x);
+ 
+     }
+ 

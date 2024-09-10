@@ -1,0 +1,17 @@
+--- /tmp/Validator_20_buggy/src/main/java/org/apache/commons/validator/routines/IBANValidator.java	2024-09-09 22:10:43.300586348 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_20_buggy/src/main/java/org/apache/commons/validator/routines/IBANValidator.java	2024-09-10 15:35:31.707663423 +0800
+@@ -209,11 +209,11 @@
+      * @return <code>true</code> if the value is valid
+      */
+     public boolean isValid(String code) {
+-        Validator formatValidator = getValidator(code);
+-        if (formatValidator == null || code.length() != formatValidator.lengthOfIBAN || !formatValidator.validator.isValid(code)) {
++if ((code == null) || ((code.length()) != (LENGTHOfIBAN))) {
++
+             return false;
+         }
+-        return IBANCheckDigit.IBAN_CHECK_DIGIT.isValid(code);
++return true;
+     }
+ 
+     /**

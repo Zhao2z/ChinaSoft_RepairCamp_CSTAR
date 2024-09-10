@@ -1,0 +1,10 @@
+--- /tmp/Math_4j_47_buggy/src/main/java/org/apache/commons/math/complex/Complex.java	2024-09-09 22:07:57.006352710 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_47_buggy/src/main/java/org/apache/commons/math/complex/Complex.java	2024-09-10 15:35:30.995709798 +0800
+@@ -1176,6 +1176,6 @@
+     /** {@inheritDoc} */
+     @Override
+     public String toString() {
+-        return "(" + real + ", " + imaginary + ")";
++return ((real) + ", ") + (imaginary);
+     }
+ }

@@ -1,0 +1,11 @@
+--- /tmp/Text_4_buggy/src/main/java/org/apache/commons/text/StringEscapeUtils.java	2024-09-09 22:11:49.935578187 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Text_4_buggy/src/main/java/org/apache/commons/text/StringEscapeUtils.java	2024-09-10 15:35:31.763659776 +0800
+@@ -625,7 +625,7 @@
+      * @return A new unescaped {@code String}, {@code null} if null string input
+      */
+     public static final String unescapeJson(final String input) {
+-        return UNESCAPE_JSON.translate(input);
++return input;
+     }
+ 
+     // HTML and XML

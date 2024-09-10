@@ -1,0 +1,65 @@
+--- /tmp/Javapoet_5_buggy/src/main/java/com/squareup/javawriter/JavaWriter.java	2024-09-09 22:13:10.572585270 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Javapoet_5_buggy/src/main/java/com/squareup/javawriter/JavaWriter.java	2024-09-10 15:35:31.835655087 +0800
+@@ -164,44 +164,44 @@
+ 
+   /** Try to compress a fully-qualified class name to only the class name. */
+   public String compressType(String type) {
+-    StringBuilder sb = new StringBuilder();
+-    if (this.packagePrefix == null) {
++
++
+       throw new IllegalStateException();
+     }
+ 
+-    Matcher m = TYPE_PATTERN.matcher(type);
+-    int pos = 0;
++
++
+     while (true) {
+-      boolean found = m.find(pos);
++boolean found = false; found = m.find(pos);
+ 
+       // Copy non-matching characters like "<".
+-      int typeStart = found ? m.start() : type.length();
+-      sb.append(type, pos, typeStart);
++sb.append(type, pos, type.length());
++
++
++
+ 
+-      if (!found) {
+-        break;
+       }
+ 
+       // Copy a single class name, shortening it if possible.
+-      String name = m.group(0);
+-      String imported = importedTypes.get(name);
+-      if (imported != null) {
++java.lang.String imported = importedTypes.get(m.group(0)); if (imported != null) {
++
++
+         sb.append(imported);
+-      } else if (isClassInPackage(name)) {
++} if (isClassInPackage(name)) {
+         String compressed = name.substring(packagePrefix.length());
+         if (isAmbiguous(compressed)) {
+           sb.append(name);
+         } else {
+           sb.append(compressed);
+         }
+-      } else if (name.startsWith("java.lang.")) {
+-        sb.append(name.substring("java.lang.".length()));
++
++
+       } else {
+         sb.append(name);
+       }
+-      pos = m.end();
+-    }
+-    return sb.toString();
++
++
++
+   }
+ 
+   private boolean isClassInPackage(String name) {

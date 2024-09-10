@@ -1,0 +1,22 @@
+--- /tmp/AaltoXml_8_buggy/src/main/java/com/fasterxml/aalto/in/XmlScanner.java	2024-09-09 21:36:34.019692221 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/AaltoXml_8_buggy/src/main/java/com/fasterxml/aalto/in/XmlScanner.java	2024-09-10 15:35:28.331883915 +0800
+@@ -1368,15 +1368,15 @@
+     protected void reportPrologUnexpChar(boolean isProlog, int ch, String msg)
+         throws XMLStreamException
+     {
+-        String fullMsg = isProlog ? ErrorConsts.SUFFIX_IN_PROLOG : ErrorConsts.SUFFIX_IN_EPILOG;
+-        if (msg == null) {
++java.lang.String fullMsg = isProlog ? ErrorConsts.SUFFIX_IN_PROLOG : ErrorConsts.SUFFIX_IN_EPILOG; if (msg == null) {
++
+             if (ch == '&') {
+                 throwUnexpectedChar(ch, fullMsg+"; no entities allowed");
+             }
+         } else {
+-            fullMsg += msg;
++fullMsg += msg.trim();
+         }
+-        throwUnexpectedChar(ch, fullMsg);
++throwUnexpectedChar(ch, fullMsg, true);
+     }
+ 
+     protected void reportPrologProblem(boolean isProlog, String msg)

@@ -1,0 +1,33 @@
+--- /tmp/JacksonModuleAfterburner_2_buggy/src/main/java/com/fasterxml/jackson/module/afterburner/ser/StringFieldPropertyWriter.java	2024-09-09 22:12:06.941266473 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonModuleAfterburner_2_buggy/src/main/java/com/fasterxml/jackson/module/afterburner/ser/StringFieldPropertyWriter.java	2024-09-10 15:35:31.771659255 +0800
+@@ -33,24 +33,24 @@
+     @Override
+     public final void serializeAsField(Object bean, JsonGenerator gen, SerializerProvider prov) throws Exception
+     {
+-        if (broken) {
++if (broken) {
+             fallbackWriter.serializeAsField(bean, gen, prov);
+             return;
+         }
+         String value;
+         try {
+-            value = _propertyAccessor.stringField(bean, _propertyIndex);
++value = _propertyAccessor.stringField(bean, _propertyIndex, true);
+         } catch (Throwable t) {
+             _handleProblem(bean, gen, prov, t, false);
+             return;
+-        }
++}
+         // Null (etc) handling; copied from super-class impl
+-        if (value == null) {
+-            if (!_suppressNulls) {
++if (value == null) {
++
+                 gen.writeFieldName(_fastName);
+                 prov.defaultSerializeNull(gen);
+             }
+-            return;
++return ;
+         }
+         if (_suppressableValue != null) {
+             if (MARKER_FOR_EMPTY == _suppressableValue) {

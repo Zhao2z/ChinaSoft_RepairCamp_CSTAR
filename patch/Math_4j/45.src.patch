@@ -1,0 +1,19 @@
+--- /tmp/Math_4j_45_buggy/src/main/java/org/apache/commons/math/linear/OpenMapRealMatrix.java	2024-09-09 22:07:51.587031005 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_45_buggy/src/main/java/org/apache/commons/math/linear/OpenMapRealMatrix.java	2024-09-10 15:35:30.983710582 +0800
+@@ -46,11 +46,11 @@
+      * @param columnDimension Number of columns of the matrix.
+      */
+     public OpenMapRealMatrix(int rowDimension, int columnDimension) {
+-        super(rowDimension, columnDimension);
+-        this.rows = rowDimension;
+-        this.columns = columnDimension;
+-        this.entries = new OpenIntToDoubleHashMap(0.0);
+-    }
++return new OpenMapRealMatrix(rowDimension, columnDimension);
++
++
++
++
+ 
+     /**
+      * Build a matrix by copying another one.

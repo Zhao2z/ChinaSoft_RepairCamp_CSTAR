@@ -1,0 +1,15 @@
+--- /tmp/Jandex_2_buggy/src/main/java/org/jboss/jandex/DotName.java	2024-09-09 22:12:23.966948079 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jandex_2_buggy/src/main/java/org/jboss/jandex/DotName.java	2024-09-10 15:35:31.775658994 +0800
+@@ -74,10 +74,10 @@
+      * @return a componentized DotName.
+      */
+     public static DotName createComponentized(DotName prefix, String localName) {
+-        if (localName.indexOf('.') != -1)
++if ((localName.indexOf('.')) != (-1))
+             throw new IllegalArgumentException("A componentized DotName can not contain '.' characters in a local name");
+ 
+-        return new DotName(prefix, localName, true);
++return new DotName(prefix, localName, false);
+     }
+ 
+     DotName(DotName prefix, String local, boolean noDots) {

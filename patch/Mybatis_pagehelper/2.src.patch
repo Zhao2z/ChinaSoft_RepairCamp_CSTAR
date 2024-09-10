@@ -1,0 +1,11 @@
+--- /tmp/Mybatis_pagehelper_2_buggy/src/main/java/com/github/pagehelper/page/PageMethod.java	2024-09-09 22:16:55.009769222 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Mybatis_pagehelper_2_buggy/src/main/java/com/github/pagehelper/page/PageMethod.java	2024-09-10 15:35:32.331622821 +0800
+@@ -155,7 +155,7 @@
+      * @param limit  每页显示数量
+      */
+     public static <E> Page<E> offsetPage(int offset, int limit) {
+-        return offsetPage(offset, limit, DEFAULT_COUNT);
++return offsetPage(offset, limit, ((DEFAULT_COUNT) - 1));
+     }
+ 
+     /**

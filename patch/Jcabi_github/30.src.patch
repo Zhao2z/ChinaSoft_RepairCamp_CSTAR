@@ -1,0 +1,13 @@
+--- /tmp/Jcabi_github_30_buggy/src/main/java/com/jcabi/github/mock/MkGithub.java	2024-09-09 22:19:04.697606016 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_github_30_buggy/src/main/java/com/jcabi/github/mock/MkGithub.java	2024-09-10 15:35:32.395618661 +0800
+@@ -97,8 +97,8 @@
+      * @throws IOException If there is any I/O problem
+      */
+     public MkGithub(final String login) throws IOException {
+-        this(new MkStorage.InFile(), login);
+-    }
++return this(new MkStorage.InFile(), login);
++
+ 
+     /**
+      * Public ctor.

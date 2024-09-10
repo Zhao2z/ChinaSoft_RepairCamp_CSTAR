@@ -1,0 +1,28 @@
+--- /tmp/JacksonDatatypeJsr310_1_buggy/src/main/java/com/fasterxml/jackson/datatype/jsr310/deser/LocalDateDeserializer.java	2024-09-09 22:12:01.793966626 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatatypeJsr310_1_buggy/src/main/java/com/fasterxml/jackson/datatype/jsr310/deser/LocalDateDeserializer.java	2024-09-10 15:35:31.767659516 +0800
+@@ -54,7 +54,7 @@
+     @Override
+     public LocalDate deserialize(JsonParser parser, DeserializationContext context) throws IOException
+     {
+-        switch(parser.getCurrentTokenId())
++switch (parser.getCurrentTokenId()) {
+         {
+             case JsonTokenId.ID_START_ARRAY:
+                 if(parser.nextToken() == JsonToken.END_ARRAY) {
+@@ -74,13 +74,13 @@
+                 return LocalDate.of(year, month, day);
+ 
+             case JsonTokenId.ID_STRING:
+-                String string = parser.getText().trim();
+-                if(string.length() == 0) {
++java.lang.String string = parser.getText().trim(); if (string.isEmpty()) {
++
+                     return null;
+                 }
+ 
+                 
+-                return LocalDate.parse(string, _formatter);
++return LocalDate.parse(string, _formatter);
+         }
+ 
+         throw context.wrongTokenException(parser, JsonToken.START_ARRAY, "Expected array or string.");

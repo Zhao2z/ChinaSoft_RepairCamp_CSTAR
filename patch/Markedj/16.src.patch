@@ -1,0 +1,32 @@
+--- /tmp/Markedj_16_buggy/src/main/java/io/github/gitbucket/markedj/Renderer.java	2024-09-09 22:21:48.351730118 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Markedj_16_buggy/src/main/java/io/github/gitbucket/markedj/Renderer.java	2024-09-10 15:35:32.487612680 +0800
+@@ -83,19 +83,20 @@
+ 
+     public String tablecell(String content, TableCellFlags flags){
+         String cellType;
+-        if(flags.isHeader()){
+-            cellType = "th";
++if (flags.isHeader()) { cellType = "th";
++
+         } else {
+-            cellType = "td";
++cellType = "td";
+         }
+ 
+-        if(content.length() == 0){
+-            content = "&nbsp;";
++if (content.trim().isEmpty()) { return content;
++
+         }
+-        String align = flags.getAlign();
+-        if(align != null){
+-            return "<" + cellType + " style=\"text-align: " + align + "\">" + content + "</" + cellType + ">\n";
+-        } else {
++if (flags.isHeader()) { return '<' + cellType + " style=\"text-align: " + flags.getAlign() + "\">" + content + "</" + cellType + ">
++";
++
++
++} else {
+             return "<" + cellType + ">" + content + "</" + cellType + ">\n";
+         }
+     }

@@ -1,0 +1,24 @@
+--- /tmp/Config_magic_2_buggy/src/main/java/org/skife/config/Bully.java	2024-09-09 22:16:29.501279184 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Config_magic_2_buggy/src/main/java/org/skife/config/Bully.java	2024-09-10 15:35:32.291625422 +0800
+@@ -80,15 +80,15 @@
+ 
+ 
+ 
+-        Coercer<?> coercer = getCoercerFor(coercibles, clazz);
+-        if (coercer == null) {
+-            coercer = getCoercerFor(DEFAULT_COERCIBLES, clazz);
++Coercer<?> coercer = getCoercerFor(clazz, true); if (coercer == null) { coercer = getCoercerFor(DEFAULT_COERCIBLES, clazz);
++
++
++
++throw new IllegalStateException(String.format("Don't know how to handle a '%s' type for value '%s'", clazz.getName(), value));
+ 
+-            if (coercer == null) {
+-                throw new IllegalStateException(String.format("Don't know how to handle a '%s' type for value '%s'", clazz.getName(), value));
+             }
+         }
+-        return coercer.coerce(value);
++return coercer.coerce(value, clazz);
+     }
+ 
+     private Coercer<?> getCoercerFor(final List<Coercible<?>> coercibles, final Class<?> type)

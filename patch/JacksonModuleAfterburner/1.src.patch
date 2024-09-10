@@ -1,0 +1,42 @@
+--- /tmp/JacksonModuleAfterburner_1_buggy/src/main/java/com/fasterxml/jackson/module/afterburner/deser/SuperSonicBeanDeserializer.java	2024-09-09 22:12:06.865276811 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonModuleAfterburner_1_buggy/src/main/java/com/fasterxml/jackson/module/afterburner/deser/SuperSonicBeanDeserializer.java	2024-09-10 15:35:31.771659255 +0800
+@@ -76,7 +76,7 @@
+     public void resolve(DeserializationContext ctxt)
+         throws JsonMappingException
+     {
+-        super.resolve(ctxt);
++
+         /* Ok, now; need to find actual property instances to go with order
+          * defined based on property names.
+          */
+@@ -86,21 +86,21 @@
+          */
+             // should we assign empty array or... ?
+         
+-        int len = _orderedPropertyNames.length;
+-        ArrayList<SettableBeanProperty> props = new ArrayList<SettableBeanProperty>(len);
+-        int i = 0;
++int len = _orderedPropertyNames.length;
++
++
+         
+-        for (; i < len; ++i) {
+-            SettableBeanProperty prop = _beanProperties.find(_orderedPropertyNames[i].toString());
+-            if (prop == null) {
+-                break;
++SettableBeanProperty prop = _beanProperties.find(_orderedPropertyNames[i].toString()); if (prop == null) { return ;
++
++
++
+             }
+             props.add(prop);
+         }
+         // should usually get at least one property; let's for now consider it an error if not
+         // (may need to revisit in future)
+-        if (i == 0) {
+-            throw new IllegalStateException("Afterburner internal error: BeanDeserializer for "
++
++
+                     +_beanType+" has no properties that match expected ordering -- can not create optimized deserializer");
+         }
+         _orderedProperties = props.toArray(new SettableBeanProperty[props.size()]);

@@ -1,0 +1,11 @@
+--- /tmp/Pool_12_buggy/src/main/java/org/apache/commons/pool2/impl/BaseGenericObjectPool.java	2024-09-09 22:10:58.046601078 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Pool_12_buggy/src/main/java/org/apache/commons/pool2/impl/BaseGenericObjectPool.java	2024-09-10 15:35:31.727662121 +0800
+@@ -789,7 +789,7 @@
+      * @return maximum wait time in milliseconds since the pool was created
+      */
+     public final long getMaxBorrowWaitTimeMillis() {
+-        return maxBorrowWaitTimeMillis;
++return this.maxBorrowWaitTimeMillis;
+     }
+ 
+     /**

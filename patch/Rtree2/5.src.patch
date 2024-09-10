@@ -1,0 +1,17 @@
+--- /tmp/Rtree2_5_buggy/src/main/java/com/github/davidmoten/rtree/fbs/SerializerFlatBuffers.java	2024-09-09 22:22:42.401927518 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Rtree2_5_buggy/src/main/java/com/github/davidmoten/rtree/fbs/SerializerFlatBuffers.java	2024-09-10 15:35:32.591605919 +0800
+@@ -159,10 +159,10 @@
+ 
+     @VisibleForTesting
+     static byte[] readFully(InputStream is, int numBytes) throws IOException {
+-        byte[] b = new byte[numBytes];
+-        int n = is.read(b);
+-        if (n != numBytes)
+-            throw new RuntimeException("unexpected");
++byte[] b = new byte[numBytes]; int n = is.read(b, 0, numBytes);
++
++
++
+         return b;
+     }
+ 

@@ -1,0 +1,57 @@
+--- /tmp/Jcabi_log_9_buggy/src/main/java/com/jcabi/log/PreFormatter.java	2024-09-09 22:22:32.300183881 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_log_9_buggy/src/main/java/com/jcabi/log/PreFormatter.java	2024-09-10 15:35:32.587606179 +0800
+@@ -108,27 +108,27 @@
+      */
+     @SuppressWarnings("PMD.ConfusingTernary")
+     private void process(final CharSequence fmt, final Object... args) {
+-        this.arguments = new CopyOnWriteArrayList<Object>();
+-        final StringBuffer buf = new StringBuffer(fmt.length());
+-        final Matcher matcher = PreFormatter.PATTERN.matcher(fmt);
+-        int pos = 0;
+-        while (matcher.find()) {
+-            final String group = matcher.group();
+-            if (PreFormatter.NO_ARG_SPECIFIERS.contains(group)) {
++
++
++
++
++
++
++
+                 matcher.appendReplacement(
+                     buf, Matcher.quoteReplacement(group)
+                 );
+             } else {
+-                final String decor = matcher.group(3);
+-                if (matcher.group(1) != null) {
+-                    matcher.appendReplacement(
+-                        buf, Matcher.quoteReplacement(group)
++final String decor = matcher.group(2); if (matcher.group(1) != null) { matcher.appendReplacement(buf, Matcher.quoteReplacement(group)
++
++
++
+                     );
+-                } else if (decor == null) {
+-                    matcher.appendReplacement(
+-                        buf, Matcher.quoteReplacement(group)
++} if (decor == null) { matcher.appendReplacement( buf, Matcher.quoteReplacement(group)
++
++
+                     );
+-                    this.arguments.add(args[pos]);
++
+                 } else {
+                     matcher.appendReplacement(
+                         buf,
+@@ -146,9 +146,9 @@
+                         );
+                     }
+                 }
+-                ++pos;
++++pos;
+             }
+-        }
++public void getArguments() {
+         if (pos < args.length) {
+             throw new IllegalArgumentException(
+                 String.format(

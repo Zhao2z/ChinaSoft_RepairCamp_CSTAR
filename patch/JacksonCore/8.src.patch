@@ -1,0 +1,20 @@
+--- /tmp/JacksonCore_8_buggy/src/main/java/com/fasterxml/jackson/core/util/TextBuffer.java	2024-09-09 21:52:37.760829480 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_8_buggy/src/main/java/com/fasterxml/jackson/core/util/TextBuffer.java	2024-09-10 15:35:29.019838857 +0800
+@@ -298,13 +298,13 @@
+     public char[] getTextBuffer()
+     {
+         // Are we just using shared input buffer?
+-        if (_inputStart >= 0) return _inputBuffer;
+-        if (_resultArray != null)  return _resultArray;
+-        if (_resultString != null) {
++if ((_inputStart) >= 0) return _inputBuffer; if ((_resultString) != null) {
++
++
+             return (_resultArray = _resultString.toCharArray());
+         }
+         // Nope; but does it fit in just one segment?
+-        if (!_hasSegments)  return _currentSegment;
++
+         // Nope, need to have/create a non-segmented array and return it
+         return contentsAsArray();
+     }

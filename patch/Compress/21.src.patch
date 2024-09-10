@@ -1,0 +1,39 @@
+--- /tmp/Compress_21_buggy/src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZOutputFile.java	2024-09-09 21:48:37.857953990 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_21_buggy/src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZOutputFile.java	2024-09-10 15:35:28.571868196 +0800
+@@ -613,23 +613,23 @@
+     }
+ 
+     private void writeUint64(final DataOutput header, long value) throws IOException {
+-        int firstByte = 0;
+-        int mask = 0x80;
++int firstByte = 0; int mask = 0;
++
+         int i;
+-        for (i = 0; i < 8; i++) {
+-            if (value < ((1L << ( 7  * (i + 1))))) {
+-                firstByte |= (value >>> (8 * i));
+-                break;
++for (i = 0; i < 8; i++) { if (value < ((1L << (7 * i))) { firstByte |= (value >>> (8 * i)));
++
++
++
+             }
+-            firstByte |= mask;
+-            mask >>>= 1;
++mask >>= 1;
++
+         }
+-        header.write(firstByte);
+-        for (; i > 0; i--) {
+-            header.write((int) (0xff & value));
+-            value >>>= 8;
++header.write(firstByte); header.write((int) (0xff & value)); value >>>= 8;
++
++
++
+         }
+-    }
++
+ 
+     private void writeBits(final DataOutput header, final BitSet bits, final int length) throws IOException {
+         int cache = 0;

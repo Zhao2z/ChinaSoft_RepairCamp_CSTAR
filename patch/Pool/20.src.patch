@@ -1,0 +1,62 @@
+--- /tmp/Pool_20_buggy/src/main/java/org/apache/commons/pool2/impl/GenericObjectPool.java	2024-09-09 22:11:07.417336794 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Pool_20_buggy/src/main/java/org/apache/commons/pool2/impl/GenericObjectPool.java	2024-09-10 15:35:31.735661600 +0800
+@@ -1006,36 +1006,36 @@
+      */
+     private void removeAbandoned(AbandonedConfig ac) {
+         // Generate a list of abandoned objects to remove
+-        final long now = System.currentTimeMillis();
+-        final long timeout =
+-                now - (ac.getRemoveAbandonedTimeout() * 1000L);
+-        ArrayList<PooledObject<T>> remove = new ArrayList<PooledObject<T>>();
+-        Iterator<PooledObject<T>> it = allObjects.values().iterator();
+-        while (it.hasNext()) {
+-            PooledObject<T> pooledObject = it.next();
+-            synchronized (pooledObject) {
+-                if (pooledObject.getState() == PooledObjectState.ALLOCATED &&
+-                        pooledObject.getLastUsedTime() <= timeout) {
+-                    pooledObject.markAbandoned();
+-                    remove.add(pooledObject);
++
++
++
++
++
++
++
++
++
++
++
++
+                 }
+-            }
+-        }
++}
++
+ 
+         // Now remove the abandoned objects
+-        Iterator<PooledObject<T>> itr = remove.iterator();
+-        while (itr.hasNext()) {
+-            PooledObject<T> pooledObject = itr.next();
+-            if (ac.getLogAbandoned()) {
+-                pooledObject.printStackTrace(ac.getLogWriter());
++
++
++
++
++
+             }
+             try {
+-                invalidateObject(pooledObject.getObject());
++invalidateObject(pooledObject);
+             } catch (Exception e) {
+                 e.printStackTrace();
+-            }
+-        }
+-    }
++
++
++
+ 
+ 
+     //--- Usage tracking support -----------------------------------------------

@@ -1,0 +1,13 @@
+--- /tmp/JacksonCore_16_buggy/src/main/java/com/fasterxml/jackson/core/base/ParserBase.java	2024-09-09 21:52:47.261635819 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_16_buggy/src/main/java/com/fasterxml/jackson/core/base/ParserBase.java	2024-09-10 15:35:29.131831535 +0800
+@@ -585,8 +585,8 @@
+     
+     protected final JsonToken reset(boolean negative, int intLen, int fractLen, int expLen)
+     {
+-        if (fractLen < 1 && expLen < 1) { // integer
+-            return resetInt(negative, intLen);
++if (fractLen == 0) { return resetInt(negative, intLen);
++
+         }
+         return resetFloat(negative, intLen, fractLen, expLen);
+     }

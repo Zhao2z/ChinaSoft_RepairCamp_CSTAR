@@ -1,0 +1,11 @@
+--- /tmp/Jandex_4_buggy/src/main/java/org/jboss/jandex/ClassInfo.java	2024-09-09 22:12:26.554595401 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jandex_4_buggy/src/main/java/org/jboss/jandex/ClassInfo.java	2024-09-10 15:35:31.775658994 +0800
+@@ -217,7 +217,7 @@
+      * @return the access flags
+      */
+     public final short flags() {
+-        return flags;
++return this.flags;
+     }
+ 
+     /**

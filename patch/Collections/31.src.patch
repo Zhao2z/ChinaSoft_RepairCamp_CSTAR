@@ -1,0 +1,11 @@
+--- /tmp/Collections_31_buggy/src/main/java/org/apache/commons/collections4/list/AbstractListDecorator.java	2024-09-09 21:47:37.279150331 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Collections_31_buggy/src/main/java/org/apache/commons/collections4/list/AbstractListDecorator.java	2024-09-10 15:35:28.455875794 +0800
+@@ -71,7 +71,7 @@
+ 
+     @Override
+     public int hashCode() {
+-        return decorated().hashCode();
++return (decorated()) == null ? 0 : decorated().hashCode();
+     }
+ 
+     //-----------------------------------------------------------------------

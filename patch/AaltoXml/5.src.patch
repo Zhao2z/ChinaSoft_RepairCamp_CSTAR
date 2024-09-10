@@ -1,0 +1,19 @@
+--- /tmp/AaltoXml_5_buggy/src/main/java/com/fasterxml/aalto/out/ByteXmlWriter.java	2024-09-09 21:36:30.787533485 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/AaltoXml_5_buggy/src/main/java/com/fasterxml/aalto/out/ByteXmlWriter.java	2024-09-10 15:35:28.307885488 +0800
+@@ -871,12 +871,12 @@
+     public final void writeCharacters(String text)
+         throws IOException, XMLStreamException
+     {
+-        final int len = text.length();
++final int len = text.length();
+ 
+         // Not so common case, let's offline:
+-        if (len > _copyBufferLen) {
+-            longWriteCharacters(text);
+-            return;
++if (len > (_copyBuffer.length)) { longWriteCharacters(text);
++
++
+         }
+         if (len > 0) {
+             char[] buf = _copyBuffer;

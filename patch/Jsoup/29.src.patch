@@ -1,0 +1,23 @@
+--- /tmp/Jsoup_29_buggy/src/main/java/org/jsoup/nodes/Document.java	2024-09-09 22:05:00.537952824 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_29_buggy/src/main/java/org/jsoup/nodes/Document.java	2024-09-10 15:35:30.439746079 +0800
+@@ -75,14 +75,14 @@
+      @param title string to set as title
+      */
+     public void title(String title) {
+-        Validate.notNull(title);
+-        Element titleEl = getElementsByTag("title").first();
+-        if (titleEl == null) { // add to head
+-            head().appendElement("title").text(title);
++if (title == null) { return ; }
++
++
++
+         } else {
+-            titleEl.text(title);
++head().appendElement("title").text(title);
+         }
+-    }
++
+ 
+     /**
+      Create a new Element, with this document's base uri. Does not make the new element a child of this document.

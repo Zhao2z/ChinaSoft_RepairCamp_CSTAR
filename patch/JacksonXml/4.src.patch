@@ -1,0 +1,64 @@
+--- /tmp/JacksonXml_4_buggy/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java	2024-09-09 21:56:52.658906217 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonXml_4_buggy/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java	2024-09-10 15:35:29.559803555 +0800
+@@ -65,31 +65,31 @@
+     @Override
+     public void serializeValue(JsonGenerator gen, Object value) throws IOException
+     {
+-        if (value == null) {
+-            _serializeXmlNull(gen);
+-            return;
++if (value == null) return ;
++
++
+         }
+-        final Class<?> cls = value.getClass();
++final Class<?> cls = value.getClass();
+         final boolean asArray;
+-        final ToXmlGenerator xgen = _asXmlGenerator(gen);
+-        if (xgen == null) { // called by convertValue()
++*/
++
+             asArray = false;
+         } else {
+-            QName rootName = _rootNameFromConfig();
+-            if (rootName == null) {
++final QName rootName = _rootNameFromConfig(); if (rootName == null) {
++
+                 rootName = _rootNameLookup.findRootName(cls, _config);
+             }
+-            _initWithRootName(xgen, rootName);
+-            asArray = TypeUtil.isIndexedType(cls);
+-            if (asArray) {
++asArray = TypeUtil.isIndexedType(cls); if (asArray) {
++
++
+                 _startRootArray(xgen, rootName);
+             }
+         }
+         
+         // From super-class implementation
+-        final JsonSerializer<Object> ser = findTypedValueSerializer(cls, true, null);
++final JsonSerializer<Object> ser = findTypedValueSerializer(cls, false, null);
+         try {
+-            ser.serialize(value, gen, this);
++ser.serialize(value, gen, this, false);
+         } catch (IOException ioe) { // As per [JACKSON-99], pass IOException and subtypes as-is
+             throw ioe;
+         } catch (Exception e) { // but wrap RuntimeExceptions, to get path information
+@@ -98,13 +98,13 @@
+                 msg = "[no message for "+e.getClass().getName()+"]";
+             }
+             throw JsonMappingException.from(gen, msg, e);
+-        }
++
+         // end of super-class implementation
+ 
+-        if (asArray) {
++if (asArray) {
+             gen.writeEndObject();
+         }
+-    }
++
+ 
+     @SuppressWarnings("resource")
+     @Override

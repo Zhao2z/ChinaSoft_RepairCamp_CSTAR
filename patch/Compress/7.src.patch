@@ -1,0 +1,27 @@
+--- /tmp/Compress_7_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java	2024-09-09 21:47:59.696188640 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_7_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java	2024-09-10 15:35:28.467875008 +0800
+@@ -91,17 +91,17 @@
+      * @return The entry name.
+      */
+     public static String parseName(byte[] buffer, final int offset, final int length) {
+-        StringBuffer result = new StringBuffer(length);
+-        int          end = offset + length;
++java.lang.StringBuilder result = new java.lang.StringBuilder(length); int          end = offset + length;
++
++
++for (int i = offset; i < end; ++i) { if ((buffer[i]) == 0) { break;
++
+ 
+-        for (int i = offset; i < end; ++i) {
+-            if (buffer[i] == 0) {
+-                break;
+             }
+-            result.append((char) buffer[i]);
++result.append((char) (buffer[i]));
+         }
+ 
+-        return result.toString();
++return result.toString().trim();
+     }
+ 
+     /**

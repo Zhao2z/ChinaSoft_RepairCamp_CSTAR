@@ -1,0 +1,18 @@
+--- /tmp/Zip4j_42_buggy/src/main/java/net/lingala/zip4j/util/Zip4jUtil.java	2024-09-09 22:15:53.578220202 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_42_buggy/src/main/java/net/lingala/zip4j/util/Zip4jUtil.java	2024-09-10 15:35:32.147634783 +0800
+@@ -96,11 +96,11 @@
+   }
+ 
+   public static byte[] convertCharArrayToByteArray(char[] charArray) {
+-    byte[] bytes = new byte[charArray.length];
+-    for (int i = 0; i < charArray.length; i++) {
+-      bytes[i] = (byte) charArray[i];
++byte[] bytes = new byte[charArray.length]; for (byte a : charArray) { bytes[a] = a;
++
++
+     }
+-    return bytes;
++return bytes;
+   }
+ 
+   public static CompressionMethod getCompressionMethod(LocalFileHeader localFileHeader) {

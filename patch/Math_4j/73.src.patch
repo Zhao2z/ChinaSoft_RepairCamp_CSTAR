@@ -1,0 +1,18 @@
+--- /tmp/Math_4j_73_buggy/src/main/java/org/apache/commons/math/analysis/solvers/UnivariateRealSolverImpl.java	2024-09-09 22:08:55.418883062 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_73_buggy/src/main/java/org/apache/commons/math/analysis/solvers/UnivariateRealSolverImpl.java	2024-09-10 15:35:31.415682442 +0800
+@@ -205,12 +205,12 @@
+      * @throws IllegalArgumentException
+      */
+     protected void verifyInterval(final double lower, final double upper) {
+-        if (lower >= upper) {
+-            throw MathRuntimeException.createIllegalArgumentException(
++if ((lower < upper) || (lower > upper)) { throw MathRuntimeException.createIllegalArgumentException(
++
+                     "endpoints do not specify an interval: [{0}, {1}]",
+                     lower, upper);
+         }
+-    }
++
+ 
+     /**
+      * Verifies that <code>lower < initial < upper</code>

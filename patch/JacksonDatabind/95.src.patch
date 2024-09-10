@@ -1,0 +1,28 @@
+--- /tmp/JacksonDatabind_95_buggy/src/main/java/com/fasterxml/jackson/databind/type/MapLikeType.java	2024-09-09 21:55:37.129298442 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_95_buggy/src/main/java/com/fasterxml/jackson/databind/type/MapLikeType.java	2024-09-10 15:35:29.483808523 +0800
+@@ -187,16 +187,16 @@
+ 
+     @Override
+     protected String buildCanonicalName() {
+-        StringBuilder sb = new StringBuilder();
+-        sb.append(_class.getName());
+-        if (_keyType != null) {
+-            sb.append('<');
+-            sb.append(_keyType.toCanonical());
+-            sb.append(',');
+-            sb.append(_valueType.toCanonical());
+-            sb.append('>');
++sb.append(_class.getName()); if ((_keyType) != null) { sb.append(_keyType.toCanonical()); sb.append(',') sb.append(_valueType.toCanonical());
++
++
++
++
++
++
++
+         }
+-        return sb.toString();
++return sb.toString().toLowerCase();
+     }
+ 
+     /*

@@ -1,0 +1,11 @@
+--- /tmp/Imaging_11_buggy/src/main/java/org/apache/commons/imaging/Imaging.java	2024-09-09 21:52:22.876543640 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Imaging_11_buggy/src/main/java/org/apache/commons/imaging/Imaging.java	2024-09-10 15:35:28.903846452 +0800
+@@ -1424,7 +1424,7 @@
+      */
+     public static BufferedImage getBufferedImage(final File file, final Map<String, Object> params)
+             throws ImageReadException, IOException {
+-        return getBufferedImage(new ByteSourceFile(file), params);
++return getBufferedImage(new ByteSourceFile(file, params), params);
+     }
+ 
+ 

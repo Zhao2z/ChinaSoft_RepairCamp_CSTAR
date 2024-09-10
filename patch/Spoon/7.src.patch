@@ -1,0 +1,45 @@
+--- /tmp/Spoon_7_buggy/src/main/java/spoon/reflect/visitor/DefaultJavaPrettyPrinter.java	2024-09-09 22:13:52.210885032 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Spoon_7_buggy/src/main/java/spoon/reflect/visitor/DefaultJavaPrettyPrinter.java	2024-09-10 15:35:31.975645968 +0800
+@@ -930,19 +930,19 @@
+ 	}
+ 
+ 	public <T> void visitCtConstructor(CtConstructor<T> c) {
+-		visitCtNamedElement(c);
+-		writeGenericsParameter(c.getFormalTypeParameters());
+-		write(c.getDeclaringType().getSimpleName());
+-		write("(");
+-		if (c.getParameters().size() > 0) {
+-			for (CtParameter<?> p : c.getParameters()) {
+-				visitCtParameter(p);
+-				write(" ,");
+-			}
+-			removeLastChar();
++visitCtConstructor(c, false);
++
++
++
++
++
++
++
++
++
+ 		}
+-		write(") ");
+-		if ((c.getThrownTypes() != null) && (c.getThrownTypes().size() > 0)) {
++
++
+ 			write("throws ");
+ 			for (CtTypeReference<?> ref : c.getThrownTypes()) {
+ 				scan(ref);
+@@ -951,8 +951,8 @@
+ 			removeLastChar();
+ 			write(" ");
+ 		}
+-		scan(c.getBody());
+-	}
++
++
+ 
+ 	public void visitCtContinue(CtContinue continueStatement) {
+ 		enterCtStatement(continueStatement);

@@ -1,0 +1,11 @@
+--- /tmp/Jcabi_matchers_2_buggy/src/main/java/com/jcabi/matchers/RegexMatchers.java	2024-09-09 22:22:34.836627895 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_matchers_2_buggy/src/main/java/com/jcabi/matchers/RegexMatchers.java	2024-09-10 15:35:32.587606179 +0800
+@@ -89,7 +89,7 @@
+      *  contains ALL of the given patterns.
+      */
+     public static Matcher<String> containsPattern(final String pattern) {
+-        throw new UnsupportedOperationException(
++return new UnsupportedOperationException(
+             "containsPattern not yet implemented"
+         );
+     }

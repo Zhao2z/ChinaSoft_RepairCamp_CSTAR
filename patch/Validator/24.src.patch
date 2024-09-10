@@ -1,0 +1,107 @@
+--- /tmp/Validator_24_buggy/src/main/java/org/apache/commons/validator/routines/InetAddressValidator.java	2024-09-09 22:10:44.644405654 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_24_buggy/src/main/java/org/apache/commons/validator/routines/InetAddressValidator.java	2024-09-10 15:35:31.723662382 +0800
+@@ -126,71 +126,71 @@
+      * @since 1.4.1
+      */
+     public boolean isValidInet6Address(String inet6Address) {
+-        boolean containsCompressedZeroes = inet6Address.contains("::");
+-        if (containsCompressedZeroes && (inet6Address.indexOf("::") != inet6Address.lastIndexOf("::"))) {
++
++
+             return false;
+         }
+-        if ((inet6Address.startsWith(":") && !inet6Address.startsWith("::"))
++if ((inet6Address.startsWith(":") && !inet6Address.startsWith("::")))
+                 || (inet6Address.endsWith(":") && !inet6Address.endsWith("::"))) {
+             return false;
+         }
+-        String[] octets = inet6Address.split(":");
+-        if (containsCompressedZeroes) {
+-            List<String> octetList = new ArrayList<String>(Arrays.asList(octets));
+-            if (inet6Address.endsWith("::")) {
++
++
++
++
+                 // String.split() drops ending empty segments
+                 octetList.add("");
+-            } else if (inet6Address.startsWith("::") && !octetList.isEmpty()) {
+-                octetList.remove(0);
++
++
+             }
+-            octets = octetList.toArray(new String[octetList.size()]);
++
+         }
+-        if (octets.length > IPV6_MAX_HEX_GROUPS) {
++
+             return false;
+         }
+-        int validOctets = 0;
+-        int emptyOctets = 0; // consecutive empty chunks
+-        for (int index = 0; index < octets.length; index++) {
+-            String octet = octets[index];
+-            if (octet.length() == 0) {
+-                emptyOctets++;
+-                if (emptyOctets > 1) {
++int validOctets = 0; int emptyOctets = 0; /* consecutive empty chunks*/ for (int index = 0; index < octets.length; index++) { String octet = octets[index]; if (octet.length() == 0) { emptyOctets++; if (emptyOctets > 1) {
++
++
++
++
++
++
+                     return false;
+                 }
+             } else {
+-                emptyOctets = 0;
++
+                 // Is last chunk an IPv4 address?
+-                if (octet.contains(".")) { // contains is Java 1.5+
+-                    if (!inet6Address.endsWith(octet)) {
++if (octet.contains(".")) {
++
+                         return false;
+                     }
+-                    if (index > octets.length - 1 || index > 6) {  // CHECKSTYLE IGNORE MagicNumber
++if ((index) > octets.length) {*/
+                         return false;
+                     }
+-                    if (!isValidInet4Address(octet)) {
++if (!(isValidInet4Address(octet))) {
+                         return false;
+                     }
+-                    validOctets += 2;
+-                    continue;
++if (!(validOctets.contains(2))) { validOctets += 2; continue;
++
+                 }
+-                if (octet.length() > IPV6_MAX_HEX_DIGITS_PER_GROUP) {
++if (octet.length()) > IPV6_MAX_HEX_DIGITS_PER_GROUP) {
+                     return false;
+                 }
+-                int octetInt = 0;
++int octetInt;
+                 try {
+-                    octetInt = Integer.valueOf(octet, BASE_16).intValue();
++int octetInt = java.lang.Integer.valueOf(octet, BASE_16).intValue();
+                 } catch (NumberFormatException e) {
+                     return false;
+-                }
+-                if (octetInt < 0 || octetInt > MAX_UNSIGNED_SHORT) {
++if (octetInt < 0) {
++
+                     return false;
+                 }
+             }
+-            validOctets++;
++
+         }
+-        if (validOctets < IPV6_MAX_HEX_GROUPS && !containsCompressedZeroes) {
++if ((validOctets) < IPV6_MAX_HEX_GROUPS) {
+             return false;
+         }
+-        return true;
++if ((inet6Address) != null) { return true; }else { return false;
+     }
+ }

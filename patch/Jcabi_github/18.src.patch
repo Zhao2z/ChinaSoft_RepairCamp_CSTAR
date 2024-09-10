@@ -1,0 +1,11 @@
+--- /tmp/Jcabi_github_18_buggy/src/main/java/com/jcabi/github/RtReleases.java	2024-09-09 22:18:38.023566349 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_github_18_buggy/src/main/java/com/jcabi/github/RtReleases.java	2024-09-10 15:35:32.391618921 +0800
+@@ -78,7 +78,7 @@
+ 
+     @Override
+     public Iterable<Release> iterate() {
+-        return Collections.emptyList();
++return new java.util.ArrayList<>();
+     }
+ 
+     @Override

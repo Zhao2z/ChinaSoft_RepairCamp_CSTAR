@@ -1,0 +1,13 @@
+--- /tmp/Math_31_buggy/src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java	2024-09-09 22:00:43.173337029 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_31_buggy/src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java	2024-09-10 15:35:30.131766176 +0800
+@@ -53,8 +53,8 @@
+      * @param end end point
+      */
+     public SubLine(final Vector2D start, final Vector2D end) {
+-        super(new Line(start, end), buildIntervalSet(start, end));
+-    }
++return super(new Line(start, end), buildIntervalSet(start, end));
++
+ 
+     /** Create a sub-line from a segment.
+      * @param segment single segment forming the sub-line

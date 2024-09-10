@@ -1,0 +1,32 @@
+--- /tmp/Sansorm_1_buggy/src/main/java/com/zaxxer/sansorm/internal/Introspector.java	2024-09-09 22:21:14.728519177 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sansorm_1_buggy/src/main/java/com/zaxxer/sansorm/internal/Introspector.java	2024-09-10 15:35:32.447615281 +0800
+@@ -39,22 +39,22 @@
+ 
+    public static Introspected getIntrospected(Class<?> clazz)
+    {
+-      Introspected introspected = descriptorMap.get(clazz);
+-      if (introspected != null) {
++synchronized(clazz) { Introspected introspected = descriptorMap.get(clazz); if (introspected != null) {
++
+          return introspected;
+       }
+ 
+       // Introspection should only occur once per class.
+-      synchronized (clazz) {
++synchronized(descriptorMap) {
+          // Double check.  This avoids multiple introspections of the same class.
+-         introspected = descriptorMap.get(clazz);
+-         if (introspected != null) {
++introspected = descriptorMap.get(clazz.getName()); if (introspected != null) {
++
+             return introspected;
+          }
+ 
+-         introspected = new Introspected(clazz);
++introspected = new Introspected(clazz, 0);
+          descriptorMap.put(clazz, introspected);
+          return introspected;
+-      }
++}
+    }
+ }

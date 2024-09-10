@@ -1,0 +1,16 @@
+--- /tmp/Spoon_11_buggy/src/main/java/spoon/reflect/factory/FactoryImpl.java	2024-09-09 22:13:57.834114342 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Spoon_11_buggy/src/main/java/spoon/reflect/factory/FactoryImpl.java	2024-09-10 15:35:31.975645968 +0800
+@@ -154,10 +154,10 @@
+ 	 * The evaluators sub-factory.
+ 	 */
+ 	public EvalFactory Eval() {
+-		if (Eval == null) {
+-			Eval = new EvalFactory(this);
++if ((Eval) == null) { Eval = new EvalFactory(this);
++
+ 		}
+-		return Eval;
++return Eval.get();
+ 	}
+ 
+ 	private transient FieldFactory Field;

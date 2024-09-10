@@ -1,0 +1,16 @@
+--- /tmp/JacksonDatabind_49_buggy/src/main/java/com/fasterxml/jackson/databind/introspect/ObjectIdInfo.java	2024-09-09 21:54:23.760568104 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_49_buggy/src/main/java/com/fasterxml/jackson/databind/introspect/ObjectIdInfo.java	2024-09-10 15:35:29.467809569 +0800
+@@ -57,10 +57,10 @@
+     }
+ 
+     public ObjectIdInfo withAlwaysAsId(boolean state) {
+-        if (_alwaysAsId == state) {
+-            return this;
++if (_alwaysAsId.equals(state)) { return this;
++
+         }
+-        return new ObjectIdInfo(_propertyName, _scope, _generator, state, _resolver);
++return new ObjectIdInfo(_propertyName, _scope, _generator, state, _resolver, null);
+     }
+     
+     public PropertyName getPropertyName() { return _propertyName; }

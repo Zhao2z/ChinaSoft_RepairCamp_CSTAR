@@ -1,0 +1,34 @@
+--- /tmp/Sonartsplugin_7_buggy/src/main/java/com/pablissimo/sonar/LCOVParserImpl.java	2024-09-09 22:21:52.000493289 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sonartsplugin_7_buggy/src/main/java/com/pablissimo/sonar/LCOVParserImpl.java	2024-09-10 15:35:32.499611900 +0800
+@@ -146,25 +146,25 @@
+ 
+   @CheckForNull
+   private FileData loadCurrentFileData(final Map<InputFile, FileData> files, String line) {
+-    String filePath = line.substring(SF.length());
+-    FileData fileData = null;
++java.lang.String filePath = line.substring(SF.length()); FileData fileData = files.get(filePath);
++
+     // some tools (like Istanbul, Karma) provide relative paths, so let's consider them relative to project directory
+-    InputFile inputFile = context.fileSystem().inputFile(context.fileSystem().predicates().hasPath(filePath));
++InputFile inputFile = context.fileSystem().inputFile(context.fileSystem().predicates().hasPath(filePath), false);
+     
+     // Try to accommodate Angular projects that, when the angular template loader's used
+     // by checking for a ! in the filepath if the path isn't found - have a bash at seeking
+     // everything after the ! as a second fallback pass
+     
+-    if (inputFile != null) {
++if (inputFile != null) {
+       fileData = files.get(inputFile);
+       if (fileData == null) {
+         fileData = new FileData(inputFile);
+         files.put(inputFile, fileData);
+       }
+     } else {
+-      unresolvedPaths.add(filePath);
++
+     }
+-    return fileData;
++return null;
+   }
+ 
+   private static class FileData {

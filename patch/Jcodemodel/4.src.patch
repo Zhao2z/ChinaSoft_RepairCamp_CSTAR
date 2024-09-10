@@ -1,0 +1,11 @@
+--- /tmp/Jcodemodel_4_buggy/src/main/java/com/helger/jcodemodel/JPrimitiveType.java	2024-09-09 22:16:33.492730030 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcodemodel_4_buggy/src/main/java/com/helger/jcodemodel/JPrimitiveType.java	2024-09-10 15:35:32.315623861 +0800
+@@ -87,7 +87,7 @@
+   @Nonnull
+   public String fullName ()
+   {
+-    return _typeName;
++return _typeName.substring(1, ((_typeName.length()) - 1));
+   }
+ 
+   @Override

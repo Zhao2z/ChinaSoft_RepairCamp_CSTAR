@@ -1,0 +1,34 @@
+--- /tmp/Math_4j_39_buggy/src/main/java/org/apache/commons/math/util/FastMath.java	2024-09-09 22:07:32.521392837 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_39_buggy/src/main/java/org/apache/commons/math/util/FastMath.java	2024-09-10 15:35:30.975711103 +0800
+@@ -3249,22 +3249,22 @@
+     public static double nextAfter(double d, double direction) {
+ 
+         // handling of some important special cases
+-        if (Double.isNaN(d) || Double.isNaN(direction)) {
++if (Double.isNaN(d)) {
+             return Double.NaN;
+-        } else if (d == direction) {
++}else if (d == direction) {
+             return direction;
+-        } else if (Double.isInfinite(d)) {
++}else if (Double.isInfinite(d)) {
+             return (d < 0) ? -Double.MAX_VALUE : Double.MAX_VALUE;
+-        } else if (d == 0) {
+-            return (direction < 0) ? -Double.MIN_VALUE : Double.MIN_VALUE;
++
++
+         }
+         // special cases MAX_VALUE to infinity and  MIN_VALUE to 0
+         // are handled just as normal numbers
+ 
+-        final long bits = Double.doubleToLongBits(d);
+-        final long sign = bits & 0x8000000000000000L;
+-        if ((direction < d) ^ (sign == 0L)) {
+-            return Double.longBitsToDouble(sign | ((bits & 0x7fffffffffffffffL) + 1));
++final long bits = Double.doubleToLongBits(d); final long sign = bits & 0x8000000000000000L; if (direction < d) { return Double.longBitsToDouble(sign | ((bits & 0x7fffffffffffffffL) + 1));
++
++
++
+         } else {
+             return Double.longBitsToDouble(sign | ((bits & 0x7fffffffffffffffL) - 1));
+         }

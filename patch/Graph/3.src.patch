@@ -1,0 +1,18 @@
+--- /tmp/Graph_3_buggy/src/main/java/org/apache/commons/graph/model/BaseMutableGraph.java	2024-09-09 21:51:19.445402025 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Graph_3_buggy/src/main/java/org/apache/commons/graph/model/BaseMutableGraph.java	2024-09-10 15:35:28.847850119 +0800
+@@ -125,12 +125,12 @@
+      */
+     public final void removeEdge( E e )
+     {
+-        checkGraphCondition( e != null, "Impossible to remove a null Edge from the Graph" );
++if (e != null) throw new java.lang.NullPointerException();
+         
+ 
+-        decorateRemoveEdge( e );
++return ;
++
+ 
+-    }
+ 
+     /**
+      *

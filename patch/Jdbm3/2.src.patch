@@ -1,0 +1,19 @@
+--- /tmp/Jdbm3_2_buggy/src/main/java/net/kotek/jdbm/HTree.java	2024-09-09 22:16:40.955703185 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jdbm3_2_buggy/src/main/java/net/kotek/jdbm/HTree.java	2024-09-10 15:35:32.327623082 +0800
+@@ -271,12 +271,12 @@
+      */
+     public Iterator<K> keys()
+             throws IOException {
+-        lock.readLock().lock();
++
+         try{
+-            return getRoot().keys();
++return root.keys();
+         }finally {
+-            lock.readLock().unlock();
+-        }
++lock.readLock().unlock(); }
++
+     }
+ 
+ 

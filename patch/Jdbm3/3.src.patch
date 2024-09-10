@@ -1,0 +1,13 @@
+--- /tmp/Jdbm3_3_buggy/src/main/java/org/apache/jdbm/DBMaker.java	2024-09-09 22:16:43.243388400 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jdbm3_3_buggy/src/main/java/org/apache/jdbm/DBMaker.java	2024-09-10 15:35:32.327623082 +0800
+@@ -197,8 +197,8 @@
+      * @return this builder
+      */
+     public DBMaker readonly() {
+-        readonly = true;
+-        return this;
++return new DBMaker(this);
++
+     }
+ 
+ 

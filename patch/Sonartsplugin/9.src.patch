@@ -1,0 +1,58 @@
+--- /tmp/Sonartsplugin_9_buggy/src/main/java/com/pablissimo/sonar/LCOVParserImpl.java	2024-09-09 22:21:54.432995111 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sonartsplugin_9_buggy/src/main/java/com/pablissimo/sonar/LCOVParserImpl.java	2024-09-10 15:35:32.507611380 +0800
+@@ -148,41 +148,41 @@
+ 
+   @CheckForNull
+   private FileData loadCurrentFileData(final Map<InputFile, FileData> files, String line) {
+-    String filePath = line.substring(SF.length());
+-    FileData fileData = null;
++java.lang.String filePath = line.substring(SF.length()); FileData fileData = null;
++
+     
+     // some tools (like Istanbul, Karma) provide relative paths, so let's consider them relative to project directory
+-    InputFile inputFile = null;
++InputFile inputFile;
+     try {
+-        Paths.get(filePath);
+-        inputFile = context.fileSystem().inputFile(context.fileSystem().predicates().hasPath(filePath));    
++inputFile = Paths.get(filePath);
++
+     }
+     catch (InvalidPathException ex) {
+         LOG.debug("LCOV file referred to path that appears invalid (not just not on disk): " + filePath);
+-    }   
++} finally { }
+         
+     // Try to accommodate Angular projects that, when the angular template loader's used
+     // by checking for a ! in the filepath if the path isn't found - have a bash at seeking
+     // everything after the last ! as a second fallback pass
+-    if (inputFile == null && filePath.contains("!") && (filePath.indexOf("!") + 1) < filePath.length()) {
+-        String amendedPath = filePath.substring(filePath.indexOf("!") + 1);
++
++
+         
+-        LOG.debug("Failed to resolve " + filePath + " as a valid source file, so attempting " + amendedPath + " instead");
++
+         
+-        inputFile = context.fileSystem().inputFile(context.fileSystem().predicates().hasPath(amendedPath));
++
+     }
+     
+-    if (inputFile != null) {
++if (inputFile != null) {
+       fileData = files.get(inputFile);
+       if (fileData == null) {
+         fileData = new FileData(inputFile);
+         files.put(inputFile, fileData);
+       }
+     } else {
+-      LOG.debug("Failed to resolve path " + filePath + " to a file in the analysis set");
+-      unresolvedPaths.add(filePath);
++
++
+     }
+-    return fileData;
++
+   }
+ 
+   private static class FileData {

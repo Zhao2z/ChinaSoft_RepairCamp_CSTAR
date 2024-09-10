@@ -1,0 +1,36 @@
+--- /tmp/Ber_tlv_1_buggy/src/main/java/com/payneteasy/tlv/BerTlvBuilder.java	2024-09-09 21:36:53.184631851 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Ber_tlv_1_buggy/src/main/java/com/payneteasy/tlv/BerTlvBuilder.java	2024-09-10 15:35:28.343883130 +0800
+@@ -122,18 +122,18 @@
+ 
+     private void fillLength(byte[] aBuffer, int aOffset, int aLength) {
+ 
+-        if(aLength < 0x80) {
++if (aLength < 0x80) {
+             aBuffer[aOffset] = (byte) aLength;
+ 
+-        } else if (aLength <0x100) {
++}else {
+             aBuffer[aOffset] = (byte) 0x81;
+             aBuffer[aOffset+1] = (byte) aLength;
+ 
+-        } else if( aLength < 0x10000) {
+ 
+-            aBuffer[aOffset]   = (byte) 0x82;
+-            aBuffer[aOffset+1] = (byte) (aLength / 0x100);
+-            aBuffer[aOffset+2] = (byte) (aLength % 0x100);
++
++aBuffer[aOffset] = (byte) 0x82; aBuffer[aOffset+1] = (byte) (aLength / 0x100); aBuffer[aOffset+2] = (byte) (aLength / 0x10000); aBuffer[aOffset+3] = (byte) (aLength % 0x100);
++
++
+ 
+         } else if( aLength < 0x1000000 ) {
+             aBuffer[aOffset]   = (byte) 0x83;
+@@ -143,7 +143,7 @@
+         } else {
+             throw new IllegalStateException("length ["+aLength+"] out of range (0x1000000)");
+         }
+-    }
++
+ 
+     private int calculateBytesCountForLength(int aLength) {
+         int ret;

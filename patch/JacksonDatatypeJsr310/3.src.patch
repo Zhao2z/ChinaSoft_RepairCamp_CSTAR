@@ -1,0 +1,28 @@
+--- /tmp/JacksonDatatypeJsr310_3_buggy/src/main/java/com/fasterxml/jackson/datatype/jsr310/deser/LocalDateDeserializer.java	2024-09-09 22:12:04.333621219 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatatypeJsr310_3_buggy/src/main/java/com/fasterxml/jackson/datatype/jsr310/deser/LocalDateDeserializer.java	2024-09-10 15:35:31.767659516 +0800
+@@ -55,18 +55,18 @@
+     @Override
+     public LocalDate deserialize(JsonParser parser, DeserializationContext context) throws IOException
+     {
+-    	if (parser.hasToken(JsonToken.VALUE_STRING)) {
+-            String string = parser.getText().trim();
+-            if (string.length() == 0) {
++if (parser.hasToken(JsonToken.VALUE_STRING)) {
++
++
+                 return null;
+             }
+             // as per [datatype-jsr310#37], only check for optional (and, incorrect...) time marker 'T'
+             // if we are using default formatter
+-            DateTimeFormatter format = _formatter;
+-            if (format == DEFAULT_FORMATTER) {
++java.lang.String format = _formatter; if (format == null) { return null; }
++
+                 // JavaScript by default includes time in JSON serialized Dates (UTC/ISO instant format).
+-	            if (string.contains("T")) {
+-	                return LocalDate.parse(string, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
++
++
+ 	            }
+             }
+             return LocalDate.parse(string, format);

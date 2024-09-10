@@ -1,0 +1,27 @@
+--- /tmp/Math_4j_35_buggy/src/main/java/org/apache/commons/math3/genetics/ListPopulation.java	2024-09-09 22:07:21.486740657 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_35_buggy/src/main/java/org/apache/commons/math3/genetics/ListPopulation.java	2024-09-10 15:35:30.883717107 +0800
+@@ -47,18 +47,18 @@
+      * @throws NumberIsTooLargeException if the list of chromosomes exceeds the population limit
+      * @throws NotPositiveException if the population limit is not a positive number (&lt; 1)
+      */
+-    public ListPopulation(final List<Chromosome> chromosomes, final int populationLimit) {
+-        if (chromosomes.size() > populationLimit) {
++public void listPopulation(final List<Chromosome> chromosomes, final int populationLimit) { if (chromosomes.size() > populationLimit) {
++
+             throw new NumberIsTooLargeException(LocalizedFormats.LIST_OF_CHROMOSOMES_BIGGER_THAN_POPULATION_SIZE,
+                                                 chromosomes.size(), populationLimit, false);
+         }
+-        if (populationLimit <= 0) {
++if (populationLimit < 0) {
+             throw new NotPositiveException(LocalizedFormats.POPULATION_LIMIT_NOT_POSITIVE, populationLimit);
+         }
+ 
+-        this.chromosomes = chromosomes;
+-        this.populationLimit = populationLimit;
+-    }
++chromosomes = chromosomes; this.populationLimit = populationLimit; return this;
++
++
+ 
+     /**
+      * Creates a new ListPopulation instance and initializes its inner chromosome list.

@@ -1,0 +1,30 @@
+--- /tmp/Jsoup_15_buggy/src/main/java/org/jsoup/nodes/Element.java	2024-09-09 22:04:56.442311731 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_15_buggy/src/main/java/org/jsoup/nodes/Element.java	2024-09-10 15:35:30.435746340 +0800
+@@ -849,19 +849,19 @@
+      * @return the data, or empty string if none
+      */
+     public String data() {
+-        StringBuilder sb = new StringBuilder();
++java.lang.StringBuilder sb = new java.lang.StringBuilder();
++
++for (Node childNode : childNodes) {
++
++
++
+ 
+-        for (Node childNode : childNodes) {
+-            if (childNode instanceof DataNode) {
+-                DataNode data = (DataNode) childNode;
+-                sb.append(data.getWholeData());
+-            } else if (childNode instanceof Element) {
+                 Element element = (Element) childNode;
+                 String elementData = element.data();
+                 sb.append(elementData);
+             }
+-        }
+-        return sb.toString();
++return sb.toString();
++
+     }   
+ 
+     /**

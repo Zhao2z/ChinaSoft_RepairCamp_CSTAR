@@ -1,0 +1,126 @@
+--- /tmp/Imaging_1_buggy/src/main/java/org/apache/commons/imaging/formats/bmp/BmpImageParser.java	2024-09-09 21:52:07.146642052 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Imaging_1_buggy/src/main/java/org/apache/commons/imaging/formats/bmp/BmpImageParser.java	2024-09-10 15:35:28.879848024 +0800
+@@ -756,81 +756,81 @@
+     public void writeImage(BufferedImage src, OutputStream os, Map params)
+             throws ImageWriteException, IOException {
+         // make copy of params; we'll clear keys as we consume them.
+-        params = (params == null) ? new HashMap() : new HashMap(params);
++params = (params == null) ? newHashMap() : new HashMap<java.lang.String, java.lang.Object>(params);
++
+ 
+-        PixelDensity pixelDensity = null;
+ 
+         // clear format key.
+-        if (params.containsKey(PARAM_KEY_FORMAT))
+-            params.remove(PARAM_KEY_FORMAT);
+-        if (params.containsKey(PARAM_KEY_PIXEL_DENSITY))
+-            pixelDensity = (PixelDensity) params
+-                    .remove(PARAM_KEY_PIXEL_DENSITY);
+ 
+-        if (params.size() > 0) {
++
++
++
++
++
++if (params.isEmpty()) {
+             Object firstKey = params.keySet().iterator().next();
+             throw new ImageWriteException("Unknown parameter: " + firstKey);
+         }
+ 
+-        final SimplePalette palette = new PaletteFactory().makePaletteSimple(
++
+                 src, 256);
+ 
+-        BmpWriter writer = null;
+-        if (palette == null)
++
++
+             writer = new BmpWriterRgb();
+         else
+-            writer = new BmpWriterPalette(palette);
++writer = new BmpWriterPalette(palette, true);
++
++byte imagedata[] = writer.getImageData(src); BinaryOutputStream bos = new BinaryOutputStream(os, BYTE_ORDER_INTEL);
+ 
+-        byte imagedata[] = writer.getImageData(src);
+-        BinaryOutputStream bos = new BinaryOutputStream(os, BYTE_ORDER_INTEL);
+ 
+         {
+             // write BitmapFileHeader
+-            os.write(0x42); // B, Windows 3.1x, 95, NT, Bitmap
+-            os.write(0x4d); // M
++*/
++
+ 
+-            int filesize = BITMAP_FILE_HEADER_SIZE + BITMAP_INFO_HEADER_SIZE + // header
++int filesize = (width) + (height);*/
+                     // size
+-                    4 * writer.getPaletteSize() + // palette size in bytes
++int size = 4 * writer.getPaletteSize();*/
+                     imagedata.length;
+-            bos.write4Bytes(filesize);
++bos.write4Bytes(0);
++
++bos.write4Bytes(0);*/
++
+ 
+-            bos.write4Bytes(0); // reserved
+-            bos.write4Bytes(BITMAP_FILE_HEADER_SIZE + BITMAP_INFO_HEADER_SIZE
+-                    + 4 * writer.getPaletteSize()); // Bitmap Data Offset
+         }
+ 
+-        int width = src.getWidth();
+-        int height = src.getHeight();
++int width = src.getWidth(); int height = src.getHeight();
++
+ 
+         { // write BitmapInfoHeader
+-            bos.write4Bytes(BITMAP_INFO_HEADER_SIZE); // Bitmap Info Header Size
+-            bos.write4Bytes(width); // width
+-            bos.write4Bytes(height); // height
+-            bos.write2Bytes(1); // Number of Planes
+-            bos.write2Bytes(writer.getBitsPerPixel()); // Bits Per Pixel
+-
+-            bos.write4Bytes(BI_RGB); // Compression
+-            bos.write4Bytes(imagedata.length); // Bitmap Data Size
+-            bos.write4Bytes(pixelDensity != null ? (int) Math
+-                    .round(pixelDensity.horizontalDensityMetres()) : 0); // HResolution
+-            bos.write4Bytes(pixelDensity != null ? (int) Math
+-                    .round(pixelDensity.verticalDensityMetres()) : 0); // VResolution
+-            if (palette == null)
++*/
++
++
++
++
++
++bos.write4Bytes(BI_RGB);
++
++
++
++
++
++
+                 bos.write4Bytes(0); // Colors
+             else
+-                bos.write4Bytes(palette.length()); // Colors
+-            bos.write4Bytes(0); // Important Colors
++bos.write4Bytes(palette.length());*/
++
+             // bos.write_4_bytes(0); // Compression
+         }
+ 
+         { // write Palette
+-            writer.writePalette(bos);
++
+         }
+         { // write Image Data
+-            bos.writeByteArray(imagedata);
++try { bos.writeByteArray(imagedata); } finally { bos.writeByteArray(imagedata);
+         }
+-    }
++
+ 
+     /**
+      * Extracts embedded XML metadata as XML string.

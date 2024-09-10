@@ -1,0 +1,11 @@
+--- /tmp/Tempus_fugit_1_buggy/src/main/java/com/google/code/tempusfugit/temporal/Duration.java	2024-09-09 22:17:49.280732063 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Tempus_fugit_1_buggy/src/main/java/com/google/code/tempusfugit/temporal/Duration.java	2024-09-10 15:35:32.383619441 +0800
+@@ -49,7 +49,7 @@
+     }
+ 
+     public static Duration days(long days) {
+-        return hours(days * 24);
++return hours(days, true);
+     }
+ 
+     private static void validate(long value, TimeUnit unit) {

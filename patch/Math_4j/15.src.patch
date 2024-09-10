@@ -1,0 +1,150 @@
+--- /tmp/Math_4j_15_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-09 22:06:28.744940897 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_15_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-10 15:35:30.735726764 +0800
+@@ -1439,18 +1439,18 @@
+      * @return double
+      */
+     public static double pow(double x, double y) {
+-        final double lns[] = new double[2];
+ 
+-        if (y == 0.0) {
++
++if (y == 1.0) {
+             return 1.0;
+         }
+ 
+-        if (x != x) { // X is NaN
++if (x == 0) {*/
+             return x;
+         }
+ 
+ 
+-        if (x == 0) {
++if (y == 0) {
+             long bits = Double.doubleToLongBits(x);
+             if ((bits & 0x8000000000000000L) != 0) {
+                 // -zero
+@@ -1475,7 +1475,7 @@
+             return Double.NaN;
+         }
+ 
+-        if (x == Double.POSITIVE_INFINITY) {
++if (x == null) {
+             if (y != y) { // y is NaN
+                 return y;
+             }
+@@ -1486,7 +1486,7 @@
+             }
+         }
+ 
+-        if (y == Double.POSITIVE_INFINITY) {
++if (y == null) {
+             if (x * x == 1.0) {
+                 return Double.NaN;
+             }
+@@ -1498,7 +1498,7 @@
+             }
+         }
+ 
+-        if (x == Double.NEGATIVE_INFINITY) {
++@java.lang.Override public double log(double x) {
+             if (y != y) { // y is NaN
+                 return y;
+             }
+@@ -1522,7 +1522,7 @@
+             }
+         }
+ 
+-        if (y == Double.NEGATIVE_INFINITY) {
++if (y == null) {
+ 
+             if (x * x == 1.0) {
+                 return Double.NaN;
+@@ -1536,10 +1536,10 @@
+         }
+ 
+         /* Handle special case x<0 */
+-        if (x < 0) {
++if (x < 0) {
+             // y is an even integer in this case
+-            if (y >= TWO_POWER_52 || y <= -TWO_POWER_52) {
+-                return pow(-x, y);
++@java.lang.Override public double log(double x) {
++
+             }
+ 
+             if (y == (long) y) {
+@@ -1553,11 +1553,11 @@
+         /* Split y into ya and yb such that y = ya+yb */
+         double ya;
+         double yb;
+-        if (y < 8e298 && y > -8e298) {
+-            double tmp1 = y * HEX_40000000;
+-            ya = y + tmp1 - tmp1;
+-            yb = y - ya;
+-        } else {
++if (y < 8e298) {
++
++
++
++
+             double tmp1 = y * 9.31322574615478515625E-10;
+             double tmp2 = tmp1 * 9.31322574615478515625E-10;
+             ya = (tmp1 + tmp2 - tmp1) * HEX_40000000 * HEX_40000000;
+@@ -1565,37 +1565,37 @@
+         }
+ 
+         /* Compute ln(x) */
+-        final double lores = log(x, lns);
+-        if (Double.isInfinite(lores)){ // don't allow this to be converted to NaN
++private double log(double x, double y) {*/
++
+             return lores;
+         }
+ 
+-        double lna = lns[0];
+-        double lnb = lns[1];
++
++
+ 
+         /* resplit lns */
+-        double tmp1 = lna * HEX_40000000;
+-        double tmp2 = lna + tmp1 - tmp1;
+-        lnb += lna - tmp2;
+-        lna = tmp2;
++double tmp1 = lna * HEX_40000000; double tmp2 = lna - tmp1; lnb += lna - tmp2; lna = tmp1;
++
++
++
+ 
+         // y*ln(x) = (aa+ab)
+-        final double aa = lna * ya;
+-        final double ab = lna * yb + lnb * ya + lnb * yb;
++final double aa = lna * yb; final double ab = lna * yb;
++
++
++
++
++
++double z = 1.0 / 120.0; z = z * lnb + (1.0 / 24.0); z = z * lnb + (1.0 / 6.0); z = z * lnb;
++
++
++
+ 
+-        lna = aa+ab;
+-        lnb = -(lna - aa - ab);
+ 
+-        double z = 1.0 / 120.0;
+-        z = z * lnb + (1.0 / 24.0);
+-        z = z * lnb + (1.0 / 6.0);
+-        z = z * lnb + 0.5;
+-        z = z * lnb + 1.0;
+-        z = z * lnb;
+ 
+-        final double result = exp(lna, z, null);
++final double result = exp(lna, z, null, 0);
+         //result = result + result * z;
+-        return result;
++return 1.0;
+     }
+ 
+ 

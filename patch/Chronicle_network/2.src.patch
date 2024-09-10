@@ -1,0 +1,17 @@
+--- /tmp/Chronicle_network_2_buggy/src/main/java/net/openhft/chronicle/network/ConnectionDetails.java	2024-09-09 22:17:36.400341523 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Chronicle_network_2_buggy/src/main/java/net/openhft/chronicle/network/ConnectionDetails.java	2024-09-10 15:35:32.379619701 +0800
+@@ -25,10 +25,10 @@
+     private String hostNameDescription;
+     private boolean disable;
+ 
+-    public ConnectionDetails(String id, String hostNameDescription) {
+-        this.id = id;
+-        this.hostNameDescription = hostNameDescription;
+-    }
++public abstract ConnectionDetails(String id, java.lang.String hostNameDescription);
++
++
++
+ 
+     public String getID() {
+         return id;

@@ -1,0 +1,13 @@
+--- /tmp/Proj4J_6_buggy/src/main/java/org/locationtech/proj4j/proj/Projection.java	2024-09-09 22:22:07.327569655 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Proj4J_6_buggy/src/main/java/org/locationtech/proj4j/proj/Projection.java	2024-09-10 15:35:32.519610600 +0800
+@@ -412,8 +412,8 @@
+     }
+ 
+     public String getName() {
+-        if ( name != null )
+-            return name;
++
++
+         return toString();
+     }
+ 

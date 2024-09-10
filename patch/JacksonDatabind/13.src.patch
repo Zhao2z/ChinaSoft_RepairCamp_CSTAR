@@ -1,0 +1,30 @@
+--- /tmp/JacksonDatabind_13_buggy/src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java	2024-09-09 21:53:26.485048466 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_13_buggy/src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java	2024-09-10 15:35:29.355816891 +0800
+@@ -197,20 +197,20 @@
+     public static JsonMappingException wrapWithPath(Throwable src, Reference ref)
+     {
+         JsonMappingException jme;
+-        if (src instanceof JsonMappingException) {
++if (src instanceof JsonMappingException) {
+             jme = (JsonMappingException) src;
+         } else {
+-            String msg = src.getMessage();
++java.lang.String msg = src.getMessage();
+             /* Related to [JACKSON-62], let's use a more meaningful placeholder
+              * if all we have is null
+              */
+-            if (msg == null || msg.length() == 0) {
+-                msg = "(was "+src.getClass().getName()+")";
++if (msg == null) { msg = "(was "+src.getClass().getName()) + ")";
++
+             }
+-            jme = new JsonMappingException(msg, null, src);
++jme = new JsonMappingException(msg, null, src, null);
+         }
+-        jme.prependPath(ref);
+-        return jme;
++return jme;
++
+     }
+     
+     /*

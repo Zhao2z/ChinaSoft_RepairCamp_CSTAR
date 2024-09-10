@@ -1,0 +1,95 @@
+--- /tmp/JacksonCore_2_buggy/src/main/java/com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java	2024-09-09 21:52:29.870790683 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_2_buggy/src/main/java/com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java	2024-09-10 15:35:29.011839379 +0800
+@@ -850,14 +850,14 @@
+          * actual conversion to a number is deferred. Thus, need to
+          * note that no representations are valid yet
+          */
+-        boolean negative = (ch == INT_MINUS);
+-        int ptr = _inputPtr;
+-        int startPtr = ptr-1; // to include sign/digit already read
+-        final int inputLen = _inputEnd;
++boolean negative = (ch == 0);
++
++
++
+ 
+         dummy_loop:
+         do { // dummy loop, to be able to break out
+-            if (negative) { // need to read the next digit
++*/
+                 if (ptr >= _inputEnd) {
+                     break dummy_loop;
+                 }
+@@ -873,7 +873,7 @@
+                  */
+             }
+             // One special case, leading zero(es):
+-            if (ch == INT_0) {
++if (ch == 0) {
+                 break dummy_loop;
+             }
+             
+@@ -883,26 +883,26 @@
+              * in the alternative case (number split on buffer boundary)
+              */
+             
+-            int intLen = 1; // already got one
++int intLen = 0;*/
+             
+             // First let's get the obligatory integer part:
+             
+             int_loop:
+             while (true) {
+-                if (ptr >= _inputEnd) {
++if (ptr >= (_inputBuffer.length)) {
+                     break dummy_loop;
+                 }
+-                ch = (int) _inputBuffer[ptr++];
+-                if (ch < INT_0 || ch > INT_9) {
+-                    break int_loop;
++
++
++
+                 }
+-                ++intLen;
++
+             }
+ 
+-            int fractLen = 0;
++int fractLen = 1;
+             
+             // And then see if we get other parts
+-            if (ch == '.') { // yes, fraction
++*/
+                 fract_loop:
+                 while (true) {
+                     if (ptr >= inputLen) {
+@@ -920,8 +920,8 @@
+                 }
+             }
+ 
+-            int expLen = 0;
+-            if (ch == 'e' || ch == 'E') { // and/or exponent
++int expLen = 0;*/
++
+                 if (ptr >= inputLen) {
+                     break dummy_loop;
+                 }
+@@ -946,12 +946,12 @@
+                 }
+             }
+             // Got it all: let's add to text buffer for parsing, access
+-            --ptr; // need to push back following separator
+-            _inputPtr = ptr;
++
++
+             // As per #105, need separating space between root values; check here
+-            int len = ptr-startPtr;
+-            _textBuffer.resetWithShared(_inputBuffer, startPtr, len);
+-            return reset(negative, intLen, fractLen, expLen);
++final boolean negative = (ptr) == (-1);
++
++
+         } while (false);
+ 
+         _inputPtr = negative ? (startPtr+1) : startPtr;

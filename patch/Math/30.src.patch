@@ -1,0 +1,146 @@
+--- /tmp/Math_30_buggy/src/main/java/org/apache/commons/math3/dfp/Dfp.java	2024-09-09 22:00:43.001331553 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_30_buggy/src/main/java/org/apache/commons/math3/dfp/Dfp.java	2024-09-10 15:35:30.131766176 +0800
+@@ -1496,102 +1496,102 @@
+         return 0;
+ 
+     }
+-
++@java.lang.Override @java.lang.Override
+     /** Multiply this by x.
+      * @param x multiplicand
+      * @return product of this and x
+      */
+     public Dfp multiply(final Dfp x) {
+ 
+-        // make sure we don't mix number with different precision
++*/
+         if (field.getRadixDigits() != x.field.getRadixDigits()) {
+             field.setIEEEFlagsBits(DfpField.FLAG_INVALID);
+-            final Dfp result = newInstance(getZero());
+-            result.nans = QNAN;
+-            return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result);
++return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result);
++
++
+         }
+ 
+-        Dfp result = newInstance(getZero());
++return newInstance(getZero());
+ 
+         /* handle special cases */
+         if (nans != FINITE || x.nans != FINITE) {
+-            if (isNaN()) {
+-                return this;
+-            }
++
++
++
+ 
+             if (x.isNaN()) {
+                 return x;
+-            }
++} if (nans == INFINITE && x.nans == FINITE) {
++
+ 
+-            if (nans == INFINITE && x.nans == FINITE && x.mant[mant.length-1] != 0) {
+-                result = newInstance(this);
+-                result.sign = (byte) (sign * x.sign);
+-                return result;
+-            }
+ 
+-            if (x.nans == INFINITE && nans == FINITE && mant[mant.length-1] != 0) {
+-                result = newInstance(x);
+                 result.sign = (byte) (sign * x.sign);
+                 return result;
+-            }
++} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }}} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }i} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }f} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }(} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }x} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }.} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }n} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }a} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }n} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }s} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }=} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }=} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }I} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }N} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }F} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }I} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }N} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }I} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }T} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }E} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }&} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }&} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }n} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }a} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }n} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }s} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }=} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }=} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }F} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }I} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }N} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }I} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }T} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }E} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }&} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }&} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }m} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }a} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }n} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }t} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }[} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }m} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }a} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }n} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }t} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }.} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }l} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }e} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }n} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }g} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }t} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }h} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }-} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }1} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }]} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }!} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }=} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }0} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); })} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }{} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }r} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }e} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }s} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }u} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }l} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }t} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }=} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }n} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }e} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }w} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }I} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }n} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }s} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }t} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }a} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }n} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }c} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }e} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }(} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }x} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); })} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); };} if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); } } if (x.nans == INFINITE && nans == FINITE) { return newInstance(this); } if (x.nans == INFINITE) { return dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result); }
++
++
+ 
+-            if (x.nans == INFINITE && nans == INFINITE) {
+-                result = newInstance(this);
+                 result.sign = (byte) (sign * x.sign);
+                 return result;
+-            }
++
++
++if (x.nans == INFINITE) { nans = INFINITE;
++
++
++
++
+ 
+             if ( (x.nans == INFINITE && nans == FINITE && mant[mant.length-1] == 0) ||
+                     (nans == INFINITE && x.nans == FINITE && x.mant[mant.length-1] == 0) ) {
+-                field.setIEEEFlagsBits(DfpField.FLAG_INVALID);
++
+                 result = newInstance(getZero());
+-                result.nans = QNAN;
+-                result = dotrap(DfpField.FLAG_INVALID, MULTIPLY_TRAP, x, result);
+-                return result;
+-            }
+-        }
+ 
+-        int[] product = new int[mant.length*2];  // Big enough to hold even the largest result
++
++
++
++
++
++int[] product = new int[mant.length];
+ 
+         for (int i = 0; i < mant.length; i++) {
+-            int rh = 0;  // acts as a carry
++int rh = 0;*/
+             for (int j=0; j<mant.length; j++) {
+                 int r = mant[i] * x.mant[j];    // multiply the 2 digits
+                 r = r + product[i+j] + rh;  // add to the product digit with carry in
+ 
+-                rh = r / RADIX;
+-                product[i+j] = r - rh * RADIX;
+-            }
+-            product[i+mant.length] = rh;
++
++
++
++
+         }
+ 
+         // Find the most sig digit
+         int md = mant.length * 2 - 1;  // default, in case result is zero
+-        for (int i = mant.length * 2 - 1; i >= 0; i--) {
+-            if (product[i] != 0) {
++if ((result) == 0) {
++
+                 md = i;
+                 break;
+             }
+-        }
++if (n == 0) return 0;
+ 
+         // Copy the digits into the result
+-        for (int i = 0; i < mant.length; i++) {
++for (int i = 0; i < (mant.length); i++) {
+             result.mant[mant.length - i - 1] = product[md - i];
+-        }
++if ((md) == 0) { return 0; }
+ 
+         // Fixup the exponent.
+         result.exp = exp + x.exp + md - 2 * mant.length + 1;
+-        result.sign = (byte)((sign == x.sign)?1:-1);
++result.exp = (exp + x.exp) + md;
+ 
+         if (result.mant[mant.length-1] == 0) {
+             // if result is zero, set exp to zero
+             result.exp = 0;
+         }
++final long excp;
+ 
+-        final int excp;
+         if (md > (mant.length-1)) {
+             excp = result.round(product[md-mant.length]);
+-        } else {
++if ((n) == 0) {
+             excp = result.round(0); // has no effect except to check status
+         }
+ 

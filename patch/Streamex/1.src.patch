@@ -1,0 +1,11 @@
+--- /tmp/Streamex_1_buggy/src/main/java/one/util/streamex/AbstractStreamEx.java	2024-09-09 22:12:55.534640636 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Streamex_1_buggy/src/main/java/one/util/streamex/AbstractStreamEx.java	2024-09-10 15:35:31.807656911 +0800
+@@ -189,7 +189,7 @@
+ 
+     @Override
+     public IntStreamEx mapToInt(ToIntFunction<? super T> mapper) {
+-        return strategy().newIntStreamEx(stream.mapToInt(mapper));
++return strategy().newIntStreamEx(stream.mapToInt(mapper), false);
+     }
+ 
+     @Override

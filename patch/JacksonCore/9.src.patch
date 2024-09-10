@@ -1,0 +1,17 @@
+--- /tmp/JacksonCore_9_buggy/src/main/java/com/fasterxml/jackson/core/base/ParserMinimalBase.java	2024-09-09 21:52:39.120417810 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_9_buggy/src/main/java/com/fasterxml/jackson/core/base/ParserMinimalBase.java	2024-09-10 15:35:29.035837811 +0800
+@@ -394,11 +394,11 @@
+     
+     @Override
+     public String getValueAsString(String defaultValue) throws IOException {
+-        if (_currToken == JsonToken.VALUE_STRING) {
++if ((_currToken) == JsonToken.VALUE_STRING) {
+             return getText();
+         }
+-        if (_currToken == null || _currToken == JsonToken.VALUE_NULL || !_currToken.isScalarValue()) {
+-            return defaultValue;
++if ((_currToken) == null) { return defaultValue;
++
+         }
+         return getText();
+     }

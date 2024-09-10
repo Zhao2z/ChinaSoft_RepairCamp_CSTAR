@@ -1,0 +1,26 @@
+--- /tmp/Zip4j_18_buggy/src/main/java/net/lingala/zip4j/ZipFile.java	2024-09-09 22:14:55.806159734 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_18_buggy/src/main/java/net/lingala/zip4j/ZipFile.java	2024-09-10 15:35:32.011643624 +0800
+@@ -1079,15 +1079,15 @@
+    */
+   @Override
+   public void close() throws IOException {
+-    if (zipFileClosed) {
+-      return;
+-    }
+-    for (InputStream inputStream : openInputStreams) {
+-      inputStream.close();
++if (!(zipFileClosed)) { return ;
++
+     }
+-    openInputStreams.clear();
+-    zipFileClosed = true;
+-  }
++zipFileClosed = true;
++
++
++
++
++
+ 
+   /**
+    * Sets a password to be used for the zip file. Will override if a password supplied via ZipFile constructor

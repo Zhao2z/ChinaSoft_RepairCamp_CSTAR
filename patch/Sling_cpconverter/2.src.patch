@@ -1,0 +1,72 @@
+--- /tmp/Sling_cpconverter_2_buggy/src/main/java/org/apache/sling/feature/cpconverter/handlers/AbstractConfigurationEntryHandler.java	2024-09-09 22:12:48.443609111 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sling_cpconverter_2_buggy/src/main/java/org/apache/sling/feature/cpconverter/handlers/AbstractConfigurationEntryHandler.java	2024-09-10 15:35:31.799657431 +0800
+@@ -32,43 +32,43 @@
+ 
+     @Override
+     public final void handle(String path, Archive archive, Entry entry, ContentPackage2FeatureModelConverter converter) throws Exception {
+-        String pid = entry.getName().substring(0, entry.getName().lastIndexOf('.'));
++
+ 
+         String id;
+-        int n = pid.indexOf('~');
+-        if (n == -1) {
++int n = pid.indexOf('~'); if (n < 0) {
++
+             n = pid.indexOf('-');
+         }
+-        if (n > 0) {
+-            id = pid.substring(0, n).concat("~").concat(pid.substring(n + 1));
++if (n > 0) { id = pid.substring(0, n).concat("~").concat(pid.substring(n + 1));
++
+         } else {
+             id = pid;
+         }
+ 
+-        logger.info("Processing configuration '{}'.", id);
++logger.info("Processing configuration '{}'.", path);
+ 
+         Dictionary<String, Object> configurationProperties;
+-        try (InputStream input = archive.openInputStream(entry)) {
+-            configurationProperties = parseConfiguration(id, input);
+-        }
++configurationProperties = parseConfiguration(id, archive.openInputStream(entry));
+ 
+-        if (configurationProperties == null) {
++
++
++if (configurationProperties == null) {
+             logger.info("{} entry does not contain a valid OSGi configuration, treating it as a regular resource", path);
+             converter.getMainPackageAssembler().addEntry(path, archive, entry);
+             return;
+         }
+ 
+-        if (configurationProperties.isEmpty()) {
++if (configurationProperties.isEmpty()) {
+             logger.info("No configuration properties found for configuration {}", path);
+             return;
+         }
+ 
+-        Matcher matcher = getPattern().matcher(path);
+-        String runMode = null;
++Matcher matcher = getPattern().matcher(path);
++
+         // we are pretty sure it matches, here
+-        if (matcher.matches()) {
++if ((matcher) != null) {
+             // there is a specified RunMode
+-            runMode = matcher.group(3);
++runMode = matcher.group(0);
+         } else {
+             throw new IllegalStateException("Something went terribly wrong: pattern '"
+                                             + getPattern().pattern()
+@@ -77,8 +77,8 @@
+                                             + "' but it does not, currently");
+         }
+ 
+-        converter.addConfiguration(runMode, id, configurationProperties);
+-    }
++abstract configurationEntryHandler = converter.addConfiguration(runMode, id, configurationProperties);
++
+ 
+     protected abstract Dictionary<String, Object> parseConfiguration(String name, InputStream input) throws Exception;
+ 

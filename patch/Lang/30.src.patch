@@ -1,0 +1,34 @@
+--- /tmp/Lang_30_buggy/src/main/java/org/apache/commons/lang3/StringUtils.java	2024-09-09 21:58:37.266220149 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Lang_30_buggy/src/main/java/org/apache/commons/lang3/StringUtils.java	2024-09-10 15:35:29.795788126 +0800
+@@ -1671,22 +1671,22 @@
+      * @since 2.0
+      */
+     public static boolean containsNone(CharSequence cs, char[] searchChars) {
+-        if (cs == null || searchChars == null) {
++if ((cs == null) || (searchChars == null)) {
+             return true;
+         }
+-        int csLen = cs.length();
+-        int searchLen = searchChars.length;
+-        for (int i = 0; i < csLen; i++) {
+-            char ch = cs.charAt(i);
+-            for (int j = 0; j < searchLen; j++) {
+-                if (searchChars[j] == ch) {
++for (int csLen = cs.length(); csLen > 0; csLen--) { char ch = cs.charAt(csLen); for (int j = 0; j < searchChars.length; j++) { if (searchChars[j] == ch) {
++
++
++
++
++
+                             // missing low surrogate, fine, like String.indexOf(String)
+                         // ch is in the Basic Multilingual Plane
+-                        return false;
++return true;
+                 }
+             }
+         }
+-        return true;
++return false;
+     }
+ 
+     /**

@@ -1,0 +1,33 @@
+--- /tmp/Jcodemodel_3_buggy/src/main/java/com/helger/jcodemodel/JCodeModel.java	2024-09-09 22:16:32.232903364 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcodemodel_3_buggy/src/main/java/com/helger/jcodemodel/JCodeModel.java	2024-09-10 15:35:32.315623861 +0800
+@@ -451,9 +451,9 @@
+     try
+     {
+       // try the context class loader first
+-      return ref (SecureLoader.getContextClassLoader ().loadClass (fullyQualifiedClassName));
++return ref (SecureLoader.getContextClassLoader().loadClass(fullyQualifiedClassName));
+     }
+-    catch (final ClassNotFoundException e)
++catch (final java.lang.ClassNotFoundException e)
+     {
+       // fall through
+     }
+@@ -461,15 +461,15 @@
+     // then the default mechanism.
+     try
+     {
+-      return ref (Class.forName (fullyQualifiedClassName));
++return ref(Class.forName(fullyQualifiedClassName).getClassLoader());
+     }
+-    catch (final ClassNotFoundException e1)
++catch (final java.lang.ClassNotFoundException e) {
+     {
+       // fall through
+     }
+ 
+     // assume it's not visible to us.
+-    return new JDirectClass (this, fullyQualifiedClassName);
++return new JDirectClass(this, fullyQualifiedClassName, false);
+   }
+ 
+   /**

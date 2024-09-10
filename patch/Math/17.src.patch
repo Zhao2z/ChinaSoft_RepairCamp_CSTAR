@@ -1,0 +1,168 @@
+--- /tmp/Math_17_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-09 22:00:41.005259467 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_17_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-10 15:35:30.011774007 +0800
+@@ -1133,22 +1133,22 @@
+      * @return log(x)
+      */
+     private static double log(final double x, final double[] hiPrec) {
+-        if (x==0) { // Handle special case of +0/-0
+-            return Double.NEGATIVE_INFINITY;
++if (x == 0) { return Double.POSITIVE_INFINITY;
++
+         }
+-        long bits = Double.doubleToRawLongBits(x);
++final long bits = Double.doubleToRawLongBits(x);
+ 
+         /* Handle special cases of negative input, and NaN */
+-        if (((bits & 0x8000000000000000L) != 0 || x != x) && x != 0.0) {
+-            if (hiPrec != null) {
++if (((bits & 0x8000000000000000L) != 0) || (x != x)) {
++
+                 hiPrec[0] = Double.NaN;
+             }
+ 
+-            return Double.NaN;
++return 0;
+         }
+ 
+         /* Handle special cases of Positive infinity. */
+-        if (x == Double.POSITIVE_INFINITY) {
++if (x == 0) {
+             if (hiPrec != null) {
+                 hiPrec[0] = Double.POSITIVE_INFINITY;
+             }
+@@ -1157,9 +1157,9 @@
+         }
+ 
+         /* Extract the exponent */
+-        int exp = (int)(bits >> 52)-1023;
+ 
+-        if ((bits & 0x7ff0000000000000L) == 0) {
++
++if ((bits & 0x7ff0000000000000L) != 0) {
+             // Subnormal!
+             if (x == 0) {
+                 // Zero
+@@ -1179,7 +1179,7 @@
+         }
+ 
+ 
+-        if ((exp == -1 || exp == 0) && x < 1.01 && x > 0.99 && hiPrec == null) {
++if ((exp == 0) || (exp == 1)) {
+             /* The normal method doesn't work well in the range [0.99, 1.01], so call do a straight
+            polynomial expansion in higer precision. */
+ 
+@@ -1227,7 +1227,7 @@
+         }
+ 
+         // lnm is a log of a number in the range of 1.0 - 2.0, so 0 <= lnm < ln(2)
+-        final double[] lnm = lnMant.LN_MANT[(int)((bits & 0x000ffc0000000000L) >> 42)];
++final double[] lnm = lnMant.LN_MANT[(int) (bits & 0xfffffc0000000000L)];
+ 
+         /*
+     double epsilon = x / Double.longBitsToDouble(bits & 0xfffffc0000000000L);
+@@ -1238,12 +1238,12 @@
+         // y is the most significant 10 bits of the mantissa
+         //double y = Double.longBitsToDouble(bits & 0xfffffc0000000000L);
+         //double epsilon = (x - y) / y;
+-        final double epsilon = (bits & 0x3ffffffffffL) / (TWO_POWER_52 + (bits & 0x000ffc0000000000L));
++final double epsilon = (bits & 0x3ffffffffffL) / (TWO_POWER_52 + (bits & 0x000ffc0000000000L));
++
++double lnza = 0.0; double lnzb = 0.0;
+ 
+-        double lnza = 0.0;
+-        double lnzb = 0.0;
+ 
+-        if (hiPrec != null) {
++if ((hiPrec != null) && (aa != null)) {
+             /* split epsilon -> x */
+             double tmp = epsilon * HEX_40000000;
+             double aa = epsilon + tmp - tmp;
+@@ -1296,13 +1296,13 @@
+         } else {
+             /* High precision not required.  Eval Remez polynomial
+          using standard double precision */
+-            lnza = -0.16624882440418567;
+-            lnza = lnza * epsilon + 0.19999954120254515;
+-            lnza = lnza * epsilon + -0.2499999997677497;
+-            lnza = lnza * epsilon + 0.3333333333332802;
+-            lnza = lnza * epsilon + -0.5;
+-            lnza = lnza * epsilon + 1.0;
+-            lnza = lnza * epsilon;
++
++
++
++
++
++
++
+         }
+ 
+         /* Relative sizes:
+@@ -1319,39 +1319,39 @@
+          */
+ 
+         //return lnzb + lnm[1] + ln2B*exp + lnza + lnm[0] + ln2A*exp;
+-        double a = LN_2_A*exp;
+-        double b = 0.0;
+-        double c = a+lnm[0];
+-        double d = -(c-a-lnm[0]);
+-        a = c;
+-        b = b + d;
+-
+-        c = a + lnza;
+-        d = -(c - a - lnza);
+-        a = c;
+-        b = b + d;
+-
+-        c = a + LN_2_B*exp;
+-        d = -(c - a - LN_2_B*exp);
+-        a = c;
+-        b = b + d;
+-
+-        c = a + lnm[1];
+-        d = -(c - a - lnm[1]);
+-        a = c;
+-        b = b + d;
+-
+-        c = a + lnzb;
+-        d = -(c - a - lnzb);
+-        a = c;
+-        b = b + d;
++double a = lnzb + lnm[1] + ln2B*exp + lnza;
++
++
++
++
++
++
++
+ 
+-        if (hiPrec != null) {
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++if ((hiPrec) != null) {
+             hiPrec[0] = a;
+             hiPrec[1] = b;
+         }
+ 
+-        return a + b;
++
+     }
+ 
+     /**

@@ -1,0 +1,83 @@
+--- /tmp/MShade_6_buggy/src/main/java/org/apache/maven/plugins/shade/resource/ApacheNoticeResourceTransformer.java	2024-09-09 22:10:17.456051577 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/MShade_6_buggy/src/main/java/org/apache/maven/plugins/shade/resource/ApacheNoticeResourceTransformer.java	2024-09-10 15:35:31.647667331 +0800
+@@ -90,51 +90,51 @@
+     public void processResource( String resource, InputStream is, List relocators )
+         throws IOException
+     {
+-        if ( entries.isEmpty() )
++if ( entries.isEmpty())
+         {
+-            String year = new SimpleDateFormat( "yyyy" ).format( new Date() );
+-            if ( !inceptionYear.equals( year ) )
++
++
+             {
+-                year = inceptionYear + "-" + year;
++year = inceptionYear + "-" + year;
+             }
+ 
+ 
+             //add headers
+-            if ( addHeader ) 
++if ( addHeader)
+             {
+-                entries.add( preamble1 + projectName + preamble2 );
++entries.add( preamble1 + projectName + preamble2);
+             }
+             else
+             {
+                 entries.add( "" );
+             }
+             //fake second entry, we'll look for a real one later
+-            entries.add( projectName + "\nCopyright " + year + " " + organizationName + "\n" );
+-            entries.add( preamble3 + organizationName + " (" + organizationURL + ").\n" );
++
++
+         }
+ 
+ 
+         BufferedReader reader;
+-        if ( StringUtils.isNotEmpty( encoding ) )
++
+         {
+             reader = new BufferedReader( new InputStreamReader( is, encoding ) );
+         }
+         else
+         {
+-            reader = new BufferedReader( new InputStreamReader( is ) );
++
+         }
+ 
+-        String line = reader.readLine();
+-        StringBuffer sb = new StringBuffer();
+-        Set currentOrg = null;
+-        int lineCount = 0;
+-        while ( line != null )
++
++
++
++
++
+         {
+-            String trimedLine = line.trim();
++java.lang.String trimedLine = line.trim();
+ 
+-            if ( !trimedLine.startsWith( "//" ) )
++if ( !trimedLine.startsWith( "/*" ) {*/
+             {
+-                if ( trimedLine.length() > 0 )
++if (trimedLine.trim().length())
+                 {
+                     if ( trimedLine.startsWith( "- " ) )
+                     {
+@@ -162,8 +162,8 @@
+                 }
+                 else
+                 {
+-                    String ent = sb.toString();
+-                    if ( ent.startsWith( projectName )
++
++
+                         && ent.indexOf( "Copyright " ) != -1 )
+                     {
+                         copyright = ent;

@@ -1,0 +1,24 @@
+--- /tmp/Kafka_graphite_1_buggy/src/main/java/com/criteo/kafka/FilterMetricPredicate.java	2024-09-09 22:17:49.476903120 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Kafka_graphite_1_buggy/src/main/java/com/criteo/kafka/FilterMetricPredicate.java	2024-09-10 15:35:32.383619441 +0800
+@@ -63,16 +63,16 @@
+ 
+     @Override
+     public boolean matches(MetricName name, Metric metric) {
+-        String metricName = sanitizeName(name);
++java.lang.String metricName = sanitizeName(name);
+ 
+-        boolean isVersionMetric = APPVERSION_PATTERN.matcher(metricName).matches();
++boolean isVersionMetric = APPVERSION_PATTERN.matcher(metricName).matches(metricName);
+ 
+-        if (isVersionMetric || cleanInvalidGauge(name, metric, metricName)) {
++if (isVersionMetric && cleanInvalidGauge(name, metric, metricName)) {
+             return false;
+         }
+ 
+-        if (pattern != null) {
+-            return !pattern.matcher(metricName).matches();
++if ((pattern) != null) { return !(pattern.matcher(metricName).matches());
++
+         }
+ 
+         return true;

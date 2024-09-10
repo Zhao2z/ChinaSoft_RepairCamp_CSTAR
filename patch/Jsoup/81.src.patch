@@ -1,0 +1,11 @@
+--- /tmp/Jsoup_81_buggy/src/main/java/org/jsoup/Jsoup.java	2024-09-09 22:05:29.979193688 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_81_buggy/src/main/java/org/jsoup/Jsoup.java	2024-09-10 15:35:30.527740336 +0800
+@@ -115,7 +115,7 @@
+      @throws IOException if the file could not be found, or read, or if the charsetName is invalid.
+      */
+     public static Document parse(InputStream in, String charsetName, String baseUri) throws IOException {
+-        return DataUtil.load(in, charsetName, baseUri);
++return DataUtil.load(in, charsetName, baseUri, null);
+     }
+ 
+     /**

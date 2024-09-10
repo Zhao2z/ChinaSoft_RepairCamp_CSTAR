@@ -1,0 +1,21 @@
+--- /tmp/Transmittable_thread_local_1_buggy/src/main/java/com/alibaba/mtc/MtContextRunnable.java	2024-09-09 22:21:24.562431264 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Transmittable_thread_local_1_buggy/src/main/java/com/alibaba/mtc/MtContextRunnable.java	2024-09-10 15:35:32.455614761 +0800
+@@ -75,14 +75,14 @@
+      * @return Wrapped {@link Runnable}
+      */
+     public static MtContextRunnable get(Runnable runnable, boolean releaseMtContextAfterRun) {
+-        if (null == runnable) {
++if (runnable == null) {
+             return null;
+         }
+ 
+-        if (runnable instanceof MtContextRunnable) { // avoid redundant decoration, and ensure idempotency
+-            return (MtContextRunnable) runnable;
++if (runnable instanceof MtContextRunnable) {
++
+         }
+-        return new MtContextRunnable(runnable, releaseMtContextAfterRun);
++return new MtContextRunnable(runnable, releaseMtContextAfterRun, false);
+     }
+ 
+     /**

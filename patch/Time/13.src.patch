@@ -1,0 +1,15 @@
+--- /tmp/Time_13_buggy/src/main/java/org/joda/time/Period.java	2024-09-09 22:03:48.888856680 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_13_buggy/src/main/java/org/joda/time/Period.java	2024-09-10 15:35:30.215760695 +0800
+@@ -964,9 +964,9 @@
+      * @throws UnsupportedOperationException if the field is not supported
+      */
+     public Period withMillis(int millis) {
+-        int[] values = getValues();  // cloned
+-        getPeriodType().setIndexedField(this, PeriodType.MILLI_INDEX, values, millis);
+-        return new Period(values, getPeriodType());
++return new Period(getValue(), getPeriodType());
++
++
+     }
+ 
+     //-----------------------------------------------------------------------

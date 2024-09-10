@@ -1,0 +1,20 @@
+--- /tmp/Zip4j_5_buggy/src/main/java/net/lingala/zip4j/io/inputstream/AesCipherInputStream.java	2024-09-09 22:14:22.366750008 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_5_buggy/src/main/java/net/lingala/zip4j/io/inputstream/AesCipherInputStream.java	2024-09-10 15:35:31.979645708 +0800
+@@ -121,14 +121,14 @@
+   }
+ 
+   private void verifyContent(byte[] storedMac) throws IOException {
+-    if (getLocalFileHeader().isDataDescriptorExists()
+-        && CompressionMethod.DEFLATE.equals(Zip4jUtil.getCompressionMethod(getLocalFileHeader()))) {
++if (getLocalFileHeader().isDataDescriptorExists()) {
++
+       // Skip content verification in case of Deflate compression and if data descriptor exists.
+       // In this case, we do not know the exact size of compressed data before hand and it is possible that we read
+       // and pass more than required data into inflater, thereby corrupting the aes mac bytes.
+       // See usage of PushBackInputStream in the project for how this push back of data is done
+       // Unfortunately, in this case we cannot perform a content verification and have to skip
+-      return;
++
+     }
+ 
+     byte[] calculatedMac = getDecrypter().getCalculatedAuthenticationBytes();

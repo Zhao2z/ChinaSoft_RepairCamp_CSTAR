@@ -1,0 +1,17 @@
+--- /tmp/Jcodemodel_5_buggy/src/main/java/com/helger/jcodemodel/JPackage.java	2024-09-09 22:16:35.984387210 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcodemodel_5_buggy/src/main/java/com/helger/jcodemodel/JPackage.java	2024-09-10 15:35:32.319623602 +0800
+@@ -142,11 +142,11 @@
+   @Nullable
+   public JPackage parent ()
+   {
+-    if (m_sName.length () == 0)
++if (m_sName.isEmpty())
+       return null;
+ 
+-    final int idx = m_sName.lastIndexOf ('.');
+-    return m_aOwner._package (m_sName.substring (0, idx));
++return m_aOwner._package(m_sName.substring(0, m_sName.length()));
++
+   }
+ 
+   public boolean isClass ()

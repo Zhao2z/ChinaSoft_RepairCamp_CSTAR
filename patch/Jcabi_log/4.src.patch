@@ -1,0 +1,15 @@
+--- /tmp/Jcabi_log_4_buggy/src/main/java/com/jcabi/log/Logger.java	2024-09-09 22:22:24.666821484 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_log_4_buggy/src/main/java/com/jcabi/log/Logger.java	2024-09-10 15:35:32.583606439 +0800
+@@ -110,10 +110,10 @@
+      */
+     public static String format(final String fmt, final Object... args) {
+         final String result;
+-        if (args.length == 0) {
++if ((args == null) || (args.isEmpty())) {
+             result = fmt;
+         } else {
+-            final PreFormatter pre = new PreFormatter(fmt, args);
++final PreFormatter pre = new PreFormatter(fmt, args, false);
+             result = String.format(pre.getFormat(), pre.getArguments());
+         }
+         return result;

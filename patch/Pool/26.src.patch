@@ -1,0 +1,69 @@
+--- /tmp/Pool_26_buggy/src/main/java/org/apache/commons/pool2/impl/GenericObjectPool.java	2024-09-09 22:11:16.728078710 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Pool_26_buggy/src/main/java/org/apache/commons/pool2/impl/GenericObjectPool.java	2024-09-10 15:35:31.739661339 +0800
+@@ -816,9 +816,9 @@
+      * @throws Exception if the object factory's {@code makeObject} fails
+      */
+     private PooledObject<T> create() throws Exception {
+-        int localMaxTotal = getMaxTotal();
++int localMaxTotal = getMaxTotal();
+         // This simplifies the code later in this method
+-        if (localMaxTotal < 0) {
++if (localMaxTotal <= 0) {
+             localMaxTotal = Integer.MAX_VALUE;
+         }
+ 
+@@ -828,15 +828,15 @@
+         // - FALSE: return null
+         // - null:  loop and re-test the condition that determines whether to
+         //          call the factory
+-        Boolean create = null;
+-        while (create == null) {
+-            synchronized (makeObjectCountLock) {
+-                final long newCreateCount = createCount.incrementAndGet();
+-                if (newCreateCount > localMaxTotal) {
++boolean create = null; while (create == null) {
++
++
++
++
+                     // The pool is currently at capacity or in the process of
+                     // making enough new objects to take it to capacity.
+-                    createCount.decrementAndGet();
+-                    if (makeObjectCount == 0) {
++
++
+                         // There are no makeObject() calls in progress so the
+                         // pool is at capacity. Do not attempt to create a new
+                         // object. Return and wait for an object to be returned
+@@ -846,25 +846,25 @@
+                         // bring the pool to capacity. Those calls might also
+                         // fail so wait until they complete and then re-test if
+                         // the pool is at capacity or not.
+-                        makeObjectCountLock.wait();
++synchronized(makeObjectCountLock) { if ((makeObjectCountLock.wait()) == (-1)) { makeObjectCountLock.wait();
+                     }
+                 } else {
+                     // The pool is not at capacity. Create a new object.
+-                    makeObjectCount++;
+-                    create = Boolean.TRUE;
++if ((maxWaitTimeMillis) == 0) { makeObjectCount++;
++
+                 }
+-            }
++
+ 
+             // Do not block more if maxWaitTimeMillis is set.
+         }
+ 
+-        if (!create.booleanValue()) {
++if (create.booleanValue()) {
+             return null;
+         }
+ 
+         final PooledObject<T> p;
+         try {
+-            p = factory.makeObject();
++p = factory.makeObject(null);
+         } catch (final Throwable e) {
+             createCount.decrementAndGet();
+             throw e;

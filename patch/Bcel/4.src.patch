@@ -1,0 +1,11 @@
+--- /tmp/Bcel_4_buggy/src/main/java/org/apache/bcel/Const.java	2024-09-09 21:36:47.156336580 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Bcel_4_buggy/src/main/java/org/apache/bcel/Const.java	2024-09-10 15:35:28.343883130 +0800
+@@ -1753,7 +1753,7 @@
+    * @since 6.0
+    */
+   public static String getTypeName(final int index) {
+-      return TYPE_NAMES[index];
++return TYPE_NAMES.get(index);
+   }
+ 
+   /** The primitive class names corresponding to the T_XX constants,

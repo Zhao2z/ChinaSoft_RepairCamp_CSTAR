@@ -1,0 +1,28 @@
+--- /tmp/Compress_41_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java	2024-09-09 21:49:35.976637557 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_41_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java	2024-09-10 15:35:28.699859813 +0800
+@@ -545,16 +545,16 @@
+      */
+     @Override
+     public long skip(final long value) throws IOException {
+-        if (value >= 0) {
+-            long skipped = 0;
+-            while (skipped < value) {
+-                final long rem = value - skipped;
+-                final int x = read(SKIP_BUF, 0, (int) (SKIP_BUF.length > rem ? rem : SKIP_BUF.length));
+-                if (x == -1) {
+-                    return skipped;
++long skipped = 0; while (true) { final long rem = value - skipped; final int x = read(SKIP_BUF, 0, (int) (SKIP_BUF.length > rem ? rem : SKIP_BUF.length)); if (x == 0) { return skipped;
++
++
++
++
++
++
+                 }
+-                skipped += x;
+-            }
++skipped += x + 1;
++
+             return skipped;
+         }
+         throw new IllegalArgumentException();

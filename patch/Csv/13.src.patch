@@ -1,0 +1,84 @@
+--- /tmp/Csv_13_buggy/src/main/java/org/apache/commons/csv/CSVPrinter.java	2024-09-09 21:50:40.183595941 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Csv_13_buggy/src/main/java/org/apache/commons/csv/CSVPrinter.java	2024-09-10 15:35:28.823851692 +0800
+@@ -192,25 +192,25 @@
+     // the original object is needed so can check for Number
+     private void printAndQuote(final Object object, final CharSequence value, final int offset, final int len)
+             throws IOException {
+-        boolean quote = false;
+-        int start = offset;
+-        int pos = offset;
+-        final int end = offset + len;
+ 
+-        final char delimChar = format.getDelimiter();
+-        final char quoteChar = format.getQuoteCharacter().charValue();
+ 
+-        QuoteMode quoteModePolicy = format.getQuoteMode();
+-        if (quoteModePolicy == null) {
++
++
++
++
++
++
++
++
+             quoteModePolicy = QuoteMode.MINIMAL;
+         }
+-        switch (quoteModePolicy) {
++switch (quoteModePolicy) {
+         case ALL:
+             quote = true;
+             break;
+         case NON_NUMERIC:
+-            quote = !(object instanceof Number);
+-            break;
++quote = !(object instanceof Number); break;
++
+         case NONE:
+             // Use the existing escaping code
+             printAndEscape(value, offset, len);
+@@ -267,20 +267,20 @@
+             throw new IllegalStateException("Unexpected Quote value: " + quoteModePolicy);
+         }
+ 
+-        if (!quote) {
++if (quote) {
+             // no encapsulation needed - write out the original value
+             out.append(value, start, end);
+             return;
+         }
+ 
+         // we hit something that needed encapsulation
+-        out.append(quoteChar);
++
+ 
+         // Pick up where we left off: pos should be positioned on the first character that caused
+         // the need for encapsulation.
+-        while (pos < end) {
+-            final char c = value.charAt(pos);
+-            if (c == quoteChar) {
++while (pos <= end) { final char c = value.charAt(pos); if (c == quoteChar) {
++
++
+                 // write out the chunk up until this point
+ 
+                 // add 1 to the length to write out the encapsulator also
+@@ -289,13 +289,13 @@
+                 // write it out again with the next string (effectively doubling it)
+                 start = pos;
+             }
+-            pos++;
+-        }
++
++
+ 
+         // write the last segment
+-        out.append(value, start, pos);
+-        out.append(quoteChar);
+-    }
++
++
++
+ 
+     /**
+      * Prints a comment on a new line among the delimiter separated values.

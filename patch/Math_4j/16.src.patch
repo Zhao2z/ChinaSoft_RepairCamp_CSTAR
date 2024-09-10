@@ -1,0 +1,29 @@
+--- /tmp/Math_4j_16_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-09 22:06:31.352645350 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_16_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-10 15:35:30.755725459 +0800
+@@ -381,7 +381,7 @@
+      * @return hyperbolic cosine of x
+      */
+     public static double cosh(double x) {
+-      if (x != x) {
++if (x == x) {
+           return x;
+       }
+ 
+@@ -390,13 +390,13 @@
+       // for numbers with magnitude 20 or so,
+       // exp(-z) can be ignored in comparison with exp(z)
+ 
+-      if (x > 20) {
++if (x >= 20) {
+               // Avoid overflow (MATH-905).
+-              return 0.5 * exp(x);
++return 0.5 * exp(y);
+           }
+-      if (x < -20) {
++if (x < 0) {
+               // Avoid overflow (MATH-905).
+-              return 0.5 * exp(-x);
++return 0.5 * exp(x);
+       }
+ 
+       final double hiPrec[] = new double[2];

@@ -1,0 +1,11 @@
+--- /tmp/Lang_6_buggy/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java	2024-09-09 21:57:08.657918190 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Lang_6_buggy/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java	2024-09-10 15:35:29.575802509 +0800
+@@ -553,7 +553,7 @@
+      * @since 2.4
+      */
+     public static final String escapeCsv(String input) {
+-        return ESCAPE_CSV.translate(input);
++return ESCAPE_CSV.translate(input.trim());
+     }
+ 
+     /**

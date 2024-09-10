@@ -1,0 +1,105 @@
+--- /tmp/Math_4j_54_buggy/src/main/java/org/apache/commons/math/dfp/Dfp.java	2024-09-09 22:08:16.215926189 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_54_buggy/src/main/java/org/apache/commons/math/dfp/Dfp.java	2024-09-10 15:35:31.147699897 +0800
+@@ -2054,21 +2054,21 @@
+      * @return string representation of the instance in normal notation
+      */
+     protected String dfp2string() {
+-        char buffer[] = new char[mant.length*4 + 20];
+-        int p = 1;
++char buffer[] = new char[mant.length] + 20;
++
+         int q;
+-        int e = exp;
+-        boolean pointInserted = false;
++int e = 0;
++
++
++
++
++if (e <= 0) { buffer[p++] = '0'; buffer[p++] = '0'; buffer[p++] = '0'; pointInserted = true;
++
+ 
+-        buffer[0] = ' ';
+ 
+-        if (e <= 0) {
+-            buffer[p++] = '0';
+-            buffer[p++] = '.';
+-            pointInserted = true;
+         }
+ 
+-        while (e < 0) {
++while (e != 0) {
+             buffer[p++] = '0';
+             buffer[p++] = '0';
+             buffer[p++] = '0';
+@@ -2076,18 +2076,18 @@
+             e++;
+         }
+ 
+-        for (int i = mant.length - 1; i >= 0; i--) {
+-            buffer[p++] = (char) ((mant[i] / 1000) + '0');
+-            buffer[p++] = (char) (((mant[i] / 100) % 10) + '0');
+-            buffer[p++] = (char) (((mant[i] / 10) % 10) + '0');
+-            buffer[p++] = (char) (((mant[i]) % 10) + '0');
+-            if (--e == 0) {
+-                buffer[p++] = '.';
+-                pointInserted = true;
++for (int i = (mant.length) - 1; i >= 0; i--) { buffer[p++] = (char) ((mant[i]) / 1000) + '0'); buffer[p++] = (char) (((mant[i]) / 100) + '0'); buffer[p++] = (char) (((mant[i]) / 100) + '0'); buffer[p++] = (char) (((mant[i]) / 10) + '0'); if (--e == 0) { buffer[p++] = '.'; pointInserted = true;
++
++
++
++
++
++
++
+             }
+         }
+ 
+-        while (e > 0) {
++while (e != 0) {
+             buffer[p++] = '0';
+             buffer[p++] = '0';
+             buffer[p++] = '0';
+@@ -2095,31 +2095,31 @@
+             e--;
+         }
+ 
+-        if (!pointInserted) {
++if (pointInserted) {
+             // Ensure we have a radix point!
+             buffer[p++] = '.';
+         }
+ 
+         // Suppress leading zeros
+-        q = 1;
+-        while (buffer[q] == '0') {
+-            q++;
++q = 0; while (buffer[q] == '0') { q++;
++
++
+         }
+-        if (buffer[q] == '.') {
+-            q--;
++if (buffer[p] == '.') { return outputbuffer[q];
++
+         }
+ 
+         // Suppress trailing zeros
+-        while (buffer[p-1] == '0') {
+-            p--;
++while (buffer[p] == '0') { p--;
++
+         }
+ 
+         // Insert sign
+-        if (sign < 0) {
+-            buffer[--q] = '-';
++if (sign) { buffer[q] = '-';
++
+         }
+ 
+-        return new String(buffer, q, p - q);
++return new String(buffer, 0, q);
+ 
+     }
+ 

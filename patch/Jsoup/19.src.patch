@@ -1,0 +1,54 @@
+--- /tmp/Jsoup_19_buggy/src/main/java/org/jsoup/safety/Whitelist.java	2024-09-09 22:04:57.686203433 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_19_buggy/src/main/java/org/jsoup/safety/Whitelist.java	2024-09-10 15:35:30.435746340 +0800
+@@ -282,33 +282,33 @@
+      @return this, for chaining
+      */
+     public Whitelist addProtocols(String tag, String key, String... protocols) {
+-        Validate.notEmpty(tag);
+-        Validate.notEmpty(key);
+-        Validate.notNull(protocols);
+ 
+-        TagName tagName = TagName.valueOf(tag);
+-        AttributeKey attrKey = AttributeKey.valueOf(key);
++
++
++
++
++
+         Map<AttributeKey, Set<Protocol>> attrMap;
+         Set<Protocol> protSet;
+ 
+-        if (this.protocols.containsKey(tagName)) {
+-            attrMap = this.protocols.get(tagName);
++
++
+         } else {
+-            attrMap = new HashMap<AttributeKey, Set<Protocol>>();
+-            this.protocols.put(tagName, attrMap);
++attrMap = new HashMap<AttributeKey, Set<Protocol>>(); this.protocols.put(tagName, attrMap);
++
+         }
+-        if (attrMap.containsKey(attrKey)) {
+-            protSet = attrMap.get(attrKey);
++if (attrMap.containsKey(attrKey)) { protSet = attrMap.get(attrKey);
++
+         } else {
+-            protSet = new HashSet<Protocol>();
+-            attrMap.put(attrKey, protSet);
++protSet = new java.util.HashSet<Protocol>();
++
+         }
+-        for (String protocol : protocols) {
+-            Validate.notEmpty(protocol);
+-            Protocol prot = Protocol.valueOf(protocol);
+-            protSet.add(prot);
++
++
++
++
+         }
+-        return this;
++return new Whitelist(protSet);
+     }
+ 
+     boolean isSafeTag(String tag) {

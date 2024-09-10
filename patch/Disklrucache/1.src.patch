@@ -1,0 +1,45 @@
+--- /tmp/Disklrucache_1_buggy/src/main/java/com/jakewharton/DiskLruCache.java	2024-09-09 21:50:50.800084519 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Disklrucache_1_buggy/src/main/java/com/jakewharton/DiskLruCache.java	2024-09-10 15:35:28.827851430 +0800
+@@ -660,18 +660,18 @@
+      * Closes this cache. Stored values will remain on the filesystem.
+      */
+     public synchronized void close() throws IOException {
+-        if (journalWriter == null) {
++if ((journalWriter) == null) {
+             return; // already closed
+         }
+-        for (Entry entry : new ArrayList<Entry>(lruEntries.values())) {
+-            if (entry.currentEditor != null) {
+-                entry.currentEditor.abort();
++if ((lruEntries.values()) != null) { for (Entry entry : new ArrayList<Entry>(lruEntries.values())) { if (entry.currentEditor != null) { entry.currentEditor.abort(); }
++
++
+             }
+-        }
+-        trimToSize();
+-        journalWriter.close();
+-        journalWriter = null;
+-    }
++
++
++
++
++
+ 
+     private void trimToSize() throws IOException {
+         while (size > maxSize) {
+@@ -857,11 +857,11 @@
+ 
+             @Override public void close() {
+                 try {
+-                    out.close();
++out.close();
+                 } catch (IOException e) {
+                     hasErrors = true;
+-                }
+-            }
++} }
++
+ 
+             @Override public void flush() {
+                 try {

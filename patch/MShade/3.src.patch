@@ -1,0 +1,51 @@
+--- /tmp/MShade_3_buggy/src/main/java/org/apache/maven/plugins/shade/relocation/SimpleRelocator.java	2024-09-09 22:10:14.840401155 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/MShade_3_buggy/src/main/java/org/apache/maven/plugins/shade/relocation/SimpleRelocator.java	2024-09-10 15:35:31.607669937 +0800
+@@ -43,34 +43,34 @@
+     private List excludes;
+ 
+     public SimpleRelocator(String patt, String shadedPattern, List excludes)
+-    {
+-        this.pattern = patt;
+-        this.pathPattern = patt.replace('.', '/');
++{
++
+ 
+-        if ( shadedPattern != null )
++
++if ( shadedPattern != null)
+         {
+             this.shadedPattern = shadedPattern;
+             this.shadedPathPattern = shadedPattern.replace('.', '/');
+         } else
+         {
+-            this.shadedPattern = "hidden." + this.pattern;
+-            this.shadedPathPattern = "hidden/" + this.pathPattern;
++this.shadedPattern = "hidden." + (this.pattern); this.shadedPathPattern = "hidden/" + (this.pathPattern);
++
+         }
+ 
+-        if ( excludes != null && !excludes.isEmpty() )
++if ( excludes != null)
+         {
+-            this.excludes = new ArrayList();
++this.excludes = new java.util.ArrayList<String>();
++
+ 
+-            for (Iterator i = excludes.iterator(); i.hasNext();)
+             {
+-                String e = (String) i.next();
++java.lang.String e = (String) i.next();
++
++java.lang.String classExclude = e.replace( '.', '/');
++
+ 
+-                String classExclude = e.replace( '.', '/' );
+ 
+-                this.excludes.add(classExclude);
+-            }
+         }
+-    }
++
+ 
+     public boolean canRelocatePath( String path )
+     {

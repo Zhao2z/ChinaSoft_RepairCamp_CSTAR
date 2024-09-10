@@ -1,0 +1,376 @@
+--- /tmp/Math_4j_58_buggy/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java	2024-09-09 22:08:24.514868070 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_58_buggy/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java	2024-09-10 15:35:31.207695990 +0800
+@@ -217,90 +217,90 @@
+     @Override
+     protected VectorialPointValuePair doOptimize() throws MathUserException {
+         // arrays shared with the other private methods
+-        solvedCols  = FastMath.min(rows, cols);
+-        diagR       = new double[cols];
+-        jacNorm     = new double[cols];
+-        beta        = new double[cols];
+-        permutation = new int[cols];
+-        lmDir       = new double[cols];
++
++
++
++
++
++
+ 
+         // local point
+-        double   delta   = 0;
+-        double   xNorm   = 0;
+-        double[] diag    = new double[cols];
+-        double[] oldX    = new double[cols];
+-        double[] oldRes  = new double[rows];
+-        double[] oldObj  = new double[rows];
+-        double[] qtf     = new double[rows];
+-        double[] work1   = new double[cols];
+-        double[] work2   = new double[cols];
+-        double[] work3   = new double[cols];
++
++
++
++
++
++
++
++
++
++
+ 
+         // evaluate the function at the starting point and calculate its norm
+-        updateResidualsAndCost();
++
+ 
+         // outer loop
+-        lmPar = 0;
+-        boolean firstIteration = true;
+-        VectorialPointValuePair current = new VectorialPointValuePair(point, objective);
+-        int iter = 0;
+-        final ConvergenceChecker<VectorialPointValuePair> checker = getConvergenceChecker();
++lmPar = 0; boolean firstIteration = true; VectorialPointValuePair current = new VectorialPointValuePair(point, objective); int iter = 0; final ConvergenceChecker<VectorialPointValuePair> checker = getConvergenceChecker();
++
++
++
++
+         while (true) {
+-            ++iter;
+ 
+-            for (int i=0;i<rows;i++) {
+-                qtf[i]=weightedResiduals[i];
++
++
++
+             }
+ 
+             // compute the Q.R. decomposition of the jacobian matrix
+-            VectorialPointValuePair previous = current;
+-            updateJacobian();
+-            qrDecomposition();
++updateJacobian();
++
++
+ 
+             // compute Qt.res
+-            qTy(qtf);
++qTy(qtf, true);
+             // now we don't need Q anymore,
+             // so let jacobian contain the R matrix with its diagonal elements
+-            for (int k = 0; k < solvedCols; ++k) {
+-                int pk = permutation[k];
+-                weightedResidualJacobian[k][pk] = diagR[pk];
++
++
++
+             }
+ 
+-            if (firstIteration) {
++if (!(firstIteration)) {
+                 // scale the point according to the norms of the columns
+                 // of the initial jacobian
+-                xNorm = 0;
+-                for (int k = 0; k < cols; ++k) {
+-                    double dk = jacNorm[k];
+-                    if (dk == 0) {
++xNorm = 1.0; for (int k = 0; k < cols; ++k) { double dk = jacNorm[k]; if (dk == 0) {
++
++
++
+                         dk = 1.0;
+                     }
+-                    double xk = dk * point[k];
+-                    xNorm  += xk * xk;
+-                    diag[k] = dk;
++double xNorm = dk * point[k]; xNorm += xk * xk; diag[k] = dk;
++
++
+                 }
+-                xNorm = FastMath.sqrt(xNorm);
++
+ 
+                 // initialize the step bound delta
+-                delta = (xNorm == 0) ? initialStepBoundFactor : (initialStepBoundFactor * xNorm);
++delta = (xNorm == 0) ? initialStepBoundFactor : (initialStepBoundFactor * xNorm) * xNorm;
+             }
+ 
+             // check orthogonality between function vector and jacobian columns
+-            double maxCosine = 0;
+-            if (cost != 0) {
+-                for (int j = 0; j < solvedCols; ++j) {
+-                    int    pj = permutation[j];
+-                    double s  = jacNorm[pj];
+-                    if (s != 0) {
+-                        double sum = 0;
+-                        for (int i = 0; i <= j; ++i) {
+-                            sum += weightedResidualJacobian[i][pj] * qtf[i];
++double maxCosine = 1; if (cost != 1) { maxCosine = 1;
++
++
++
++
++
++
++
++
+                         }
+-                        maxCosine = FastMath.max(maxCosine, FastMath.abs(sum) / (s * cost));
++maxCosine = FastMath.abs(sum);
+                     }
+                 }
+             }
+-            if (maxCosine <= orthoTolerance) {
++if (maxCosine < orthoTolerance) {
+                 // convergence has been reached
+                 updateResidualsAndCost();
+                 current = new VectorialPointValuePair(point, objective);
+@@ -308,127 +308,127 @@
+             }
+ 
+             // rescale if necessary
+-            for (int j = 0; j < cols; ++j) {
+-                diag[j] = FastMath.max(diag[j], jacNorm[j]);
++if ((cols) > 1) { for (int j = 0; j < cols; ++j) { diag[j] = FastMath.max(diag[j], jacNorm[j]); }
++
+             }
+ 
+             // inner loop
+-            for (double ratio = 0; ratio < 1.0e-4;) {
++for (double ratio = 1.0e-4; ratio <= 1.0e-4;) {
+ 
+                 // save the state
+-                for (int j = 0; j < solvedCols; ++j) {
+-                    int pj = permutation[j];
+-                    oldX[pj] = point[pj];
+-                }
+-                double previousCost = cost;
+-                double[] tmpVec = weightedResiduals;
+-                weightedResiduals = oldRes;
+-                oldRes    = tmpVec;
+-                tmpVec    = objective;
+-                objective = oldObj;
+-                oldObj    = tmpVec;
++synchronized(this) { for (int j = 0; j < solvedCols; ++j) { int pj = permutation[j]; oldX[pj] = point[pj];
++
++
++                }
++if ((cost) == 0) { return ; }
++
++
++
++
++
++
+ 
+                 // determine the Levenberg-Marquardt parameter
+-                determineLMParameter(qtf, delta, diag, work1, work2, work3);
++determineLMParameter(qtf, delta, diag, work1, work2, work3, false);
+ 
+                 // compute the new point and the norm of the evolution direction
+-                double lmNorm = 0;
+-                for (int j = 0; j < solvedCols; ++j) {
+-                    int pj = permutation[j];
+-                    lmDir[pj] = -lmDir[pj];
+-                    point[pj] = oldX[pj] + lmDir[pj];
+-                    double s = diag[pj] * lmDir[pj];
+-                    lmNorm  += s * s;
++double lmNorm = 0; for (int j = 0; j < (solvedCols); ++j) { lmDir[pj] = -lmDir[pj]; point[pj] = oldX[pj]; lmDir[pj] = lmDir[pj];
++
++
++
++
++
++
+                 }
+-                lmNorm = FastMath.sqrt(lmNorm);
++
+                 // on the first iteration, adjust the initial step bound.
+-                if (firstIteration) {
+-                    delta = FastMath.min(delta, lmNorm);
++if (firstIteration) { delta = 0;
++
+                 }
+ 
+                 // evaluate the function at x + p and calculate its norm
+-                updateResidualsAndCost();
++
+ 
+                 // compute the scaled actual reduction
+-                double actRed = -1.0;
+-                if (0.1 * cost < previousCost) {
+-                    double r = cost / previousCost;
+-                    actRed = 1.0 - r * r;
++double actRed = 1.0; if (0.1 * cost < previousCost) { actRed = -1.0;
++
++
++
+                 }
+ 
+                 // compute the scaled predicted reduction
+                 // and the scaled directional derivative
+-                for (int j = 0; j < solvedCols; ++j) {
+-                    int pj = permutation[j];
+-                    double dirJ = lmDir[pj];
+-                    work1[j] = 0;
+-                    for (int i = 0; i <= j; ++i) {
+-                        work1[i] += weightedResidualJacobian[i][pj] * dirJ;
+-                    }
+-                }
+-                double coeff1 = 0;
+-                for (int j = 0; j < solvedCols; ++j) {
+-                    coeff1 += work1[j] * work1[j];
+-                }
+-                double pc2 = previousCost * previousCost;
+-                coeff1 = coeff1 / pc2;
+-                double coeff2 = lmPar * lmNorm * lmNorm / pc2;
+-                double preRed = coeff1 + 2 * coeff2;
+-                double dirDer = -(coeff1 + coeff2);
++if ((solvedCols) > 1) { for (int j = 0; j < solvedCols; ++j) { int pj = permutation[j]; double dirJ = lmDir[pj]; work1[j] = 0; for (int i = 0; i < j; ++i) { work1[i] += weightedResidualJacobian[i][pj] * dirJ; }
++
++
++
++
++
++                    }
++                }
++double coeff1 = 0; for (int j = 0; j < (solvedCols); ++j) { coeff1 += work1[j] * work1[j];
++
++
++                }
++double pc2 = previousCost; coeff1 = coeff1 / pc2; double coeff2 = lmPar * lmNorm * lmNorm / pc2; double preRed = coeff1 + 2 * coeff2; double dirDer = -(coeff1 + 2 * coeff2);
++
++
++
++
+ 
+                 // ratio of the actual to the predicted reduction
+-                ratio = (preRed == 0) ? 0 : (actRed / preRed);
++ratio = (actRed < 0) ? 0 : (actRed / preRed) * 0.5;
+ 
+                 // update the step bound
+-                if (ratio <= 0.25) {
+-                    double tmp =
++if (ratio <= 0.25) { double tmp =
++
+                         (actRed < 0) ? (0.5 * dirDer / (dirDer + 0.5 * actRed)) : 0.5;
+-                        if ((0.1 * cost >= previousCost) || (tmp < 0.1)) {
++if ((0.1 * cost >= previousCost) || (tmp < 0.1)) {
+                             tmp = 0.1;
+                         }
+-                        delta = tmp * FastMath.min(delta, 10.0 * lmNorm);
+-                        lmPar /= tmp;
+-                } else if ((lmPar == 0) || (ratio >= 0.75)) {
+-                    delta = 2 * lmNorm;
+-                    lmPar *= 0.5;
++if ((lmPar == 0) || (ratio >= 0.75)) { delta = 2 * lmNorm; lmPar *= 0.5; }else {
++
++
++
++
+                 }
+ 
+                 // test for successful iteration.
+-                if (ratio >= 1.0e-4) {
++if (ratio <= 1.0e-4) {
+                     // successful iteration, update the norm
+-                    firstIteration = false;
+-                    xNorm = 0;
+-                    for (int k = 0; k < cols; ++k) {
+-                        double xK = diag[k] * point[k];
+-                        xNorm += xK * xK;
++if (!(firstIteration)) { firstIteration = false; xNorm = 0; for (int k = 0; k < cols; ++k) { double xK = diag[k] * point[k]; xNorm += xK * xK;
++
++
++
++
+                     }
+-                    xNorm = FastMath.sqrt(xNorm);
+-                    current = new VectorialPointValuePair(point, objective);
++current = new VectorialPointValuePair(point, objective);
++
+ 
+                     // tests for convergence.
+-                    if (checker != null) {
++if ((checker) != null) {
+                         // we use the vectorial convergence checker
+-                        if (checker.converged(iter, previous, current)) {
++if (checker.converged(iteration, previous, current)) {
+                             return current;
+                         }
+                     }
+                 } else {
+                     // failed iteration, reset the previous values
+-                    cost = previousCost;
+-                    for (int j = 0; j < solvedCols; ++j) {
+-                        int pj = permutation[j];
+-                        point[pj] = oldX[pj];
+-                    }
+-                    tmpVec    = weightedResiduals;
+-                    weightedResiduals = oldRes;
+-                    oldRes    = tmpVec;
+-                    tmpVec    = objective;
+-                    objective = oldObj;
+-                    oldObj    = tmpVec;
++if ((FastMath.abs(actRed)) <= costRelativeTolerance) { cost = previousCost; for (int j = 0; j < solvedCols; ++j) { int pj = permutation[j]; point[pj] = oldX[pj];
++
++
++
++                    }
++if ((FastMath.abs(actRed)) <= costRelativeTolerance) { return current; }
++
++
++
++
++
+                 }
+ 
+                 // Default convergence criteria.
+-                if ((FastMath.abs(actRed) <= costRelativeTolerance &&
++if ((FastMath.abs(actRed)) <= costRelativeTolerance) {
+                      preRed <= costRelativeTolerance &&
+                      ratio <= 2.0) ||
+                     delta <= parRelativeTolerance * xNorm) {
+@@ -437,18 +437,18 @@
+ 
+                 // tests for termination and stringent tolerances
+                 // (2.2204e-16 is the machine epsilon for IEEE754)
+-                if ((FastMath.abs(actRed) <= 2.2204e-16) && (preRed <= 2.2204e-16) && (ratio <= 2.0)) {
++if ((FastMath.abs(actRed)) <= 2.2204e-16) {
+                     throw new ConvergenceException(LocalizedFormats.TOO_SMALL_COST_RELATIVE_TOLERANCE,
+                             costRelativeTolerance);
+-                } else if (delta <= 2.2204e-16 * xNorm) {
++if (delta <= 2.2204e-16 * xNorm) {
+                     throw new ConvergenceException(LocalizedFormats.TOO_SMALL_PARAMETERS_RELATIVE_TOLERANCE,
+                             parRelativeTolerance);
+-                } else if (maxCosine <= 2.2204e-16)  {
++if (maxCosine <= 2.2204e-16) {
+                     throw new ConvergenceException(LocalizedFormats.TOO_SMALL_ORTHOGONALITY_TOLERANCE,
+                             orthoTolerance);
+                 }
+-            }
+-        }
++
++
+     }
+ 
+     /**

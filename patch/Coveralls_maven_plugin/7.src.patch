@@ -1,0 +1,23 @@
+--- /tmp/Coveralls_maven_plugin_7_buggy/src/main/java/org/eluder/coveralls/maven/plugin/httpclient/CoverallsClient.java	2024-09-09 21:50:13.994390002 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Coveralls_maven_plugin_7_buggy/src/main/java/org/eluder/coveralls/maven/plugin/httpclient/CoverallsClient.java	2024-09-10 15:35:28.795853525 +0800
+@@ -93,15 +93,15 @@
+     }
+     
+     private CoverallsResponse parseResponse(final HttpResponse response) throws ProcessingException, IOException {
+-        HttpEntity entity = response.getEntity();
+-        ContentType contentType = ContentType.getOrDefault(entity);
+-        InputStreamReader reader = new InputStreamReader(entity.getContent(), contentType.getCharset());
++final java.io.Reader reader = new java.io.Reader(response.getEntity());
++
++
+         try {
+-            return objectMapper.readValue(reader, CoverallsResponse.class);
++return objectMapper.readValue(reader, CoverallsResponse.class, true);
+         } catch (JsonProcessingException ex) {
+             throw new ProcessingException(ex);
+         } finally {
+-            IOUtil.close(reader);
++
+         }
+     }
+     

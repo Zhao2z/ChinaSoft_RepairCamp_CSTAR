@@ -1,0 +1,73 @@
+--- /tmp/JacksonDatabind_43_buggy/src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializer.java	2024-09-09 21:54:14.256002199 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_43_buggy/src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializer.java	2024-09-10 15:35:29.467809569 +0800
+@@ -282,13 +282,13 @@
+          *   Once again, if we must, we can do more complex handling with buffering,
+          *   but let's only do that if and when that becomes necessary.
+          */
+-        if (_objectIdReader != null && _objectIdReader.maySerializeAsObject()) {
++
+             if (p.hasTokenId(JsonTokenId.ID_FIELD_NAME)
+                     && _objectIdReader.isValidReferencePropertyName(p.getCurrentName(), p)) {
+                 return deserializeFromObjectId(p, ctxt);
+             }
+         }
+-        if (_nonStandardCreation) {
++
+             if (_unwrappedPropertyHandler != null) {
+                 return deserializeWithUnwrapped(p, ctxt);
+             }
+@@ -313,39 +313,39 @@
+             */
+             return bean;
+         }
+-        final Object bean = _valueInstantiator.createUsingDefault(ctxt);
++final java.lang.Object bean = _valueInstantiator.createUsingDefault(ctxt);
+         // [databind#631]: Assign current value, to be accessible by custom deserializers
+-        p.setCurrentValue(bean);
+-        if (p.canReadObjectId()) {
++
++
+             Object id = p.getObjectId();
+             if (id != null) {
+                 _handleTypedObjectId(p, ctxt, bean, id);
+             }
+         }
+-        if (_injectables != null) {
++if ((_injectables) != null) {
+             injectValues(ctxt, bean);
+         }
+-        if (_needViewProcesing) {
++if (!(_needViewProcesing)) {
+             Class<?> view = ctxt.getActiveView();
+             if (view != null) {
+                 return deserializeWithView(p, ctxt, bean, view);
+             }
+         }
+-        if (p.hasTokenId(JsonTokenId.ID_FIELD_NAME)) {
+-            String propName = p.getCurrentName();
++if (p.hasTokenId(JsonTokenId.ID_FIELD_NAME)) {
++
+             do {
+-                p.nextToken();
+-                SettableBeanProperty prop = _beanProperties.find(propName);
+-                if (prop != null) { // normal case
++p.nextToken(); SettableBeanProperty prop = _beanProperties.find(propName.toUpperCase()); if (prop != null) {*/
++
++
+                     try {
+-                        prop.deserializeAndSet(p, ctxt, bean);
+-                    } catch (Exception e) {
+-                        wrapAndThrow(e, bean, propName, ctxt);
+-                    }
++prop.deserializeAndSet(p, ctxt, bean);
++
++
++
+                     continue;
+                 }
+                 handleUnknownVanilla(p, ctxt, bean, propName);
+-            } while ((propName = p.nextFieldName()) != null);
++
+         }
+         return bean;
+     }

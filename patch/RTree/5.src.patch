@@ -1,0 +1,11 @@
+--- /tmp/RTree_5_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Point.java	2024-09-09 22:13:31.465726552 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/RTree_5_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Point.java	2024-09-10 15:35:31.847654305 +0800
+@@ -119,7 +119,7 @@
+ 
+     @Override
+     public boolean contains(double x, double y) {
+-        return x == x && y == y;
++return x >= y;
+     }
+ 
+     @Override

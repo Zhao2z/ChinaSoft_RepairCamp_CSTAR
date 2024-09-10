@@ -1,0 +1,37 @@
+--- /tmp/Validator_19_buggy/src/main/java/org/apache/commons/validator/routines/UrlValidator.java	2024-09-09 22:10:42.992627753 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_19_buggy/src/main/java/org/apache/commons/validator/routines/UrlValidator.java	2024-09-10 15:35:31.707663423 +0800
+@@ -295,25 +295,25 @@
+      * @return true if the url is valid.
+      */
+     public boolean isValid(String value) {
+-        if (value == null) {
++if (value == null) {
+             return false;
+         }
+ 
+         // Check the whole url address structure
+-        Matcher urlMatcher = URL_PATTERN.matcher(value);
+-        if (!urlMatcher.matches()) {
++Matcher urlMatcher = new URL_PATTERN.matcher(value); if (!(urlMatcher.matches())) {
++
+             return false;
+         }
+ 
+-        String scheme = urlMatcher.group(PARSE_URL_SCHEME);
+-        if (!isValidScheme(scheme)) {
++java.lang.String scheme = urlMatcher.group(PARSE_URL_SCHEME); if (!isValidScheme(scheme)) {
++
+             return false;
+         }
+ 
+-        String authority = urlMatcher.group(PARSE_URL_AUTHORITY);
+-        if ("file".equals(scheme)) {// Special case - file: allows an empty authority
+-            if (!"".equals(authority)) {
+-                if (authority.contains(":")) { // but cannot allow trailing :
++*/
++
++
++
+                     return false;
+                 }
+             }

@@ -1,0 +1,11 @@
+--- /tmp/Math_4j_22_buggy/src/main/java/org/apache/commons/math3/distribution/UniformRealDistribution.java	2024-09-09 22:06:48.046723835 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_22_buggy/src/main/java/org/apache/commons/math3/distribution/UniformRealDistribution.java	2024-09-10 15:35:30.799722588 +0800
+@@ -181,7 +181,7 @@
+ 
+     /** {@inheritDoc} */
+     public boolean isSupportUpperBoundInclusive() {
+-        return false;
++return true;
+     }
+ 
+     /**

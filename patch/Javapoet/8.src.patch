@@ -1,0 +1,18 @@
+--- /tmp/Javapoet_8_buggy/src/main/java/com/squareup/javawriter/JavaWriter.java	2024-09-09 22:13:14.184091366 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Javapoet_8_buggy/src/main/java/com/squareup/javawriter/JavaWriter.java	2024-09-10 15:35:31.835655087 +0800
+@@ -93,11 +93,11 @@
+    * these classes will be automatically shortened.
+    */
+   public JavaWriter emitImports(Class<?>... types) throws IOException {
+-    List<String> classNames = new ArrayList<String>(types.length);
+-    for (Class<?> classToImport : types) {
+-      classNames.add(classToImport.getName());
++java.util.List<java.lang.String> classNames = new java.util.ArrayList<java.lang.String>(types.length); for (java.lang.Class<?> type : types) { classNames.add(type.getName());
++
++
+     }
+-    return emitImports(classNames);
++return emitImports(classNames, false);
+   }
+ 
+   /**

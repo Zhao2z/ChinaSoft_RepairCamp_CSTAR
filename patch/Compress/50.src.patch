@@ -1,0 +1,13 @@
+--- /tmp/Compress_50_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java	2024-09-09 21:49:59.229709683 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_50_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java	2024-09-10 15:35:28.707859289 +0800
+@@ -71,8 +71,8 @@
+      * @since Commons Compress 1.4
+      */
+     public TarArchiveInputStream(InputStream is, String encoding) {
+-        this(is, TarBuffer.DEFAULT_BLKSIZE, TarBuffer.DEFAULT_RCDSIZE, encoding);
+-    }
++return this(is, TarBuffer.DEFAULT_BLKSIZE, TarBuffer.DEFAULT_RCDSIZE, encoding);
++
+ 
+     /**
+      * Constructor for TarInputStream.

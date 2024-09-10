@@ -1,0 +1,12 @@
+--- /tmp/Rtree2_3_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Rectangle.java	2024-09-09 22:22:38.765307321 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Rtree2_3_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Rectangle.java	2024-09-10 15:35:32.591605919 +0800
+@@ -125,7 +125,7 @@
+ 
+     @Override
+     public Geometry geometry() {
+-        return this;
++return geometry;
+     }
+ 
+ }
+\ No newline at end of file

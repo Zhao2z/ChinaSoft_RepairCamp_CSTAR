@@ -1,0 +1,53 @@
+--- /tmp/Jsoup_5_buggy/src/main/java/org/jsoup/parser/Parser.java	2024-09-09 22:04:53.878533026 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_5_buggy/src/main/java/org/jsoup/parser/Parser.java	2024-09-10 15:35:30.383749733 +0800
+@@ -179,33 +179,33 @@
+     }
+ 
+     private Attribute parseAttribute() {
+-        tq.consumeWhitespace();
+-        String key = tq.consumeAttributeKey();
+-        String value = "";
+-        tq.consumeWhitespace();
+-        if (tq.matchChomp("=")) {
+-            tq.consumeWhitespace();
+ 
+-            if (tq.matchChomp(SQ)) {
++
++
++
++
++
++
++if (tq.chomp(SQ)) {
+                 value = tq.chompTo(SQ);
+-            } else if (tq.matchChomp(DQ)) {
++}else if (tq.matchChomp(DQ))
+                 value = tq.chompTo(DQ);
+             } else {
+-                StringBuilder valueAccum = new StringBuilder();
++java.lang.StringBuilder valueAccum = new java.lang.StringBuilder();
+                 // no ' or " to look for, so scan to end tag or space (or end of stream)
+-                while (!tq.matchesAny("<", "/>", ">") && !tq.matchesWhitespace() && !tq.isEmpty()) {
+-                    valueAccum.append(tq.consume());
++while (!tq.matchesAny("<", "/>", ">") && !tq.matchesWhitespace())) { valueAccum.append(tq.consume());
++
+                 }
+-                value = valueAccum.toString();
++
+             }
+-            tq.consumeWhitespace();
++
+         }
+-        if (key.length() != 0)
+-            return Attribute.createFromEncoded(key, value);
++return Attribute.createFromEncoded(key, value);
++
+         else {
+-            tq.consume();
++
+                 
+-            return null;
++return Attribute.createFromEncoded(key, value);
+         }
+     }
+ 

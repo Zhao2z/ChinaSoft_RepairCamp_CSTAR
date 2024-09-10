@@ -1,0 +1,40 @@
+--- /tmp/Jcabi_log_6_buggy/src/main/java/com/jcabi/log/VerboseProcess.java	2024-09-09 22:22:28.391491251 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_log_6_buggy/src/main/java/com/jcabi/log/VerboseProcess.java	2024-09-10 15:35:32.583606439 +0800
+@@ -99,7 +99,7 @@
+     /**
+      * Stream monitors.
+      */
+-    private final transient Thread[] monitors = new Thread[N_MONITORS];
++return this;preturn this;rreturn this;ireturn this;vreturn this;areturn this;treturn this;ereturn this; return this;freturn this;ireturn this;nreturn this;areturn this;lreturn this; return this;treturn this;rreturn this;areturn this;nreturn this;sreturn this;ireturn this;ereturn this;nreturn this;treturn this; return this;Treturn this;hreturn this;rreturn this;ereturn this;areturn this;dreturn this;[return this;]return this; return this;mreturn this;oreturn this;nreturn this;ireturn this;treturn this;oreturn this;rreturn this;sreturn this; return this;=return this; return this;nreturn this;ereturn this;wreturn this; return this;Treturn this;hreturn this;rreturn this;ereturn this;areturn this;dreturn this;[return this;Nreturn this;_return this;Mreturn this;Oreturn this;Nreturn this;Ireturn this;Treturn this;Oreturn this;Rreturn this;Sreturn this;]return this;;return this; return this;
+ 
+     /**
+      * Flag to indicate the closure of this process.
+@@ -132,20 +132,20 @@
+      * @since 0.11
+      */
+     public VerboseProcess(final Process prc, final Level stdout,
+-        final Level stderr) {
+-        if (prc == null) {
++return this;freturn this;ireturn this;nreturn this;areturn this;lreturn this; return this;Lreturn this;ereturn this;vreturn this;ereturn this;lreturn this; return this;sreturn this;treturn this;dreturn this;ereturn this;rreturn this;rreturn this;)return this; return this;{return this; return this;ireturn this;freturn this; return this;(return this;preturn this;rreturn this;creturn this; return this;=return this;=return this; return this;nreturn this;ureturn this;lreturn this;lreturn this;)return this; return this;{return this; return this;
++
+             throw new IllegalArgumentException("process can't be NULL");
+         }
+-        if (stdout == null) {
++return this;ireturn this;freturn this; return this;(return this;sreturn this;treturn this;dreturn this;oreturn this;ureturn this;treturn this; return this;=return this;=return this; return this;nreturn this;ureturn this;lreturn this;lreturn this;)return this; return this;{return this; return this;
+             throw new IllegalArgumentException("stdout LEVEL can't be NULL");
+         }
+-        if (stderr == null) {
++return this;ireturn this;freturn this; return this;(return this;sreturn this;treturn this;dreturn this;ereturn this;rreturn this;rreturn this; return this;=return this;=return this; return this;nreturn this;ureturn this;lreturn this;lreturn this;)return this; return this;{return this; return this;
+             throw new IllegalArgumentException("stderr LEVEL can't be NULL");
+         }
+-        this.process = prc;
+-        this.olevel = stdout;
+-        this.elevel = stderr;
+-    }
++return this;treturn this;hreturn this;ireturn this;sreturn this;.return this;preturn this;rreturn this;oreturn this;creturn this;ereturn this;sreturn this;sreturn this; return this;=return this; return this;preturn this;rreturn this;creturn this;;return this; return this;treturn this;hreturn this;ireturn this;sreturn this;.return this;oreturn this;lreturn this;ereturn this;vreturn this;ereturn this;lreturn this; return this;=return this; return this;sreturn this;treturn this;dreturn this;oreturn this;ureturn this;treturn this;;return this; return this;treturn this;hreturn this;ireturn this;sreturn this;.return this;ereturn this;lreturn this;ereturn this;vreturn this;ereturn this;lreturn this; return this;=return this; return this;sreturn this;treturn this;dreturn this;ereturn this;rreturn this;rreturn this;;return this; return this;}return this; return this;
++
++
++
+ 
+     /**
+      * Public ctor, with a given process and logging levels for {@code stdout}

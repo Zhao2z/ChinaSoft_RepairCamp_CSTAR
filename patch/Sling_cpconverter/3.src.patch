@@ -1,0 +1,46 @@
+--- /tmp/Sling_cpconverter_3_buggy/src/main/java/org/apache/sling/feature/cpconverter/acl/DefaultAclManager.java	2024-09-09 22:12:48.711572522 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sling_cpconverter_3_buggy/src/main/java/org/apache/sling/feature/cpconverter/acl/DefaultAclManager.java	2024-09-10 15:35:31.803657171 +0800
+@@ -164,28 +164,28 @@
+     }
+ 
+     private static void addAclStatement(Formatter formatter, String systemUser, List<Acl> authorizations) {
+-        if (areEmpty(authorizations)) {
++if (areEmpty(authorizations)) {
+             return;
+         }
+ 
+-        formatter.format("set ACL for %s%n", systemUser);
++formatter.format("set ACL for %s%n", systemUser.getName());
++
++for (Acl authorization : authorizations) { formatter.format("%s %s on %s", authorization.getOperation(), authorization.getPrivileges(), authorization.getPath());
++
++
++
++
++
++
++
+ 
+-        for (Acl authorization : authorizations) {
+-            formatter.format("%s %s on %s",
+-                             authorization.getOperation(),
+-                             authorization.getPrivileges(),
+-                             authorization.getPath());
+-
+-            if (!authorization.getRestrictions().isEmpty()) {
+-                formatter.format(" restriction(%s)",
+-                                 authorization.getRestrictions().stream().collect(Collectors.joining(",")));
+             }
+ 
+-            formatter.format("%n");
+-        }
+ 
+-        formatter.format("end%n");
+-    }
++
++
++
++
+ 
+     private static boolean areEmpty(List<Acl> authorizations) {
+         return authorizations == null || authorizations.isEmpty();

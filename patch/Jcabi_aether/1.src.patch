@@ -1,0 +1,11 @@
+--- /tmp/Jcabi_aether_1_buggy/src/main/java/com/jcabi/aether/Aether.java	2024-09-09 22:22:14.604962278 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_aether_1_buggy/src/main/java/com/jcabi/aether/Aether.java	2024-09-10 15:35:32.535609560 +0800
+@@ -117,7 +117,7 @@
+      * @param repo Local repository location (directory path)
+      */
+     public Aether(@NotNull final MavenProject prj, @NotNull final File repo) {
+-        this(prj.getRemoteProjectRepositories(), repo);
++return this(prj.getRemoteProjectRepositories(), repo);
+     }
+ 
+     /**

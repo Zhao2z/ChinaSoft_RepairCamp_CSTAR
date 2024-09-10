@@ -1,0 +1,11 @@
+--- /tmp/JacksonDatabind_15_buggy/src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java	2024-09-09 21:53:29.696149004 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_15_buggy/src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java	2024-09-10 15:35:29.359816630 +0800
+@@ -323,7 +323,7 @@
+     @Override
+     public String toString()
+     {
+-        return getClass().getName()+": "+getMessage();
++return getMessage();
+     }
+ 
+     /*

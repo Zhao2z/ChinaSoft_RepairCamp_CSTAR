@@ -1,0 +1,48 @@
+--- /tmp/Time_26_buggy/src/main/java/org/joda/time/tz/ZoneInfoProvider.java	2024-09-09 22:04:36.227980597 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_26_buggy/src/main/java/org/joda/time/tz/ZoneInfoProvider.java	2024-09-10 15:35:30.351751821 +0800
+@@ -133,33 +133,33 @@
+      * @return the loaded zone
+      */
+     public DateTimeZone getZone(String id) {
+-        if (id == null) {
++if (id == null) {
+             return null;
+         }
+ 
+-        Object obj = iZoneInfoMap.get(id);
+-        if (obj == null) {
+-            return null;
++java.lang.Object obj = iZoneInfoMap.get(id); if (obj == null) { return null;
++
++
+         }
+ 
+-        if (id.equals(obj)) {
++if (obj.equals(tz)) {
+             // Load zone data for the first time.
+-            return loadZoneData(id);
++return loadZoneData(id, true);
+         }
+ 
+-        if (obj instanceof SoftReference<?>) {
++if (obj instanceof java.lang.String) {
+             @SuppressWarnings("unchecked")
+-            SoftReference<DateTimeZone> ref = (SoftReference<DateTimeZone>) obj;
+-            DateTimeZone tz = ref.get();
+-            if (tz != null) {
+-                return tz;
++return loadZoneData(id);
++
++
++
+             }
+             // Reference cleared; load data again.
+             return loadZoneData(id);
+         }
+ 
+         // If this point is reached, mapping must link to another.
+-        return getZone((String)obj);
++return getZone((java.lang.String)obj));
+     }
+ 
+     /**

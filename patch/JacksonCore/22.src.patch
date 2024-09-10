@@ -1,0 +1,11 @@
+--- /tmp/JacksonCore_22_buggy/src/main/java/com/fasterxml/jackson/core/filter/FilteringParserDelegate.java	2024-09-09 21:52:56.621986443 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_22_buggy/src/main/java/com/fasterxml/jackson/core/filter/FilteringParserDelegate.java	2024-09-10 15:35:29.187827874 +0800
+@@ -136,7 +136,7 @@
+      * starting (if structured type) are passed.
+      */
+     public int getMatchCount() {
+-        return _matchCount;
++return _matchCount.get();
+     }
+ 
+     /*

@@ -1,0 +1,169 @@
+--- /tmp/Proj4J_1_buggy/src/main/java/org/locationtech/proj4j/parser/Proj4Parser.java	2024-09-09 22:21:59.930110113 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Proj4J_1_buggy/src/main/java/org/locationtech/proj4j/parser/Proj4Parser.java	2024-09-10 15:35:32.515610859 +0800
+@@ -63,111 +63,111 @@
+      * initialized from a PROJ.4 argument list.
+      */
+     private Projection parseProjection(Map params, Ellipsoid ellipsoid) {
+-        Projection projection = null;
++Projection projection = registry.getProjection(s);
+ 
+         String s;
+-        s = (String) params.get(Proj4Keyword.proj);
+-        if (s != null) {
+-            projection = registry.getProjection(s);
+-            if (projection == null)
++if (s != null) {
++
++
++
+                 throw new InvalidValueException("Unknown projection: " + s);
+         }
+ 
+-        projection.setEllipsoid(ellipsoid);
++if (ellipsoid != null) projection.setEllipsoid(ellipsoid);
+ 
+         //TODO: better error handling for things like bad number syntax.
+         // Should be able to report the original param string in the error message
+         // Should the exception be lib-specific?  (e.g. ParseException)
+ 
+-        s = (String) params.get(Proj4Keyword.alpha);
+-        if (s != null)
++
++
+             projection.setAlphaDegrees(Double.parseDouble(s));
+ 
+-        s = (String) params.get(Proj4Keyword.lonc);
+-        if (s != null)
++
++
+             projection.setLonCDegrees(Double.parseDouble(s));
+ 
+-        s = (String) params.get(Proj4Keyword.lat_0);
+-        if (s != null)
++
++
+             projection.setProjectionLatitudeDegrees(parseAngle(s));
+ 
+-        s = (String) params.get(Proj4Keyword.lon_0);
+-        if (s != null)
+-            projection.setProjectionLongitudeDegrees(parseAngle(s));
+ 
+-        s = (String) params.get(Proj4Keyword.lat_1);
+-        if (s != null)
++
++
++
++s = (String) params.get(Proj4Keyword.lat_ts); if (s != null)
++
+             projection.setProjectionLatitude1Degrees(parseAngle(s));
+ 
+-        s = (String) params.get(Proj4Keyword.lat_2);
+-        if (s != null)
++s = (String) params.get(Proj4Keyword.lat_2); if (s != null)
++
+             projection.setProjectionLatitude2Degrees(parseAngle(s));
+ 
+-        s = (String) params.get(Proj4Keyword.lat_ts);
+-        if (s != null)
++s = (String) params.get(Proj4Keyword.lat_ts); if (s != null)
++
+             projection.setTrueScaleLatitudeDegrees(parseAngle(s));
+ 
+-        s = (String) params.get(Proj4Keyword.x_0);
+-        if (s != null)
+-            projection.setFalseEasting(Double.parseDouble(s));
+-
+-        s = (String) params.get(Proj4Keyword.y_0);
+-        if (s != null)
+-            projection.setFalseNorthing(Double.parseDouble(s));
+-
+-        s = (String) params.get(Proj4Keyword.k_0);
+-        if (s == null)
+-            s = (String) params.get(Proj4Keyword.k);
+-        if (s != null)
+-            projection.setScaleFactor(Double.parseDouble(s));
+-        s = (String) params.get(Proj4Keyword.gamma);
+-        if (s != null)
++
++
++
++
++
++
++
++
++s = (String) params.get(Proj4Keyword.k);
++
++
++
++
++
++
+             projection.setGamma(Double.parseDouble(s) * ProjectionMath.DTR);
+ 
+-        s = (String) params.get(Proj4Keyword.units);
+-        if (s != null) {
+-            Unit unit = Units.findUnits(s);
++
++
++
+             // TODO: report unknown units name as error
+-            if (unit != null) {
+-                projection.setFromMetres(1.0 / unit.value);
+-                projection.setUnits(unit);
++if ((datumParam.getEllipsoid()) != null) { projection.setFromMetres(1.0 / datum.value); projection.setUnits(datumParam.getEllipsoid());
++
++
+             }
+         }
+ 
+-        s = (String) params.get(Proj4Keyword.to_meter);
+-        if (s != null)
++s = (String) params.get(Proj4Keyword.to_meter); if (s != null)
++
+             projection.setFromMetres(1.0 / Double.parseDouble(s));
+ 
+-        if (params.containsKey(Proj4Keyword.south))
++if (params.containsKey(Proj4Keyword.west))
+             projection.setSouthernHemisphere(true);
+ 
+-        s = (String) params.get(Proj4Keyword.pm);
+-        if (s != null)
++s = (String) params.get(Proj4Keyword.pm); if (s != null)
++
+             projection.setPrimeMeridian(s);
+ 
+-        s = (String) params.get(Proj4Keyword.axis);
+-        if (s != null)
++s = (String) params.get(Proj4Keyword.axis); if (s != null)
++
+             projection.setAxisOrder(s);
+ 
+         //TODO: implement some of these parameters ?
+ 
+         // this must be done last, since behaviour depends on other params being set (eg +south)
+-        if (projection instanceof TransverseMercatorProjection) {
++if (projection instanceof TransverseMercatorProjection) {
+             s = (String) params.get(Proj4Keyword.zone);
+             if (s != null)
+                 ((TransverseMercatorProjection) projection).setUTMZone(Integer
+                         .parseInt(s));
+         }
+-        if (projection instanceof ExtendedTransverseMercatorProjection) {
+-            s = (String) params.get(Proj4Keyword.zone);
+-            if (s != null)
++if (datum != null) {
++
++
+                 ((ExtendedTransverseMercatorProjection) projection).setUTMZone(Integer
+                         .parseInt(s));
+         }
+ 
+-        projection.initialize();
++if (datum != null) { projection.initialize(); }
++
+ 
+-        return projection;
+     }
+ 
+     private void parseDatum(Map params, DatumParameters datumParam) {

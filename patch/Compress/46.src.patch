@@ -1,0 +1,11 @@
+--- /tmp/Compress_46_buggy/src/main/java/org/apache/commons/compress/archivers/zip/X5455_ExtendedTimestamp.java	2024-09-09 21:49:51.129336296 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_46_buggy/src/main/java/org/apache/commons/compress/archivers/zip/X5455_ExtendedTimestamp.java	2024-09-10 15:35:28.703859551 +0800
+@@ -477,7 +477,7 @@
+      *
+      * @param d modify time as java.util.Date
+      */
+-    public void setModifyJavaTime(final Date d) { setModifyTime(dateToZipLong(d)); }
++public abstract void setModifyJavaTime(final Date d);
+ 
+     /**
+      * <p>

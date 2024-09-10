@@ -1,0 +1,11 @@
+--- /tmp/Gocd_slack_build_notifier_3_buggy/src/main/java/in/ashwanthkumar/gocd/slack/ruleset/RulesReader.java	2024-09-09 22:17:47.395059519 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Gocd_slack_build_notifier_3_buggy/src/main/java/in/ashwanthkumar/gocd/slack/ruleset/RulesReader.java	2024-09-10 15:35:32.383619441 +0800
+@@ -18,7 +18,7 @@
+     }
+ 
+     public static Rules read(String file) {
+-        return new RulesReader().load(ConfigFactory.parseResources(file));
++return new RulesReader().load(ConfigFactory.parseResources(file), null);
+     }
+ 
+     protected Rules load(Config config) {

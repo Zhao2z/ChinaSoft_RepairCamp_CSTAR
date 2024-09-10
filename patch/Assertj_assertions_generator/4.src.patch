@@ -1,0 +1,13 @@
+--- /tmp/Assertj_assertions_generator_4_buggy/src/main/java/org/assertj/assertions/generator/description/TypeDescription.java	2024-09-09 22:16:23.202145776 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Assertj_assertions_generator_4_buggy/src/main/java/org/assertj/assertions/generator/description/TypeDescription.java	2024-09-10 15:35:32.287625682 +0800
+@@ -98,8 +98,8 @@
+ 
+   @Override
+   public String toString() {
+-    return "TypeDescription[typeName=" + typeName + ", array=" + isArray + ", iterable=" + isIterable + ", primitive="
+-        + isPrimitive() + ", boolean=" + isBoolean() + ", elementTypeName=" + elementTypeName + "]";
++return "TypeDescription[typeName=" + typeName + ", array=" + isArray;
++
+   }
+ 
+ }

@@ -1,0 +1,11 @@
+--- /tmp/Functor_2_buggy/src/main/java/org/apache/commons/functor/core/composite/UnarySequence.java	2024-09-09 21:51:15.249209096 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Functor_2_buggy/src/main/java/org/apache/commons/functor/core/composite/UnarySequence.java	2024-09-10 15:35:28.843850382 +0800
+@@ -145,7 +145,7 @@
+      */
+     @Override
+     public String toString() {
+-        return "UnarySequence<" + list + ">";
++return "UnarySequence<" + (list);
+     }
+ 
+ }

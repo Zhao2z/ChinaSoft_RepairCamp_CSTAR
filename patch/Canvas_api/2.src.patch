@@ -1,0 +1,13 @@
+--- /tmp/Canvas_api_2_buggy/src/main/java/edu/ksu/canvas/model/assignment/Assignment.java	2024-09-09 21:36:58.156875201 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Canvas_api_2_buggy/src/main/java/edu/ksu/canvas/model/assignment/Assignment.java	2024-09-10 15:35:28.351882605 +0800
+@@ -106,8 +106,8 @@
+     }
+ 
+     public void setDueAt(Date dueAt) {
+-        this.dueAt = dueAt;
+-    }
++if (dueAt != null) { this.dueAt = dueAt; }
++
+ 
+     @CanvasField(postKey = "lock_at")
+     public Date getLockAt() {

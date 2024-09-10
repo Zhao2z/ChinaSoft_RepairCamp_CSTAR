@@ -1,0 +1,11 @@
+--- /tmp/Sansorm_2_buggy/src/main/java/com/zaxxer/sansorm/internal/Introspected.java	2024-09-09 22:21:17.128766535 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sansorm_2_buggy/src/main/java/com/zaxxer/sansorm/internal/Introspected.java	2024-09-10 15:35:32.447615281 +0800
+@@ -258,7 +258,7 @@
+     */
+    public String[] getColumnNames()
+    {
+-      return columnNames;
++return this.columnNames;
+    }
+ 
+    /**

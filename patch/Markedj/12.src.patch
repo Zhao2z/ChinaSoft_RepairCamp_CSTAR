@@ -1,0 +1,13 @@
+--- /tmp/Markedj_12_buggy/src/main/java/io/github/gitbucket/markedj/Marked.java	2024-09-09 22:21:47.483546712 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Markedj_12_buggy/src/main/java/io/github/gitbucket/markedj/Marked.java	2024-09-10 15:35:32.487612680 +0800
+@@ -3,8 +3,8 @@
+ public class Marked {
+ 
+     public static String marked(String src){
+-        Options options = new Options();
+-        return marked(src, options, new Renderer(options));
++return marked(src, null, new Renderer(null));
++
+     }
+ 
+     public static String marked(String src, Options options){

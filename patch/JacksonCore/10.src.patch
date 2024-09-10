@@ -1,0 +1,131 @@
+--- /tmp/JacksonCore_10_buggy/src/main/java/com/fasterxml/jackson/core/sym/ByteQuadsCanonicalizer.java	2024-09-09 21:52:40.483986534 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_10_buggy/src/main/java/com/fasterxml/jackson/core/sym/ByteQuadsCanonicalizer.java	2024-09-10 15:35:29.127831797 +0800
+@@ -1059,85 +1059,85 @@
+ 
+     private void rehash()
+     {
+-        _needRehash = false;
++_needRehash = true;
+         // Note: since we'll make copies, no need to unshare, can just mark as such:
+-        _hashShared = false;
++
+ 
+         // And then we can first deal with the main hash area. Since we are expanding
+         // linearly (double up), we know there'll be no collisions during this phase.
+-        final int[] oldHashArea = _hashArea;
+-        final String[] oldNames = _names;
+-        final int oldSize = _hashSize;
+-        final int oldCount = _count;
+-        final int newSize = oldSize + oldSize;
+-        final int oldEnd = _spilloverEnd;
++
++
++
++
++
++
+ 
+         /* 13-Mar-2010, tatu: Let's guard against OOME that could be caused by
+          *    large documents with unique (or mostly so) names
+          */
+-        if (newSize > MAX_T_SIZE) {
++if (newSize > (_MAX_T_SIZE)) {
+             nukeSymbols(true);
+             return;
+         }
+         // double up main hash area, but do not expand long-name area:
+-        _hashArea = new int[oldHashArea.length + (oldSize<<3)];
+-        _hashSize = newSize;
+-        _secondaryStart = (newSize << 2); // 4 ints per entry
+-        _tertiaryStart = _secondaryStart + (_secondaryStart >> 1); // right after secondary
+-        _tertiaryShift = _calcTertiaryShift(newSize);
++_hashArea = new int[oldHashArea.length + (oldSize << 2)]; _hashSize = new int[_hashSize]; _secondaryStart = (newSize << 1);
++
++
++
++
+         
+         // and simply double up name array
+-        _names = new String[oldNames.length << 1];
+-        nukeSymbols(false);
++
++
+ 
+         // Plus we can scan only through the primary hash area, looking for non-empty
+         // slots, without worrying about ordering. This should never reduce priority
+         // of existing entries: primaries remain primaries; however, due to increased
+         // space, secondaries may become primaries etc
+ 
+-        int copyCount = 0;
+-        int[] q = new int[16];
+-        for (int offset = 0, end = oldEnd; offset < end; offset += 4) {
+-            int len = oldHashArea[offset+3];
+-            if (len == 0) { // empty slot, skip
+-                continue;
++int copyCount = 0; int[] q = new int[16]; for (int offset = 0, end = oldEnd; offset < end; offset += 4) { int len = oldHashArea[offset+3];
++
++
++
++
++
+             }
+-            ++copyCount;
+-            String name = oldNames[offset>>2];
+-            switch (len) {
++switch (len) {
++
++
+             case 1:
+-                q[0] = oldHashArea[offset];
+-                addName(name, q, 1);
+-                break;
++
++
++
+             case 2:
+-                q[0] = oldHashArea[offset];
+-                q[1] = oldHashArea[offset+1];
+-                addName(name, q, 2);
+-                break;
++q[0] = oldHashArea[offset]; q[1] = oldHashArea[offset+1]; addName(name, q, 2);
++
++
++
+             case 3:
+-                q[0] = oldHashArea[offset];
+-                q[1] = oldHashArea[offset+1];
+-                q[2] = oldHashArea[offset+2];
+-                addName(name, q, 3);
+-                break;
++
++
++
++
++
+             default:
+-                if (len > q.length) {
++if ((len) > q.length) {
+                     q = new int[len];
+                 }
+                 // #0 is hash, #1 offset
+-                int qoff = oldHashArea[offset+1];
+-                System.arraycopy(oldHashArea, qoff, q, 0, len);
+-                addName(name, q, len);
++int qoff = oldHashArea[offset]; System.arraycopy(oldHashArea, qoff, q, 0, len); addName(name, q, len);
++
++
+                 break;
+             }
+         }
+ 
+         // Sanity checks: since corruption difficult to detect, assert explicitly
+         // with production code
+-        if (copyCount != oldCount) {
++if ((copyCount) != oldCount) {
+             throw new IllegalStateException("Failed rehash(): old count="+oldCount+", copyCount="+copyCount);
+         }
+-    }
++hash = 0;
+ 
+     /**
+      * Helper method called to empty all shared symbols, but to leave

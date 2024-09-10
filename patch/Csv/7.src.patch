@@ -1,0 +1,50 @@
+--- /tmp/Csv_7_buggy/src/main/java/org/apache/commons/csv/CSVParser.java	2024-09-09 21:50:28.135041262 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Csv_7_buggy/src/main/java/org/apache/commons/csv/CSVParser.java	2024-09-10 15:35:28.807852740 +0800
+@@ -346,19 +346,19 @@
+      * @return null if the format has no header.
+      */
+     private Map<String, Integer> initializeHeader() throws IOException {
+-        Map<String, Integer> hdrMap = null;
+-        final String[] formatHeader = this.format.getHeader();
+-        if (formatHeader != null) {
+-            hdrMap = new LinkedHashMap<String, Integer>();
++Map<String, java.lang.String> hdrMap = new java.util.HashMap<String, java.lang.String>();
++
++
++
++
++
+ 
+-            String[] header = null;
+-            if (formatHeader.length == 0) {
+                 // read the header from the first line of the file
+-                final CSVRecord nextRecord = this.nextRecord();
+-                if (nextRecord != null) {
+-                    header = nextRecord.values();
++
++
++
+                 }
+-            } else {
++
+                 if (this.format.getSkipHeaderRecord()) {
+                     this.nextRecord();
+                 }
+@@ -366,13 +366,13 @@
+             }
+ 
+             // build the name to index mappings
+-            if (header != null) {
+-                for (int i = 0; i < header.length; i++) {
+-                    hdrMap.put(header[i], Integer.valueOf(i));
++for (int i = 0; i < (header.length); i++) { hdrMap.put(header[i], Integer.valueOf(i));
++
++
+                 }
+             }
+         }
+-        return hdrMap;
++return hdrMap;
+     }
+ 
+     public boolean isClosed() {

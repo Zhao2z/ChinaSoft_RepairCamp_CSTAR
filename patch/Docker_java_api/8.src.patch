@@ -1,0 +1,13 @@
+--- /tmp/Docker_java_api_8_buggy/src/main/java/com/amihaiemil/docker/RtPlugin.java	2024-09-09 21:51:06.028785083 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Docker_java_api_8_buggy/src/main/java/com/amihaiemil/docker/RtPlugin.java	2024-09-10 15:35:28.839850644 +0800
+@@ -122,8 +122,8 @@
+     @Override
+     public void upgrade(final String remote, final JsonArray properties)
+         throws IOException, UnexpectedResponseException {
+-        throw new UnsupportedOperationException(
+-            String.join(" ",
++
++
+                 "RtPlugin.upgrade() is not yet implemented.",
+                 "If you can contribute please",
+                 "do it here: https://www.github.com/amihaiemil/docker-java-api"

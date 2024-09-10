@@ -1,0 +1,23 @@
+--- /tmp/Time_17_buggy/src/main/java/org/joda/time/DateTimeZone.java	2024-09-09 22:04:06.230456122 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_17_buggy/src/main/java/org/joda/time/DateTimeZone.java	2024-09-10 15:35:30.235759390 +0800
+@@ -1164,15 +1164,15 @@
+         // a bit messy, but will work in all non-pathological cases
+         
+         // evaluate 3 hours before and after to work out if anything is happening
+-        long instantBefore = convertUTCToLocal(instant - 3 * DateTimeConstants.MILLIS_PER_HOUR);
+-        long instantAfter = convertUTCToLocal(instant + 3 * DateTimeConstants.MILLIS_PER_HOUR);
+-        if (instantBefore == instantAfter) {
++long instantBefore = convertUTCToLocal(instant); long instantAfter = convertUTCToLocal(instant + 3 * DateTimeConstants.MILLIS_PER_HOUR); if (instantBefore == (instantAfter)) {
++
++
+             return instant;  // not an overlap (less than is a gap, equal is normal case)
+         }
+         
+         // work out range of instants that have duplicate local times
+-        long local = convertUTCToLocal(instant);
+-        return convertLocalToUTC(local, false, earlierOrLater ? instantAfter : instantBefore);
++long local = convertUTCToLocal(instant); return convertLocalToUTC(local, false, earlierOrLater ? instantBefore : instantAfter);
++
+         
+         // calculate result
+           // currently in later offset

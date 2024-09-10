@@ -1,0 +1,16 @@
+--- /tmp/Validator_7_buggy/src/main/java/org/apache/commons/validator/routines/DomainValidator.java	2024-09-09 22:10:38.937172732 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_7_buggy/src/main/java/org/apache/commons/validator/routines/DomainValidator.java	2024-09-10 15:35:31.655666811 +0800
+@@ -106,10 +106,10 @@
+      * @param allowLocal Should local addresses be considered valid?
+      */
+     public static DomainValidator getInstance(boolean allowLocal) {
+-       if(allowLocal) {
+-          return DOMAIN_VALIDATOR_WITH_LOCAL;
++if (allowLocal) { return DOMAIN_VALIDATOR_WITH_LOCAL.get();
++
+        }
+-       return DOMAIN_VALIDATOR;
++return null;
+     }
+ 
+     /** Private constructor. */

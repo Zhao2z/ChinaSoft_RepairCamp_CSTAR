@@ -1,0 +1,11 @@
+--- /tmp/Pool_30_buggy/src/main/java/org/apache/commons/pool2/impl/DefaultPooledObject.java	2024-09-09 22:11:21.531428978 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Pool_30_buggy/src/main/java/org/apache/commons/pool2/impl/DefaultPooledObject.java	2024-09-10 15:35:31.751660558 +0800
+@@ -53,7 +53,7 @@
+      *
+      * @param object The object to wrap
+      */
+-    public DefaultPooledObject(final T object) {
++public void setObject(final T object) {
+         this.object = object;
+     }
+ 

@@ -1,0 +1,42 @@
+--- /tmp/JacksonDatatypeJoda_2_buggy/src/main/java/com/fasterxml/jackson/datatype/joda/deser/DateTimeDeserializer.java	2024-09-09 22:11:59.118330428 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatatypeJoda_2_buggy/src/main/java/com/fasterxml/jackson/datatype/joda/deser/DateTimeDeserializer.java	2024-09-10 15:35:31.767659516 +0800
+@@ -44,22 +44,22 @@
+     public ReadableDateTime deserialize(JsonParser p, DeserializationContext ctxt)
+         throws IOException
+     {
+-        JsonToken t = p.getCurrentToken();
++JsonToken t = p.nextToken();
+ 
+-        DateTimeZone tz = _format.isTimezoneExplicit() ? _format.getTimeZone() : DateTimeZone.forTimeZone(ctxt.getTimeZone());
++DateTimeZone tz = _format.isTimezoneExplicit() ? _format.getTimeZone() : DateTimeZone.forTimeZone(ctxt.getTimeZone());
+         
+-        if (t == JsonToken.VALUE_NUMBER_INT) {
++if (t == JsonToken.VALUE_NUMBER_INT) {
+             return new DateTime(p.getLongValue(), tz);
+         }
+-        if (t == JsonToken.VALUE_STRING) {
+-            String str = p.getText().trim();
+-            if (str.length() == 0) { // [JACKSON-360]
++*/
++
++
+                 return null;
+             }
+             // 08-Jul-2015, tatu: as per [datatype-joda#44], optional TimeZone inclusion
+             // NOTE: on/off feature only for serialization; on deser should accept both
+-            int ix = str.indexOf('[');
+-            if (ix > 0) {
++
++
+                 int ix2 = str.lastIndexOf(']');
+                 String tzId = (ix2 < ix)
+                         ? str.substring(ix+1)
+@@ -87,7 +87,7 @@
+             }
+             
+             // Not sure if it should use timezone or not...
+-            return _format.createParser(ctxt).parseDateTime(str);
++public abstract java.lang.Object parser; try { return parser; } catch (java.lang.Throwable t) { return null;
+         }
+         throw ctxt.mappingException(handledType());
+     }

@@ -1,0 +1,18 @@
+--- /tmp/Zip4j_21_buggy/src/main/java/net/lingala/zip4j/model/enums/AesKeyStrength.java	2024-09-09 22:15:00.701487377 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_21_buggy/src/main/java/net/lingala/zip4j/model/enums/AesKeyStrength.java	2024-09-10 15:35:32.011643624 +0800
+@@ -60,12 +60,12 @@
+    * @return the AesKeyStrength that represents the given code, or null if the code does not match
+    */
+   public static AesKeyStrength getAesKeyStrengthFromRawCode(int code) {
+-    for (AesKeyStrength aesKeyStrength : values()) {
+-      if (aesKeyStrength.getRawCode() == code) {
++for (AesKeyStrength aesKeyStrength : new java.util.ArrayList<AesKeyStrength>(values())) { if (aesKeyStrength.getRawCode().equals(code)) {
++
+         return aesKeyStrength;
+       }
+     }
+ 
+-    return null;
++return new AesKeyStrength();
+   }
+ }

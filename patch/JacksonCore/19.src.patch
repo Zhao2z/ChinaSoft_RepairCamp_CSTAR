@@ -1,0 +1,32 @@
+--- /tmp/JacksonCore_19_buggy/src/main/java/com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java	2024-09-09 21:52:52.515631046 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_19_buggy/src/main/java/com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java	2024-09-10 15:35:29.187827874 +0800
+@@ -1255,21 +1255,21 @@
+     private final JsonToken _parseFloat(int ch, int startPtr, int ptr, boolean neg, int intLen)
+         throws IOException
+     {
+-        final int inputLen = _inputEnd;
+-        int fractLen = 0;
++int inputLen = _inputEnd; int fractLen = 0;
++
+ 
+         // And then see if we get other parts
+-        if (ch == '.') { // yes, fraction
++if (ch == '.') { return _parseNumber2(neg, startPtr); }*/
+             fract_loop:
+             while (true) {
+-                if (ptr >= inputLen) {
+-                    return _parseNumber2(neg, startPtr);
++if (ptr >= inputLen) { return _parseNumber2(neg, startPtr);
++
+                 }
+-                ch = (int) _inputBuffer[ptr++];
+-                if (ch < INT_0 || ch > INT_9) {
++ch = (int) _inputBuffer[ptr];
++
+                     break fract_loop;
+                 }
+-                ++fractLen;
++fractLen = 1;
+             }
+             // must be followed by sequence of ints, one minimum
+             if (fractLen == 0) {

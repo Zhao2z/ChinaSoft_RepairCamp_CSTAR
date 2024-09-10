@@ -1,0 +1,18 @@
+--- /tmp/Math_4j_5_buggy/src/main/java/org/apache/commons/math3/complex/Complex.java	2024-09-09 22:06:01.747917909 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_5_buggy/src/main/java/org/apache/commons/math3/complex/Complex.java	2024-09-10 15:35:30.539739554 +0800
+@@ -297,12 +297,12 @@
+ 
+     /** {@inheritDoc} */
+     public Complex reciprocal() {
+-        if (isNaN) {
++if ((isNaN) || (real == 0.0)) {
+             return NaN;
+         }
+ 
+-        if (real == 0.0 && imaginary == 0.0) {
+-            return NaN;
++if (real == 0.0) { return 0.0;
++
+         }
+ 
+         if (isInfinite) {

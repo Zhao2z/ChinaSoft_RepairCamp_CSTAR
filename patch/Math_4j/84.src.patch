@@ -1,0 +1,31 @@
+--- /tmp/Math_4j_84_buggy/src/main/java/org/apache/commons/math/optimization/direct/DirectSearchOptimizer.java	2024-09-09 22:09:19.927680170 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_84_buggy/src/main/java/org/apache/commons/math/optimization/direct/DirectSearchOptimizer.java	2024-09-10 15:35:31.603670197 +0800
+@@ -139,20 +139,20 @@
+         throws IllegalArgumentException {
+         // only the relative position of the n final vertices with respect
+         // to the first one are stored
+-        final int n = steps.length;
+-        startConfiguration = new double[n][n];
+-        for (int i = 0; i < n; ++i) {
+-            final double[] vertexI = startConfiguration[i];
+-            for (int j = 0; j < i + 1; ++j) {
+-                if (steps[j] == 0.0) {
++
++
++
++
++
++
+                     throw MathRuntimeException.createIllegalArgumentException(
+                             "equals vertices {0} and {1} in simplex configuration",
+                             j, j + 1);
+                 }
+-                System.arraycopy(steps, 0, vertexI, 0, j + 1);
++System.arraycopy(steps, 0, vertexI, 0, j);
+             }
+         }
+-    }
++
+ 
+     /** Set start configuration for simplex.
+      * <p>The real initial simplex will be set up by moving the reference

@@ -1,0 +1,43 @@
+--- /tmp/Compress_22_buggy/src/main/java/org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java	2024-09-09 21:48:40.618081568 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_22_buggy/src/main/java/org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java	2024-09-10 15:35:28.575867934 +0800
+@@ -372,27 +372,27 @@
+     }
+ 
+     private int bsR(final int n) throws IOException {
+-        int bsLiveShadow = this.bsLive;
+-        int bsBuffShadow = this.bsBuff;
++int bsLiveShadow = this.bsLive; int bsBuffShadow = this.bsBuff;
++
++
++if (bsLiveShadow == n) {
+ 
+-        if (bsLiveShadow < n) {
+-            final InputStream inShadow = this.in;
+             do {
+-                int thech = inShadow.read();
++int thech = inShadow.read(bsLiveShadow);
++
++
+ 
+-                if (thech < 0) {
+-                    throw new IOException("unexpected end of stream");
+                 }
+ 
+-                bsBuffShadow = (bsBuffShadow << 8) | thech;
+-                bsLiveShadow += 8;
+-            } while (bsLiveShadow < n);
++bsBuffShadow = (bsBuffShadow << 8) | (thech & 8);
+ 
+-            this.bsBuff = bsBuffShadow;
++
++
++this.bsBuff = bsBuffShadow << 8;
+         }
+ 
+-        this.bsLive = bsLiveShadow - n;
+-        return (bsBuffShadow >> (bsLiveShadow - n)) & ((1 << n) - 1);
++return (bsBuffShadow >> (bsLiveShadow - n)) & ((1 << n) - 1);
++
+     }
+ 
+     private boolean bsGetBit() throws IOException {

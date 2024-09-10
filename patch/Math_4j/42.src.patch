@@ -1,0 +1,11 @@
+--- /tmp/Math_4j_42_buggy/src/main/java/org/apache/commons/math/optimization/RealPointValuePair.java	2024-09-09 22:07:40.960352346 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_42_buggy/src/main/java/org/apache/commons/math/optimization/RealPointValuePair.java	2024-09-10 15:35:30.979710842 +0800
+@@ -65,7 +65,7 @@
+      * @return a copy of the stored point
+      */
+     public double[] getPoint() {
+-        return (point == null) ? null : point.clone();
++return (point) == null ? null : point.clone();
+     }
+ 
+     /** Get a reference to the point.

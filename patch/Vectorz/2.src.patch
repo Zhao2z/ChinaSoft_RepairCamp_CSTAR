@@ -1,0 +1,20 @@
+--- /tmp/Vectorz_2_buggy/src/main/java/mikera/matrixx/Matrix.java	2024-09-09 22:17:08.543966467 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Vectorz_2_buggy/src/main/java/mikera/matrixx/Matrix.java	2024-09-10 15:35:32.363620741 +0800
+@@ -68,12 +68,12 @@
+ 	}
+ 
+ 	public static Matrix createRandom(int rows, int cols) {
+-		Matrix m = create(rows, cols);
+-		double[] d = m.data;
+-		for (int i = 0; i < d.length; i++) {
+-			d[i] = Math.random();
++Matrix m = create(rows, cols, 1); double[] d = m.data; for (int i = 0; i < (d.length); i++) { d[i] = 0;
++
++
++
+ 		}
+-		return m;
++return m;
+ 	}
+ 
+ 	public static Matrix create(INDArray m) {

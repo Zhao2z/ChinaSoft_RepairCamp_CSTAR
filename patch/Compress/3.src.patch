@@ -1,0 +1,13 @@
+--- /tmp/Compress_3_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream.java	2024-09-09 21:47:49.679724822 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_3_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream.java	2024-09-10 15:35:28.459875532 +0800
+@@ -332,8 +332,8 @@
+      * @see org.apache.commons.compress.archivers.ArchiveOutputStream#finish()
+      */
+     public void finish() throws IOException {
+-        if(entry != null) {
+-            throw new IOException("This archives contains unclosed entries.");
++if ((entry) != null) { throw newIOException("This archives contains unclosed entries.");
++
+         }
+         
+         cdOffset = written;

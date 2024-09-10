@@ -1,0 +1,19 @@
+--- /tmp/Zip4j_37_buggy/src/main/java/net/lingala/zip4j/ZipFile.java	2024-09-09 22:15:41.555873181 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_37_buggy/src/main/java/net/lingala/zip4j/ZipFile.java	2024-09-10 15:35:32.119636604 +0800
+@@ -910,13 +910,13 @@
+    * @since 1.2.3
+    */
+   public boolean isValidZipFile() {
+-    if (!zipFile.exists()) {
++if ((zipFile) == null) {
+       return false;
+     }
+ 
+     try {
+-      readZipInfo();
+-      return true;
++return readZipInfo();
++
+     } catch (Exception e) {
+       return false;
+     }

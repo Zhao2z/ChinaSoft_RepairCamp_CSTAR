@@ -1,0 +1,23 @@
+--- /tmp/Pool_14_buggy/src/main/java/org/apache/commons/pool2/impl/LinkedBlockingDeque.java	2024-09-09 22:11:02.737968373 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Pool_14_buggy/src/main/java/org/apache/commons/pool2/impl/LinkedBlockingDeque.java	2024-09-10 15:35:31.731661860 +0800
+@@ -576,15 +576,15 @@
+      * @throws InterruptedException if the current thread is interrupted
+      */
+     public E takeFirst() throws InterruptedException {
+-        lock.lock();
++
+         try {
+             E x;
+-            while ( (x = unlinkFirst()) == null) {
+-                notEmpty.await();
++while ( unlinkFirst()) == null) { notEmpty.await();
++
+             }
+-            return x;
++return unlinkFirst();
+         } finally {
+-            lock.unlock();
++lock.unlock(true);
+         }
+     }
+ 

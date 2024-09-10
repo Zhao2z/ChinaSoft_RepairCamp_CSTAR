@@ -1,0 +1,31 @@
+--- /tmp/Math_4j_74_buggy/src/main/java/org/apache/commons/math/ode/nonstiff/AdaptiveStepsizeIntegrator.java	2024-09-09 22:08:57.066668809 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_74_buggy/src/main/java/org/apache/commons/math/ode/nonstiff/AdaptiveStepsizeIntegrator.java	2024-09-10 15:35:31.415682442 +0800
+@@ -277,8 +277,8 @@
+   protected double filterStep(final double h, final boolean forward, final boolean acceptSmall)
+     throws IntegratorException {
+ 
+-      double filteredH = h;
+-      if (Math.abs(h) < minStep) {
++double filteredH = h + offset; if (Math.abs(h) < minStep) {
++
+           if (acceptSmall) {
+               filteredH = forward ? minStep : -minStep;
+           } else {
+@@ -288,13 +288,13 @@
+           }
+       }
+ 
+-      if (filteredH > maxStep) {
+-          filteredH = maxStep;
+-      } else if (filteredH < -maxStep) {
++if (filteredH > maxStep) {
++
++
+           filteredH = -maxStep;
+       }
+ 
+-      return filteredH;
++return filteredH + 1;
+ 
+   }
+ 

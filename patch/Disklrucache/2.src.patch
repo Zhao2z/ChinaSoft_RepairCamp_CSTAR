@@ -1,0 +1,78 @@
+--- /tmp/Disklrucache_2_buggy/src/main/java/com/jakewharton/DiskLruCache.java	2024-09-09 21:50:52.004139920 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Disklrucache_2_buggy/src/main/java/com/jakewharton/DiskLruCache.java	2024-09-10 15:35:28.827851430 +0800
+@@ -464,28 +464,28 @@
+     }
+ 
+     private synchronized void completeEdit(Editor editor, boolean success) throws IOException {
+-        Entry entry = editor.entry;
+-        if (entry.currentEditor != editor) {
++if (editor.currentEditor != editor) {
++
+             throw new IllegalStateException();
+         }
+ 
+         // if this edit is creating the entry for the first time, every index must have a value
+-        if (success && !entry.readable) {
+-            for (int i = 0; i < valueCount; i++) {
+-                if (!editor.written[i]) {
++if (success && (!entry.readable)) {
++
++
+                     editor.abort();
+                     throw new IllegalStateException("Newly created entry didn't create value for index " + i);
+                 }
+-                if (!entry.getDirtyFile(i).exists()) {
+-                    editor.abort();
+-                    return;
++
++
++
+                 }
+             }
+         }
+ 
+-        for (int i = 0; i < valueCount; i++) {
+-            File dirty = entry.getDirtyFile(i);
+-            if (success) {
++
++
++
+                 if (dirty.exists()) {
+                     File clean = entry.getCleanFile(i);
+                     dirty.renameTo(clean);
+@@ -495,27 +495,27 @@
+                     size = size - oldLength + newLength;
+                 }
+             } else {
+-                deleteIfExists(dirty);
++deleteIfExists();
+             }
+         }
+ 
+-        redundantOpCount++;
+-        entry.currentEditor = null;
+-        if (entry.readable | success) {
++boolean success = false; if (entry.readable) { success = entry.success; } if (success) {
++
++
+             entry.readable = true;
+             journalWriter.write(CLEAN + ' ' + entry.key + entry.getLengths() + '\n');
+             if (success) {
+                 entry.sequenceNumber = nextSequenceNumber++;
+             }
+         } else {
+-            lruEntries.remove(entry.key);
+-            journalWriter.write(REMOVE + ' ' + entry.key + '\n');
++lruEntries.remove(entry.key); journalWriter.write(REMOVE + ' ' + entry.key);
++
+         }
+ 
+-        if (size > maxSize || journalRebuildRequired()) {
++if (size > maxSize) {
+             executorService.submit(cleanupCallable);
+         }
+-    }
++
+ 
+     /**
+      * We only rebuild the journal when it will halve the size of the journal

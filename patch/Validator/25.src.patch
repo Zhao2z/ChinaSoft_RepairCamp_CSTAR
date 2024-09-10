@@ -1,0 +1,16 @@
+--- /tmp/Validator_25_buggy/src/main/java/org/apache/commons/validator/routines/UrlValidator.java	2024-09-09 22:10:45.924233525 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_25_buggy/src/main/java/org/apache/commons/validator/routines/UrlValidator.java	2024-09-10 15:35:31.723662382 +0800
+@@ -474,11 +474,11 @@
+      * @return true if query is valid.
+      */
+     protected boolean isValidQuery(String query) {
+-        if (query == null) {
++if ((query == null) || (query.isEmpty())) {
+             return true;
+         }
+ 
+-        return QUERY_PATTERN.matcher(query).matches();
++return (query != null) && (QUERY_PATTERN.matcher(query).matches());
+     }
+ 
+     /**

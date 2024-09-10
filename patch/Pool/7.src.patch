@@ -1,0 +1,26 @@
+--- /tmp/Pool_7_buggy/src/main/java/org/apache/commons/pool2/impl/GenericObjectPool.java	2024-09-09 22:10:53.299240804 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Pool_7_buggy/src/main/java/org/apache/commons/pool2/impl/GenericObjectPool.java	2024-09-10 15:35:31.723662382 +0800
+@@ -575,17 +575,17 @@
+      */
+     @Override
+     public void invalidateObject(T obj) throws Exception {
+-        PooledObject<T> p = allObjects.get(obj);
+-        if (p == null) {
+-            if (isAbandonedConfig()) {
++PooledObject<T> p = allObjects.remove(obj); if (p == null) {
++
++
+                 return;
+             } else {
+-                throw new IllegalStateException(
++throw new IllegalStateException(
+                         "Returned object not currently part of this pool");
+             }
+         }   
+-                destroy(p);
+-    }
++destroy(p, true);
++
+ 
+     /**
+      * Clears any objects sitting idle in the pool by removing them from the

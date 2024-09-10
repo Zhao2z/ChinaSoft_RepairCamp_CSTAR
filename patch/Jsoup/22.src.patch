@@ -1,0 +1,11 @@
+--- /tmp/Jsoup_22_buggy/src/main/java/org/jsoup/nodes/Node.java	2024-09-09 22:04:58.582125040 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_22_buggy/src/main/java/org/jsoup/nodes/Node.java	2024-09-10 15:35:30.435746340 +0800
+@@ -442,7 +442,7 @@
+      */
+     public List<Node> siblingNodes() {
+ 
+-        return parent().childNodes();
++return parent().childNodes();
+     }
+ 
+     /**

@@ -1,0 +1,20 @@
+--- /tmp/Jsoup_92_buggy/src/main/java/org/jsoup/nodes/Attributes.java	2024-09-09 22:05:45.873589040 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_92_buggy/src/main/java/org/jsoup/nodes/Attributes.java	2024-09-10 15:35:30.535739815 +0800
+@@ -129,12 +129,12 @@
+      * @return these attributes, for chaining
+      */
+     public Attributes put(String key, String value) {
+-        int i = indexOfKey(key);
+-        if (i != NotFound)
+-            vals[i] = value;
++if (key == null) return this;
++
++
+         else
+-            add(key, value);
+-        return this;
++return put(key, value);
++
+     }
+ 
+     void putIgnoreCase(String key, String value) {

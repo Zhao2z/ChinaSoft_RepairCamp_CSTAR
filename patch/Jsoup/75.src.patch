@@ -1,0 +1,11 @@
+--- /tmp/Jsoup_75_buggy/src/main/java/org/jsoup/nodes/Attribute.java	2024-09-09 22:05:23.363839164 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_75_buggy/src/main/java/org/jsoup/nodes/Attribute.java	2024-09-10 15:35:30.507741642 +0800
+@@ -176,7 +176,7 @@
+      * Checks if this attribute name is defined as a boolean attribute in HTML5
+      */
+     protected static boolean isBooleanAttribute(final String key) {
+-        return Arrays.binarySearch(booleanAttributes, key) >= 0;
++return booleanAttributes.contains(key);
+     }
+ 
+     @Override

@@ -1,0 +1,11 @@
+--- /tmp/Coveralls_maven_plugin_5_buggy/src/main/java/org/eluder/coveralls/maven/plugin/service/Wercker.java	2024-09-09 21:50:11.466273537 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Coveralls_maven_plugin_5_buggy/src/main/java/org/eluder/coveralls/maven/plugin/service/Wercker.java	2024-09-10 15:35:28.795853525 +0800
+@@ -61,7 +61,7 @@
+ 
+     @Override
+     public String getBuildUrl() {
+-        return getProperty(WERCKER_BUILD_URL);
++return this.getProperty(WERCKER_BUILD_URL);
+     }
+ 
+     @Override

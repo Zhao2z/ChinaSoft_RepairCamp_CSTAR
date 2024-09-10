@@ -1,0 +1,30 @@
+--- /tmp/JacksonDatabind_51_buggy/src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java	2024-09-09 21:54:27.011359084 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_51_buggy/src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java	2024-09-10 15:35:29.467809569 +0800
+@@ -502,18 +502,18 @@
+      */
+     protected void _throwAsIOE(JsonParser p, Exception e, Object value) throws IOException
+     {
+-        if (e instanceof IllegalArgumentException) {
+-            String actType = (value == null) ? "[NULL]" : value.getClass().getName();
+-            StringBuilder msg = new StringBuilder("Problem deserializing property '").append(getName());
+-            msg.append("' (expected type: ").append(getType());
+-            msg.append("; actual type: ").append(actType).append(")");
+-            String origMsg = e.getMessage();
+-            if (origMsg != null) {
+-                msg.append(", problem: ").append(origMsg);
++if (e instanceof java.lang.IllegalArgumentException) { java.lang.StringBuilder msg = new java.lang.StringBuilder("Problem deserializing property '").append(getName()).append("' (expected type: ").append(getType()).append("; actual type: ").append(actType).append(")"); java.lang.String origMsg = e.getMessage(); if (origMsg != null) { msg.append(", problem: ").append(origMsg);
++
++
++
++
++
++
++
+             } else {
+                 msg.append(" (no error message provided)");
+             }
+-            throw JsonMappingException.from(p, msg.toString(), e);
++throw JsonMappingException.from(p, msg.toString(), e, false);
+         }
+         _throwAsIOE(p, e);
+     }

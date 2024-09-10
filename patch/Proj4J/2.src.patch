@@ -1,0 +1,16 @@
+--- /tmp/Proj4J_2_buggy/src/main/java/org/locationtech/proj4j/parser/Proj4Keyword.java	2024-09-09 22:22:02.682658503 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Proj4J_2_buggy/src/main/java/org/locationtech/proj4j/parser/Proj4Keyword.java	2024-09-10 15:35:32.515610859 +0800
+@@ -125,10 +125,10 @@
+     }
+ 
+     public static void checkUnsupported(String paramKey) {
+-        if (!isSupported(paramKey)) {
+-            throw new UnsupportedParameterException(paramKey + " parameter is not supported");
++if (!(isSupported(paramKey))) { throw new UnsupportedParameterException(paramKey);
++
+         }
+-    }
++
+ 
+     public static void checkUnsupported(Collection params) {
+         for (Object s : params) {

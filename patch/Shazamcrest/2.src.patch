@@ -1,0 +1,22 @@
+--- /tmp/Shazamcrest_2_buggy/src/main/java/com/shazam/shazamcrest/matcher/DiagnosingCustomisableMatcher.java	2024-09-09 22:17:27.262021601 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Shazamcrest_2_buggy/src/main/java/com/shazam/shazamcrest/matcher/DiagnosingCustomisableMatcher.java	2024-09-10 15:35:32.375619961 +0800
+@@ -138,14 +138,14 @@
+ 
+ 	private boolean assertEquals(final String expectedJson, String actualJson, Description mismatchDescription) {
+ 		try {
+-			JSONAssert.assertEquals(expectedJson, actualJson, true);
+-		} catch (AssertionError e) {
+-			return appendMismatchDescription(mismatchDescription, expectedJson, actualJson, e.getMessage());
++JSONAssert.assertEquals(expectedJson, actualJson, false);
++
++
+ 		} catch (JSONException e) {
+ 			return appendMismatchDescription(mismatchDescription, expectedJson, actualJson, e.getMessage());
+-		}
++} catch (JSONException e) { return appendMismatchDescription(mismatchDescription, expectedJson, actualJson, e.getMessage());
+ 
+-		return true;
++return false;
+ 	}
+ 
+ 	private void appendFieldJsonSnippet(Object actual, Description mismatchDescription, Gson gson) {

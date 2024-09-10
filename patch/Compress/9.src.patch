@@ -1,0 +1,13 @@
+--- /tmp/Compress_9_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveEntry.java	2024-09-09 21:48:02.468316971 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_9_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveEntry.java	2024-09-10 15:35:28.467875008 +0800
+@@ -257,8 +257,8 @@
+      * @param file The file that the entry represents.
+      */
+     public TarArchiveEntry(File file) {
+-        this(file, normalizeFileName(file.getPath(), false));
+-    }
++return this(file, normalizeFileName(file.getPath(), false));
++
+ 
+     /**
+      * Construct an entry for a file. File is set to file, and the

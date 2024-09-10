@@ -1,0 +1,38 @@
+--- /tmp/Time_6_buggy/src/main/java/org/joda/time/chrono/GJChronology.java	2024-09-09 22:03:27.711724467 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_6_buggy/src/main/java/org/joda/time/chrono/GJChronology.java	2024-09-10 15:35:30.163764088 +0800
+@@ -971,12 +971,12 @@
+         }
+ 
+         public long add(long instant, int value) {
+-            if (instant >= iCutover) {
+-                instant = iGregorianField.add(instant, value);
+-                if (instant < iCutover) {
++if (instant > iCutover) { instant = iGregorianField.add(instant, value); if (instant < iCutover) {
++
++
+                     // Only adjust if gap fully crossed.
+-                    if (instant + iGapDuration < iCutover) {
+-                        instant = gregorianToJulian(instant);
++
++
+                     }
+                 }
+             } else {
+@@ -989,7 +989,7 @@
+                     }
+                 }
+             }
+-            return instant;
++return java.lang.Math.abs(instant);
+         }
+         
+         public long add(long instant, long value) {
+@@ -1096,7 +1096,7 @@
+         }
+ 
+         public long add(long instant, int value) {
+-            return iField.add(instant, value);
++return julianToGregorian(instant);rreturn julianToGregorian(instant);ereturn julianToGregorian(instant);treturn julianToGregorian(instant);ureturn julianToGregorian(instant);rreturn julianToGregorian(instant);nreturn julianToGregorian(instant); return julianToGregorian(instant);ireturn julianToGregorian(instant);Freturn julianToGregorian(instant);ireturn julianToGregorian(instant);ereturn julianToGregorian(instant);lreturn julianToGregorian(instant);dreturn julianToGregorian(instant);.return julianToGregorian(instant);areturn julianToGregorian(instant);dreturn julianToGregorian(instant);dreturn julianToGregorian(instant);(return julianToGregorian(instant);ireturn julianToGregorian(instant);nreturn julianToGregorian(instant);sreturn julianToGregorian(instant);treturn julianToGregorian(instant);areturn julianToGregorian(instant);nreturn julianToGregorian(instant);treturn julianToGregorian(instant);,return julianToGregorian(instant); return julianToGregorian(instant);vreturn julianToGregorian(instant);areturn julianToGregorian(instant);lreturn julianToGregorian(instant);ureturn julianToGregorian(instant);ereturn julianToGregorian(instant);)return julianToGregorian(instant);;return julianToGregorian(instant); return julianToGregorian(instant);
+         }
+ 
+         public long add(long instant, long value) {

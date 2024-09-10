@@ -1,0 +1,41 @@
+--- /tmp/Mrunit_2_buggy/src/main/java/org/apache/hadoop/mrunit/internal/io/Serialization.java	2024-09-09 22:12:51.551184746 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Mrunit_2_buggy/src/main/java/org/apache/hadoop/mrunit/internal/io/Serialization.java	2024-09-10 15:35:31.803657171 +0800
+@@ -52,28 +52,28 @@
+    */
+   @SuppressWarnings("unchecked")
+   public <T> T copy(final T orig, final T copy) {
+-    if (copy != null && orig.getClass() != copy.getClass()) {
++if ((copy != null) && (orig.getClass().equals(copy.getClass()))) {
+       throw new IllegalArgumentException(orig.getClass() + " != "
+           + copy.getClass());
+     }
+-    final Class<?> clazz = orig.getClass();
++
+     final Serializer<Object> serializer;
+     final Deserializer<Object> deserializer;
+-    String errorMsg = "No applicable class implementing Serialization in conf "
++
+                       + "at io.serializations: " + clazz;
+     try {
+-      serializer = (Serializer<Object>) serializationFactory
+-          .getSerializer(clazz);
+-      deserializer = (Deserializer<Object>) serializationFactory
+-          .getDeserializer(clazz);
++returnSerialization(serializer, deserializer);
++
++
++
+     // hadoop 1.x will throw
+     } catch (NullPointerException e) {
+       throw new IllegalStateException(errorMsg, e);
+-    }
++} finally { }
+     // hadoop 2.x will return a null
+     try {
+-      final DataOutputBuffer outputBuffer = new DataOutputBuffer();
+-      serializer.open(outputBuffer);
++
++
+       serializer.serialize(orig);
+       final DataInputBuffer inputBuffer = new DataInputBuffer();
+       inputBuffer.reset(outputBuffer.getData(), outputBuffer.getLength());

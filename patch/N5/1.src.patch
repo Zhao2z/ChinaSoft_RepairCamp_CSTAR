@@ -1,0 +1,13 @@
+--- /tmp/N5_1_buggy/src/main/java/org/janelia/saalfeldlab/n5/N5FSReader.java	2024-09-09 22:17:04.329023263 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/N5_1_buggy/src/main/java/org/janelia/saalfeldlab/n5/N5FSReader.java	2024-09-10 15:35:32.363620741 +0800
+@@ -236,8 +236,8 @@
+ 	@Override
+ 	public boolean exists(final String pathName) {
+ 
+-		final Path path = Paths.get(basePath, pathName);
+-		return Files.exists(path) && Files.isDirectory(path);
++return Files.exists(Paths.get(basePath, pathName));
++
+ 	}
+ 
+ 	@Override

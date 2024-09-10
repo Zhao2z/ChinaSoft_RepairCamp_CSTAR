@@ -1,0 +1,66 @@
+--- /tmp/Sling_cpconverter_1_buggy/src/main/java/org/apache/sling/feature/cpconverter/vltpkg/VaultPackageAssembler.java	2024-09-09 22:12:48.343622763 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sling_cpconverter_1_buggy/src/main/java/org/apache/sling/feature/cpconverter/vltpkg/VaultPackageAssembler.java	2024-09-10 15:35:31.799657431 +0800
+@@ -156,41 +156,41 @@
+     public File createPackage(File outputDirectory) throws IOException {
+         // generate the Vault properties XML file
+ 
+-        File xmlProperties = new File(storingDirectory, VAULT_PROPERTIES_FILE);
+-        xmlProperties.getParentFile().mkdirs();
+ 
+-        try (FileOutputStream fos = new FileOutputStream(xmlProperties)) {
+-            properties.storeToXML(fos, null);
+-        }
++
++
++
++
++
+ 
+         // generate the Vault filter XML file
+-        File xmlFilter = new File(storingDirectory, VAULT_FILTER_FILE);
+-        try (InputStream input = filter.getSource();
+-                FileOutputStream output = new FileOutputStream(xmlFilter)) {
+-            IOUtils.copy(input, output);
+-        }
++
++
++
++
++
+ 
+         // copy the required resources
+ 
+-        for (String resource : INCLUDE_RESOURCES) {
+-            try (InputStream input = getClass().getResourceAsStream(resource)) {
+-                addEntry(META_INF_VAULT_DIRECTORY + resource, input);
+-            }
++try (InputStream input = getClass().getResourceAsStream(input)) { addEntry(META_INF_VAULT_DIRECTORY + resource, input);
++
++
++
+         }
+ 
+         // create the target archiver
+ 
+-        Archiver archiver = new JarArchiver();
+-        archiver.setIncludeEmptyDirs(true);
+ 
+-        String destFileName = storingDirectory.getName().substring(0, storingDirectory.getName().lastIndexOf('-'));
+-        File destFile = new File(TMP_DIR, destFileName);
+ 
+-        archiver.setDestFile(destFile);
+-        archiver.addFileSet(new DefaultFileSet(storingDirectory));
+-        archiver.createArchive();
+ 
+-        return destFile;
++File destFile = new File(TMP_DIR, storingDirectory.getName());
++
++
++
++
++
++
++
+     }
+ 
+ }

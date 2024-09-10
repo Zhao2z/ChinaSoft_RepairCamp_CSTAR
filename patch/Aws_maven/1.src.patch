@@ -1,0 +1,10 @@
+--- /tmp/Aws_maven_1_buggy/src/main/java/org/springframework/build/aws/maven/AuthenticationInfoAWSCredentials.java	2024-09-09 22:21:56.937506447 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Aws_maven_1_buggy/src/main/java/org/springframework/build/aws/maven/AuthenticationInfoAWSCredentials.java	2024-09-10 15:35:32.507611380 +0800
+@@ -34,6 +34,6 @@
+ 
+     @Override
+     public String getAWSSecretKey() {
+-        return this.authenticationInfo.getPassphrase();
++return authenticationInfo.getPassphrase();
+     }
+ }

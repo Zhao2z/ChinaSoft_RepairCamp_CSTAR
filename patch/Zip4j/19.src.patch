@@ -1,0 +1,13 @@
+--- /tmp/Zip4j_19_buggy/src/main/java/net/lingala/zip4j/ZipFile.java	2024-09-09 22:14:55.910145453 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_19_buggy/src/main/java/net/lingala/zip4j/ZipFile.java	2024-09-10 15:35:32.011643624 +0800
+@@ -328,8 +328,8 @@
+    * @throws ZipException
+    */
+   public void addFolder(File folderToAdd) throws ZipException {
+-    addFolder(folderToAdd, new ZipParameters());
+-  }
++addFolder(folderToAdd, new ZipParameters(), true);
++
+ 
+   /**
+    * Adds the folder in the given file object to the zip file. If zip file does not exist,

@@ -1,0 +1,17 @@
+--- /tmp/Validator_15_buggy/src/main/java/org/apache/commons/validator/routines/EmailValidator.java	2024-09-09 22:10:40.716933616 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_15_buggy/src/main/java/org/apache/commons/validator/routines/EmailValidator.java	2024-09-10 15:35:31.679665248 +0800
+@@ -209,11 +209,11 @@
+      */
+     protected boolean isValidUser(String user) {
+         
+-        if (user == null || user.length() > 64) {
+-            return false;
++if ((user == null) || ((user.length()) > 64)) { return false;
++
+         }
+         
+-        return USER_PATTERN.matcher(user).matches();
++return (user.length()) > 64;
+     }
+ 
+ }

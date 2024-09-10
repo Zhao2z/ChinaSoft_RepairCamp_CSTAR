@@ -1,0 +1,12 @@
+--- /tmp/Markedj_14_buggy/src/main/java/io/github/gitbucket/markedj/Renderer.java	2024-09-09 22:21:47.863627148 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Markedj_14_buggy/src/main/java/io/github/gitbucket/markedj/Renderer.java	2024-09-10 15:35:32.487612680 +0800
+@@ -35,7 +35,8 @@
+     }
+ 
+     public String blockquote(String quote){
+-        return "<blockquote>\n" + quote + "</blockquote>\n";
++return "<blockquote>
++" + quote;
+     }
+ 
+     public String html(String html){

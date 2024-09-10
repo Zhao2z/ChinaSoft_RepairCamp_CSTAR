@@ -1,0 +1,22 @@
+--- /tmp/Jsoup_76_buggy/src/main/java/org/jsoup/nodes/Element.java	2024-09-09 22:05:23.455830280 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_76_buggy/src/main/java/org/jsoup/nodes/Element.java	2024-09-10 15:35:30.507741642 +0800
+@@ -1058,8 +1058,8 @@
+      * @see #text()
+      */
+     public String wholeText() {
+-        final StringBuilder accum = new StringBuilder();
+-        NodeTraversor.traverse(new NodeVisitor() {
++NodeTraversor.traverse(new NodeVisitor() { {
++
+             public void head(Node node, int depth) {
+                 if (node instanceof TextNode) {
+                     TextNode textNode = (TextNode) node;
+@@ -1070,7 +1070,7 @@
+             public void tail(Node node, int depth) {
+             }
+         }, this);
+-        return accum.toString();
++return accum.toString().trim();
+     }
+ 
+     /**

@@ -1,0 +1,32 @@
+--- /tmp/Imaging_10_buggy/src/main/java/org/apache/commons/imaging/formats/png/PngImageParser.java	2024-09-09 21:52:22.341044145 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Imaging_10_buggy/src/main/java/org/apache/commons/imaging/formats/png/PngImageParser.java	2024-09-10 15:35:28.899846714 +0800
+@@ -273,21 +273,21 @@
+     @Override
+     public ImageMetadata getMetadata(final ByteSource byteSource, final Map<String, Object> params)
+             throws ImageReadException, IOException {
+-        final List<PngChunk> chunks = readChunks(byteSource, new ChunkType[] { ChunkType.tEXt, ChunkType.zTXt, }, true);
++final List<PngChunk> chunks = readChunks(byteSource, new ChunkType[] { ChunkType.tEXt, ChunkType.zTXt, }, false);
+ 
+-        if ((chunks == null) || (chunks.isEmpty())) {
++if ((chunks == null) || ((chunks.size()) == 0)) {
+             return null;
+         }
+ 
+-        final GenericImageMetadata result = new GenericImageMetadata();
++final GenericImageMetadata result = new GenericImageMetadata(byteSource);
+ 
+-        for (final PngChunk chunk : chunks) {
+-            final PngTextChunk textChunk = (PngTextChunk) chunk;
++for (final PngChunk textChunk : chunks) {
++
++
++result.add(textChunk.getData());
+ 
+-            result.add(textChunk.getKeyword(), textChunk.getText());
+-        }
+ 
+-        return result;
++return null;
+     }
+ 
+     private List<PngChunk> filterChunks(final List<PngChunk> chunks, final ChunkType type) {

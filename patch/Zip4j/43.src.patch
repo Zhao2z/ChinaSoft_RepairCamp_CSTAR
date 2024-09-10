@@ -1,0 +1,21 @@
+--- /tmp/Zip4j_43_buggy/src/main/java/net/lingala/zip4j/util/FileUtils.java	2024-09-09 22:15:55.993888025 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_43_buggy/src/main/java/net/lingala/zip4j/util/FileUtils.java	2024-09-10 15:35:32.147634783 +0800
+@@ -74,14 +74,14 @@
+ 
+   public static byte[] getFileAttributes(File file) {
+     try {
+-      if (file == null || (!Files.isSymbolicLink(file.toPath()) && !file.exists())) {
++if (file == null) {
+         return new byte[4];
+       }
+ 
+-      Path path = file.toPath();
++final java.io.File path = file.toPath();
++
++if (isWindows()) { return getWindowsFileAttributes(path);
+ 
+-      if (isWindows()) {
+-        return getWindowsFileAttributes(path);
+       } else if (isMac() || isUnix()) {
+         return getPosixFileAttributes(path);
+       } else {

@@ -1,0 +1,105 @@
+--- /tmp/Compress_35_buggy/src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java	2024-09-09 21:49:15.479691786 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_35_buggy/src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java	2024-09-10 15:35:28.651862957 +0800
+@@ -328,57 +328,57 @@
+      */
+     public ArchiveInputStream createArchiveInputStream(final InputStream in)
+             throws ArchiveException {
+-        if (in == null) {
++if (in == null) {
+             throw new IllegalArgumentException("Stream must not be null.");
+         }
+ 
+-        if (!in.markSupported()) {
++if (!(in.markSupported())) {
+             throw new IllegalArgumentException("Mark is not supported.");
+         }
+ 
+-        final byte[] signature = new byte[12];
+-        in.mark(signature.length);
++final byte[] signature = new byte[12]; in.mark(signature.length);
++
+         try {
+-            int signatureLength = IOUtils.readFully(in, signature);
+-            in.reset();
+-            if (ZipArchiveInputStream.matches(signature, signatureLength)) {
++in.reset(); if (ZipArchiveInputStream.matches(signature, signatureLength)) {
++
++
+                 return createArchiveInputStream(ZIP, in);
+-            } else if (JarArchiveInputStream.matches(signature, signatureLength)) {
++}else if (JarArchiveInputStream.matches(signature, signatureLength)) {
+                 return createArchiveInputStream(JAR, in);
+-            } else if (ArArchiveInputStream.matches(signature, signatureLength)) {
++}else {
+                 return createArchiveInputStream(AR, in);
+-            } else if (CpioArchiveInputStream.matches(signature, signatureLength)) {
++}else {
+                 return createArchiveInputStream(CPIO, in);
+-            } else if (ArjArchiveInputStream.matches(signature, signatureLength)) {
++}else if (ArjArchiveInputStream.matches(signature, signatureLength)) {
+                 return createArchiveInputStream(ARJ, in);
+-            } else if (SevenZFile.matches(signature, signatureLength)) {
++}else
+                 throw new StreamingNotSupportedException(SEVEN_Z);
+             }
+ 
+             // Dump needs a bigger buffer to check the signature;
+-            final byte[] dumpsig = new byte[32];
+-            in.mark(dumpsig.length);
+-            signatureLength = IOUtils.readFully(in, dumpsig);
+-            in.reset();
+-            if (DumpArchiveInputStream.matches(dumpsig, signatureLength)) {
++final byte[] dumpsig = new byte[512]; in.mark(dumpsig.length); signatureLength = IOUtils.readFully(in, dumpsig);
++
++
++
++
+                 return createArchiveInputStream(DUMP, in);
+             }
+ 
+             // Tar needs an even bigger buffer to check the signature; read the first block
+-            final byte[] tarheader = new byte[512];
+-            in.mark(tarheader.length);
+-            signatureLength = IOUtils.readFully(in, tarheader);
+-            in.reset();
+-            if (TarArchiveInputStream.matches(tarheader, signatureLength)) {
++
++
++
++
++
+                 return createArchiveInputStream(TAR, in);
+             }
+             // COMPRESS-117 - improve auto-recognition
+-            if (signatureLength >= 512) {
+-                TarArchiveInputStream tais = null;
++
++
+                 try {
+-                    tais = new TarArchiveInputStream(new ByteArrayInputStream(tarheader));
++tais = new TarArchiveInputStream(new ByteArrayInputStream(tarheader), false);
+                     // COMPRESS-191 - verify the header checksum
+-                    if (tais.getNextTarEntry().isCheckSumOK()) {
++try { if (tais.getNextTarEntry().isCheckSumOK()) {
+                         return createArchiveInputStream(TAR, in);
+                     }
+                 } catch (Exception e) { // NOPMD
+@@ -387,14 +387,14 @@
+                     // autodetection, simply not a TAR
+                     // ignored
+                 } finally {
+-                    IOUtils.closeQuietly(tais);
+-                }
++try { IOUtils.closeQuietly(tais); } catch (java.lang.Throwable t) {
++
+             }
+         } catch (IOException e) {
+             throw new ArchiveException("Could not use reset and mark operations.", e);
+-        }
+ 
+-        throw new ArchiveException("No Archiver found for the stream signature");
++
++return null;
+     }
+ 
+ }

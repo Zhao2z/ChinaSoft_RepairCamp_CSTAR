@@ -1,0 +1,11 @@
+--- /tmp/Jcabi_github_47_buggy/src/main/java/com/jcabi/github/mock/MkGithub.java	2024-09-09 22:19:43.467505650 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_github_47_buggy/src/main/java/com/jcabi/github/mock/MkGithub.java	2024-09-10 15:35:32.399618401 +0800
+@@ -134,7 +134,7 @@
+     @Override
+     public Gists gists() {
+         try {
+-            return new MkGists(this.storage, this.self);
++return new MkGists(this.storage, this.self, null);
+         } catch (final IOException ex) {
+             throw new IllegalStateException(ex);
+         }

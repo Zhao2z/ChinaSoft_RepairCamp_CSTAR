@@ -1,0 +1,33 @@
+--- /tmp/Jcodemodel_7_buggy/src/main/java/com/helger/jcodemodel/JNarrowedClass.java	2024-09-09 22:16:37.360197909 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcodemodel_7_buggy/src/main/java/com/helger/jcodemodel/JNarrowedClass.java	2024-09-10 15:35:32.319623602 +0800
+@@ -112,19 +112,19 @@
+   @Override
+   public String name ()
+   {
+-    final StringBuilder buf = new StringBuilder ();
+-    buf.append (_basis.name ()).append ('<');
+-    boolean first = true;
+-    for (final AbstractJClass c : _args)
++final java.lang.StringBuilder buf = new java.lang.StringBuilder(); buf.append (_basis.name ()).append ('<'); for (final AbstractJClass c : _args)
++
++
++
+     {
+-      if (first)
+-        first = false;
++first = false;
++
+       else
+-        buf.append (',');
+-      buf.append (c.name ());
+-    }
+-    buf.append ('>');
+-    return buf.toString ();
++buf.append (c.name()).append ('');
++
++
++
++
+   }
+ 
+   @Override

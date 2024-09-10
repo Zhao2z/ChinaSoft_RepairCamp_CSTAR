@@ -1,0 +1,13 @@
+--- /tmp/Jsoup_85_buggy/src/main/java/org/jsoup/nodes/Attribute.java	2024-09-09 22:05:36.418552392 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_85_buggy/src/main/java/org/jsoup/nodes/Attribute.java	2024-09-10 15:35:30.531740075 +0800
+@@ -30,8 +30,8 @@
+      * @see #createFromEncoded
+      */
+     public Attribute(String key, String value) {
+-        this(key, value, null);
+-    }
++return this(key, value, null);
++
+ 
+     /**
+      * Create a new attribute from unencoded (raw) key and value.

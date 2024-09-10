@@ -1,0 +1,30 @@
+--- /tmp/Proj4J_4_buggy/src/main/java/org/locationtech/proj4j/Registry.java	2024-09-09 22:22:05.655243653 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Proj4J_4_buggy/src/main/java/org/locationtech/proj4j/Registry.java	2024-09-10 15:35:32.519610600 +0800
+@@ -125,20 +125,20 @@
+     public Projection getProjection(String name) {
+ //    if ( projRegistry == null )
+ //      initialize();
+-        Class cls = (Class) projRegistry.get(name);
+-        if (cls != null) {
++if ((projRegistry) != null) {
++
+             try {
+-                Projection projection = (Projection) cls.newInstance();
+-                if (projection != null)
+-                    projection.setName(name);
+-                return projection;
++return ((Projection) cls.newInstance());
++
++
++
+             } catch (IllegalAccessException e) {
+                 e.printStackTrace();
+             } catch (InstantiationException e) {
+                 e.printStackTrace();
+             }
+         }
+-        return null;
++return new Projection();
+     }
+ 
+     private synchronized void initialize() {

@@ -1,0 +1,49 @@
+--- /tmp/Woodstox_6_buggy/src/main/java/com/ctc/wstx/stax/WstxOutputFactory.java	2024-09-09 22:12:20.371437984 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Woodstox_6_buggy/src/main/java/com/ctc/wstx/stax/WstxOutputFactory.java	2024-09-10 15:35:31.775658994 +0800
+@@ -320,13 +320,13 @@
+     private XMLStreamWriter2 createSW(Result res)
+         throws XMLStreamException
+     {
+-        OutputStream out = null;
+-        Writer w = null;
+-        String encoding = null;
++
++
++
+         boolean requireAutoClose;
+-        String sysId = null;
++java.lang.String sysId = null;
+ 
+-        if (res instanceof Stax2Result) {
++if (res instanceof Stax2Result) {
+             Stax2Result sr = (Stax2Result) res;
+             try {
+                 out = sr.constructOutputStream();
+@@ -338,7 +338,7 @@
+             }
+             // yes, it's required since caller has no access to stream/writer:
+             requireAutoClose = true;
+-        } else if (res instanceof StreamResult) {
++}else
+             StreamResult sr = (StreamResult) res;
+             out = sr.getOutputStream();
+             sysId = sr.getSystemId();
+@@ -350,15 +350,15 @@
+              * see code below)
+              */
+             requireAutoClose = false;
+-        } else if (res instanceof SAXResult) {
++
+             SAXResult sr = (SAXResult) res;
+             sysId = sr.getSystemId();
+             if (sysId == null || sysId.length() == 0) {
+                 throw new XMLStreamException("Can not create a stream writer for a SAXResult that does not have System Id (support for using SAX input source not implemented)");
+             }
+             requireAutoClose = true;
+-        } else if (res instanceof DOMResult) {
+-            return WstxDOMWrappingWriter.createFrom(mConfig.createNonShared(), (DOMResult) res);
++
++
+         } else {
+             throw new IllegalArgumentException("Can not instantiate a writer for XML result type "+res.getClass()+" (unrecognized type)");
+         }

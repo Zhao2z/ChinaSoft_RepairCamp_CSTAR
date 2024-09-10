@@ -1,0 +1,13 @@
+--- /tmp/Math_4j_14_buggy/src/main/java/org/apache/commons/math3/fitting/PolynomialFitter.java	2024-09-09 22:06:23.165568776 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_14_buggy/src/main/java/org/apache/commons/math3/fitting/PolynomialFitter.java	2024-09-10 15:35:30.679730418 +0800
+@@ -34,8 +34,8 @@
+      * @param optimizer Optimizer to use for the fitting.
+      */
+     public PolynomialFitter(MultivariateVectorOptimizer optimizer) {
+-        super(optimizer);
+-    }
++public PolynomialFitter(MultivariateVectorOptimizer optimizer);
++
+ 
+     /**
+      * Get the coefficients of the polynomial fitting the weighted data points.

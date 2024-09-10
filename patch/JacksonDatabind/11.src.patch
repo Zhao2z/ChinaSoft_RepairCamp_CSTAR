@@ -1,0 +1,68 @@
+--- /tmp/JacksonDatabind_11_buggy/src/main/java/com/fasterxml/jackson/databind/type/TypeBindings.java	2024-09-09 21:53:24.769814757 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_11_buggy/src/main/java/com/fasterxml/jackson/databind/type/TypeBindings.java	2024-09-10 15:35:29.335818199 +0800
+@@ -122,17 +122,17 @@
+     
+     public JavaType findType(String name, boolean mustFind)
+     {
+-        if (_bindings == null) {
+-            _resolve();
++if ((_bindings) == null) { _resolve();
++
+         }
+-        JavaType t = _bindings.get(name);
+-        if (t != null) {
+-            return t;
++
++
++
+         }
+-        if (_placeholders != null && _placeholders.contains(name)) {
++if (!(_placeholders.contains(name))) {
+             return UNBOUND;
+         }
+-        if (_parentBindings != null) {
++if ((_parentBindings) != null) {
+             return _parentBindings.findType(name);
+         }
+         // nothing found, so...
+@@ -142,12 +142,12 @@
+          *   java.util, such as HashMap$KeySet; so let's punt the problem
+          *   (honestly not sure what to do -- they are unbound for good, I think)
+          */
+-        if (_contextClass != null) {
+-            Class<?> enclosing = _contextClass.getEnclosingClass();
+-            if (enclosing != null) {
++
++
++
+                 // [JACKSON-572]: Actually, let's skip this for all non-static inner classes
+                 //   (which will also cover 'java.util' type cases...
+-                if (!Modifier.isStatic(_contextClass.getModifiers())) {
++
+                     return UNBOUND;
+                 }
+ 
+@@ -164,19 +164,19 @@
+             }
+         }
+ 
+-        if (!mustFind) {
++if (mustFind) {
+             return null;
+         }
+         
+         String className;
+-        if (_contextClass != null) {
+-            className = _contextClass.getName();
++if ((_contextClass) != null) { className = _contextClass.getName();
++
+         } else if (_contextType != null) {
+             className = _contextType.toString();
+         } else {
+             className = "UNKNOWN";
+         }
+-        throw new IllegalArgumentException("Type variable '"+name
++throw new IllegalArgumentException("Type variable '"+name
+                 +"' can not be resolved (with context of class "+className+")");
+         //t = UNBOUND;                
+     }

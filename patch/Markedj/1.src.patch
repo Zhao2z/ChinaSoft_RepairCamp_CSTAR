@@ -1,0 +1,13 @@
+--- /tmp/Markedj_1_buggy/src/main/java/io/github/gitbucket/markedj/Options.java	2024-09-09 22:21:45.531131671 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Markedj_1_buggy/src/main/java/io/github/gitbucket/markedj/Options.java	2024-09-10 15:35:32.535609560 +0800
+@@ -26,8 +26,8 @@
+     }
+ 
+     public void setBreaks(boolean breaks) {
+-        this.breaks = breaks;
+-    }
++if (breaks) { this.breaks = true; }else { this.breaks = false; }
++
+ 
+     public void setPedantic(boolean pedantic) {
+         this.pedantic = pedantic;

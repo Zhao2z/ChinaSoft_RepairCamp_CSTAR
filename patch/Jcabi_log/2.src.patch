@@ -1,0 +1,15 @@
+--- /tmp/Jcabi_log_2_buggy/src/main/java/com/jcabi/log/SizeDecor.java	2024-09-09 22:22:23.350582465 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_log_2_buggy/src/main/java/com/jcabi/log/SizeDecor.java	2024-09-10 15:35:32.563607739 +0800
+@@ -82,9 +82,9 @@
+      * Public ctor.
+      * @param sze The size
+      */
+-    public SizeDecor(final Long sze) {
+-        this.size = sze;
+-    }
++public abstract void size(final Long sze);
++
++
+ 
+     /**
+      * {@inheritDoc}

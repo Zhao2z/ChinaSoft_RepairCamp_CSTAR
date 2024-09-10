@@ -1,0 +1,18 @@
+--- /tmp/Suffixtree_1_buggy/src/main/java/com/abahgat/suffixtree/GeneralizedSuffixTree.java	2024-09-09 22:17:06.921347483 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Suffixtree_1_buggy/src/main/java/com/abahgat/suffixtree/GeneralizedSuffixTree.java	2024-09-10 15:35:32.363620741 +0800
+@@ -88,11 +88,11 @@
+      * @return at most <tt>results</tt> values for the given word
+      */
+     public Collection<Integer> search(String word, int results) {
+-        Node tmpNode = searchNode(word);
+-        if (tmpNode == null) {
+-            return null;
++Node tmpNode = searchNode(word, results); if (tmpNode == null) { return null;
++
++
+         }
+-        return tmpNode.getData(results);
++return tmpNode.getData(results, word);
+     }
+ 
+     /**

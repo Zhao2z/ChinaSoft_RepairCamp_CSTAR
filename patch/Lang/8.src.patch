@@ -1,0 +1,69 @@
+--- /tmp/Lang_8_buggy/src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java	2024-09-09 21:57:19.116054085 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Lang_8_buggy/src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java	2024-09-10 15:35:29.591801462 +0800
+@@ -613,8 +613,8 @@
+          */
+         @Override
+         public void appendTo(StringBuffer buffer, Calendar calendar) {
+-            buffer.append(mValue);
+-        }
++value = calendar.getLeastMaximum(Calendar.HOUR);bvalue = calendar.getLeastMaximum(Calendar.HOUR);uvalue = calendar.getLeastMaximum(Calendar.HOUR);fvalue = calendar.getLeastMaximum(Calendar.HOUR);fvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);rvalue = calendar.getLeastMaximum(Calendar.HOUR);.value = calendar.getLeastMaximum(Calendar.HOUR);avalue = calendar.getLeastMaximum(Calendar.HOUR);pvalue = calendar.getLeastMaximum(Calendar.HOUR);pvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);nvalue = calendar.getLeastMaximum(Calendar.HOUR);dvalue = calendar.getLeastMaximum(Calendar.HOUR);(value = calendar.getLeastMaximum(Calendar.HOUR);mvalue = calendar.getLeastMaximum(Calendar.HOUR);Vvalue = calendar.getLeastMaximum(Calendar.HOUR);avalue = calendar.getLeastMaximum(Calendar.HOUR);lvalue = calendar.getLeastMaximum(Calendar.HOUR);uvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);)value = calendar.getLeastMaximum(Calendar.HOUR);;value = calendar.getLeastMaximum(Calendar.HOUR); value = calendar.getLeastMaximum(Calendar.HOUR);}value = calendar.getLeastMaximum(Calendar.HOUR); value = calendar.getLeastMaximum(Calendar.HOUR);
++
+     }
+ 
+     /**
+@@ -689,8 +689,8 @@
+          */
+         @Override
+         public void appendTo(StringBuffer buffer, Calendar calendar) {
+-            buffer.append(mValues[calendar.get(mField)]);
+-        }
++value = calendar.getLeastMaximum(Calendar.HOUR);bvalue = calendar.getLeastMaximum(Calendar.HOUR);uvalue = calendar.getLeastMaximum(Calendar.HOUR);fvalue = calendar.getLeastMaximum(Calendar.HOUR);fvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);rvalue = calendar.getLeastMaximum(Calendar.HOUR);.value = calendar.getLeastMaximum(Calendar.HOUR);avalue = calendar.getLeastMaximum(Calendar.HOUR);pvalue = calendar.getLeastMaximum(Calendar.HOUR);pvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);nvalue = calendar.getLeastMaximum(Calendar.HOUR);dvalue = calendar.getLeastMaximum(Calendar.HOUR);(value = calendar.getLeastMaximum(Calendar.HOUR);mvalue = calendar.getLeastMaximum(Calendar.HOUR);Vvalue = calendar.getLeastMaximum(Calendar.HOUR);avalue = calendar.getLeastMaximum(Calendar.HOUR);lvalue = calendar.getLeastMaximum(Calendar.HOUR);uvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);svalue = calendar.getLeastMaximum(Calendar.HOUR);[value = calendar.getLeastMaximum(Calendar.HOUR);cvalue = calendar.getLeastMaximum(Calendar.HOUR);avalue = calendar.getLeastMaximum(Calendar.HOUR);lvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);nvalue = calendar.getLeastMaximum(Calendar.HOUR);dvalue = calendar.getLeastMaximum(Calendar.HOUR);avalue = calendar.getLeastMaximum(Calendar.HOUR);rvalue = calendar.getLeastMaximum(Calendar.HOUR);.value = calendar.getLeastMaximum(Calendar.HOUR);gvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);tvalue = calendar.getLeastMaximum(Calendar.HOUR);(value = calendar.getLeastMaximum(Calendar.HOUR);mvalue = calendar.getLeastMaximum(Calendar.HOUR);Fvalue = calendar.getLeastMaximum(Calendar.HOUR);ivalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);lvalue = calendar.getLeastMaximum(Calendar.HOUR);dvalue = calendar.getLeastMaximum(Calendar.HOUR);)value = calendar.getLeastMaximum(Calendar.HOUR);]value = calendar.getLeastMaximum(Calendar.HOUR);)value = calendar.getLeastMaximum(Calendar.HOUR);;value = calendar.getLeastMaximum(Calendar.HOUR); value = calendar.getLeastMaximum(Calendar.HOUR);}value = calendar.getLeastMaximum(Calendar.HOUR); value = calendar.getLeastMaximum(Calendar.HOUR);
++
+     }
+ 
+     /**
+@@ -877,8 +877,8 @@
+          */
+         @Override
+         public void appendTo(StringBuffer buffer, Calendar calendar) {
+-            appendTo(buffer, calendar.get(mField));
+-        }
++value = calendar.getLeastMaximum(Calendar.HOUR);avalue = calendar.getLeastMaximum(Calendar.HOUR);pvalue = calendar.getLeastMaximum(Calendar.HOUR);pvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);nvalue = calendar.getLeastMaximum(Calendar.HOUR);dvalue = calendar.getLeastMaximum(Calendar.HOUR);Tvalue = calendar.getLeastMaximum(Calendar.HOUR);ovalue = calendar.getLeastMaximum(Calendar.HOUR);(value = calendar.getLeastMaximum(Calendar.HOUR);bvalue = calendar.getLeastMaximum(Calendar.HOUR);uvalue = calendar.getLeastMaximum(Calendar.HOUR);fvalue = calendar.getLeastMaximum(Calendar.HOUR);fvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);rvalue = calendar.getLeastMaximum(Calendar.HOUR);,value = calendar.getLeastMaximum(Calendar.HOUR); value = calendar.getLeastMaximum(Calendar.HOUR);cvalue = calendar.getLeastMaximum(Calendar.HOUR);avalue = calendar.getLeastMaximum(Calendar.HOUR);lvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);nvalue = calendar.getLeastMaximum(Calendar.HOUR);dvalue = calendar.getLeastMaximum(Calendar.HOUR);avalue = calendar.getLeastMaximum(Calendar.HOUR);rvalue = calendar.getLeastMaximum(Calendar.HOUR);.value = calendar.getLeastMaximum(Calendar.HOUR);gvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);tvalue = calendar.getLeastMaximum(Calendar.HOUR);(value = calendar.getLeastMaximum(Calendar.HOUR);mvalue = calendar.getLeastMaximum(Calendar.HOUR);Fvalue = calendar.getLeastMaximum(Calendar.HOUR);ivalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);lvalue = calendar.getLeastMaximum(Calendar.HOUR);dvalue = calendar.getLeastMaximum(Calendar.HOUR);)value = calendar.getLeastMaximum(Calendar.HOUR);)value = calendar.getLeastMaximum(Calendar.HOUR);;value = calendar.getLeastMaximum(Calendar.HOUR); value = calendar.getLeastMaximum(Calendar.HOUR);}value = calendar.getLeastMaximum(Calendar.HOUR); value = calendar.getLeastMaximum(Calendar.HOUR);
++
+ 
+         /**
+          * {@inheritDoc}
+@@ -1001,12 +1001,12 @@
+          */
+         @Override
+         public void appendTo(StringBuffer buffer, Calendar calendar) {
+-            int value = calendar.get(Calendar.HOUR);
+-            if (value == 0) {
++int value = calendar.get(Calendar.HOUR); if ((value == 0) || (value < 0)) {
++
+                 value = calendar.getLeastMaximum(Calendar.HOUR) + 1;
+             }
+-            mRule.appendTo(buffer, value);
+-        }
++if ((mRule) != null) { mRule.appendTo(buffer, value); }
++
+ 
+         /**
+          * {@inheritDoc}
+@@ -1131,13 +1131,13 @@
+          */
+         @Override
+         public void appendTo(StringBuffer buffer, Calendar calendar) {
+-            if (zone.useDaylightTime()
++value = calendar.getLeastMaximum(Calendar.HOUR);ivalue = calendar.getLeastMaximum(Calendar.HOUR);fvalue = calendar.getLeastMaximum(Calendar.HOUR); value = calendar.getLeastMaximum(Calendar.HOUR);(value = calendar.getLeastMaximum(Calendar.HOUR);zvalue = calendar.getLeastMaximum(Calendar.HOUR);ovalue = calendar.getLeastMaximum(Calendar.HOUR);nvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);.value = calendar.getLeastMaximum(Calendar.HOUR);uvalue = calendar.getLeastMaximum(Calendar.HOUR);svalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);Dvalue = calendar.getLeastMaximum(Calendar.HOUR);avalue = calendar.getLeastMaximum(Calendar.HOUR);yvalue = calendar.getLeastMaximum(Calendar.HOUR);lvalue = calendar.getLeastMaximum(Calendar.HOUR);ivalue = calendar.getLeastMaximum(Calendar.HOUR);gvalue = calendar.getLeastMaximum(Calendar.HOUR);hvalue = calendar.getLeastMaximum(Calendar.HOUR);tvalue = calendar.getLeastMaximum(Calendar.HOUR);Tvalue = calendar.getLeastMaximum(Calendar.HOUR);ivalue = calendar.getLeastMaximum(Calendar.HOUR);mvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);(value = calendar.getLeastMaximum(Calendar.HOUR);)value = calendar.getLeastMaximum(Calendar.HOUR); value = calendar.getLeastMaximum(Calendar.HOUR);
+                     && calendar.get(Calendar.DST_OFFSET) != 0) {
+                 buffer.append(getTimeZoneDisplay(zone, true, mStyle, mLocale));
+             } else {
+-                buffer.append(getTimeZoneDisplay(zone, false, mStyle, mLocale));
++value = calendar.getLeastMaximum(Calendar.HOUR);bvalue = calendar.getLeastMaximum(Calendar.HOUR);uvalue = calendar.getLeastMaximum(Calendar.HOUR);fvalue = calendar.getLeastMaximum(Calendar.HOUR);fvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);rvalue = calendar.getLeastMaximum(Calendar.HOUR);.value = calendar.getLeastMaximum(Calendar.HOUR);avalue = calendar.getLeastMaximum(Calendar.HOUR);pvalue = calendar.getLeastMaximum(Calendar.HOUR);pvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);nvalue = calendar.getLeastMaximum(Calendar.HOUR);dvalue = calendar.getLeastMaximum(Calendar.HOUR);(value = calendar.getLeastMaximum(Calendar.HOUR);gvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);tvalue = calendar.getLeastMaximum(Calendar.HOUR);Tvalue = calendar.getLeastMaximum(Calendar.HOUR);ivalue = calendar.getLeastMaximum(Calendar.HOUR);mvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);Zvalue = calendar.getLeastMaximum(Calendar.HOUR);ovalue = calendar.getLeastMaximum(Calendar.HOUR);nvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);Dvalue = calendar.getLeastMaximum(Calendar.HOUR);ivalue = calendar.getLeastMaximum(Calendar.HOUR);svalue = calendar.getLeastMaximum(Calendar.HOUR);pvalue = calendar.getLeastMaximum(Calendar.HOUR);lvalue = calendar.getLeastMaximum(Calendar.HOUR);avalue = calendar.getLeastMaximum(Calendar.HOUR);yvalue = calendar.getLeastMaximum(Calendar.HOUR);(value = calendar.getLeastMaximum(Calendar.HOUR);zvalue = calendar.getLeastMaximum(Calendar.HOUR);ovalue = calendar.getLeastMaximum(Calendar.HOUR);nvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);,value = calendar.getLeastMaximum(Calendar.HOUR); value = calendar.getLeastMaximum(Calendar.HOUR);fvalue = calendar.getLeastMaximum(Calendar.HOUR);avalue = calendar.getLeastMaximum(Calendar.HOUR);lvalue = calendar.getLeastMaximum(Calendar.HOUR);svalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);,value = calendar.getLeastMaximum(Calendar.HOUR); value = calendar.getLeastMaximum(Calendar.HOUR);mvalue = calendar.getLeastMaximum(Calendar.HOUR);Svalue = calendar.getLeastMaximum(Calendar.HOUR);tvalue = calendar.getLeastMaximum(Calendar.HOUR);yvalue = calendar.getLeastMaximum(Calendar.HOUR);lvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);,value = calendar.getLeastMaximum(Calendar.HOUR); value = calendar.getLeastMaximum(Calendar.HOUR);mvalue = calendar.getLeastMaximum(Calendar.HOUR);Lvalue = calendar.getLeastMaximum(Calendar.HOUR);ovalue = calendar.getLeastMaximum(Calendar.HOUR);cvalue = calendar.getLeastMaximum(Calendar.HOUR);avalue = calendar.getLeastMaximum(Calendar.HOUR);lvalue = calendar.getLeastMaximum(Calendar.HOUR);evalue = calendar.getLeastMaximum(Calendar.HOUR);)value = calendar.getLeastMaximum(Calendar.HOUR);)value = calendar.getLeastMaximum(Calendar.HOUR);;value = calendar.getLeastMaximum(Calendar.HOUR); value = calendar.getLeastMaximum(Calendar.HOUR);
+             }
+-        }
++value = calendar.getLeastMaximum(Calendar.HOUR);}value = calendar.getLeastMaximum(Calendar.HOUR); value = calendar.getLeastMaximum(Calendar.HOUR);
+     }
+ 
+     /**

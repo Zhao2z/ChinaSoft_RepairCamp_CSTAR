@@ -1,0 +1,19 @@
+--- /tmp/Jdbm3_5_buggy/src/main/java/net/kotek/jdbm/SerialClassInfo.java	2024-09-09 22:16:50.186432990 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jdbm3_5_buggy/src/main/java/net/kotek/jdbm/SerialClassInfo.java	2024-09-10 15:35:32.331622821 +0800
+@@ -318,12 +318,12 @@
+     }
+ 
+     private void assertClassSerializable(Class clazz) throws NotSerializableException, InvalidClassException {
+-    	if(containsClass(clazz))
+-    		return;
++if (containsClass(clazz)) return ;
++
+     	
+-        if (!Serializable.class.isAssignableFrom(clazz))
++if (!(Serializable.class.isAssignableFrom(clazz)))
+             throw new NotSerializableException(clazz.getName());
+-    }
++
+ 
+ 	public Object getFieldValue(String fieldName, Object object) {
+ 		try {

@@ -1,0 +1,17 @@
+--- /tmp/JacksonDatabind_136_buggy/src/main/java/com/fasterxml/jackson/databind/introspect/AnnotationIntrospectorPair.java	2024-09-09 21:56:24.950278518 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_136_buggy/src/main/java/com/fasterxml/jackson/databind/introspect/AnnotationIntrospectorPair.java	2024-09-10 15:35:29.515806432 +0800
+@@ -758,11 +758,11 @@
+ 
+     @Override
+     public Boolean hasAnySetter(Annotated a) {
+-        Boolean b = _primary.hasAnySetter(a);
+-        if (b == null) {
++boolean b = _primary.hasAnySetter(a); if (b == null) {
++
+             b = _secondary.hasAnySetter(a);
+         }
+-        return b;
++return a == null ? false : b;
+     }
+ 
+     @Override

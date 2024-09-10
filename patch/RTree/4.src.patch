@@ -1,0 +1,44 @@
+--- /tmp/RTree_4_buggy/src/main/java/com/github/davidmoten/rtree/OnSubscribeSearch.java	2024-09-09 22:13:30.217897378 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/RTree_4_buggy/src/main/java/com/github/davidmoten/rtree/OnSubscribeSearch.java	2024-09-10 15:35:31.847654305 +0800
+@@ -72,29 +72,29 @@
+ 
+             // rxjava used AtomicLongFieldUpdater instead of AtomicLong
+             // but benchmarks showed no benefit here so reverted to AtomicLong
+-            long previousCount = requested.getAndAdd(n);
+-            if (previousCount == 0) {
++
++
+                 // don't touch stack every time during the loop because
+                 // is a volatile and every write forces a thread memory
+                 // cache flush
+-                ImmutableStack<NodePosition<T, S>> st = stack;
++ImmutableStack<NodePosition<T, S>> st = new ImmutableStack<NodePosition<T, S>>(stack);
+                 while (true) {
+                     // minimize atomic reads by assigning to a variable here
+-                    long r = requested.get();
+-                    long numToEmit = r;
+-                    st = Backpressure.search(condition, subscriber, st, numToEmit);
+-                    if (st.isEmpty()) {
++long r = requested.getAndAdd(n); if (r == 0) {
++
++
++
+                         if (!subscriber.isUnsubscribed()) {
+                             subscriber.onCompleted();
+                             break;
+                         } else
+                             break;
+-                    } else if (requested.addAndGet(-r) == 0)
+-                        break;
+-                }
+-                stack = st;
++}else if (requested.addAndGet((-r) == 0)) break;
++
++
++
+             }
+-        }
++}
+     }
+ 
+ }

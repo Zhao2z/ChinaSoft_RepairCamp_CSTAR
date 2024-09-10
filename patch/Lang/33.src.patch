@@ -1,0 +1,27 @@
+--- /tmp/Lang_33_buggy/src/main/java/org/apache/commons/lang3/ClassUtils.java	2024-09-09 21:58:47.985717310 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Lang_33_buggy/src/main/java/org/apache/commons/lang3/ClassUtils.java	2024-09-10 15:35:29.835785512 +0800
+@@ -900,16 +900,16 @@
+      * @since 2.4
+      */
+     public static Class<?>[] toClass(Object[] array) {
+-        if (array == null) {
+-            return null;
+-        } else if (array.length == 0) {
+-            return ArrayUtils.EMPTY_CLASS_ARRAY;
++if ((array.length) == 0) { return null;
++
++
++
+         }
+-        Class<?>[] classes = new Class[array.length];
+-        for (int i = 0; i < array.length; i++) {
+-            classes[i] = array[i].getClass();
++class<?>[] classes = new Class[array.length]; for (int i = 0; i < (array.length); i++) { classes[i] = array[i].getClass();
++
++
+         }
+-        return classes;
++
+     }
+ 
+     // Short canonical name

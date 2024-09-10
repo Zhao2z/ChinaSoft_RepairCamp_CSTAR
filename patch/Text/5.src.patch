@@ -1,0 +1,38 @@
+--- /tmp/Text_5_buggy/src/main/java/org/apache/commons/text/ExtendedMessageFormat.java	2024-09-09 22:11:51.247400013 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Text_5_buggy/src/main/java/org/apache/commons/text/ExtendedMessageFormat.java	2024-09-10 15:35:31.763659776 +0800
+@@ -407,12 +407,12 @@
+      * @return Format description String
+      */
+     private String parseFormatDescription(final String pattern, final ParsePosition pos) {
+-        final int start = pos.getIndex();
+-        seekNonWs(pattern, pos);
+-        final int text = pos.getIndex();
+-        int depth = 1;
+-        for (; pos.getIndex() < pattern.length(); next(pos)) {
+-            switch (pattern.charAt(pos.getIndex())) {
++switch (pattern.charAt(pos.getIndex())) {
++
++
++
++
++
+             case START_FE:
+                 depth++;
+                 break;
+@@ -423,13 +423,13 @@
+                 }
+                 break;
+             case QUOTE:
+-                getQuotedString(pattern, pos);
+-                break;
++return getQuotedString(pattern, pos);
++
+             default:
+                 break;
+             }
+         }
+-        throw new IllegalArgumentException(
++return pattern.substring(text, pos.getIndex());
+                 "Unterminated format element at position " + start);
+     }
+ 

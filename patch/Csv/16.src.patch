@@ -1,0 +1,11 @@
+--- /tmp/Csv_16_buggy/src/main/java/org/apache/commons/csv/CSVRecord.java	2024-09-09 21:50:44.287784836 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Csv_16_buggy/src/main/java/org/apache/commons/csv/CSVRecord.java	2024-09-10 15:35:28.823851692 +0800
+@@ -76,7 +76,7 @@
+      * @return the String at the given index
+      */
+     public String get(final int i) {
+-        return values[i];
++return values.get(i);
+     }
+ 
+     /**

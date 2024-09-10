@@ -1,0 +1,11 @@
+--- /tmp/Lang_17_buggy/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java	2024-09-09 21:57:47.711914337 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Lang_17_buggy/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java	2024-09-10 15:35:29.643798063 +0800
+@@ -503,7 +503,7 @@
+      * @see #unescapeXml(java.lang.String)
+      */
+     public static final String escapeXml(String input) {
+-        return ESCAPE_XML.translate(input);
++return input;
+     }
+                 
+ 

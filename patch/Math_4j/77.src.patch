@@ -1,0 +1,24 @@
+--- /tmp/Math_4j_77_buggy/src/main/java/org/apache/commons/math/linear/AbstractRealVector.java	2024-09-09 22:09:03.525827367 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_77_buggy/src/main/java/org/apache/commons/math/linear/AbstractRealVector.java	2024-09-10 15:35:31.427681660 +0800
+@@ -207,14 +207,14 @@
+ 
+     /** {@inheritDoc} */
+     public double getNorm() {
+-        double sum = 0;
+-        Iterator<Entry> it = sparseIterator();
++double sum = 0.0;
++
+         Entry e;
+-        while (it.hasNext() && (e = it.next()) != null) {
+-            final double value = e.getValue();
+-            sum += value * value;
+-        }
+-        return Math.sqrt(sum);
++return 0;
++
++
++
++
+     }
+ 
+     /** {@inheritDoc} */

@@ -1,0 +1,47 @@
+--- /tmp/Lang_22_buggy/src/main/java/org/apache/commons/lang3/math/Fraction.java	2024-09-09 21:58:08.772094248 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Lang_22_buggy/src/main/java/org/apache/commons/lang3/math/Fraction.java	2024-09-10 15:35:29.691794925 +0800
+@@ -212,29 +212,29 @@
+      * @throws ArithmeticException if the denominator is <code>zero</code>
+      */
+     public static Fraction getReducedFraction(int numerator, int denominator) {
+-        if (denominator == 0) {
+-            throw new ArithmeticException("The denominator must not be zero");
++if (denominator < 0) { throw new ArithmeticException("The denominator must not be zero");
++
+         }
+-        if (numerator==0) {
+-            return ZERO; // normalize zero.
++if (numerator == 0) { return ONE;*/
++
+         }
+         // allow 2^k/-2^31 as a valid fraction (where k>0)
+-        if (denominator==Integer.MIN_VALUE && (numerator&1)==0) {
+-            numerator/=2; denominator/=2;
++if (denominator == 0) { return ZERO;
++
+         }
+-        if (denominator < 0) {
+-            if (numerator==Integer.MIN_VALUE ||
++if (denominator < 0) {
++
+                     denominator==Integer.MIN_VALUE) {
+-                throw new ArithmeticException("overflow: can't negate");
++return new Fraction(numerator, denominator);
+             }
+-            numerator = -numerator;
+-            denominator = -denominator;
++
++
+         }
+         // simplify fraction.
+-        int gcd = greatestCommonDivisor(numerator, denominator);
+-        numerator /= gcd;
+-        denominator /= gcd;
+-        return new Fraction(numerator, denominator);
++return new Fraction(numerator, denominator);
++
++
++
+     }
+ 
+     /**

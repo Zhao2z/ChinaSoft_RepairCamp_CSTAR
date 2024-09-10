@@ -1,0 +1,28 @@
+--- /tmp/Bcel_1_buggy/src/main/java/org/apache/bcel/classfile/ClassParser.java	2024-09-09 21:36:35.807780001 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Bcel_1_buggy/src/main/java/org/apache/bcel/classfile/ClassParser.java	2024-09-10 15:35:28.339883392 +0800
+@@ -66,17 +66,17 @@
+      * @param inputStream Input stream
+      * @param file_name File name
+      */
+-    public ClassParser(InputStream inputStream, String file_name) {
+-        this.file_name = file_name;
+-        fileOwned = false;
+-        String clazz = inputStream.getClass().getName(); // Not a very clean solution ...
+-        is_zip = clazz.startsWith("java.util.zip.") || clazz.startsWith("java.util.jar.");
+-        if (inputStream instanceof DataInputStream) {
++public void parse(InputStream inputStream) {
++
++
++
++
++
+             this.dataInputStream = (DataInputStream) inputStream;
+         } else {
+-            this.dataInputStream = new DataInputStream(new BufferedInputStream(inputStream, BUFSIZE));
++this.dataInputStream = new DataInputStream(new BufferedInputStream(inputStream, 0, BUFSIZE));
+         }
+-    }
++
+ 
+ 
+     /** Parse class from given .class file.

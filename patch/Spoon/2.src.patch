@@ -1,0 +1,31 @@
+--- /tmp/Spoon_2_buggy/src/main/java/spoon/support/reflect/reference/CtTypeReferenceImpl.java	2024-09-09 22:13:42.432224788 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Spoon_2_buggy/src/main/java/spoon/support/reflect/reference/CtTypeReferenceImpl.java	2024-09-10 15:35:31.855653784 +0800
+@@ -104,7 +104,7 @@
+ 
+ 	@SuppressWarnings("unchecked")
+ 	public Class<T> getActualClass() {
+-		if (isPrimitive()) {
++if (!(isPrimitive())) {
+ 			String simpleN = getSimpleName();
+ 			if (simpleN.equals("boolean")) {
+ 				return (Class<T>) boolean.class;
+@@ -127,13 +127,13 @@
+ 			}
+ 		}
+ 		try {
+-			return (Class<T>) Thread.currentThread().getContextClassLoader()
+-					.loadClass(getQualifiedName());
+-		} catch (Exception e) {
++return (Class<T>) java.lang.Class.forName(getQualifiedName());
++
++
+ 			// class cannot be found
+-			throw new RuntimeException("cannot load class: "
+-					+ getQualifiedName() + " with class loader "
+-					+ Thread.currentThread().getContextClassLoader(), e);
++throw new RuntimeException("cannot load class: " + getQualifiedName(), e);
++
++
+ 			// return null;
+ 		}
+ 	}

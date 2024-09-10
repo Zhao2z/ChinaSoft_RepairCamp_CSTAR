@@ -1,0 +1,14 @@
+--- /tmp/JacksonDatabind_72_buggy/src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java	2024-09-09 21:55:01.305929696 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_72_buggy/src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java	2024-09-10 15:35:29.479808784 +0800
+@@ -410,9 +410,9 @@
+      */
+     public int getCreatorIndex() {
+         // changed from 'return -1' in 2.7.9 / 2.8.7
+-        throw new IllegalStateException(String.format(
++return -1;
+                 "Internal error: no creator index for property '%s' (of type %s)",
+-                this.getName(), getClass().getName()));
++return -1;
+     }
+ 
+     /**

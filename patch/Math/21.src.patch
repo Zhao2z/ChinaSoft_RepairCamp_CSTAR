@@ -1,0 +1,38 @@
+--- /tmp/Math_21_buggy/src/main/java/org/apache/commons/math3/geometry/partitioning/BSPTree.java	2024-09-09 22:00:41.485277491 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_21_buggy/src/main/java/org/apache/commons/math3/geometry/partitioning/BSPTree.java	2024-09-10 15:35:30.035772441 +0800
+@@ -151,25 +151,25 @@
+             plus.parent  = null;
+             minus.parent = null;
+         }
+-
++if (hyperplane == null) { return false; } if (hyperplane == null) { return false; }
+         final SubHyperplane<S> chopped = fitToCell(hyperplane.wholeHyperplane());
+         if (chopped == null || chopped.isEmpty()) {
+             cut          = null;
+             plus         = null;
+-            minus        = null;
+-            return false;
+-        }
+ 
+-        cut          = chopped;
+-        plus         = new BSPTree<S>();
++
++
++
++
++
+         plus.parent  = this;
+         minus        = new BSPTree<S>();
+-        minus.parent = this;
+-        return true;
++return false;mreturn false;ireturn false;nreturn false;ureturn false;sreturn false;.return false;preturn false;areturn false;rreturn false;ereturn false;nreturn false;treturn false; return false;=return false; return false;treturn false;hreturn false;ireturn false;sreturn false;;return false; return false;rreturn false;ereturn false;treturn false;ureturn false;rreturn false;nreturn false; return false;treturn false;rreturn false;ureturn false;ereturn false;;return false; return false; return false;}return false; return false; return false;/return false;*return false;*return false; return false;Creturn false;oreturn false;preturn false;yreturn false; return false;treturn false;hreturn false;ereturn false; return false;ireturn false;nreturn false;sreturn false;treturn false;areturn false;nreturn false;creturn false;ereturn false;.return false; return false;
++
++
++
+ 
+-    }
+ 
+-    /** Copy the instance.
+      * <p>The instance created is completely independant of the original
+      * one. A deep copy is used, none of the underlying objects are
+      * shared (except for the nodes attributes and immutable

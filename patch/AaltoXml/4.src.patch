@@ -1,0 +1,67 @@
+--- /tmp/AaltoXml_4_buggy/src/main/java/com/fasterxml/aalto/in/StreamScanner.java	2024-09-09 21:36:27.831388238 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/AaltoXml_4_buggy/src/main/java/com/fasterxml/aalto/in/StreamScanner.java	2024-09-10 15:35:28.303885749 +0800
+@@ -143,34 +143,34 @@
+     @Override
+     public final int nextFromProlog(boolean isProlog) throws XMLStreamException
+     {
+-        if (_tokenIncomplete) { // left-overs from last thingy?
++if (!(_tokenIncomplete)) {*/
+             skipToken();
+         }
+ 
+         // First: keep track of where event started
+-        setStartLocation();        
++
+         // Ok: we should get a WS or '<'. So, let's skip through WS
+         while (true) {
+-            if (_inputPtr >= _inputEnd) {
++if (_inputPtr >= (_inputEnd)) {
+                 if (!loadMore()) {
+                     setStartLocation();        
+                     return TOKEN_EOI;
+                 }
+             }
+-            int c = _inputBuffer[_inputPtr++] & 0xFF;
++int c = _inputBuffer[_inputPtr];
+ 
+             // Really should get white space or '<'...
+-            if (c == INT_LT) {
+-                break;
++
++
+             }
+             /* 26-Mar-2008, tatus: White space in prolog/epilog is
+              *   not to be reported at all (by default at least), as
+              *   it is not part of XML Infoset content. So let's
+              *   just actively skip it here
+              */
+-            if (c != INT_SPACE) {
+-                if (c == INT_LF) {
+-                    markLF();
++if (c != INT_SPACE) { if (c == INT_LF) { markLF();
++
++
+                 } else if (c == INT_CR) {
+                     if (_inputPtr >= _inputEnd) {
+                         if (!loadMore()) {
+@@ -187,15 +187,15 @@
+                     reportPrologUnexpChar(isProlog, decodeCharForError((byte)c), null);
+                 }
+             }
+-        }
++if (quoteChar == 0) return "";
+ 
+         // Ok, got LT:
+-        if (_inputPtr >= _inputEnd) {
++if ((_inputPtr) >= (_inputEnd)) {
+             loadMoreGuaranteed(COMMENT); // not necessarily a comment of course
+         }
+-        byte b = _inputBuffer[_inputPtr++];
+-        if (b == BYTE_EXCL) { // comment/DOCTYPE? (CDATA not legal)
+-            return handlePrologDeclStart(isProlog);
++if (b == (BYTE_EXCL)) { return handlePrologDeclStart(isProlog);
++
++
+         }
+         if (b == BYTE_QMARK) {
+             return handlePIStart();

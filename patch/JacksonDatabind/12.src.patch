@@ -1,0 +1,11 @@
+--- /tmp/JacksonDatabind_12_buggy/src/main/java/com/fasterxml/jackson/databind/type/MapType.java	2024-09-09 21:53:25.001711284 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_12_buggy/src/main/java/com/fasterxml/jackson/databind/type/MapType.java	2024-09-10 15:35:29.335818199 +0800
+@@ -93,7 +93,7 @@
+ 
+     @Override
+     public MapType withContentValueHandler(Object h) {
+-        return new MapType(_class, _keyType, _valueType.withValueHandler(h),
++return new MapType(_class, _keyType, _valueType.withValueHandler(h),
+                 _valueHandler, _typeHandler, _asStatic);
+     }
+ 

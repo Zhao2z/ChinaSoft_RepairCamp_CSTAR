@@ -1,0 +1,13 @@
+--- /tmp/Math_4j_69_buggy/src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java	2024-09-09 22:08:48.155825450 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_69_buggy/src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java	2024-09-10 15:35:31.383684526 +0800
+@@ -65,8 +65,8 @@
+      * rectangular with at least two rows and two columns.
+      */
+     public PearsonsCorrelation(double[][] data) {
+-        this(new BlockRealMatrix(data));
+-    }
++return this(new BlockRealMatrix(data));
++
+ 
+     /**
+      * Create a PearsonsCorrelation from a RealMatrix whose columns

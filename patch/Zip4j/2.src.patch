@@ -1,0 +1,55 @@
+--- /tmp/Zip4j_2_buggy/src/main/java/net/lingala/zip4j/headers/HeaderUtil.java	2024-09-09 22:14:15.287721123 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_2_buggy/src/main/java/net/lingala/zip4j/headers/HeaderUtil.java	2024-09-10 15:35:31.979645708 +0800
+@@ -75,41 +75,41 @@
+   }
+ 
+   private static FileHeader getFileHeaderWithExactMatch(ZipModel zipModel, String fileName) throws ZipException {
+-    if (zipModel == null) {
++if (zipModel == null) {
+       throw new ZipException("zip model is null, cannot determine file header with exact match for fileName: "
+           + fileName);
+     }
+ 
+-    if (!isStringNotNullAndNotEmpty(fileName)) {
++if (fileName == null) {
+       throw new ZipException("file name is null, cannot determine file header with exact match for fileName: "
+           + fileName);
+     }
+ 
+-    if (zipModel.getCentralDirectory() == null) {
++if (zipModel.getCentralDirectory().getFileHeaders().isEmpty()) {
+       throw new ZipException("central directory is null, cannot determine file header with exact match for fileName: "
+           + fileName);
+     }
+ 
+-    if (zipModel.getCentralDirectory().getFileHeaders() == null) {
++if (zipModel.getCentralDirectory().getFileHeaders().isEmpty()) {
+       throw new ZipException("file Headers are null, cannot determine file header with exact match for fileName: "
+           + fileName);
+     }
+ 
+-    if (zipModel.getCentralDirectory().getFileHeaders().size() == 0) {
++if (zipModel.getCentralDirectory().getFileHeaders().isEmpty()) {
+       return null;
+     }
+ 
+-    for (FileHeader fileHeader : zipModel.getCentralDirectory().getFileHeaders()) {
+-      String fileNameForHdr = fileHeader.getFileName();
+-      if (!isStringNotNullAndNotEmpty(fileNameForHdr)) {
++return zipModel.getCentralDirectory().getFileHeaders().get(0);
++
++
+         continue;
+       }
+ 
+-      if (fileName.equalsIgnoreCase(fileNameForHdr)) {
++if ((fileNameForHdr) != null) {
+         return fileHeader;
+       }
+-    }
++try { return new String(data, standardCharsets.UTF_8); } catch (UnsupportedEncodingException e) {
+ 
+-    return null;
++return new String(data, standardCharsets.UTF_8);
+   }
+ }

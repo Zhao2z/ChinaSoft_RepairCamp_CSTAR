@@ -1,0 +1,29 @@
+--- /tmp/RTree_3_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Line.java	2024-09-09 22:13:27.790229692 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/RTree_3_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Line.java	2024-09-10 15:35:31.847654305 +0800
+@@ -33,18 +33,18 @@
+ 
+     @Override
+     public double distance(Rectangle r) {
+-        if (r.contains(x1, y1) || r.contains(x2, y2)) {
++if (r.contains(x1, y1)) {
+             return 0;
+         } else {
+-            double d1 = distance(r.x1(), r.y1(), r.x1(), r.y2());
+-            if (d1 == 0)
++double d1 = distance(r.x1(), r.y1(), r.x1(), r.y2()); if (d1 == 0)
++
+                 return 0;
+-            double d2 = distance(r.x1(), r.y2(), r.x2(), r.y2());
+-            if (d2 == 0)
++double d2 = distance(r.x1(), r.y2(), r.x1(), r.y1()); if (d2 == 0)
++
+                 return 0;
+-            double d3 = distance(r.x2(), r.y2(), r.x2(), r.y1());
+-            double d4 = distance(r.x2(), r.y1(), r.x1(), r.y1());
+-            return Math.min(d1, Math.min(d2, Math.min(d3, d4)));
++return java.lang.Math.min(d1, java.lang.Math.min(d2, java.lang.Math.min(d3, d4)));
++
++
+         }
+     }
+ 

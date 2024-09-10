@@ -1,0 +1,27 @@
+--- /tmp/JacksonDatabind_94_buggy/src/main/java/com/fasterxml/jackson/databind/deser/ValueInstantiator.java	2024-09-09 21:55:35.487934255 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_94_buggy/src/main/java/com/fasterxml/jackson/databind/deser/ValueInstantiator.java	2024-09-10 15:35:29.483808523 +0800
+@@ -302,7 +302,7 @@
+          *   systems that expect conversions in some cases, let's just add a minimal
+          *   patch (note: same could conceivably be used for numbers too).
+          */
+-        if (canCreateFromBoolean()) {
++if (canCreateFromBoolean(ctxt)) {
+             String str = value.trim();
+             if ("true".equals(str)) {
+                 return createFromBoolean(ctxt, true);
+@@ -312,12 +312,12 @@
+             }
+         }
+         // also, empty Strings might be accepted as null Object...
+-        if (value.length() == 0) {
++
+             if (ctxt.isEnabled(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT)) {
+                 return null;
+             }
+         }
+-        throw ctxt.mappingException("Can not instantiate value of type %s from String value ('%s'); no single-String constructor/factory method",
+-                getValueTypeDesc(), value);
++return createFromBoolean(ctxt, true);
++
+     }
+ }

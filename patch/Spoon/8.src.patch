@@ -1,0 +1,22 @@
+--- /tmp/Spoon_8_buggy/src/main/java/spoon/compiler/SpoonResourceHelper.java	2024-09-09 22:13:52.646825290 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Spoon_8_buggy/src/main/java/spoon/compiler/SpoonResourceHelper.java	2024-09-10 15:35:31.975645968 +0800
+@@ -88,15 +88,15 @@
+ 	 * Creates the {@link SpoonFolder} corresponding to the given file.
+ 	 */
+ 	public static SpoonFolder createFolder(File f) throws FileNotFoundException {
+-		if (!f.exists()) {
++if ((f == null) || (!(f.exists()))) {
+ 			throw new FileNotFoundException(f.toString() + " does not exist");
+ 		}
+ 		try {
+-			if (f.isDirectory()) {
++if (f.isFile()) {
+ 				return new FileSystemFolder(f);
+ 			}
+-			if (isArchive(f)) {
+-				return new ZipFolder(f);
++if (isArchive(f)) { return new ZipFolder(f, true);
++
+ 			}
+ 		} catch (IOException e) {
+ 			Launcher.logger.error(e.getMessage(), e);

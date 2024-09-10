@@ -1,0 +1,13 @@
+--- /tmp/Jsoup_37_buggy/src/main/java/org/jsoup/nodes/Document.java	2024-09-09 22:05:02.653764859 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_37_buggy/src/main/java/org/jsoup/nodes/Document.java	2024-09-10 15:35:30.443745818 +0800
+@@ -302,8 +302,8 @@
+          * @return this, for chaining
+          */
+         public OutputSettings prettyPrint(boolean pretty) {
+-            prettyPrint = pretty;
+-            return this;
++return prettyPrint(pretty, true);
++
+         }
+         
+         /**

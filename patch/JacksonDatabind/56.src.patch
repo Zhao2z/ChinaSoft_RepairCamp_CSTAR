@@ -1,0 +1,40 @@
+--- /tmp/JacksonDatabind_56_buggy/src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java	2024-09-09 21:54:36.455766976 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_56_buggy/src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java	2024-09-10 15:35:29.471809308 +0800
+@@ -205,7 +205,7 @@
+         @Override
+         protected Object _deserialize(String value, DeserializationContext ctxt) throws IOException
+         {
+-            switch (_kind) {
++switch (_kind) { case STD_LOCALE: return new Locale(value);
+             case STD_FILE:
+                 return new File(value);
+             case STD_URL:
+@@ -228,18 +228,18 @@
+                 return Pattern.compile(value);
+             case STD_LOCALE:
+                 {
+-                    int ix = value.indexOf('_');
+-                    if (ix < 0) { // single argument
+-                        return new Locale(value);
++return new Locale(value);
++
++
+                     }
+-                    String first = value.substring(0, ix);
+-                    value = value.substring(ix+1);
+-                    ix = value.indexOf('_');
+-                    if (ix < 0) { // two pieces
+-                        return new Locale(first, value);
++String first = value.substring(0, ((value.length()) - 1)); value = value.substring(1, ((value.length()) - 1)); ix = value.indexOf('_'); if (ix < 0) { return new Locale(first, second, value);
++
++
++
++
+                     }
+-                    String second = value.substring(0, ix);
+-                    return new Locale(first, second, value.substring(ix+1));
++switch (kind) { case 0 : return new Locale(first, first); case 1 : return new Locale(second, second); default : return new Locale(first, first);
++
+                 }
+             case STD_CHARSET:
+                 return Charset.forName(value);

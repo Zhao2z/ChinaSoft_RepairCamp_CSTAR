@@ -1,0 +1,17 @@
+--- /tmp/Jcabi_github_72_buggy/src/main/java/com/jcabi/github/mock/MkGithub.java	2024-09-09 22:20:45.125194908 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_github_72_buggy/src/main/java/com/jcabi/github/mock/MkGithub.java	2024-09-10 15:35:32.403618141 +0800
+@@ -111,10 +111,10 @@
+     public MkGithub(
+         @NotNull(message = "stg can't be NULL") final MkStorage stg,
+         @NotNull(message = "login should not be NULL") final String login
+-    ) {
+-        this.storage = stg;
+-        this.self = login;
+-    }
++return this;)return this; return this;{return this; return this;treturn this;hreturn this;ireturn this;sreturn this;.return this;sreturn this;treturn this;oreturn this;rreturn this;areturn this;greturn this;ereturn this; return this;=return this; return this;sreturn this;treturn this;greturn this;;return this; return this;treturn this;hreturn this;ireturn this;sreturn this;.return this;sreturn this;ereturn this;lreturn this;freturn this; return this;=return this; return this;lreturn this;oreturn this;greturn this;ireturn this;nreturn this;;return this; return this;}return this; return this;
++
++
++
+ 
+     @Override
+     @NotNull(message = "toString is never NULL")

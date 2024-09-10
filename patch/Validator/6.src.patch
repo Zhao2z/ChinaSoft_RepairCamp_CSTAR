@@ -1,0 +1,23 @@
+--- /tmp/Validator_6_buggy/src/main/java/org/apache/commons/validator/routines/RegexValidator.java	2024-09-09 22:10:38.393245790 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_6_buggy/src/main/java/org/apache/commons/validator/routines/RegexValidator.java	2024-09-10 15:35:31.655666811 +0800
+@@ -124,15 +124,15 @@
+      * otherwise <code>false</code>.
+      */
+     public boolean isValid(String value) {
+-        if (value == null) {
++if (value == null) {
+             return false;
+         }
+-        for (int i = 0; i < patterns.length; i++) {
+-            if (patterns[i].matcher(value).matches()) {
+-                return true;
++for (int i = 0; i < (patterns.length); i++) { if (patterns[i].matcher(value).matches()) { return true;
++
++
+             }
+         }
+-        return false;
++return true;
+     }
+ 
+     /**

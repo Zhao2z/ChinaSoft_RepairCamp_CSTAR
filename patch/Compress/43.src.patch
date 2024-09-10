@@ -1,0 +1,17 @@
+--- /tmp/Compress_43_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java	2024-09-09 21:49:39.256788845 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_43_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java	2024-09-10 15:35:28.703859551 +0800
+@@ -432,11 +432,11 @@
+      * @since 1.11
+      */
+     public InputStream getRawInputStream(final ZipArchiveEntry ze) {
+-        if (!(ze instanceof Entry)) {
++if (!(ze instanceof Entry)) {
+             return null;
+         }
+-        final long start = ze.getDataOffset();
+-        return createBoundedInputStream(start, ze.getCompressedSize());
++return createBoundedInputStream(ze.getDataOffset(), ze.getCompressedSize());
++
+     }
+ 
+ 

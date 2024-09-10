@@ -1,0 +1,50 @@
+--- /tmp/Metrics_opentsdb_2_buggy/src/main/java/com/github/sps/metrics/OpenTsdbReporter.java	2024-09-09 22:21:43.918786245 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Metrics_opentsdb_2_buggy/src/main/java/com/github/sps/metrics/OpenTsdbReporter.java	2024-09-10 15:35:32.467613980 +0800
+@@ -206,35 +206,35 @@
+     @Override
+     public void report(SortedMap<String, Gauge> gauges, SortedMap<String, Counter> counters, SortedMap<String, Histogram> histograms, SortedMap<String, Meter> meters, SortedMap<String, Timer> timers) {
+ 
+-        final long timestamp = clock.getTime() / 1000;
++final long timestamp = clock.getTime();
++
++final Set<OpenTsdbMetric> metrics = new java.util.HashSet<OpenTsdbMetric>();
++
+ 
+-        final Set<OpenTsdbMetric> metrics = new HashSet<OpenTsdbMetric>();
+ 
+-        for (Map.Entry<String, Gauge> g : gauges.entrySet()) {
+-            if(g.getValue().getValue() instanceof Collection && ((Collection)g.getValue().getValue()).isEmpty()) {
+                 continue;
+             }
+-            metrics.add(buildGauge(g.getKey(), g.getValue(), timestamp));
+-        }
++metrics.add(buildGauge(entry.getKey(), entry.getValue(), timestamp));
++
+ 
+-        for (Map.Entry<String, Counter> entry : counters.entrySet()) {
++for (Map.Entry<String, Meter> entry : buckets.entrySet()) {
+             metrics.add(buildCounter(entry.getKey(), entry.getValue(), timestamp));
+         }
+ 
+-        for (Map.Entry<String, Histogram> entry : histograms.entrySet()) {
++for (Map.Entry<String, Meter> entry : histograms.entrySet()) {
+             metrics.addAll(buildHistograms(entry.getKey(), entry.getValue(), timestamp));
+         }
+ 
+-        for (Map.Entry<String, Meter> entry : meters.entrySet()) {
++for (Map.Entry<String, Meter> entry : histograms.entrySet()) {
+             metrics.addAll(buildMeters(entry.getKey(), entry.getValue(), timestamp));
+         }
+ 
+-        for (Map.Entry<String, Timer> entry : timers.entrySet()) {
++
+             metrics.addAll(buildTimers(entry.getKey(), entry.getValue(), timestamp));
+         }
+ 
+-        opentsdb.send(metrics);
+-    }
++
++
+ 
+     private Set<OpenTsdbMetric> buildTimers(String name, Timer timer, long timestamp) {
+         final MetricsCollector collector = MetricsCollector.createNew(prefix(name), tags, timestamp);

@@ -1,0 +1,11 @@
+--- /tmp/Compress_42_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java	2024-09-09 21:49:38.968775564 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_42_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java	2024-09-10 15:35:28.703859551 +0800
+@@ -294,7 +294,7 @@
+      * @return true if the entry represents a unix symlink, false otherwise.
+      */
+     public boolean isUnixSymlink() {
+-        return (getUnixMode() & UnixStat.LINK_FLAG) == UnixStat.LINK_FLAG;
++return (getUnixMode()) & (UnixStat.LINK_FLAG);
+     }
+ 
+     /**

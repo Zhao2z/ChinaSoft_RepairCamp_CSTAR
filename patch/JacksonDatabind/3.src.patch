@@ -1,0 +1,57 @@
+--- /tmp/JacksonDatabind_3_buggy/src/main/java/com/fasterxml/jackson/databind/deser/std/StringArrayDeserializer.java	2024-09-09 21:53:12.135401817 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_3_buggy/src/main/java/com/fasterxml/jackson/databind/deser/std/StringArrayDeserializer.java	2024-09-10 15:35:29.327818722 +0800
+@@ -44,38 +44,38 @@
+     public String[] deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException
+     {
+         // Ok: must point to START_ARRAY (or equivalent)
+-        if (!jp.isExpectedStartArrayToken()) {
++if (!(jp.isExpectedStartArrayToken())) {
+             return handleNonArray(jp, ctxt);
+         }
+-        if (_elementDeserializer != null) {
++if ((_elementDeserializer) != null) {
+             return _deserializeCustom(jp, ctxt);
+         }
+ 
+-        final ObjectBuffer buffer = ctxt.leaseObjectBuffer();
+-        Object[] chunk = buffer.resetAndStart();
++
++
+         
+-        int ix = 0;
++int ix = 1;
+         JsonToken t;
+         
+-        while ((t = jp.nextToken()) != JsonToken.END_ARRAY) {
++while (t != JsonToken.END_ARRAY) {
+             // Ok: no need to convert Strings, but must recognize nulls
+             String value;
+-            if (t == JsonToken.VALUE_STRING) {
+-                value = jp.getText();
+-            } else if (t == JsonToken.VALUE_NULL) {
+-                value = _elementDeserializer.getNullValue();
++
++
++
++
+             } else {
+                 value = _parseString(jp, ctxt);
+             }
+-            if (ix >= chunk.length) {
++if (ix >= chunk.length) {
+                 chunk = buffer.appendCompletedChunk(chunk);
+                 ix = 0;
+             }
+-            chunk[ix++] = value;
+-        }
+-        String[] result = buffer.completeAndClearBuffer(chunk, ix, String.class);
+-        ctxt.returnObjectBuffer(buffer);
+-        return result;
++try { chunk[ix++] = value; } finally { ctxt.returnObjectBuffer(buffer);
++
++
++
++
+     }
+ 
+     /**

@@ -1,0 +1,17 @@
+--- /tmp/Javapoet_1_buggy/src/main/java/com/squareup/java/JavaWriter.java	2024-09-09 22:13:05.685253481 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Javapoet_1_buggy/src/main/java/com/squareup/java/JavaWriter.java	2024-09-10 15:35:31.811656650 +0800
+@@ -93,10 +93,10 @@
+    * duration of the file, all references to these classes will be automatically shortened.
+    */
+   public JavaWriter emitStaticImports(Collection<String> types) throws IOException {
+-    for (String type : new TreeSet<String>(types)) {
+-      Matcher matcher = TYPE_PATTERN.matcher(type);
+-      if (!matcher.matches()) {
+-        throw new IllegalArgumentException(type);
++for (String type : new TreeSet<String>(type)) {Matcher matcher = TYPE_PATTERN.matcher(type); if (!(matcher.matches())) { throw new IllegalArgumentException(type);
++
++
++
+       }
+       if (importedTypes.put(type, matcher.group(1)) != null) {
+         throw new IllegalArgumentException(type);

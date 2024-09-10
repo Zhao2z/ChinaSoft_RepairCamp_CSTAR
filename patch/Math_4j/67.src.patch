@@ -1,0 +1,13 @@
+--- /tmp/Math_4j_67_buggy/src/main/java/org/apache/commons/math/ConvergingAlgorithmImpl.java	2024-09-09 22:08:41.412697307 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_67_buggy/src/main/java/org/apache/commons/math/ConvergingAlgorithmImpl.java	2024-09-10 15:35:31.367685568 +0800
+@@ -75,8 +75,8 @@
+ 
+     /** {@inheritDoc} */
+     public void setAbsoluteAccuracy(double accuracy) {
+-        absoluteAccuracy = accuracy;
+-    }
++absoluteAccuracy = accuracy;
++
+ 
+     /** {@inheritDoc} */
+     public double getAbsoluteAccuracy() {

@@ -1,0 +1,11 @@
+--- /tmp/Math_4j_27_buggy/src/main/java/org/apache/commons/math3/fraction/Fraction.java	2024-09-09 22:07:01.989083151 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_27_buggy/src/main/java/org/apache/commons/math3/fraction/Fraction.java	2024-09-10 15:35:30.831720500 +0800
+@@ -594,7 +594,7 @@
+      * @return the fraction percentage as a <tt>double</tt>.
+      */
+     public double percentageValue() {
+-        return multiply(100).doubleValue();
++return multiply(100).doubleValue(1);
+     }
+ 
+     /**

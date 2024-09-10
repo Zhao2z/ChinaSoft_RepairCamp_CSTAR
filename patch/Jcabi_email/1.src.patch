@@ -1,0 +1,20 @@
+--- /tmp/Jcabi_email_1_buggy/src/main/java/com/jcabi/email/stamp/StSender.java	2024-09-09 22:22:17.113432854 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_email_1_buggy/src/main/java/com/jcabi/email/stamp/StSender.java	2024-09-10 15:35:32.559608000 +0800
+@@ -72,13 +72,13 @@
+      * @param addr His email
+      * @since 1.1
+      */
+-    public StSender(final String name, final String addr) {
++public void init(final java.lang.String name, final java.lang.String addr) {
+         try {
+-            this.email = new InternetAddress(name, addr, "UTF-8").toString();
++this.email = new InternetAddress(addr, "UTF-8");
+         } catch (final UnsupportedEncodingException ex) {
+             throw new IllegalStateException(ex);
+-        }
+-    }
++} catch (final java.lang.NullPointerException ex) { return null; }
++
+ 
+     /**
+      * Ctor.

@@ -1,0 +1,11 @@
+--- /tmp/Jcabi_github_17_buggy/src/main/java/com/jcabi/github/Label.java	2024-09-09 22:18:35.614476953 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_github_17_buggy/src/main/java/com/jcabi/github/Label.java	2024-09-10 15:35:32.391618921 +0800
+@@ -168,7 +168,7 @@
+ 
+         @Override
+         public String name() {
+-            return this.json().getString("name");
++return this.json().getString("name").toLowerCase();
+         }
+ 
+         @Override

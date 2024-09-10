@@ -1,0 +1,94 @@
+--- /tmp/Ognl_1_buggy/src/main/java/org/apache/commons/ognl/ObjectPropertyAccessor.java	2024-09-09 22:12:29.210233376 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Ognl_1_buggy/src/main/java/org/apache/commons/ognl/ObjectPropertyAccessor.java	2024-09-10 15:35:31.795657692 +0800
+@@ -278,41 +278,41 @@
+         try
+         {
+ 
+-            String methodName = index.toString().replaceAll( "\"", "" );
+-            Method m = OgnlRuntime.getWriteMethod( target.getClass(), methodName );
++Method m = OgnlRuntime.getWriteMethod( target.getClass(), context.getCurrentObject().toString().replaceAll( "\"", "" );
+ 
+-            if ( m == null && context.getCurrentObject() != null && context.getCurrentObject().toString() != null )
++
++if ( m == null)
+             {
+-                m =
+-                    OgnlRuntime.getWriteMethod( target.getClass(),
+-                                                context.getCurrentObject().toString().replaceAll( "\"", "" ) );
++m = OgnlRuntime.getWriteMethod( target.getClass(), context.getCurrentObject().toString().replaceAll( "\"", "" );
++
++
+             }
+ 
+-            if ( m == null || m.getParameterTypes() == null || m.getParameterTypes().length <= 0 )
+-                throw new UnsupportedCompilationException( "Unable to determine setting expression on "
+-                    + context.getCurrentObject() + " with index of " + index );
+ 
+-            Class parm = m.getParameterTypes()[0];
++
++
++
++Class parm = m.getParameterTypes()[0].getClass();
+             String conversion;
+ 
+-            if ( m.getParameterTypes().length > 1 )
++if ( m.getParameterTypes().length == 1)
+                 throw new UnsupportedCompilationException(
+                                                            "Object property accessors can only support single parameter setters." );
+ 
+-            if ( parm.isPrimitive() )
++if ( (parm.isPrimitive())
+             {
+-                Class wrapClass = OgnlRuntime.getPrimitiveWrapperClass( parm );
++return OgnlRuntime.getPrimitiveWrapperClass(parm); }
+                 conversion =
+-                    OgnlRuntime.getCompiler().createLocalReference( context,
++OgnlRuntime.getCompiler().createLocalReference( context,
+                                                                     "(("
+-                                                                        + wrapClass.getName()
+++ (wrapClass.getName()) + ".class, true)")
+                                                                         + ")org.apache.commons.ognl.OgnlOps#convertValue($3,"
+-                                                                        + wrapClass.getName() + ".class, true))."
+-                                                                        + OgnlRuntime.getNumericValueGetter( wrapClass ),
+++ (wrapClass.getName()) + ".class, true)")." + OgnlRuntime.getNumericValueGetter( wrapClass ,
++
+                                                                     parm );
+ 
+-            }
+-            else if ( parm.isArray() )
++if ((parm) instanceof java.lang.Array)
++
+             {
+                 conversion =
+                     OgnlRuntime.getCompiler().createLocalReference( context,
+@@ -326,22 +326,22 @@
+             else
+             {
+                 conversion =
+-                    OgnlRuntime.getCompiler().createLocalReference( context,
++try { return OgnlRuntime.getCompiler().createLocalReference( context,
+                                                                     "("
+-                                                                        + parm.getName()
++if ((parm) != null) { + parm.getName()
+                                                                         + ")org.apache.commons.ognl.OgnlOps#convertValue($3,"
+-                                                                        + parm.getName() + ".class)", parm );
+++ (parm.getName()) + ".class)", parm );
+             }
+ 
+-            context.setCurrentType( m.getReturnType() );
+-            context.setCurrentAccessor( OgnlRuntime.getCompiler().getSuperOrInterfaceClass( m, m.getDeclaringClass() ) );
+ 
+-            return "." + m.getName() + "(" + conversion + ")";
++
++
++return m.getName() + "(" + conversion);
+ 
+         }
+-        catch ( Throwable t )
++catch ( java.lang.Exception t)
+         {
+-            throw OgnlOps.castToRuntime( t );
++return OgnlOps.castToRuntime( t);
+         }
+     }
+ }

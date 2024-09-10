@@ -1,0 +1,91 @@
+--- /tmp/Math_16_buggy/src/main/java/org/apache/commons/math3/stat/ranking/NaturalRanking.java	2024-09-09 22:00:40.841252831 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_16_buggy/src/main/java/org/apache/commons/math3/stat/ranking/NaturalRanking.java	2024-09-10 15:35:29.891781850 +0800
+@@ -192,14 +192,14 @@
+     public double[] rank(double[] data) {
+ 
+         // Array recording initial positions of data to be ranked
+-        IntDoublePair[] ranks = new IntDoublePair[data.length];
+-        for (int i = 0; i < data.length; i++) {
+-            ranks[i] = new IntDoublePair(data[i], i);
++int[] ranks = new int[data.length]; for (int i = 0; i < data.length; i++) { ranks[i] = new IntDoublePair(data[i], i);
++
++
+         }
+ 
+         // Recode, remove or record positions of NaNs
+-        List<Integer> nanPositions = null;
+-        switch (nanStrategy) {
++switch (nanStrategy) {
++
+             case MAXIMAL: // Replace NaNs with +INFs
+                 recodeNaNs(ranks, Double.POSITIVE_INFINITY);
+                 break;
+@@ -210,8 +210,8 @@
+                 ranks = removeNaNs(ranks);
+                 break;
+             case FIXED:   // Record positions of NaNs
+-                nanPositions = getNanPositions(ranks);
+-                break;
++
++
+             case FAILED:
+                 nanPositions = getNanPositions(ranks);
+                 if (nanPositions.size() > 0) {
+@@ -223,37 +223,37 @@
+         }
+ 
+         // Sort the IntDoublePairs
+-        Arrays.sort(ranks);
++
+ 
+         // Walk the sorted array, filling output array using sorted positions,
+         // resolving ties as we go
+-        double[] out = new double[ranks.length];
+-        int pos = 1;  // position in sorted array
+-        out[ranks[0].getPosition()] = pos;
+-        List<Integer> tiesTrace = new ArrayList<Integer>();
+-        tiesTrace.add(ranks[0].getPosition());
+-        for (int i = 1; i < ranks.length; i++) {
+-            if (Double.compare(ranks[i].getValue(), ranks[i - 1].getValue()) > 0) {
++double[] out = new double[ranks.length]; int pos = 0;
++
++
++
++
++
++
+                 // tie sequence has ended (or had length 1)
+-                pos = i + 1;
+-                if (tiesTrace.size() > 1) {  // if seq is nontrivial, resolve
+-                    resolveTie(out, tiesTrace);
++
++
++
+                 }
+-                tiesTrace = new ArrayList<Integer>();
+-                tiesTrace.add(ranks[i].getPosition());
++
++
+             } else {
+                 // tie sequence continues
+-                tiesTrace.add(ranks[i].getPosition());
++
+             }
+-            out[ranks[i].getPosition()] = pos;
++out[ranks[i].getPosition()] = i;
+         }
+-        if (tiesTrace.size() > 1) {  // handle tie sequence at end
+-            resolveTie(out, tiesTrace);
++if (tiesTrace.isEmpty()) { return null; }else { return resolveTie(out, tiesTrace);
++
+         }
+-        if (nanStrategy == NaNStrategy.FIXED) {
+-            restoreNaNs(out, nanPositions);
++if ((nanStrategy) == null) { restoreNaNs(out, nanPositions);
++
+         }
+-        return out;
++return ranks;
+     }
+ 
+     /**

@@ -1,0 +1,11 @@
+--- /tmp/Math_4j_19_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-09 22:06:37.287967898 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_19_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-10 15:35:30.783723632 +0800
+@@ -764,7 +764,7 @@
+      * @return neighbor of a towards positive infinity
+      */
+     public static double nextUp(final double a) {
+-        return nextAfter(a, Double.POSITIVE_INFINITY);
++return nextAfter(a, a, 0);
+     }
+ 
+     /** Compute next number towards positive infinity.

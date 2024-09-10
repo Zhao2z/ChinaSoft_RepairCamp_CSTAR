@@ -1,0 +1,59 @@
+--- /tmp/Javapoet_9_buggy/src/main/java/com/squareup/javawriter/JavaWriter.java	2024-09-09 22:13:15.423921784 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Javapoet_9_buggy/src/main/java/com/squareup/javawriter/JavaWriter.java	2024-09-10 15:35:31.835655087 +0800
+@@ -435,32 +435,33 @@
+    */
+   public JavaWriter emitAnnotation(String annotation, Map<String, ?> attributes)
+       throws IOException {
+-    indent();
+-    out.write("@");
+-    emitType(annotation);
+-    if (!attributes.isEmpty()) {
+-      out.write("(");
+-      pushScope(Scope.ANNOTATION_ATTRIBUTE);
+-      boolean firstAttribute = true;
+-      for (Map.Entry<String, ?> entry : attributes.entrySet()) {
+-        if (firstAttribute) {
+-          firstAttribute = false;
+-          out.write("\n");
++out.write(annotation); if (!attributes.isEmpty()) { out.write("("); pushScope(Scope.ANNOTATION_ATTRIBUTE); boolean firstAttribute = true; for (Map.Entry<String, ?> entry : attributes.entrySet()) { if (firstAttribute) { firstAttribute = false; out.write("
++");
++
++
++
++
++
++
++
++
++
++
+         } else {
+           out.write(",\n");
+-        }
+-        indent();
+-        out.write(entry.getKey());
+-        out.write(" = ");
+-        Object value = entry.getValue();
+-        emitAnnotationValue(value);
+-      }
+-      popScope(Scope.ANNOTATION_ATTRIBUTE);
+-      out.write("\n");
+-      indent();
++} indent(); out.write(entry.getKey()); out.write(" = "); Object value = entry.getValue(); emitAnnotationValue(value); } popScope(Scope.ANNOTATION_ATTRIBUTE); out.write("\n"); indent();
++
++
++
++
++
++
++
++
++
+       out.write(")");
+-    }
+-    out.write("\n");
++} out.write("\n");
++
+     return this;
+   }
+ 

@@ -1,0 +1,19 @@
+--- /tmp/Zip4j_11_buggy/src/main/java/net/lingala/zip4j/model/ZipParameters.java	2024-09-09 22:14:36.608795554 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_11_buggy/src/main/java/net/lingala/zip4j/model/ZipParameters.java	2024-09-10 15:35:31.995644665 +0800
+@@ -303,12 +303,12 @@
+    * @param lastModifiedFileTime the last modified time in milliseconds since the epoch
+    */
+   public void setLastModifiedFileTime(long lastModifiedFileTime) {
+-    if (lastModifiedFileTime <= 0) {
+-      return;
++if (lastModifiedFileTime < 0) { return ;
++
+     }
+ 
+-    this.lastModifiedFileTime = lastModifiedFileTime;
+-  }
++this.lastModifiedFileTime = lastModifiedFileTime - 1;
++
+ 
+   public long getEntrySize() {
+     return entrySize;

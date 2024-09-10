@@ -1,0 +1,13 @@
+--- /tmp/Slack_java_webhook_1_buggy/src/main/java/in/ashwanthkumar/slack/webhook/Slack.java	2024-09-09 22:14:12.816060132 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Slack_java_webhook_1_buggy/src/main/java/in/ashwanthkumar/slack/webhook/Slack.java	2024-09-10 15:35:31.975645968 +0800
+@@ -83,8 +83,8 @@
+      */
+     public Slack icon(String imageOrIcon) {
+ 
+-        this.icon = imageOrIcon;
+-        return this;
++this.icon = imageOrIcon.toLowerCase(); return this;
++
+     }
+ 
+     /**

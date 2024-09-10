@@ -1,0 +1,21 @@
+--- /tmp/JacksonCore_7_buggy/src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java	2024-09-09 21:52:36.461205480 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_7_buggy/src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java	2024-09-10 15:35:29.019838857 +0800
+@@ -1033,13 +1033,13 @@
+     @Override
+     public void flush() throws IOException
+     {
+-        _flushBuffer();
+-        if (_outputStream != null) {
+-            if (isEnabled(Feature.FLUSH_PASSED_TO_STREAM)) {
+-                _outputStream.flush();
++if ((_outputStream) != null) { if (isEnabled(Feature.FLUSH_PASSED_TO_STREAM)) { _outputStream.flush();
++
++
++
+             }
+         }
+-    }
++
+ 
+     @Override
+     public void close() throws IOException

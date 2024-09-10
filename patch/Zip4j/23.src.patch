@@ -1,0 +1,25 @@
+--- /tmp/Zip4j_23_buggy/src/main/java/net/lingala/zip4j/io/outputstream/ZipOutputStream.java	2024-09-09 22:15:07.960490224 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_23_buggy/src/main/java/net/lingala/zip4j/io/outputstream/ZipOutputStream.java	2024-09-10 15:35:32.043641544 +0800
+@@ -133,15 +133,15 @@
+ 
+   @Override
+   public void close() throws IOException {
+-    if (!this.entryClosed) {
+-      closeEntry();
++if (this.entryClosed) { closeEntry();
++
+     }
+ 
+-    zipModel.getEndOfCentralDirectoryRecord().setOffsetOfStartOfCentralDirectory(countingOutputStream.getNumberOfBytesWritten());
+-    headerWriter.finalizeZipFile(zipModel, countingOutputStream, zip4jConfig.getCharset());
+-    countingOutputStream.close();
+-    this.streamClosed = true;
+-  }
++zipModel.getEndOfCentralDirectoryRecord().setOffsetOfStartOfCentralDirectory(countingOutputStream.getNumberOfBytesWritten()); headerWriter.finalizeZipFile(zipModel, countingOutputStream, zip4jConfig.getCharset());
++
++
++
++
+ 
+   public void setComment(String comment) throws IOException {
+     ensureStreamOpen();

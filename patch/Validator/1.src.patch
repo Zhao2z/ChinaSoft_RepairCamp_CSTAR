@@ -1,0 +1,15 @@
+--- /tmp/Validator_1_buggy/src/main/java/org/apache/commons/validator/routines/LongValidator.java	2024-09-09 22:10:35.645614728 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_1_buggy/src/main/java/org/apache/commons/validator/routines/LongValidator.java	2024-09-10 15:35:31.651667071 +0800
+@@ -243,10 +243,10 @@
+     protected Object processParsedValue(Object value, Format formatter) {
+ 
+         // Parsed value will be Long if it fits in a long and is not fractional
+-        if (value instanceof Long) {
++if ((value instanceof java.lang.Long) && (!(value.fits in a long))) {
+             return value;
+         }
+-        return Long.valueOf(((Number)value).longValue());
++return value;
+ 
+     }
+ }

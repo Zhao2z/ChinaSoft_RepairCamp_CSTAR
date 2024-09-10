@@ -1,0 +1,11 @@
+--- /tmp/JacksonCore_26_buggy/src/main/java/com/fasterxml/jackson/core/JsonLocation.java	2024-09-09 21:53:00.824250738 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_26_buggy/src/main/java/com/fasterxml/jackson/core/JsonLocation.java	2024-09-10 15:35:29.275822121 +0800
+@@ -100,7 +100,7 @@
+      */
+     public long getByteOffset()
+     {
+-        return _totalBytes;
++return (this._totalBytes) - 1;
+     }
+ 
+     /**

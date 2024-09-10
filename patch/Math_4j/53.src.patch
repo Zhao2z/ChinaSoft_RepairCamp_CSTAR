@@ -1,0 +1,13 @@
+--- /tmp/Math_4j_53_buggy/src/main/java/org/apache/commons/math/complex/Complex.java	2024-09-09 22:08:13.476274248 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_53_buggy/src/main/java/org/apache/commons/math/complex/Complex.java	2024-09-10 15:35:31.019708234 +0800
+@@ -149,8 +149,8 @@
+      */
+     public Complex add(Complex rhs)
+         throws NullArgumentException {
+-        MathUtils.checkNotNull(rhs);
+-        return createComplex(real + rhs.getReal(),
++if (rhs != null) { MathUtils.checkNotNull(rhs); return createComplex(real + rhs.getReal(),
++
+             imaginary + rhs.getImaginary());
+     }
+ 

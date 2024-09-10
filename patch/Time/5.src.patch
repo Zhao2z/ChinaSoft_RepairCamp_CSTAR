@@ -1,0 +1,16 @@
+--- /tmp/Time_5_buggy/src/main/java/org/joda/time/DateTimeUtils.java	2024-09-09 22:03:20.732650152 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_5_buggy/src/main/java/org/joda/time/DateTimeUtils.java	2024-09-10 15:35:30.163764088 +0800
+@@ -315,10 +315,10 @@
+      * @return the type to use, never null
+      */
+     public static final PeriodType getPeriodType(PeriodType type) {
+-        if (type == null) {
+-            return PeriodType.standard();
++if (type != null) { return periodType(type);
++
+         }
+-        return type;
++return new PeriodType(type);
+     }
+ 
+     //-----------------------------------------------------------------------

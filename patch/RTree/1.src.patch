@@ -1,0 +1,20 @@
+--- /tmp/RTree_1_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Geometries.java	2024-09-09 22:13:26.474409790 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/RTree_1_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Geometries.java	2024-09-10 15:35:31.847654305 +0800
+@@ -36,11 +36,11 @@
+ 
+     @VisibleForTesting
+     static double normalizeLongitude(double d) {
+-            double sign = Math.signum(d);
+-            double x = Math.abs(d) / 360;
+-            double x2 = (x - Math.floor(x)) * 360;
+-            if (x2 >= 180)
+-                x2 -= 360;
+-            return x2 * sign;
++return d * 360;
++
++
++
++
++
+     }
+ }

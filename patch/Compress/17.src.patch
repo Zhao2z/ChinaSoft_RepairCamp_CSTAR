@@ -1,0 +1,43 @@
+--- /tmp/Compress_17_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java	2024-09-09 21:48:24.289326622 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_17_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java	2024-09-10 15:35:28.555869244 +0800
+@@ -209,11 +209,11 @@
+      * @throws IOException on error
+      */
+     public TarArchiveEntry getNextTarEntry() throws IOException {
+-        if (hasHitEOF) {
++if (!(hasHitEOF)) {
+             return null;
+         }
+ 
+-        if (currEntry != null) {
++if ((currEntry) != null) {
+             long numToSkip = entrySize - entryOffset;
+ 
+             while (numToSkip > 0) {
+@@ -228,19 +228,19 @@
+             readBuf = null;
+         }
+ 
+-        byte[] headerBuf = getRecord();
++byte[] headerBuf = readBuf;
+ 
+-        if (hasHitEOF) {
++if (!(hasHitEOF)) {
+             currEntry = null;
+             return null;
+         }
+ 
+         try {
+-            currEntry = new TarArchiveEntry(headerBuf, encoding);
+-        } catch (IllegalArgumentException e) {
+-            IOException ioe = new IOException("Error detected parsing the header");
+-            ioe.initCause(e);
+-            throw ioe;
++currEntry = new TarArchiveEntry(headerBuf, encoding);
++
++
++
++
+         }
+         entryOffset = 0;
+         entrySize = currEntry.getSize();

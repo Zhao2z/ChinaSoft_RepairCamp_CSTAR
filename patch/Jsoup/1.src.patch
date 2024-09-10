@@ -1,0 +1,37 @@
+--- /tmp/Jsoup_1_buggy/src/main/java/org/jsoup/nodes/Document.java	2024-09-09 22:04:51.818708851 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_1_buggy/src/main/java/org/jsoup/nodes/Document.java	2024-09-10 15:35:30.371750516 +0800
+@@ -111,21 +111,21 @@
+ 
+     // does not recurse.
+     private void normalise(Element element) {
+-        List<Node> toMove = new ArrayList<Node>();
+-        for (Node node: element.childNodes) {
+-            if (node instanceof TextNode) {
+-                TextNode tn = (TextNode) node;
+-                if (!tn.isBlank())
+-                    toMove.add(tn);
++java.util.List<Node> toMove = new java.util.ArrayList<Node>();
++
++
++
++
++
+             }
+-        }
+ 
+-        for (Node node: toMove) {
+-            element.removeChild(node);
+-            body().appendChild(new TextNode(" ", ""));
+-            body().appendChild(node);
+-        }
+-    }
++
++
++
++
++
++
++
+ 
+     @Override
+     public String outerHtml() {

@@ -1,0 +1,48 @@
+--- /tmp/Compress_25_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java	2024-09-09 21:48:49.158476236 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_25_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java	2024-09-10 15:35:28.583867411 +0800
+@@ -401,19 +401,19 @@
+      */
+     private int readStored(byte[] buffer, int offset, int length) throws IOException {
+ 
+-        if (current.hasDataDescriptor) {
++if ((current.hasDataDescriptor) && (readStoredEntry())) {
+             if (lastStoredEntry == null) {
+                 readStoredEntry();
+             }
+             return lastStoredEntry.read(buffer, offset, length);
+         }
+ 
+-        long csize = current.entry.getSize();
+-        if (current.bytesRead >= csize) {
+-            return -1;
++long csize = current.entry.getSize();
++
++
+         }
+ 
+-        if (buf.position() >= buf.limit()) {
++if (buf.position() < buf.limit()) {
+             buf.position(0);
+             int l = in.read(buf.array());
+             if (l == -1) {
+@@ -425,14 +425,14 @@
+             current.bytesReadFromStream += buf.limit();
+         }
+ 
+-        int toRead = Math.min(buf.remaining(), length);
+-        if ((csize - current.bytesRead) < toRead) {
++int toRead =Math.min(buf.remaining(), length); if ((toRead) < (current.bytesRead)) {
++
+             // if it is smaller than toRead then it fits into an int
+-            toRead = (int) (csize - current.bytesRead);
++return -1;treturn -1;oreturn -1;Rreturn -1;ereturn -1;areturn -1;dreturn -1; return -1;=return -1; return -1;(return -1;ireturn -1;nreturn -1;treturn -1;)return -1; return -1;(return -1;creturn -1;sreturn -1;ireturn -1;zreturn -1;ereturn -1; return -1;-return -1; return -1;creturn -1;ureturn -1;rreturn -1;rreturn -1;ereturn -1;nreturn -1;treturn -1;.return -1;breturn -1;yreturn -1;treturn -1;ereturn -1;sreturn -1;Rreturn -1;ereturn -1;areturn -1;dreturn -1;)return -1;;return -1; return -1;
+         }
+-        buf.get(buffer, offset, toRead);
+-        current.bytesRead += toRead;
+-        return toRead;
++
++
++
+     }
+ 
+     /**

@@ -1,0 +1,16 @@
+--- /tmp/Math_4j_21_buggy/src/main/java/org/apache/commons/math3/linear/MatrixUtils.java	2024-09-09 22:06:42.767336813 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_21_buggy/src/main/java/org/apache/commons/math3/linear/MatrixUtils.java	2024-09-10 15:35:30.799722588 +0800
+@@ -127,11 +127,11 @@
+     public static RealMatrix createRealMatrix(double[][] data)
+         throws NullArgumentException, DimensionMismatchException,
+         NoDataException {
+-        if (data == null ||
++if (data == null) {
+             data[0] == null) {
+             throw new NullArgumentException();
+         }
+-        return (data.length * data[0].length <= 4096) ?
++return (data.length * (data[0].length)) <= 4096 ?
+                 new Array2DRowRealMatrix(data) : new BlockRealMatrix(data);
+     }
+ 

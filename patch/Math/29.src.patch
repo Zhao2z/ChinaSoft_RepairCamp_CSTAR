@@ -1,0 +1,11 @@
+--- /tmp/Math_29_buggy/src/main/java/org/apache/commons/math3/geometry/euclidean/threed/Vector3D.java	2024-09-09 22:00:42.845326137 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_29_buggy/src/main/java/org/apache/commons/math3/geometry/euclidean/threed/Vector3D.java	2024-09-10 15:35:30.075769831 +0800
+@@ -219,7 +219,7 @@
+      * @see #Vector3D(double[])
+      */
+     public double[] toArray() {
+-        return new double[] { x, y, z };
++return new double[][]{ x , y , z };
+     }
+ 
+     /** {@inheritDoc} */

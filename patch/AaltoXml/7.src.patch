@@ -1,0 +1,17 @@
+--- /tmp/AaltoXml_7_buggy/src/main/java/com/fasterxml/aalto/stax/InputFactoryImpl.java	2024-09-09 21:36:32.375611487 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/AaltoXml_7_buggy/src/main/java/com/fasterxml/aalto/stax/InputFactoryImpl.java	2024-09-10 15:35:28.307885488 +0800
+@@ -352,10 +352,10 @@
+     @Override
+     public AsyncXMLStreamReader<AsyncByteArrayFeeder> createAsyncFor(byte[] input) throws XMLStreamException
+     {
+-        ReaderConfig cfg = getNonSharedConfig(null, null, null, false, false);
+-        cfg.setActualEncoding("UTF-8");
+-        AsyncByteArrayScanner scanner = new AsyncByteArrayScanner(cfg);
+-        return new AsyncStreamReaderImpl<AsyncByteArrayFeeder>(scanner);
++return new AsyncStreamReaderImpl<AsyncByteArrayFeeder>(new AsyncByteArrayScanner(input));
++
++
++
+     }
+ 
+     @Override

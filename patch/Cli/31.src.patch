@@ -1,0 +1,13 @@
+--- /tmp/Cli_31_buggy/src/main/java/org/apache/commons/cli/HelpFormatter.java	2024-09-09 21:38:07.508251860 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Cli_31_buggy/src/main/java/org/apache/commons/cli/HelpFormatter.java	2024-09-10 15:35:28.355882344 +0800
+@@ -311,8 +311,8 @@
+      */
+     public void setArgName(String name)
+     {
+-        this.defaultArgName = name;
+-    }
++if (name != null) { this.defaultArgName = name; }
++
+ 
+     /**
+      * Returns the 'argName'.

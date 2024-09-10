@@ -1,0 +1,11 @@
+--- /tmp/Bcel_3_buggy/src/main/java/org/apache/bcel/Repository.java	2024-09-09 21:36:39.035938420 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Bcel_3_buggy/src/main/java/org/apache/bcel/Repository.java	2024-09-10 15:35:28.343883130 +0800
+@@ -60,7 +60,7 @@
+      * parsed correctly
+      */
+     public static JavaClass lookupClass( String class_name ) throws ClassNotFoundException {
+-        return _repository.loadClass(class_name);
++java.lang.Class result = _repository.loadClass(class_name); return result;
+     }
+ 
+ 

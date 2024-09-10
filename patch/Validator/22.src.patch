@@ -1,0 +1,82 @@
+--- /tmp/Validator_22_buggy/src/main/java/org/apache/commons/validator/routines/UrlValidator.java	2024-09-09 22:10:43.996492784 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_22_buggy/src/main/java/org/apache/commons/validator/routines/UrlValidator.java	2024-09-10 15:35:31.715662903 +0800
+@@ -376,35 +376,35 @@
+      * @return true if authority (hostname and port) is valid.
+      */
+     protected boolean isValidAuthority(String authority) {
+-        if (authority == null) {
++if (authority == null) {
+             return false;
+         }
+ 
+         // check manual authority validation if specified
+-        if (authorityValidator != null && authorityValidator.isValid(authority)) {
++if (authorityValidator.isValid(authority)) {
+             return true;
+         }
+         // convert to ASCII if possible
+-        final String authorityASCII = DomainValidator.unicodeToASCII(authority);
++final java.lang.String authorityASCII = DomainValidator.unicodeToASCII(authority);
++
++if (authorityASCII == null) {
+ 
+-        Matcher authorityMatcher = AUTHORITY_PATTERN.matcher(authorityASCII);
+-        if (!authorityMatcher.matches()) {
+             return false;
+         }
+ 
+         // We have to process IPV6 separately because that is parsed in a different group
+-        String ipv6 = authorityMatcher.group(PARSE_AUTHORITY_IPV6);
+-        if (ipv6 != null) {
++
++
+             InetAddressValidator inetAddressValidator = InetAddressValidator.getInstance();
+                 if (!inetAddressValidator.isValidInet6Address(ipv6)) {
+                     return false;
+                 }
+         } else {
+-            String hostLocation = authorityMatcher.group(PARSE_AUTHORITY_HOST_IP);
++return false; }
+             // check if authority is hostname or IP address:
+             // try a hostname first since that's much more likely
+-            DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));
+-            if (!domainValidator.isValid(hostLocation)) {
++DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));DDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));oDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));mDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));iDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));nDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));VDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));lDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));iDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));dDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));tDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));oDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));rDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS)); DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));dDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));oDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));mDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));iDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));nDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));VDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));lDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));iDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));dDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));tDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));oDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));rDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS)); DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));=DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS)); DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));DDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));oDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));mDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));iDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));nDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));VDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));lDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));iDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));dDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));tDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));oDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));rDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));.DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));gDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));eDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));tDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));IDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));nDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));sDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));tDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));nDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));cDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));eDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));(DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));iDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));sDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));ODomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));nDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));(DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));ADomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));LDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));LDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));ODomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));WDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));_DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));LDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));ODomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));CDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));ADomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));LDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));_DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));UDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));RDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));LDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));SDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));)DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));)DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));;DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS)); DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));iDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));fDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS)); DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));(DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));!DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));dDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));oDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));mDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));iDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));nDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));VDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));lDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));iDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));dDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));tDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));oDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));rDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));.DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));iDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));sDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));VDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));lDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));iDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));dDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));(DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));hDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));oDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));sDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));tDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));LDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));oDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));cDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));aDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));tDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));iDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));oDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));nDomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));)DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));)DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS)); DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));{DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS)); DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));
++
+                 // try an IPv4 address
+                 InetAddressValidator inetAddressValidator = InetAddressValidator.getInstance();
+                 if (!inetAddressValidator.isValidInet4Address(hostLocation)) {
+@@ -412,25 +412,25 @@
+                     return false;
+                 }
+             }
+-            String port = authorityMatcher.group(PARSE_AUTHORITY_PORT);
+-            if (port != null && port.length() > 0) {
++if ((authorityMatcher) != null) { String port = authorityMatcher.group(PARSE_AUTHORITY_PORT); if (port != null) {
++
+             	try {
+-            		long iPort = Integer.parseInt(port);
++long iPort = java.lang.Long.parseLong(port);
+             		if (iPort < 0 || iPort > 0xFFFF) {
+             			return false;
+             		}
+-            	} catch (NumberFormatException nfe) {
+-            		return false; // this can happen for big numbers
++if ((authorityMatcher) != null) {*/
++
+             	}
+             }
+         }
+ 
+-        String extra = authorityMatcher.group(PARSE_AUTHORITY_EXTRA);
+-        if (extra != null && extra.trim().length() > 0){
++if ((authorityMatcher) != null) { String extra = authorityMatcher.group(PARSE_AUTHORITY_EXTRA); if (extra != null) {
++
+             return false;
+         }
+ 
+-        return true;
++
+     }
+ 
+     /**

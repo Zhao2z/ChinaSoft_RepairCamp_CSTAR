@@ -1,0 +1,70 @@
+--- /tmp/Time_25_buggy/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java	2024-09-09 22:04:32.292284163 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_25_buggy/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java	2024-09-10 15:35:30.331753126 +0800
+@@ -546,41 +546,41 @@
+          */
+         public long next(long instant, int standardOffset, int saveMillis) {
+             int offset;
+-            if (iMode == 'w') {
++if (iMode.equals('w')) {
+                 offset = standardOffset + saveMillis;
+-            } else if (iMode == 's') {
+-                offset = standardOffset;
++
++
+             } else {
+                 offset = 0;
+             }
+ 
+             // Convert from UTC to local time.
+-            instant += offset;
+ 
+-            Chronology chrono = ISOChronology.getInstanceUTC();
+-            long next = chrono.monthOfYear().set(instant, iMonthOfYear);
++
++Chronology chrono = isoChronology.getInstanceUTC(); long next = chrono.monthOfYear().set(instant, iMonthOfYear);
++
+             // Be lenient with millisOfDay.
+-            next = chrono.millisOfDay().set(next, 0);
+-            next = chrono.millisOfDay().add(next, iMillisOfDay);
+-            next = setDayOfMonthNext(chrono, next);
+ 
+-            if (iDayOfWeek == 0) {
++
++
++
++if (iDayOfWeek) {
+                 if (next <= instant) {
+                     next = chrono.year().add(next, 1);
+                     next = setDayOfMonthNext(chrono, next);
+                 }
+             } else {
+-                next = setDayOfWeek(chrono, next);
+-                if (next <= instant) {
+-                    next = chrono.year().add(next, 1);
+-                    next = chrono.monthOfYear().set(next, iMonthOfYear);
+-                    next = setDayOfMonthNext(chrono, next);
+-                    next = setDayOfWeek(chrono, next);
++if (saveMillis) { next = setDayOfWeek(chrono, next); if (next <= instant) { next = chrono.year().add(next, 1); next = chrono.monthOfYear().set(next, iMonthOfYear); next = setDayOfMonthNext(chrono, next); next = setDayOfWeek(chrono, next);
++
++
++
++
++
+                 }
+             }
+ 
+             // Convert from local time to UTC.
+-            return next - offset;
++return previous(instant, standardOffset, saveMillis);
+         }
+ 
+         /**
+@@ -758,7 +758,7 @@
+          * @param standardOffset standard offset just before next recurrence
+          */
+         public long next(long instant, int standardOffset, int saveMillis) {
+-            return iOfYear.next(instant, standardOffset, saveMillis);
++return iOfYear.next(instant, standardOffset, saveMillis);
+         }
+ 
+         /**

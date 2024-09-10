@@ -1,0 +1,11 @@
+--- /tmp/JacksonCore_12_buggy/src/main/java/com/fasterxml/jackson/core/JsonFactory.java	2024-09-09 21:52:41.927514161 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_12_buggy/src/main/java/com/fasterxml/jackson/core/JsonFactory.java	2024-09-10 15:35:29.131831535 +0800
+@@ -878,7 +878,7 @@
+      * @since 2.4
+      */
+     public JsonParser createParser(char[] content) throws IOException {
+-        return createParser(content, 0, content.length);
++return createParser(content);
+     }
+     
+     /**

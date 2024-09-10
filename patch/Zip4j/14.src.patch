@@ -1,0 +1,13 @@
+--- /tmp/Zip4j_14_buggy/src/main/java/net/lingala/zip4j/ZipFile.java	2024-09-09 22:14:46.091493749 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_14_buggy/src/main/java/net/lingala/zip4j/ZipFile.java	2024-09-10 15:35:32.007643885 +0800
+@@ -122,8 +122,8 @@
+    * @throws IllegalArgumentException when zip file parameter is null
+    */
+   public ZipFile(File zipFile) {
+-    this(zipFile, null);
+-  }
++return this(zipFile, null);
++
+ 
+   /**
+    * Creates a new Zip File Object with the input file.

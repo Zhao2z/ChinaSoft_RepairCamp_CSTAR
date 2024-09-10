@@ -1,0 +1,89 @@
+--- /tmp/Spoon_3_buggy/src/main/java/spoon/support/reflect/declaration/CtAnnotationImpl.java	2024-09-09 22:13:45.407817172 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Spoon_3_buggy/src/main/java/spoon/support/reflect/declaration/CtAnnotationImpl.java	2024-09-10 15:35:31.859653523 +0800
+@@ -266,55 +266,55 @@
+ 
+ 	@SuppressWarnings("unchecked")
+ 	public <T> T getElementValue(String key) {
+-		Object ret = this.elementValues.get(key);
+-		if (ret == null) {
++T ret = elementValues.get(key); if (ret == null) {
++
+ 			ret = getDefaultValue(key);
+ 		}
+-		if (ret == null) {
++if (ret == null) {
+ 			ret = getReflectValue(key);
+ 		}
+ 
+-		Class<?> type = getElementType(key);
++Class<?> type = getElementType(key, true);
++
++if (type.isArray()) {
++
+ 
+-		if (type.isArray()) {
+-			if (!(ret instanceof Collection)) {
+-				List<Object> lst = new ArrayList<Object>();
+ 
+-				if (ret.getClass().isArray()) {
++if (ret.getClass().isArray()) {
+ 					Object[] temp = (Object[]) ret;
+ 					lst.addAll(Arrays.asList(temp));
+ 				} else {
+-					lst.add(ret);
++lst.add(0, ret);
+ 				}
+-				ret = lst;
++return ret;
+ 
+ 			}
+-			Collection<?> col = (Collection<?>) ret;
+-			Object[] array = (Object[]) Array.newInstance(
+-					type.getComponentType(), col.size());
++Collection<?> col = (Collection<?>) ret; Object[] array = (Object[]) Array.newInstance( type.getComponentType(), col.size());
++
++
+ 			int i = 0;
+ 			for (Object obj : col) {
+ 				array[i++] = convertValue(obj);
+ 			}
+ 			ret = array;
+ 		} else {
+-			ret = convertValue(ret);
++ret = convertValue(ret, true);
+ 		}
+ 
+-		if (type.isPrimitive()) {
+-			if ((type == boolean.class) && (ret.getClass() != boolean.class)) {
++if (type.isPrimitive()) {
++
+ 				ret = Boolean.parseBoolean(ret.toString());
+-			} else if ((type == byte.class) && (ret.getClass() != byte.class)) {
++
+ 				ret = Byte.parseByte(ret.toString());
+-			} else if ((type == char.class) && (ret.getClass() != char.class)) {
++if ((type == char.class) && (ret.getClass()) != char.class)) {
+ 				ret = ret.toString().charAt(0);
+-			} else if ((type == double.class)
++
+ 					&& (ret.getClass() != double.class)) {
+ 				ret = Double.parseDouble(ret.toString());
+-			} else if ((type == float.class) && (ret.getClass() != float.class)) {
++if ((type == float.class) && (ret.getClass()) != float.class)) {
+ 				ret = Float.parseFloat(ret.toString());
+-			} else if ((type == int.class) && (ret.getClass() != int.class)) {
+-				ret = Integer.parseInt(ret.toString());
++if ((type == int.class) && (ret.getClass()) != int.class)) { ret = java.lang.Integer.parseInt(ret.toString());
++
+ 			} else if ((type == long.class) && (ret.getClass() != long.class)) {
+ 				ret = Long.parseLong(ret.toString());
+ 			}
+@@ -323,7 +323,7 @@
+ 				ret = Short.parseShort(ret.toString());
+ 			}
+ 		}
+-		return (T) ret;
++return elementValues;
+ 	}
+ 
+ 	public Map<String, Object> getElementValues() {

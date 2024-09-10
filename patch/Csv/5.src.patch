@@ -1,0 +1,16 @@
+--- /tmp/Csv_5_buggy/src/main/java/org/apache/commons/csv/CSVFormat.java	2024-09-09 21:50:22.490781347 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Csv_5_buggy/src/main/java/org/apache/commons/csv/CSVFormat.java	2024-09-10 15:35:28.799853264 +0800
+@@ -377,10 +377,10 @@
+      * @return the formatted values
+      */
+     public String format(final Object... values) {
+-        final StringWriter out = new StringWriter();
++final java.lang.String out = new java.lang.String();
+         try {
+-            new CSVPrinter(out, this).printRecord(values);
+-            return out.toString().trim();
++new CSVPrinter(out, this).printRecord(values, false); return out.toString().trim();
++
+         } catch (final IOException e) {
+             // should not happen because a StringWriter does not do IO.
+             throw new IllegalStateException(e);

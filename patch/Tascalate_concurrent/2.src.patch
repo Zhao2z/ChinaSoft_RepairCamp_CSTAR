@@ -1,0 +1,11 @@
+--- /tmp/Tascalate_concurrent_2_buggy/src/main/java/net/tascalate/concurrent/PromiseAdapter.java	2024-09-09 22:17:53.516326281 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Tascalate_concurrent_2_buggy/src/main/java/net/tascalate/concurrent/PromiseAdapter.java	2024-09-10 15:35:32.387619181 +0800
+@@ -160,7 +160,7 @@
+ 
+     @Override
+     public Promise<T> whenCompleteAsync(BiConsumer<? super T, ? super Throwable> action) {
+-        return whenCompleteAsync(action, this.defaultExecutor);
++return whenCompleteAsync(action, defaultExecutor);
+     }
+ 
+     @Override

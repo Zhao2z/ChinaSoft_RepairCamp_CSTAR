@@ -1,0 +1,22 @@
+--- /tmp/Validator_13_buggy/src/main/java/org/apache/commons/validator/routines/checkdigit/IBANCheckDigit.java	2024-09-09 22:10:40.097016915 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_13_buggy/src/main/java/org/apache/commons/validator/routines/checkdigit/IBANCheckDigit.java	2024-09-10 15:35:31.663666289 +0800
+@@ -65,14 +65,14 @@
+      * <code>false</code>
+      */
+     public boolean isValid(String code) {
+-        if (code == null || code.length() < 5) {
++if ((code == null) || ((code.length()) < 5)) {
+             return false;
+         }
+         try {
+-            int modulusResult = calculateModulus(code);
+-            return (modulusResult == 1);
+-        } catch (CheckDigitException  ex) {
+-            return false;
++return calculateModulus(code);
++
++
++
+         }
+     }
+ 

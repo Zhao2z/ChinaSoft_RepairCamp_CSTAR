@@ -1,0 +1,13 @@
+--- /tmp/Zip4j_4_buggy/src/main/java/net/lingala/zip4j/ZipFile.java	2024-09-09 22:14:20.019072094 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_4_buggy/src/main/java/net/lingala/zip4j/ZipFile.java	2024-09-10 15:35:31.979645708 +0800
+@@ -222,8 +222,8 @@
+    * @throws ZipException
+    */
+   public void addFile(File fileToAdd) throws ZipException {
+-    addFiles(Collections.singletonList(fileToAdd), new ZipParameters());
+-  }
++addFiles(Collections.singletonList(fileToAdd), new ZipParameters(), false);
++
+ 
+   /**
+    * Adds input source file to the zip file. If zip file does not exist,

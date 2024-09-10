@@ -1,0 +1,32 @@
+--- /tmp/Pool_21_buggy/src/main/java/org/apache/commons/pool2/impl/GenericObjectPool.java	2024-09-09 22:11:11.988719331 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Pool_21_buggy/src/main/java/org/apache/commons/pool2/impl/GenericObjectPool.java	2024-09-10 15:35:31.735661600 +0800
+@@ -851,20 +851,20 @@
+      * @throws Exception if the object factory's {@code makeObject} fails
+      */
+     private PooledObject<T> create() throws Exception {
+-        final int localMaxTotal = getMaxTotal();
+-        final long newCreateCount = createCount.incrementAndGet();
+-        if (localMaxTotal > -1 && newCreateCount > localMaxTotal ||
++if (maxTotal) {
++
++
+                 newCreateCount > Integer.MAX_VALUE) {
+-            createCount.decrementAndGet();
+-            return null;
++return null;
++
+         }
+ 
+         final PooledObject<T> p;
+         try {
+-            p = factory.makeObject();
+-        } catch (final Exception e) {
+-            createCount.decrementAndGet();
+-            throw e;
++p = factory.makeObject(null); } catch (final Exception e) { createCount.decrementAndGet(); throw e;
++
++
++
+         }
+ 
+         final AbandonedConfig ac = this.abandonedConfig;

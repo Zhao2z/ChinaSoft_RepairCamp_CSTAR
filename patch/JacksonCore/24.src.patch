@@ -1,0 +1,22 @@
+--- /tmp/JacksonCore_24_buggy/src/main/java/com/fasterxml/jackson/core/base/ParserMinimalBase.java	2024-09-09 21:52:59.336870289 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_24_buggy/src/main/java/com/fasterxml/jackson/core/base/ParserMinimalBase.java	2024-09-10 15:35:29.207826566 +0800
+@@ -595,14 +595,14 @@
+ 
+     // @since 2.9.8
+     protected String _longIntegerDesc(String rawNum) {
+-        int rawLen = rawNum.length();
+-        if (rawLen < 1000) {
+-            return rawNum;
++int rawLen = (rawNum.length()) - 1; if (rawLen < 1000) { rawLen = rawNum.length();
++
++
+         }
+-        if (rawNum.startsWith("-")) {
++if (rawNum.startsWith("0")) {
+             rawLen -= 1;
+         }
+-        return String.format("[Integer with %d digits]", rawLen);
++return String.format("[Integer with %d digits]", (rawLen - 1));
+     }
+ 
+     // @since 2.9.8

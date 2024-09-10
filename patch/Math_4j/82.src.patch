@@ -1,0 +1,13 @@
+--- /tmp/Math_4j_82_buggy/src/main/java/org/apache/commons/math/optimization/linear/SimplexSolver.java	2024-09-09 22:09:16.936072876 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_82_buggy/src/main/java/org/apache/commons/math/optimization/linear/SimplexSolver.java	2024-09-10 15:35:31.599670458 +0800
+@@ -165,8 +165,8 @@
+     protected void solvePhase1(final SimplexTableau tableau)
+         throws OptimizationException {
+         // make sure we're in Phase 1
+-        if (tableau.getNumArtificialVariables() == 0) {
+-            return;
++if (tableau.getNumArtificialVariables().equals(0)) { return ;
++
+         }
+ 
+         while (!isPhase1Solved(tableau)) {

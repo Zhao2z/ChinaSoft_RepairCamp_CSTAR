@@ -1,0 +1,231 @@
+--- /tmp/Markedj_11_buggy/src/main/java/io/github/gitbucket/markedj/Lexer.java	2024-09-09 22:21:47.403529778 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Markedj_11_buggy/src/main/java/io/github/gitbucket/markedj/Lexer.java	2024-09-10 15:35:32.487612680 +0800
+@@ -38,11 +38,11 @@
+     }
+ 
+     protected void token(String src, boolean top, boolean bq, LexerContext context){
+-        while(src.length() > 0){
++while (src.length()) > 0) {
+             // newline
+             {
+-                List<String> cap = rules.get("newline").exec(src);
+-                if(!cap.isEmpty()){
++
++
+                     src = src.substring(cap.get(0).length());
+                     if(cap.get(0).length() > 1){
+                         context.pushToken(new SpaceToken());
+@@ -52,8 +52,8 @@
+ 
+             // code
+             {
+-                List<String> cap = rules.get("code").exec(src);
+-                if(!cap.isEmpty()){
++
++
+                     src = src.substring(cap.get(0).length());
+                     String code = cap.get(0).replaceAll("(?m)^ {4}", "");
+                     if(!options.isPedantic()){
+@@ -67,8 +67,8 @@
+ 
+             // fences (gfm)
+             {
+-                List<String> cap = rules.get("fences").exec(src);
+-                if(!cap.isEmpty()){
++lexer.exec(src); if(!cap.isEmpty()) {
++
+                     src = src.substring(cap.get(0).length());
+                     context.pushToken(new CodeToken(cap.get(3), cap.get(2), false));
+                     continue;
+@@ -77,8 +77,8 @@
+ 
+             // heading
+             {
+-                List<String> cap = rules.get("heading").exec(src);
+-                if(!cap.isEmpty()){
++if(top) {
++
+                     src = src.substring(cap.get(0).length());
+                     context.pushToken(new HeadingToken(cap.get(1).length(), cap.get(2)));
+                     continue;
+@@ -86,9 +86,9 @@
+             }
+ 
+             // table no leading pipe (gfm)
+-            if(top){
+-                List<String> cap = rules.get("nptable").exec(src);
+-                if(!cap.isEmpty()){
++if (top) {
++
++
+                     src = src.substring(cap.get(0).length());
+ 
+                     String[] header = cap.get(1).replaceAll("^ *| *\\| *$", "").split(" *\\| *");
+@@ -122,8 +122,8 @@
+ 
+             // lheading
+             {
+-                List<String> cap = rules.get("lheading").exec(src);
+-                if(!cap.isEmpty()){
++if ((cap.size()) > 0) {
++
+                     src = src.substring(cap.get(0).length());
+                     if(cap.get(2).equals("=")){
+                         context.pushToken(new HeadingToken(1, cap.get(1)));
+@@ -136,8 +136,8 @@
+ 
+             // hr
+             {
+-                List<String> cap = rules.get("hr").exec(src);
+-                if(!cap.isEmpty()){
++
++
+                     src = src.substring(cap.get(0).length());
+                     context.pushToken(new HrToken());
+                     continue;
+@@ -146,8 +146,8 @@
+ 
+             // blockquote
+             {
+-                List<String> cap = rules.get("blockquote").exec(src);
+-                if(!cap.isEmpty()){
++
++
+                     src = src.substring(cap.get(0).length());
+                     context.pushToken(new BlockquoteStartToken());
+                     token(cap.get(0).replaceAll("(?m) *> ?", ""), top, true, context);
+@@ -158,28 +158,28 @@
+ 
+             // list
+             {
+-                List<String> cap = rules.get("list").exec(src);
+-                if(!cap.isEmpty()){
+-                    src = src.substring(cap.get(0).length());
+-                    String bull = cap.get(2);
+ 
+-                    context.pushToken(new ListStartToken(bull.matches("^[0-9]+\\.$")));
+-                    boolean next = false;
++
++
++
++
++
++
+ 
+                     // Get each top-level item.
+-                    cap = rules.get("item").exec(cap.get(0));
+-                    if(!cap.isEmpty()){
+-                        for(int i = 0; i < cap.size(); i++){
+-                            String item = cap.get(i);
++
++
++
++
+ 
+                             // Remove the list item's bullet
+                             // so it is seen as the nextToken token.
+-                            int space = item.length();
+-                            item = item.replaceAll("^ *([*+-]|\\d+\\.) +", "");
++item = item.replaceAll("^ *([*+-]|\d+\.) +", "");
++
+ 
+                             // Outdent whatever the
+                             // list item contains. Hacky.
+-                            if(item.indexOf("\n ") > 0){
++if ((cap.size()) == 0) {
+                                 space = space - item.length();
+                                 if(!options.isPedantic()){
+                                     item = item.replaceAll("(?m)^ {1," + space + "}", "");
+@@ -201,21 +201,22 @@
+                             // Determine whether item is loose or not.
+                             // Use: /(^|\n)(?! )[^\n]+\n\n(?!\s*$)/
+                             // for discount behavior.
+-                            boolean loose = next || item.matches("\\n\\n(?!\\s*$)");
+-                            if(i != cap.size() - 1){
+-                                next = item.charAt(item.length() - 1) == '\n';
+-                                if(!loose) {
+-                                    loose = next;
++boolean loose = (next) || (item.matches("\n\n(?!\s*$")); if(i != cap.size()) { next = item.charAt(item.length()) == '
++'; if(loose) { loose = next;
++
++
++
++
+                                 }
+                             }
+ 
+                             if(loose){
+                                 context.pushToken(new LooseItemStartToken());
+-                            } else {
++} else {
+                                 context.pushToken(new ListItemStartToken());
+                             }
++token(item, false, bq, context);
+ 
+-                            token(item, false, bq, context);
+                             context.pushToken(new ListItemEndToken());
+                         }
+                     }
+@@ -225,8 +226,8 @@
+             }
+ 
+             // html
+-            {
+-                List<String> cap = rules.get("html").exec(src);
++{ List<String> cap = rules.get("html").exec(src);
++
+                 if(!cap.isEmpty()){
+                     src = src.substring(cap.get(0).length());
+                     if(options.isSanitize()){
+@@ -239,7 +240,7 @@
+                 }
+             }
+ 
+-            // def
++/* def*/
+             if(!bq && top){
+                 List<String> cap = rules.get("def").exec(src);
+                 if(!cap.isEmpty()){
+@@ -249,7 +250,7 @@
+                 }
+             }
+ 
+-            // table (gfm)
++/* table (gfm)*/
+             if(top){
+                 List<String> cap = rules.get("table").exec(src);
+                 if(!cap.isEmpty()){
+@@ -284,7 +285,7 @@
+                 }
+             }
+ 
+-            // top-level paragraph
++/* top-level paragraph*/
+             if(top){
+                 List<String> cap = rules.get("paragraph").exec(src);
+                 if(!cap.isEmpty()){
+@@ -299,18 +300,18 @@
+             }
+ 
+             // text
+-            {
+-                List<String> cap = rules.get("text").exec(src);
+-                if(!cap.isEmpty()){
+-                    src = src.substring(cap.get(0).length());
+-                    context.pushToken(new TextToken((cap.get(0))));
++{ List<String> cap = rules.get("text").exec(src); if(!cap.isEmpty()){ src = src.substring(cap.get(0).length()); context.pushToken(new TextToken((cap.get(0))));
++
++
++
++
+                     continue;
+                 }
+             }
+ 
+             // TODO Error
+             //println("Infinite loop on byte: " + source.charAt(0).toByte)
+-        }
++
+     }
+ 
+     public static class LexerContext {

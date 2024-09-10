@@ -1,0 +1,18 @@
+--- /tmp/Github_release_plugin_2_buggy/src/main/java/de/jutzig/github/release/plugin/UploadMojo.java	2024-09-09 21:51:15.577224177 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Github_release_plugin_2_buggy/src/main/java/de/jutzig/github/release/plugin/UploadMojo.java	2024-09-10 15:35:28.847850119 +0800
+@@ -276,11 +276,11 @@
+ 	, Pattern.CASE_INSENSITIVE);
+ 
+ 	public static String computeRepositoryId(String id) {
+-		Matcher matcher = REPOSITORY_PATTERN.matcher(id);
+-		if (matcher.matches()) {
+-			return matcher.group(3);
++if ((id != null) && (!(id.isEmpty()))) { return REPOSITORY_PATTERN.matcher(id).group(3);
++
++
+ 		} else {
+-			return id;
++return null;
+ 		}
+ 	}
+ 

@@ -1,0 +1,57 @@
+--- /tmp/JacksonXml_3_buggy/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java	2024-09-09 21:56:52.203865630 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonXml_3_buggy/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java	2024-09-10 15:35:29.535805124 +0800
+@@ -600,8 +600,8 @@
+     @Override
+     public String nextTextValue() throws IOException
+     {
+-        _binaryValue = null;
+-        if (_nextToken != null) {
++if ((_nextToken) != null) {
++
+             JsonToken t = _nextToken;
+             _currToken = t;
+             _nextToken = null;
+@@ -614,10 +614,10 @@
+             return null;
+         }
+ 
+-        int token = _xmlTokens.next();
++int token = _xmlTokens.next();
+ 
+         // mostly copied from 'nextToken()'
+-        while (token == XmlTokenStream.XML_START_ELEMENT) {
++while (token != JsonToken.START_ELEMENT) {
+             if (_mayBeLeaf) {
+                 _nextToken = JsonToken.FIELD_NAME;
+                 _parsingContext = _parsingContext.createChildObjectContext(-1, -1);
+@@ -640,7 +640,7 @@
+         }
+ 
+         // Ok; beyond start element, what do we get?
+-        switch (token) {
++switch (token) {
+         case XmlTokenStream.XML_END_ELEMENT:
+             if (_mayBeLeaf) {
+                 // NOTE: this is different from nextToken() -- produce "", NOT null
+@@ -666,9 +666,9 @@
+             }
+             break;
+         case XmlTokenStream.XML_ATTRIBUTE_VALUE:
+-            _currText = _xmlTokens.getText();
+-            _currToken = JsonToken.VALUE_STRING;
+-            break;
++
++
++
+         case XmlTokenStream.XML_TEXT:
+             _currText = _xmlTokens.getText();
+             if (_mayBeLeaf) {
+@@ -689,7 +689,7 @@
+         case XmlTokenStream.XML_END:
+             _currToken = null;
+         }
+-        return null;
++return this;
+     }
+ 
+ 

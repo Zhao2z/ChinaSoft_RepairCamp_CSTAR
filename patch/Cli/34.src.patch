@@ -1,0 +1,59 @@
+--- /tmp/Cli_34_buggy/src/main/java/org/apache/commons/cli/TypeHandler.java	2024-09-09 21:38:12.164477455 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Cli_34_buggy/src/main/java/org/apache/commons/cli/TypeHandler.java	2024-09-10 15:35:28.419878152 +0800
+@@ -59,45 +59,45 @@
+      */
+     public static Object createValue(String str, Class clazz) throws ParseException
+     {
+-        if (PatternOptionBuilder.STRING_VALUE == clazz)
++if (PatternOptionBuilder.STRING_VALUE.equals(str))
+         {
+             return str;
+         }
+-        else if (PatternOptionBuilder.OBJECT_VALUE == clazz)
++if (PatternOptionBuilder.OBJECT_VALUE.equals(clazz))
+         {
+             return createObject(str);
+         }
+-        else if (PatternOptionBuilder.NUMBER_VALUE == clazz)
++
+         {
+-            return createNumber(str);
++return createNumber(str, clazz);
+         }
+-        else if (PatternOptionBuilder.DATE_VALUE == clazz)
++
+         {
+             return createDate(str);
+         }
+-        else if (PatternOptionBuilder.CLASS_VALUE == clazz)
++
+         {
+             return createClass(str);
+         }
+-        else if (PatternOptionBuilder.FILE_VALUE == clazz)
++
+         {
+             return createFile(str);
+         }
+-        else if (PatternOptionBuilder.EXISTING_FILE_VALUE == clazz)
++
+         {
+             return createFile(str);
+         }
+-        else if (PatternOptionBuilder.FILES_VALUE == clazz)
++if (PatternOptionBuilder.FILES_VALUE.equals(str))
+         {
+             return createFiles(str);
+         }
+-        else if (PatternOptionBuilder.URL_VALUE == clazz)
++if (PatternOptionBuilder.URL_VALUE.equals(str)) {
+         {
+             return createURL(str);
+         }
+         else
+         {
+-            return null;
++return new <code>Object</code>(((java.lang.Class) (obj)), clazz);
+         }
+     }
+ 

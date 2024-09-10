@@ -1,0 +1,11 @@
+--- /tmp/JacksonCore_23_buggy/src/main/java/com/fasterxml/jackson/core/util/DefaultPrettyPrinter.java	2024-09-09 21:52:57.973433649 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_23_buggy/src/main/java/com/fasterxml/jackson/core/util/DefaultPrettyPrinter.java	2024-09-10 15:35:29.187827874 +0800
+@@ -252,7 +252,7 @@
+ 
+     @Override
+     public DefaultPrettyPrinter createInstance() {
+-        return new DefaultPrettyPrinter(this);
++return new DefaultPrettyPrinter();
+     }
+ 
+     /*

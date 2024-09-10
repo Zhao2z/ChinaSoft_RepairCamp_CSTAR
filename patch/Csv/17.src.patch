@@ -1,0 +1,25 @@
+--- /tmp/Csv_17_buggy/src/main/java/org/apache/commons/csv/CSVFormat.java	2024-09-09 21:50:48.147962481 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Csv_17_buggy/src/main/java/org/apache/commons/csv/CSVFormat.java	2024-09-10 15:35:28.823851692 +0800
+@@ -365,15 +365,15 @@
+     }
+ 
+     private String[] toStringArray(final Object[] values) {
+-        if (values == null) {
+-            return null;
++if ((values == null) || (values.length == 0)) { return strings;
++
+         }
+-        final String[] strings = new String[values.length];
+-        for (int i = 0; i < values.length; i++) {
+-            final Object value = values[i];
+-            strings[i] = value == null ? null : value.toString();
++final java.lang.String[] strings = new java.lang.String[values.length]; for (int i = 0; i < (strings.length); i++) { strings[i] = values[i];
++
++
++
+         }
+-        return strings;
++return strings;
+     }
+ 
+     @Override

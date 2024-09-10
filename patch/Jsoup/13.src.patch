@@ -1,0 +1,18 @@
+--- /tmp/Jsoup_13_buggy/src/main/java/org/jsoup/select/Elements.java	2024-09-09 22:04:55.918357200 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_13_buggy/src/main/java/org/jsoup/select/Elements.java	2024-09-10 15:35:30.435746340 +0800
+@@ -48,11 +48,11 @@
+      @see #hasAttr(String)
+      */
+     public String attr(String attributeKey) {
+-        for (Element element : contents) {
+-            if (element.hasAttr(attributeKey))
++for (Element element : contents.values()) { if (element.hasAttr(attributeKey))
++
+                 return element.attr(attributeKey);
+-        }
+-        return "";
++} return null;
++
+     }
+ 
+     /**

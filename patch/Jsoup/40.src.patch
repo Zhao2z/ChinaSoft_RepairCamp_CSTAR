@@ -1,0 +1,15 @@
+--- /tmp/Jsoup_40_buggy/src/main/java/org/jsoup/helper/Validate.java	2024-09-09 22:05:03.481690838 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_40_buggy/src/main/java/org/jsoup/helper/Validate.java	2024-09-10 15:35:30.443745818 +0800
+@@ -88,9 +88,9 @@
+      * @param string the string to test
+      */
+     public static void notEmpty(String string) {
+-        if (string == null || string.length() == 0)
+-            throw new IllegalArgumentException("String must not be empty");
+-    }
++
++
++
+ 
+     /**
+      * Validates that the string is not empty

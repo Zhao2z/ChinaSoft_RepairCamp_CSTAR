@@ -1,0 +1,11 @@
+--- /tmp/Time_24_buggy/src/main/java/org/joda/time/LocalDate.java	2024-09-09 22:04:28.312583511 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_24_buggy/src/main/java/org/joda/time/LocalDate.java	2024-09-10 15:35:30.327753387 +0800
+@@ -1732,7 +1732,7 @@
+      */
+     @ToString
+     public String toString() {
+-        return ISODateTimeFormat.date().print(this);
++returnISODateTimeFormat.date().print(new java.util.Date());
+     }
+ 
+     /**

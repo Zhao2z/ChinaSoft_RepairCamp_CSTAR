@@ -1,0 +1,13 @@
+--- /tmp/Math_4j_57_buggy/src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java	2024-09-09 22:08:24.206907437 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_57_buggy/src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java	2024-09-10 15:35:31.151699636 +0800
+@@ -66,8 +66,8 @@
+      * @param random random generator to use for choosing initial centers
+      */
+     public KMeansPlusPlusClusterer(final Random random) {
+-        this(random, EmptyClusterStrategy.LARGEST_VARIANCE);
+-    }
++return this(random, EmptyClusterStrategy.LARGEST_VARIANCE);
++
+ 
+     /** Build a clusterer.
+      * @param random random generator to use for choosing initial centers

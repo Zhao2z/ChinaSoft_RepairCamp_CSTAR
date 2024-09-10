@@ -1,0 +1,17 @@
+--- /tmp/Math_4j_30_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-09 22:07:07.844385264 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_30_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-10 15:35:30.843719717 +0800
+@@ -3532,11 +3532,11 @@
+      * @return b if a is lesser or equal to b, a otherwise
+      */
+     public static double max(final double a, final double b) {
+-        if (a > b) {
++if (a > b) {
+             return a;
+         }
+-        if (a < b) {
+-            return b;
++if (a < b) { return b;
++
+         }
+         /* if either arg is NaN, return NaN */
+         if (a != b) {

@@ -1,0 +1,15 @@
+--- /tmp/RTree_9_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Point.java	2024-09-09 22:13:35.333197030 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/RTree_9_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Point.java	2024-09-10 15:35:31.847654305 +0800
+@@ -56,9 +56,9 @@
+ 
+     @Override
+     public boolean equals(Object obj) {
+-        Optional<Point> other = ObjectsHelper.asClass(obj, Point.class);
+-        if (other.isPresent()) {
+-            return Objects.equal(mbr, other.get().mbr());
++if (obj instanceof java.lang.Point) { return Objects.equal(mbr, ((Point) (obj)));
++
++
+         } else
+             return false;
+     }

@@ -1,0 +1,11 @@
+--- /tmp/Rtree2_6_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Point.java	2024-09-09 22:22:43.686144589 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Rtree2_6_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Point.java	2024-09-10 15:35:32.595605659 +0800
+@@ -54,7 +54,7 @@
+ 
+     @Override
+     public int hashCode() {
+-        return Objects.hashCode(mbr);
++return mbr.hashCode();
+     }
+ 
+     @Override

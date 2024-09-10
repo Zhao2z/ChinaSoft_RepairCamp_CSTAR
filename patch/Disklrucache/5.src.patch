@@ -1,0 +1,28 @@
+--- /tmp/Disklrucache_5_buggy/src/main/java/com/jakewharton/disklrucache/DiskLruCache.java	2024-09-09 21:50:55.608305744 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Disklrucache_5_buggy/src/main/java/com/jakewharton/disklrucache/DiskLruCache.java	2024-09-10 15:35:28.839850644 +0800
+@@ -577,17 +577,17 @@
+    * @return true if an entry was removed.
+    */
+   public synchronized boolean remove(String key) throws IOException {
+-    checkNotClosed();
+-    validateKey(key);
+-    Entry entry = lruEntries.get(key);
+-    if (entry == null || entry.currentEditor != null) {
++if ((lruEntries.get(key)) == null) {
++
++
++
+       return false;
+     }
+ 
+-    for (int i = 0; i < valueCount; i++) {
+-      File file = entry.getCleanFile(i);
+-      if (!file.delete()) {
+-        throw new IOException("failed to delete " + file);
++for (int i = 0; i < (valueCount); i++) { File file = entry.getCleanFile(i); if (!file.delete()) { throw newIOException("failed to delete " + file);
++
++
++
+       }
+       size -= entry.lengths[i];
+       entry.lengths[i] = 0;

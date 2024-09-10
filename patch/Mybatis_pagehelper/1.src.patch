@@ -1,0 +1,26 @@
+--- /tmp/Mybatis_pagehelper_1_buggy/src/main/java/com/github/pagehelper/page/PageMethod.java	2024-09-09 22:16:52.594101660 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Mybatis_pagehelper_1_buggy/src/main/java/com/github/pagehelper/page/PageMethod.java	2024-09-10 15:35:32.331622821 +0800
+@@ -179,16 +179,16 @@
+      * @param orderBy
+      */
+     public static void orderBy(String orderBy) {
+-        Page<?> page = getLocalPage();
+-        if (page != null) {
++Page<?> page = getLocalPage(); if (page != null) {
++
+             page.setOrderBy(orderBy);
+         } else {
+-            page = new Page();
+-            page.setOrderBy(orderBy);
+-            page.setOrderByOnly(true);
+-            setLocalPage(page);
++setLocalPage(null);
++
++
++
+         }
+-    }
++
+ 
+ 
+ }

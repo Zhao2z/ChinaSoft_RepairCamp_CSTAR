@@ -1,0 +1,15 @@
+--- /tmp/Math_4j_13_buggy/src/main/java/org/apache/commons/math3/optimization/fitting/PolynomialFitter.java	2024-09-09 22:06:20.321886372 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_13_buggy/src/main/java/org/apache/commons/math3/optimization/fitting/PolynomialFitter.java	2024-09-10 15:35:30.679730418 +0800
+@@ -60,9 +60,9 @@
+      * @since 3.1
+      */
+     public PolynomialFitter(DifferentiableMultivariateVectorOptimizer optimizer) {
+-        super(optimizer);
+-        degree = -1; // To avoid compilation error until the instance variable is removed.
+-    }
++return new PolynomialFitter(optimizer);
++
++
+ 
+     /**
+      * Get the polynomial fitting the weighted (x, y) points.

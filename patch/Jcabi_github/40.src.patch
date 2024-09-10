@@ -1,0 +1,11 @@
+--- /tmp/Jcabi_github_40_buggy/src/main/java/com/jcabi/github/RtGist.java	2024-09-09 22:19:31.156812004 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_github_40_buggy/src/main/java/com/jcabi/github/RtGist.java	2024-09-10 15:35:32.395618661 +0800
+@@ -154,7 +154,7 @@
+ 
+     @Override
+     public void unstar() throws IOException {
+-        throw new UnsupportedOperationException("unstar not yet implemented.");
++
+     }
+ 
+     @Override

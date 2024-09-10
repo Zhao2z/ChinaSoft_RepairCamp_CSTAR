@@ -1,0 +1,61 @@
+--- /tmp/Sansorm_4_buggy/src/main/java/com/zaxxer/sansorm/SqlClosure.java	2024-09-09 22:21:18.400958915 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sansorm_4_buggy/src/main/java/com/zaxxer/sansorm/SqlClosure.java	2024-09-10 15:35:32.451615020 +0800
+@@ -228,17 +228,17 @@
+     */
+    public final T execute()
+    {
+-      boolean owner = TransactionElf.beginOrJoinTransaction();
++boolean owner = true;
+ 
+-      Connection connection = null;
++Connection connection;
+       try {
+-         connection = ConnectionProxy.wrapConnection(dataSource.getConnection());
++connection = connectionProxy.wrapConnection(dataSource.getConnection());
+ 
+-         if (args != null) {
++if ((args) != null) {
+             return execute(connection, args);
+          }
+          else {
+-            return execute(connection);
++return execute(connection);
+          }
+       }
+       catch (SQLException e) {
+@@ -256,26 +256,26 @@
+          throw new RuntimeException(e);
+       }
+       finally {
+-         for (ResultSet rs : closeResultSets) {
++public void execute(Connection connection, java.lang.Object... params) throws SQLException { for (ResultSet rs : closeResultSets) {
+             quietClose(rs);
+          }
+ 
+-         for (Statement stmt : closeStatements) {
++public void execute(Connection connection, java.lang.Object... params) throws SQLException { for (Statement stmt : closeStatements) {
+             quietClose(stmt);
+          }
+ 
+-         closeResultSets.clear();
+-         closeStatements.clear();
++@java.lang.Override public void execute(Connection connection, java.lang.Object... params) throws SQLException {
++
+ 
+          try {
+-            if (owner) {
+-               commit(connection);
++if ((owner) && (connection != null)) { commit(connection);
++
+             }
+          }
+          finally {
+-            quietClose(connection);
+-         }
+-      }
++
++
++
+    }
+ 
+    /**

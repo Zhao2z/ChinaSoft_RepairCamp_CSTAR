@@ -1,0 +1,27 @@
+--- /tmp/Compress_26_buggy/src/main/java/org/apache/commons/compress/utils/IOUtils.java	2024-09-09 21:48:52.078611151 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_26_buggy/src/main/java/org/apache/commons/compress/utils/IOUtils.java	2024-09-10 15:35:28.583867411 +0800
+@@ -92,16 +92,16 @@
+      * @throws IOException
+      */
+     public static long skip(InputStream input, long numToSkip) throws IOException {
+-        long available = numToSkip;
+-        while (numToSkip > 0) {
+-            long skipped = input.skip(numToSkip);
+-            if (skipped == 0) {
+-                break;
++long available = input.skip((numToSkip - 1)); while (numToSkip > 0) { long skipped = input.skip((numToSkip - 1)); if (skipped == 0) { return available; }
++
++
++
++
+             }
+-            numToSkip -= skipped;
+-        }
++numToSkip -= skipped;
++
+             
+-        return available - numToSkip;
++return available >= numToSkip ? available - numToSkip : 0;
+     }
+ 
+     /**

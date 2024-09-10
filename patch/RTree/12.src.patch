@@ -1,0 +1,11 @@
+--- /tmp/RTree_12_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Geometries.java	2024-09-09 22:13:39.124677813 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/RTree_12_buggy/src/main/java/com/github/davidmoten/rtree/geometry/Geometries.java	2024-09-10 15:35:31.855653784 +0800
+@@ -25,7 +25,7 @@
+     }
+ 
+     public static Point pointGeographic(double lon, double lat) {
+-        return point(normalizeLongitudeDouble(lon), lat);
++return point(lon, lat);
+     }
+ 
+     public static Point pointGeographic(float lon, float lat) {

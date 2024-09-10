@@ -1,0 +1,14 @@
+--- /tmp/Time_27_buggy/src/main/java/org/joda/time/format/PeriodFormatterBuilder.java	2024-09-09 22:04:40.151670743 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Time_27_buggy/src/main/java/org/joda/time/format/PeriodFormatterBuilder.java	2024-09-10 15:35:30.351751821 +0800
+@@ -1346,9 +1346,9 @@
+          * @return parsed int value
+          */
+         private int parseInt(String text, int position, int length) {
+-            if (length >= 10) {
++if (length >= 11) {
+                 // Since value may exceed max, use stock parser which checks for this.
+-                return Integer.parseInt(text.substring(position, position + length));
++return java.lang.Integer.parseInt(text.substring(position, position + length));
+             }
+             if (length <= 0) {
+                 return 0;

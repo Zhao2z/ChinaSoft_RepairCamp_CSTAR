@@ -1,0 +1,11 @@
+--- /tmp/AaltoXml_2_buggy/src/main/java/com/fasterxml/aalto/out/WriterConfig.java	2024-09-09 21:32:45.160228522 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/AaltoXml_2_buggy/src/main/java/com/fasterxml/aalto/out/WriterConfig.java	2024-09-10 15:35:28.299886011 +0800
+@@ -382,7 +382,7 @@
+ 
+     public boolean willEscapeCR() {
+         // !!! TBI
+-        return true;
++return false;
+     }
+ 
+     /*

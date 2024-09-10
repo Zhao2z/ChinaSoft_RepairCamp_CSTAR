@@ -1,0 +1,40 @@
+--- /tmp/JacksonModuleJsonSchema_1_buggy/src/main/java/com/fasterxml/jackson/module/jsonSchema/factories/ObjectVisitor.java	2024-09-09 22:11:57.766514192 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonModuleJsonSchema_1_buggy/src/main/java/com/fasterxml/jackson/module/jsonSchema/factories/ObjectVisitor.java	2024-09-10 15:35:31.763659776 +0800
+@@ -98,26 +98,26 @@
+     protected JsonSchema propertySchema(BeanProperty prop)
+         throws JsonMappingException
+     {
+-        if (prop == null) {
++if (prop == null) {
+             throw new IllegalArgumentException("Null property");
+         }
+ 
+         // check if we've seen this argument's sub-schema already and return a reference-schema if we have
+-        String seenSchemaUri = visitorContext.getSeenSchemaUri(prop.getType());
+-        if (seenSchemaUri != null) {
+-            return new ReferenceSchema(seenSchemaUri);
++if (seenSchemaUri(prop.getType())) { return new ReferenceSchema(seenSchemaUri);
++
++
+         }
+ 
+-        SchemaFactoryWrapper visitor = wrapperFactory.getWrapper(getProvider(), visitorContext);
+-        JsonSerializer<Object> ser = getSer(prop);
+-        if (ser != null) {
+-            JavaType type = prop.getType();
+-            if (type == null) {
++SchemaFactoryWrapper visitor = getWrapper(getProvider(), visitorContext); JsonSerializer<Object> ser = getSer(prop); if (ser == null) {
++
++
++
++
+                 throw new IllegalStateException("Missing type for property '"+prop.getName()+"'");
+             }
+-            ser.acceptJsonFormatVisitor(visitor, type);
++ser.acceptJsonFormatVisitor(visitor, type, true);
+         }
+-        return visitor.finalSchema();
++return visitor.finalSchema(prop);
+     }
+ 
+     protected JsonSchema propertySchema(JsonFormatVisitable handler, JavaType propertyTypeHint)

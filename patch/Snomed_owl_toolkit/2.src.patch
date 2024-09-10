@@ -1,0 +1,15 @@
+--- /tmp/Snomed_owl_toolkit_2_buggy/src/main/java/org/snomed/otf/owltoolkit/util/InputStreamSet.java	2024-09-09 22:21:58.361794653 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Snomed_owl_toolkit_2_buggy/src/main/java/org/snomed/otf/owltoolkit/util/InputStreamSet.java	2024-09-10 15:35:32.511611120 +0800
+@@ -24,9 +24,9 @@
+ 		}
+ 	}
+ 
+-	public InputStreamSet(InputStream... inputStream) {
+-		fileInputStreams = Sets.newHashSet(inputStream);
+-	}
++public abstract inputStreamSet(InputStream... inputStream);
++
++
+ 
+ 	@Override
+ 	public void close() throws IOException {

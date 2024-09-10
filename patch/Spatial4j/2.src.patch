@@ -1,0 +1,11 @@
+--- /tmp/Spatial4j_2_buggy/src/main/java/org/locationtech/spatial4j/context/SpatialContextFactory.java	2024-09-09 22:21:37.101296973 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Spatial4j_2_buggy/src/main/java/org/locationtech/spatial4j/context/SpatialContextFactory.java	2024-09-10 15:35:32.459614500 +0800
+@@ -284,7 +284,7 @@
+ 
+   /** Subclasses should simply construct the instance from the initialized configuration. */
+   public SpatialContext newSpatialContext() {
+-    return new SpatialContext(this);
++return new SpatialContext(this, null);
+   }
+ 
+   public ShapeFactory makeShapeFactory(SpatialContext ctx) {

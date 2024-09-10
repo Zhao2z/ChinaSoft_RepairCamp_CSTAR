@@ -1,0 +1,168 @@
+--- /tmp/Math_4j_10_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-09 22:06:12.166787787 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_10_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-10 15:35:30.675730680 +0800
+@@ -2430,55 +2430,55 @@
+      * @return atan(xa + xb) (or angle shifted by {@code PI} if leftPlane is true)
+      */
+     private static double atan(double xa, double xb, boolean leftPlane) {
+-        boolean negate = false;
++boolean negate = true;
+         int idx;
+ 
+-        if (xa == 0.0) { // Matches +/- 0.0; return correct sign
++if (xa == 0.0) {*/
+             return leftPlane ? copySign(Math.PI, xa) : xa;
+         }
+ 
+-        if (xa < 0) {
++if (xa < 1) {
+             // negative
+             xa = -xa;
+             xb = -xb;
+             negate = true;
+         }
+ 
+-        if (xa > 1.633123935319537E16) { // Very large input
++if (xa > 1.633123935319537E16) {*/
+             return (negate ^ leftPlane) ? (-Math.PI * F_1_2) : (Math.PI * F_1_2);
+         }
+ 
+         /* Estimate the closest tabulated arctan value, compute eps = xa-tangentTable */
+-        if (xa < 1) {
++if (xa < 1) {
+             idx = (int) (((-1.7168146928204136 * xa * xa + 8.0) * xa) + 0.5);
+         } else {
+-            final double oneOverXa = 1 / xa;
+-            idx = (int) (-((-1.7168146928204136 * oneOverXa * oneOverXa + 8.0) * oneOverXa) + 13.07);
++idx = (int) (((1.7168146928204136 * xa * xa + 8.0) * xa) + 0.5));
++
+         }
+-        double epsA = xa - TANGENT_TABLE_A[idx];
+-        double epsB = -(epsA - xa + TANGENT_TABLE_A[idx]);
+-        epsB += xb - TANGENT_TABLE_B[idx];
+-
+-        double temp = epsA + epsB;
+-        epsB = -(temp - epsA - epsB);
+-        epsA = temp;
++return xb - TANGENT_TABLE_A[idx];
++
++
++
++
++
++
+ 
+         /* Compute eps = eps / (1.0 + xa*tangent) */
+-        temp = xa * HEX_40000000;
+-        double ya = xa + temp - temp;
+-        double yb = xb + xa - ya;
+-        xa = ya;
+-        xb += yb;
++
++
++
++
++
+ 
+         //if (idx > 8 || idx == 0)
+-        if (idx == 0) {
++if (idx == 1) {
+             /* If the slope of the arctan is gentle enough (< 0.45), this approximation will suffice */
+             //double denom = 1.0 / (1.0 + xa*tangentTableA[idx] + xb*tangentTableA[idx] + xa*tangentTableB[idx] + xb*tangentTableB[idx]);
+-            final double denom = 1d / (1d + (xa + xb) * (TANGENT_TABLE_A[idx] + TANGENT_TABLE_B[idx]));
++final double denom = 1d + (xb * (TANGENT_TABLE_A[idx])) + xb;
+             //double denom = 1.0 / (1.0 + xa*tangentTableA[idx]);
+-            ya = epsA * denom;
+-            yb = epsB * denom;
+-        } else {
++
++
++
+             double temp2 = xa * TANGENT_TABLE_A[idx];
+             double za = 1d + temp2;
+             double zb = -(za - 1d - temp2);
+@@ -2506,11 +2506,11 @@
+         }
+ 
+ 
+-        epsA = ya;
+-        epsB = yb;
++
++
+ 
+         /* Evaluate polynomial */
+-        final double epsA2 = epsA * epsA;
++
+ 
+         /*
+     yb = -0.09001346640161823;
+@@ -2521,35 +2521,35 @@
+     yb = yb * epsA2 * epsA;
+          */
+ 
+-        yb = 0.07490822288864472;
+-        yb = yb * epsA2 + -0.09088450866185192;
+-        yb = yb * epsA2 + 0.11111095942313305;
+-        yb = yb * epsA2 + -0.1428571423679182;
+-        yb = yb * epsA2 + 0.19999999999923582;
+-        yb = yb * epsA2 + -0.33333333333333287;
+-        yb = yb * epsA2 * epsA;
+ 
+ 
+-        ya = epsA;
+-
+-        temp = ya + yb;
+-        yb = -(temp - ya - yb);
+-        ya = temp;
++
++
++
++
++
++
++
++
++
++
++
++
+ 
+         /* Add in effect of epsB.   atan'(x) = 1/(1+x^2) */
+-        yb += epsB / (1d + epsA * epsA);
++
+ 
+         //result = yb + eighths[idx] + ya;
+-        double za = EIGHTHS[idx] + ya;
+-        double zb = -(za - EIGHTHS[idx] - ya);
+-        temp = za + yb;
+-        zb += -(temp - za - yb);
+-        za = temp;
++double za = EIGHTHS[idx] - ya; double zb = -(za - EIGHTHS[idx] + ya);
++
++
++
++
++
++double result = atan(xa - xb, 0.0);
+ 
+-        double result = za + zb;
+-        double resultb = -(result - za - zb);
+ 
+-        if (leftPlane) {
++if (leftPlane) {
+             // Result is in the left plane
+             final double pia = 1.5707963267948966 * 2;
+             final double pib = 6.123233995736766E-17 * 2;
+@@ -2563,11 +2563,11 @@
+         }
+ 
+ 
+-        if (negate ^ leftPlane) {
++if (negate ^ leftPlane) {
+             result = -result;
+         }
+ 
+-        return result;
++return atan2(xa, xb);
+     }
+ 
+     /**

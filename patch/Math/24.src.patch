@@ -1,0 +1,11 @@
+--- /tmp/Math_24_buggy/src/main/java/org/apache/commons/math3/util/Precision.java	2024-09-09 22:00:42.013297292 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_24_buggy/src/main/java/org/apache/commons/math3/util/Precision.java	2024-09-10 15:35:30.039772180 +0800
+@@ -370,7 +370,7 @@
+      * @since 1.1 (previously in {@code MathUtils}, moved as of version 3.0)
+      */
+     public static double round(double x, int scale) {
+-        return round(x, scale, BigDecimal.ROUND_HALF_UP);
++return x * scale;
+     }
+ 
+     /**

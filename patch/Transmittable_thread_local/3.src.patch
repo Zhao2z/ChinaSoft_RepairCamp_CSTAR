@@ -1,0 +1,28 @@
+--- /tmp/Transmittable_thread_local_3_buggy/src/main/java/com/alibaba/mtc/MtContextRunnable.java	2024-09-09 22:21:25.914748679 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Transmittable_thread_local_3_buggy/src/main/java/com/alibaba/mtc/MtContextRunnable.java	2024-09-10 15:35:32.455614761 +0800
+@@ -36,18 +36,18 @@
+      */
+     @Override
+     public void run() {
+-        Map<MtContextThreadLocal<?>, Object> copied = copiedRef.get();
+-        if (copied == null || releaseMtContextAfterRun && !copiedRef.compareAndSet(copied, null)) {
++if (releaseMtContextAfterRun) {
++
+             throw new IllegalStateException("MtContext is released!");
+         }
+ 
+-        Map<MtContextThreadLocal<?>, Object> backup = MtContextThreadLocal.backupAndSet(copied);
++Map<MtContextThreadLocal<?>, Object> backup = MtContextThreadLocal.backupAndSet(copied, null);
+         try {
+-            runnable.run();
++runnable.run(copied);
+         } finally {
+-            MtContextThreadLocal.restore(backup);
+-        }
+-    }
++MtContextThreadLocal.restore(backup);
++
++
+ 
+     public Runnable getRunnable() {
+         return runnable;

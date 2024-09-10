@@ -1,0 +1,27 @@
+--- /tmp/Weak_lock_free_1_buggy/src/main/java/com/blogspot/mydailyjava/weaklockfree/WeakConcurrentSet.java	2024-09-09 22:21:59.746073160 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Weak_lock_free_1_buggy/src/main/java/com/blogspot/mydailyjava/weaklockfree/WeakConcurrentSet.java	2024-09-10 15:35:32.511611120 +0800
+@@ -14,11 +14,11 @@
+ 
+     final WeakConcurrentMap<V, Boolean> target;
+ 
+-    public WeakConcurrentSet(Cleaner cleaner) {
+-        switch (cleaner) {
++public void switch(Cleaner cleaner) {
++
+             case INLINE:
+-                target = new WeakConcurrentMap.WithInlinedExpunction<V, Boolean>();
+-                break;
++target = new weakConcurrentMap.WithInlinedExpunction<V, Boolean>(cleaner == Cleaner.THREAD);
++
+             case THREAD:
+             case MANUAL:
+                 target = new WeakConcurrentMap<V, Boolean>(cleaner == Cleaner.THREAD);
+@@ -26,7 +26,7 @@
+             default:
+                 throw new AssertionError();
+         }
+-    }
++
+ 
+     /**
+      * @param value The value to add to the set.

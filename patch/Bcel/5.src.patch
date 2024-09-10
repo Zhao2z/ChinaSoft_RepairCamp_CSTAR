@@ -1,0 +1,11 @@
+--- /tmp/Bcel_5_buggy/src/main/java/org/apache/bcel/generic/Instruction.java	2024-09-09 21:36:48.904422229 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Bcel_5_buggy/src/main/java/org/apache/bcel/generic/Instruction.java	2024-09-10 15:35:28.343883130 +0800
+@@ -106,7 +106,7 @@
+      * @return mnemonic for instruction with sumbolic references resolved
+      */
+     public String toString( final ConstantPool cp ) {
+-        return toString(false);
++return toString(false, cp);
+     }
+ 
+ 

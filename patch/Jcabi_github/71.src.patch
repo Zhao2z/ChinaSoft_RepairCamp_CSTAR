@@ -1,0 +1,13 @@
+--- /tmp/Jcabi_github_71_buggy/src/main/java/com/jcabi/github/mock/MkStorage.java	2024-09-09 22:20:44.933171404 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_github_71_buggy/src/main/java/com/jcabi/github/mock/MkStorage.java	2024-09-10 15:35:32.403618141 +0800
+@@ -176,8 +176,8 @@
+         }
+         @Override
+         public void lock() throws IOException {
+-            this.lock.lock();
+-        }
++lock.lock();
++
+         @Override
+         public void unlock() throws IOException {
+             this.lock.unlock();

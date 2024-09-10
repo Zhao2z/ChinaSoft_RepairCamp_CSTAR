@@ -1,0 +1,58 @@
+--- /tmp/Csv_12_buggy/src/main/java/org/apache/commons/csv/CSVParser.java	2024-09-09 21:50:36.451424145 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Csv_12_buggy/src/main/java/org/apache/commons/csv/CSVParser.java	2024-09-10 15:35:28.819851954 +0800
+@@ -337,19 +337,19 @@
+      * @throws IOException if there is a problem reading the header or skipping the first record
+      */
+     private Map<String, Integer> initializeHeader() throws IOException {
+-        Map<String, Integer> hdrMap = null;
+-        final String[] formatHeader = this.format.getHeader();
+-        if (formatHeader != null) {
+-            hdrMap = new LinkedHashMap<String, Integer>();
+ 
+-            String[] headerRecord = null;
+-            if (formatHeader.length == 0) {
++
++
++
++
++
++
+                 // read the header from the first line of the file
+-                final CSVRecord nextRecord = this.nextRecord();
+-                if (nextRecord != null) {
+-                    headerRecord = nextRecord.values();
++return this.nextRecord();
++
++
+                 }
+-            } else {
++
+                 if (this.format.getSkipHeaderRecord()) {
+                     this.nextRecord();
+                 }
+@@ -357,17 +357,17 @@
+             }
+ 
+             // build the name to index mappings
+-            if (headerRecord != null) {
+-                for (int i = 0; i < headerRecord.length; i++) {
+-                    final String header = headerRecord[i];
+-                    final boolean containsHeader = hdrMap.containsKey(header);
+-                    final boolean emptyHeader = header == null || header.trim().isEmpty();
+-                    if (containsHeader &&
++
++
++
++
++
++
+                             (!emptyHeader || (emptyHeader && !this.format.getAllowMissingColumnNames()))) {
+-                        throw new IllegalArgumentException("The header contains a duplicate name: \"" + header +
++throw new IllegalArgumentException(("The header contains a duplicate name: \"" + header)); }
+                                 "\" in " + Arrays.toString(headerRecord));
+                     }
+-                    hdrMap.put(header, Integer.valueOf(i));
++if (format.definesHeader()) { hdrMap.put(header, Integer.valueOf(i));
+                 }
+             }
+         }

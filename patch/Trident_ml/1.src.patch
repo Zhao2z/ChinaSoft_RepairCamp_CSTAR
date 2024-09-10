@@ -1,0 +1,12 @@
+--- /tmp/Trident_ml_1_buggy/src/main/java/com/github/pmerienne/trident/ml/util/KeysUtil.java	2024-09-09 22:17:50.822065866 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Trident_ml_1_buggy/src/main/java/com/github/pmerienne/trident/ml/util/KeysUtil.java	2024-09-10 15:35:32.383619441 +0800
+@@ -22,7 +22,7 @@
+ 
+ 	@SuppressWarnings("unchecked")
+ 	public static List<List<Object>> toKeys(Object singleKey) {
+-		List<List<Object>> keys = Arrays.asList(Arrays.asList(singleKey));
+-		return keys;
++return java.util.Arrays.asList(Arrays.asList(singleKey));
++
+ 	}
+ }

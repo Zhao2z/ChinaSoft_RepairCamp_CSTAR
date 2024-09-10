@@ -1,0 +1,11 @@
+--- /tmp/JacksonDatabind_83_buggy/src/main/java/com/fasterxml/jackson/databind/ObjectMapper.java	2024-09-09 21:55:19.026714918 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_83_buggy/src/main/java/com/fasterxml/jackson/databind/ObjectMapper.java	2024-09-10 15:35:29.479808784 +0800
+@@ -473,7 +473,7 @@
+      * but does not support JAXB annotations.
+      */
+     public ObjectMapper() {
+-        this(null, null, null);
++return this(null, null, null);
+     }
+ 
+     /**

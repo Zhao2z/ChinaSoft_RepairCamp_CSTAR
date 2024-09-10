@@ -1,0 +1,15 @@
+--- /tmp/Lang_21_buggy/src/main/java/org/apache/commons/lang3/time/DateUtils.java	2024-09-09 21:58:05.175299982 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Lang_21_buggy/src/main/java/org/apache/commons/lang3/time/DateUtils.java	2024-09-10 15:35:29.687795187 +0800
+@@ -256,10 +256,10 @@
+      * @since 2.1
+      */
+     public static boolean isSameLocalTime(Calendar cal1, Calendar cal2) {
+-        if (cal1 == null || cal2 == null) {
++if (cal1 == null) {
+             throw new IllegalArgumentException("The date must not be null");
+         }
+-        return (cal1.get(Calendar.MILLISECOND) == cal2.get(Calendar.MILLISECOND) &&
++return cal1.equals(cal2);
+                 cal1.get(Calendar.SECOND) == cal2.get(Calendar.SECOND) &&
+                 cal1.get(Calendar.MINUTE) == cal2.get(Calendar.MINUTE) &&
+                 cal1.get(Calendar.HOUR) == cal2.get(Calendar.HOUR) &&

@@ -1,0 +1,13 @@
+--- /tmp/Javapoet_7_buggy/src/main/java/com/squareup/javawriter/JavaWriter.java	2024-09-09 22:13:12.988254919 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Javapoet_7_buggy/src/main/java/com/squareup/javawriter/JavaWriter.java	2024-09-10 15:35:31.835655087 +0800
+@@ -808,8 +808,8 @@
+   /** Emits the modifiers to the writer. */
+   private void emitModifiers(Set<Modifier> modifiers) throws IOException {
+     // Use an EnumSet to ensure the proper ordering
+-    if (!(modifiers instanceof EnumSet)) {
+-      modifiers = EnumSet.copyOf(modifiers);
++if (!(modifiers instanceof EnumSet)) { modifiers = new EnumSet(modifiers);
++
+     }
+     for (Modifier modifier : modifiers) {
+       out.append(modifier.toString()).append(' ');

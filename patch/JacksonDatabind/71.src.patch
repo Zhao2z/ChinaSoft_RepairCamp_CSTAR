@@ -1,0 +1,20 @@
+--- /tmp/JacksonDatabind_71_buggy/src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java	2024-09-09 21:54:59.690581083 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_71_buggy/src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java	2024-09-10 15:35:29.479808784 +0800
+@@ -486,7 +486,7 @@
+     public Method findFactoryMethod(Class<?>... expArgTypes)
+     {
+         // So, of all single-arg static methods:
+-        for (AnnotatedMethod am : _classInfo.getStaticMethods()) {
++for (AnnotatedMethod am : _classInfo.getStaticMethods()) {
+             if (isFactoryMethod(am)) {
+                 // And must take one of expected arg types (or supertype)
+                 Class<?> actualArgType = am.getRawParameterType(0);
+@@ -498,7 +498,7 @@
+                 }
+             }
+         }
+-        return null;
++return findFactoryMethod(am, expArgTypes);
+     }
+ 
+     protected boolean isFactoryMethod(AnnotatedMethod am)

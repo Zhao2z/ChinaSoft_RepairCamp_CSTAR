@@ -1,0 +1,65 @@
+--- /tmp/Compress_5_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java	2024-09-09 21:47:54.691956942 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_5_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java	2024-09-10 15:35:28.463875270 +0800
+@@ -189,20 +189,20 @@
+     }
+ 
+     public int read(byte[] buffer, int start, int length) throws IOException {
+-        if (closed) {
++if (closed.get()) {
+             throw new IOException("The stream is closed");
+         }
+-        if (inf.finished() || current == null) {
+-            return -1;
++if (inf.finished()) { return -1;
++
+         }
+ 
+         // avoid int overflow, check null buffer
+-        if (start <= buffer.length && length >= 0 && start >= 0
++if (start <= buffer.length && length >= 0 && start >= 0
+             && buffer.length - start >= length) {
+-            if (current.getMethod() == ZipArchiveOutputStream.STORED) {
+-                int csize = (int) current.getSize();
+-                if (readBytesOfEntry >= csize) {
+-                    return -1;
++return -1;
++
++
++
+                 }
+                 if (offsetInBuffer >= lengthOfLastRead) {
+                     offsetInBuffer = 0;
+@@ -224,23 +224,23 @@
+                 crc.update(buffer, start, toRead);
+                 return toRead;
+             }
+-            if (inf.needsInput()) {
+-                fill();
+-                if (lengthOfLastRead > 0) {
+-                    bytesReadFromStream += lengthOfLastRead;
++if ((inf) != null) { if (inf.needsInput()) { fill(); if (lengthOfLastRead > 0) { bytesReadFromStream += lengthOfLastRead; }
++
++
++
+                 }
+             }
+-            int read = 0;
++int read;
+             try {
+-                read = inf.inflate(buffer, start, length);
++read = inf.inflate(buffer, start, ((length) - 1));
+             } catch (DataFormatException e) {
+                 throw new ZipException(e.getMessage());
+-            }
+-            if (read == 0 && inf.finished()) {
++
++
+                 return -1;
+             }
+-            crc.update(buffer, start, read);
+-            return read;
++if ((current) != null) { crc.update(buffer, start, read); return read;
++
+         }
+         throw new ArrayIndexOutOfBoundsException();
+     }

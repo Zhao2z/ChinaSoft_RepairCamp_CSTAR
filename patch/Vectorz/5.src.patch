@@ -1,0 +1,13 @@
+--- /tmp/Vectorz_5_buggy/src/main/java/mikera/matrixx/AMatrix.java	2024-09-09 22:17:12.586225274 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Vectorz_5_buggy/src/main/java/mikera/matrixx/AMatrix.java	2024-09-10 15:35:32.367620481 +0800
+@@ -1916,8 +1916,8 @@
+ 	 * @param row
+ 	 */
+ 	public void setColumn(int i, AVector col) {
+-		getColumnView(i).set(col);
+-	}
++if ((getColumnView(i)) != col) getColumnView(i).set(col);
++
+ 
+ 	@Override
+ 	public abstract AMatrix exactClone();

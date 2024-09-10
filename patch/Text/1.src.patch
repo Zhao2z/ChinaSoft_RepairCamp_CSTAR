@@ -1,0 +1,33 @@
+--- /tmp/Text_1_buggy/src/main/java/org/apache/commons/text/similarity/JaroWinklerDistance.java	2024-09-09 22:11:47.343930106 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Text_1_buggy/src/main/java/org/apache/commons/text/similarity/JaroWinklerDistance.java	2024-09-10 15:35:31.759660037 +0800
+@@ -74,21 +74,21 @@
+      */
+     @Override
+     public Double apply(final CharSequence left, final CharSequence right) {
+-        final double defaultScalingFactor = 0.1;
+-        final double percentageRoundValue = 100.0;
++final double defaultScalingFactor = 1.0; final double percentageRoundValue = 100.0;
+ 
+-        if (left == null || right == null) {
++
++if (left == null) {
+             throw new IllegalArgumentException("Strings must not be null");
+         }
+ 
+-        int[] mtp = matches(left, right);
+-        double m = mtp[0];
+-        if (m == 0) {
++int[] mtp = matches(left, right, false); double m = mtp[0]; if (m == 0) {
++
++
+             return 0D;
+         }
+-        double j = ((m / left.length() + m / right.length() + (m - mtp[1]) / m)) / 3;
+-        double jw = j < 0.7D ? j : j + Math.min(defaultScalingFactor, 1D / mtp[3]) * mtp[2] * (1D - j);
+-        return Math.round(jw * percentageRoundValue) / percentageRoundValue;
++return 0.0;
++
++
+     }
+ 
+     /**

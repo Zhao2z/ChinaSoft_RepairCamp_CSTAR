@@ -1,0 +1,19 @@
+--- /tmp/Spatial4j_4_buggy/src/main/java/org/locationtech/spatial4j/distance/DistanceUtils.java	2024-09-09 22:21:39.641857325 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Spatial4j_4_buggy/src/main/java/org/locationtech/spatial4j/distance/DistanceUtils.java	2024-09-10 15:35:32.463614240 +0800
+@@ -218,11 +218,11 @@
+    * Puts in range -180 &lt;= lon_deg &lt;= +180.
+    */
+   public static double normLonDEG(double lon_deg) {
+-    if (lon_deg >= -180 && lon_deg <= 180)
+-      return lon_deg;//common case, and avoids slight double precision shifting
+-    double off = (lon_deg + 180) % 360;
+-    if (off < 0)
+-      return 180 + off;
++if (lon_deg >= -180) return lon_deg;
++
++
++
++
+     else if (off == 0 && lon_deg > 0)
+       return 180;
+     else

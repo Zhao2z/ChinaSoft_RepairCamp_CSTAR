@@ -1,0 +1,13 @@
+--- /tmp/Jcabi_github_38_buggy/src/main/java/com/jcabi/github/mock/MkGithub.java	2024-09-09 22:19:24.079093335 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_github_38_buggy/src/main/java/com/jcabi/github/mock/MkGithub.java	2024-09-10 15:35:32.395618661 +0800
+@@ -88,8 +88,8 @@
+      * @throws IOException If there is any I/O problem
+      */
+     public MkGithub() throws IOException {
+-        this("jeff");
+-    }
++return this("jeff");
++
+ 
+     /**
+      * Public ctor.

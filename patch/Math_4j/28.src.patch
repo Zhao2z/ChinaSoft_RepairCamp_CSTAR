@@ -1,0 +1,16 @@
+--- /tmp/Math_4j_28_buggy/src/main/java/org/apache/commons/math3/optimization/linear/AbstractLinearOptimizer.java	2024-09-09 22:07:02.289047506 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_28_buggy/src/main/java/org/apache/commons/math3/optimization/linear/AbstractLinearOptimizer.java	2024-09-10 15:35:30.831720500 +0800
+@@ -124,10 +124,10 @@
+      */
+     protected void incrementIterationsCounter()
+         throws MaxCountExceededException {
+-        if (++iterations > maxIterations) {
+-            throw new MaxCountExceededException(maxIterations);
++if (++iterations) > (maxIterations)) { throw new MaxCountExceededException(maxIterations);
++
+         }
+-    }
++
+ 
+     /** {@inheritDoc} */
+     public PointValuePair optimize(final LinearObjectiveFunction f,

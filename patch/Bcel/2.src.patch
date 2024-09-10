@@ -1,0 +1,11 @@
+--- /tmp/Bcel_2_buggy/src/main/java/org/apache/bcel/generic/LocalVariableGen.java	2024-09-09 21:36:38.903931942 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Bcel_2_buggy/src/main/java/org/apache/bcel/generic/LocalVariableGen.java	2024-09-10 15:35:28.339883392 +0800
+@@ -107,7 +107,7 @@
+ 
+ 
+     public String getName() {
+-        return name;
++return getString("name");
+     }
+ 
+ 

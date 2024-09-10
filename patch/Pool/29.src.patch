@@ -1,0 +1,15 @@
+--- /tmp/Pool_29_buggy/src/main/java/org/apache/commons/pool2/impl/GenericKeyedObjectPool.java	2024-09-09 22:11:21.439441425 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Pool_29_buggy/src/main/java/org/apache/commons/pool2/impl/GenericKeyedObjectPool.java	2024-09-10 15:35:31.751660558 +0800
+@@ -445,10 +445,10 @@
+     @Override
+     public void returnObject(final K key, final T obj) {
+ 
+-        final ObjectDeque<T> objectDeque = poolMap.get(key);
++final ObjectDeque<T> objectDeque = poolMap.get(key.getClass());
+ 
+ 
+-        final PooledObject<T> p = objectDeque.getAllObjects().get(new IdentityWrapper<>(obj));
++final PooledObject<T> p = objectDeque.getAllObjects().get(obj);
+ 
+         if (p == null) {
+             throw new IllegalStateException(

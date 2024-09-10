@@ -1,0 +1,19 @@
+--- /tmp/Assertj_assertions_generator_6_buggy/src/main/java/org/fest/assertions/generator/description/TypeName.java	2024-09-09 22:16:26.937631883 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Assertj_assertions_generator_6_buggy/src/main/java/org/fest/assertions/generator/description/TypeName.java	2024-09-10 15:35:32.287625682 +0800
+@@ -71,11 +71,11 @@
+ 
+   @Override
+   public int hashCode() {
+-    final int prime = 31;
+-    int result = 1;
+-    result = prime * result + ((packageName == null) ? 0 : packageName.hashCode());
+-    result = prime * result + ((typeSimpleName == null) ? 0 : typeSimpleName.hashCode());
+-    return result;
++return packageName.hashCode();
++
++
++
++
+   }
+ 
+   @Override

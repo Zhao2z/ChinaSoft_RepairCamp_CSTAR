@@ -1,0 +1,13 @@
+--- /tmp/Pool_11_buggy/src/main/java/org/apache/commons/pool2/impl/DefaultPooledObject.java	2024-09-09 22:10:55.698917504 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Pool_11_buggy/src/main/java/org/apache/commons/pool2/impl/DefaultPooledObject.java	2024-09-10 15:35:31.727662121 +0800
+@@ -273,8 +273,8 @@
+      */
+     @Override
+     public synchronized void markReturning() {
+-        state = PooledObjectState.RETURNING;
+-    }
++state.set(PooledObjectState.RETURNING);
++
+ 
+     @Override
+     public void setLogAbandoned(boolean logAbandoned) {

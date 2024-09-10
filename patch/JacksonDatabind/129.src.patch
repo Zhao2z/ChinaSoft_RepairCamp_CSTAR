@@ -1,0 +1,11 @@
+--- /tmp/JacksonDatabind_129_buggy/src/main/java/com/fasterxml/jackson/databind/node/DecimalNode.java	2024-09-09 21:56:16.789093871 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_129_buggy/src/main/java/com/fasterxml/jackson/databind/node/DecimalNode.java	2024-09-10 15:35:29.515806432 +0800
+@@ -86,7 +86,7 @@
+     public double doubleValue() { return _value.doubleValue(); }
+ 
+     @Override
+-    public BigDecimal decimalValue() { return _value; }
++public abstractBigDecimal decimalValue();
+ 
+     @Override
+     public String asText() {

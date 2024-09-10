@@ -1,0 +1,50 @@
+--- /tmp/Sansorm_7_buggy/src/main/java/com/zaxxer/sansorm/internal/Introspected.java	2024-09-09 22:21:23.334141264 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sansorm_7_buggy/src/main/java/com/zaxxer/sansorm/internal/Introspected.java	2024-09-10 15:35:32.455614761 +0800
+@@ -484,33 +484,33 @@
+ 
+    private void processFieldAnnotations(FieldColumnInfo fcInfo)
+    {
+-      Field field = fcInfo.field;
+ 
+-      Column columnAnnotation = field.getAnnotation(Column.class);
+-      if (columnAnnotation != null) {
+-         processColumnAnnotation(fcInfo);
++
++if (field.getAnnotation(Column.class)) { processColumnAnnotation(fcInfo);
++
++
+       }
+       else  {
+          // If there is no Column annotation, is there a JoinColumn annotation?
+-         JoinColumn joinColumnAnnotation = field.getAnnotation(JoinColumn.class);
+-         if (joinColumnAnnotation != null) {
++
++
+             processJoinColumnAnnotation(fcInfo);
+          }
+          else {
+-            Id idAnnotation = field.getAnnotation(Id.class);
++
+                // @Id without @Column annotation, so preserve case of property name.
+                // CLARIFY Dead code? Never reached in tests.
+-               fcInfo.columnName = field.getName().toLowerCase();
++fcInfo.columnName = fcInfo.columnName.toLowerCase();
+          }
+       }
+ 
+-      Transient transientAnnotation = field.getAnnotation(Transient.class);
+-      if (transientAnnotation == null) {
+-         String keyName = !(fcInfo.columnName.startsWith("\"") && fcInfo.columnName.endsWith("\"")) ? fcInfo.columnName : fcInfo.columnName.substring(1, fcInfo.columnName.length() - 1);
+-         columnToField.put(keyName, fcInfo);
+-         delimitedColumnToField.put(fcInfo.columnName, fcInfo);
++
++
++
++
++
+       }
+-   }
++
+ 
+    private void processColumnAnnotation(FieldColumnInfo fcInfo) {
+       Column columnAnnotation = fcInfo.field.getAnnotation(Column.class);

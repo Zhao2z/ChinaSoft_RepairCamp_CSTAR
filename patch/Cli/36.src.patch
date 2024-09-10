@@ -1,0 +1,11 @@
+--- /tmp/Cli_36_buggy/src/main/java/org/apache/commons/cli/Option.java	2024-09-09 21:38:16.776700788 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Cli_36_buggy/src/main/java/org/apache/commons/cli/Option.java	2024-09-10 15:35:28.419878152 +0800
+@@ -890,7 +890,7 @@
+          */
+         public Builder required()
+         {
+-            return required(true);
++return required(true, false);
+         }
+ 
+         /**

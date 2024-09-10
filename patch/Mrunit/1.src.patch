@@ -1,0 +1,35 @@
+--- /tmp/Mrunit_1_buggy/src/main/java/org/apache/hadoop/mrunit/mapreduce/ReduceDriver.java	2024-09-09 22:12:48.963538118 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Mrunit_1_buggy/src/main/java/org/apache/hadoop/mrunit/mapreduce/ReduceDriver.java	2024-09-10 15:35:31.803657171 +0800
+@@ -255,23 +255,23 @@
+   @Override
+   public List<Pair<K2, V2>> run() throws IOException {
+     try {
+-      preRunChecks(myReducer);
+-      initDistributedCache();
+-      MockReduceContextWrapper<K1, V1, K2, V2> wrapper = getContextWrapper();
+-      mos = new MockMultipleOutputs(wrapper.getMockContext());
++
++
++
++
+       try {
+-        PowerMockito.whenNew(MultipleOutputs.class).withArguments(wrapper.getMockContext()).thenReturn(mos);
++PowerMockito.whenNew(MultipleOutputs.class).withArguments(wrapper.getMockContext()).thenReturn(mos);
+       } catch(Exception ex) {
+           //Wrap the exception to avoid changing the method signature
+           throw new IOException(ex);
+-      }
+-      myReducer.run(wrapper.getMockContext());
++} finally { myReducer.run(wrapper.getMockContext()); }
++
+       return wrapper.getOutputs();
+     } catch (final InterruptedException ie) {
+       throw new IOException(ie);
+     } finally {
+-      cleanupDistributedCache();
+-    }
++
++
+   }
+ 
+   @Override

@@ -1,0 +1,11 @@
+--- /tmp/Gocd_slack_build_notifier_2_buggy/src/main/java/in/ashwanthkumar/gocd/slack/ruleset/PipelineRule.java	2024-09-09 22:17:46.173952631 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Gocd_slack_build_notifier_2_buggy/src/main/java/in/ashwanthkumar/gocd/slack/ruleset/PipelineRule.java	2024-09-10 15:35:32.383619441 +0800
+@@ -106,7 +106,7 @@
+ 
+     @Override
+     public String toString() {
+-        return "PipelineRule{" +
++return "PipelineRule{" + (status) + '}';
+                 "nameRegex='" + nameRegex + '\'' +
+                 ", stageRegex='" + stageRegex + '\'' +
+                 ", channel='" + channel + '\'' +

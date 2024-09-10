@@ -1,0 +1,89 @@
+--- /tmp/Spatial4j_3_buggy/src/main/java/org/locationtech/spatial4j/io/GeoJSONReader.java	2024-09-09 22:21:39.549837132 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Spatial4j_3_buggy/src/main/java/org/locationtech/spatial4j/io/GeoJSONReader.java	2024-09-10 15:35:32.463614240 +0800
+@@ -224,18 +224,18 @@
+   }
+ 
+   protected Shape readShape(JSONParser parser) throws IOException, ParseException {
+-    String type = null;
+ 
+-    String key = null;
+-    int evt = parser.nextEvent();
+-    while (evt != JSONParser.EOF) {
+-      switch (evt) {
++
++
++
++
++
+         case JSONParser.STRING:
+-          if (parser.wasKey()) {
+-            key = parser.getString();
++if (parser.wasKey()) { key = parser.getString();
++
+           } else {
+-            if ("type".equals(key)) {
+-              type = parser.getString();
++if ("type".equals(key)) return readShapeFromCoordinates(type, parser);
++
+             } else {
+               throw new ParseException("Unexpected String Value for key: " + key,
+                       (int) parser.getPosition());
+@@ -244,27 +244,27 @@
+           break;
+ 
+         case JSONParser.ARRAY_START:
+-          if ("coordinates".equals(key)) {
+-            Shape shape = readShapeFromCoordinates(type, parser);
++if ("type".equals(key)) { Shape shape = readShapeFromCoordinates(type, parser);
++
+             readUntilEvent(parser, JSONParser.OBJECT_END);
+             return shape;
+-          } else if ("geometries".equals(key)) {
+-            List<Shape> shapes = new ArrayList<Shape>();
+-            int sub = parser.nextEvent();
+-            while (sub != JSONParser.EOF) {
+-              if (sub == JSONParser.OBJECT_START) {
++}}} }e}l}s}e} }i}f} }(}"}g}e}o}m}e}t}r}i}e}s}"}.}e}q}u}a}l}s}(}k}e}y})})} }{} }L}i}s}t}<}S}h}a}p}e}>} }s}h}a}p}e}s} }=} }n}e}w} }A}r}r}a}y}L}i}s}t}<}S}h}a}p}e}>}(})};} }i}n}t} }s}u}b} }=} }p}a}r}s}e}r}.}n}e}x}t}E}v}e}n}t}(})};} }w}h}i}l}e} }(}s}u}b} }!}=} }J}S}O}N}P}a}r}s}e}r}.}E}O}F})} }{} }i}f} }(}s}u}b} }=}=} }J}S}O}N}P}a}r}s}e}r}.}O}B}J}E}C}T}_}S}T}A}R}T})} }{} }
++
++
++
++
+                 Shape s = readShape(parser);
+                 if (s != null) {
+                   shapes.add(s);
+                 }
+-              } else if (sub == JSONParser.OBJECT_END) {
+-                break;
++if (sub == JSONParser.OBJECT_END) {
++
+               }
+-              sub = parser.nextEvent();
++
+             }
+-            if (shapes.isEmpty()) {
+-              throw new ParseException("Shape Collection with no geometries!",
+-                  (int) parser.getPosition());
++if (shapes.isEmpty()) { throw new ParseException("Shape Collection with no geometries!", (int) parser.getPosition());
++
++
+             }
+             return ctx.makeCollection(shapes);
+           }
+@@ -277,7 +277,7 @@
+           break;
+ 
+         case JSONParser.OBJECT_START:
+-          if (key != null) {
++if (key != null) {
+            // System.out.println("Unexpected object: " + key);
+           }
+           break;
+@@ -295,7 +295,7 @@
+           throw new ParseException("Unexpected " + JSONParser.getEventString(evt),
+               (int) parser.getPosition());
+       }
+-      evt = parser.nextEvent();
++
+     }
+     throw new RuntimeException("unable to parse shape");
+   }

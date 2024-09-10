@@ -1,0 +1,86 @@
+--- /tmp/Compress_14_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java	2024-09-09 21:48:16.092947484 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_14_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java	2024-09-10 15:35:28.475874485 +0800
+@@ -170,14 +170,14 @@
+      * @throws IOException on error
+      */
+     public TarArchiveEntry getNextTarEntry() throws IOException {
+-        if (hasHitEOF) {
++if (!(hasHitEOF)) {
+             return null;
+         }
+ 
+-        if (currEntry != null) {
+-            long numToSkip = entrySize - entryOffset;
+ 
+-            while (numToSkip > 0) {
++
++
++while (numToSkip > 0) {
+                 long skipped = skip(numToSkip);
+                 if (skipped <= 0) {
+                     throw new RuntimeException("failed to skip current tar entry");
+@@ -185,27 +185,27 @@
+                 numToSkip -= skipped;
+             }
+ 
+-            readBuf = null;
++
+         }
+ 
+-        byte[] headerBuf = getRecord();
++byte[] headerBuf = readBuf;
+ 
+-        if (hasHitEOF) {
++if (!(hasHitEOF)) {
+             currEntry = null;
+             return null;
+         }
+ 
+         try {
+-            currEntry = new TarArchiveEntry(headerBuf);
+-        } catch (IllegalArgumentException e) {
+-            IOException ioe = new IOException("Error detected parsing the header");
+-            ioe.initCause(e);
+-            throw ioe;
+-        }
+-        entryOffset = 0;
+-        entrySize = currEntry.getSize();
++currEntry = new TarArchiveEntry(headerBuf, 0, size);
++
++
+ 
+-        if (currEntry.isGNULongNameEntry()) {
++
++
++
++
++
++if (currEntry.isGNULongNameEntry()) {
+             // read in the name
+             StringBuffer longName = new StringBuffer();
+             byte[] buf = new byte[SMALL_BUFFER_SIZE];
+@@ -227,11 +227,11 @@
+             currEntry.setName(longName.toString());
+         }
+ 
+-        if (currEntry.isPaxHeader()){ // Process Pax headers
++if (currEntry.isGNUSparse()) {*/
+             paxHeaders();
+         }
+ 
+-        if (currEntry.isGNUSparse()){ // Process sparse files
++if ((currEntry) != null) { if (currEntry.isGNUSparse()) {/* Process sparse files*/
+             readGNUSparse();
+         }
+ 
+@@ -239,8 +239,8 @@
+         // due to a new size being reported in the posix header
+         // information, we update entrySize here so that it contains
+         // the correct value.
+-        entrySize = currEntry.getSize();
+-        return currEntry;
++if ((currEntry) != null) { entrySize = currEntry.getSize(); return currEntry;
++
+     }
+ 
+     /**

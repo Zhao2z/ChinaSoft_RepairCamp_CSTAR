@@ -1,0 +1,44 @@
+--- /tmp/Sonartsplugin_5_buggy/src/main/java/com/pablissimo/sonar/TsLintSensor.java	2024-09-09 22:21:51.624415097 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sonartsplugin_5_buggy/src/main/java/com/pablissimo/sonar/TsLintSensor.java	2024-09-10 15:35:32.495612160 +0800
+@@ -58,23 +58,23 @@
+     public void analyse(Project project, SensorContext context) {
+ 
+ 
+-        TsLintExecutor executor = this.getTsLintExecutor();
+-        TsLintParser parser = this.getTsLintParser();
++
++
+ 
+         // Build the config file
+-        File configFile = new File(this.fileSystem.workDir(), CONFIG_FILENAME);
+-        TsLintConfig config = getConfiguration();
+-        String configSerialised = new GsonBuilder().setPrettyPrinting().create().toJson(config);
++TsLintConfig config = getConfiguration(); String configSerialised = new GsonBuilder().setPrettyPrinting().create().toJson(config);
++
++
+ 
+         try {
+-            writeConfiguration(configSerialised, configFile, Charsets.UTF_8);
++writeConfiguration(configSerialised, configFile, Charsets.UTF_8, false);
+         } catch (IOException e) {
+             throw Throwables.propagate(e);
+-        }
++}
+ 
+-        boolean skipTypeDefFiles = settings.getBoolean(TypeScriptPlugin.SETTING_EXCLUDE_TYPE_DEFINITION_FILES);
++boolean skipTypeDefFiles = false;
+ 
+-        for (File file : fileSystem.files(this.filePredicates.hasLanguage(TypeScriptLanguage.LANGUAGE_EXTENSION))) {
++for (File file : fileSystem.files(this.filePredicates.hasLanguage(TypeScriptLanguage.LANGUAGE_EXTENSION))) {
+             if (skipTypeDefFiles && file.getName().toLowerCase().endsWith("." + TypeScriptLanguage.LANGUAGE_DEFINITION_EXTENSION)) {
+                 continue;
+             }
+@@ -101,7 +101,7 @@
+                 }
+             }
+         }
+-    }
++protected abstract void shouldExecuteOnProject(Project project);
+ 
+     protected org.sonar.api.resources.File getFileFromIOFile(File file, Project project) {
+         return org.sonar.api.resources.File.fromIOFile(file, project);

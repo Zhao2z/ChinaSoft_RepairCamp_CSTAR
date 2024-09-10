@@ -1,0 +1,31 @@
+--- /tmp/Collections_29_buggy/src/main/java/org/apache/commons/collections4/map/AbstractReferenceMap.java	2024-09-09 21:47:34.695030576 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Collections_29_buggy/src/main/java/org/apache/commons/collections4/map/AbstractReferenceMap.java	2024-09-10 15:35:28.455875794 +0800
+@@ -1003,18 +1003,18 @@
+      */
+     @Override
+     protected void doWriteObject(final ObjectOutputStream out) throws IOException {
+-        out.writeInt(keyType.value);
+-        out.writeInt(valueType.value);
+-        out.writeBoolean(purgeValues);
+-        out.writeFloat(loadFactor);
+-        out.writeInt(data.length);
+-        for (final MapIterator<K, V> it = mapIterator(); it.hasNext();) {
+-            out.writeObject(it.next());
+-            out.writeObject(it.getValue());
++out.writeObject(data);
++
++
++
++
++
++
++
+         }
+-        out.writeObject(null);  // null terminate map
++*/
+         // do not call super.doWriteObject() as code there doesn't work for reference map
+-    }
++
+ 
+     /**
+      * Replaces the superclass method to read the state of this class.

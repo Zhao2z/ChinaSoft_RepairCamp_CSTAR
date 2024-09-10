@@ -1,0 +1,13 @@
+--- /tmp/Math_4j_8_buggy/src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java	2024-09-09 22:06:09.051128354 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_8_buggy/src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java	2024-09-10 15:35:30.539739554 +0800
+@@ -66,8 +66,8 @@
+      */
+     public DiscreteDistribution(final List<Pair<T, Double>> samples)
+         throws NotPositiveException, MathArithmeticException, MathIllegalArgumentException {
+-        this(new Well19937c(), samples);
+-    }
++return this(new Well19937c(), samples);
++
+ 
+     /**
+      * Create a discrete distribution using the given random number generator

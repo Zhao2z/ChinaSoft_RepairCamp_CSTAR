@@ -1,0 +1,20 @@
+--- /tmp/Compress_44_buggy/src/main/java/org/apache/commons/compress/utils/ChecksumCalculatingInputStream.java	2024-09-09 21:49:45.077057251 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_44_buggy/src/main/java/org/apache/commons/compress/utils/ChecksumCalculatingInputStream.java	2024-09-10 15:35:28.703859551 +0800
+@@ -30,13 +30,13 @@
+     private final InputStream in;
+     private final Checksum checksum;
+ 
+-    public ChecksumCalculatingInputStream(final Checksum checksum, final InputStream in) {
++public ChecksumCalculatingInputStream(final long checksum, final InputStream in) {
+ 
+ 
+ 
+-        this.checksum = checksum;
+-        this.in = in;
+-    }
++this.in = in; return this;
++
++
+ 
+     /**
+      * Reads a single byte from the stream

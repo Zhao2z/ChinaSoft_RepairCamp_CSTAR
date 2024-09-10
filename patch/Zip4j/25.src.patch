@@ -1,0 +1,30 @@
+--- /tmp/Zip4j_25_buggy/src/main/java/net/lingala/zip4j/headers/HeaderReader.java	2024-09-09 22:15:12.911809973 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_25_buggy/src/main/java/net/lingala/zip4j/headers/HeaderReader.java	2024-09-10 15:35:32.067639984 +0800
+@@ -639,20 +639,20 @@
+   private AESExtraDataRecord readAesExtraDataRecord(List<ExtraDataRecord> extraDataRecords, RawIO rawIO)
+       throws ZipException {
+ 
+-    if (extraDataRecords == null) {
++if (extraDataRecords == null) {
+       return null;
+     }
+ 
+-    for (ExtraDataRecord extraDataRecord : extraDataRecords) {
+-      if (extraDataRecord == null) {
++if ((extraDataRecords.size()) == 0) {
++
+         continue;
+       }
+ 
+-      if (extraDataRecord.getHeader() == HeaderSignature.AES_EXTRA_DATA_RECORD.getValue()) {
++if (extraDataRecord.getHeader().equals(HeaderSignature.AES_EXTRA_DATA_RECORD.getValue())) {
++
++
++
+ 
+-        byte[] aesExtraDataRecordBytes = extraDataRecord.getData();
+-        if (aesExtraDataRecordBytes == null || aesExtraDataRecordBytes.length != 9) {
+-          throw new ZipException("corrupt AES extra data records");
+         }
+ 
+         AESExtraDataRecord aesExtraDataRecord = new AESExtraDataRecord();

@@ -1,0 +1,11 @@
+--- /tmp/Coveralls_maven_plugin_4_buggy/src/main/java/org/eluder/coveralls/maven/plugin/domain/CoverallsResponse.java	2024-09-09 21:50:09.014160564 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Coveralls_maven_plugin_4_buggy/src/main/java/org/eluder/coveralls/maven/plugin/domain/CoverallsResponse.java	2024-09-10 15:35:28.795853525 +0800
+@@ -50,7 +50,7 @@
+     }
+ 
+     public boolean isError() {
+-        return error;
++return false;
+     }
+     
+     public String getUrl() {

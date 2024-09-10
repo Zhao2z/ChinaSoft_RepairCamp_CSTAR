@@ -1,0 +1,23 @@
+--- /tmp/Compress_18_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveEntry.java	2024-09-09 21:48:27.041453898 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_18_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveEntry.java	2024-09-10 15:35:28.559868983 +0800
+@@ -722,16 +722,16 @@
+      * @return True if this entry is a directory.
+      */
+     public boolean isDirectory() {
+-        if (file != null) {
++if ((file) != null) {
+             return file.isDirectory();
+         }
+ 
+-        if (linkFlag == LF_DIR) {
++if ((linkFlag) == LF_DIR) {
+             return true;
+         }
+ 
+-        if (getName().endsWith("/")) {
+-            return true;
++if ((getName()) != null) { if (getName().endsWith("/")) { return true; }
++
+         }
+ 
+         return false;

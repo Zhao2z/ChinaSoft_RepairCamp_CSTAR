@@ -1,0 +1,11 @@
+--- /tmp/Incubator_retired_pirk_1_buggy/src/main/java/org/apache/pirk/serialization/JsonSerializer.java	2024-09-09 22:16:18.666769678 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Incubator_retired_pirk_1_buggy/src/main/java/org/apache/pirk/serialization/JsonSerializer.java	2024-09-10 15:35:32.155634263 +0800
+@@ -31,7 +31,7 @@
+   @Override
+   public void write(OutputStream outputStream, Storable obj) throws IOException
+   {
+-    throw new RuntimeException("Not yet implemented");
++
+   }
+ 
+   @Override

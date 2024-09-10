@@ -1,0 +1,18 @@
+--- /tmp/Math_4j_44_buggy/src/main/java/org/apache/commons/math/ode/nonstiff/AdaptiveStepsizeIntegrator.java	2024-09-09 22:07:46.331685949 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_44_buggy/src/main/java/org/apache/commons/math/ode/nonstiff/AdaptiveStepsizeIntegrator.java	2024-09-10 15:35:30.983710582 +0800
+@@ -206,12 +206,12 @@
+    * ignore the value and compute the initial step size by itself)
+    */
+   public void setInitialStepSize(final double initialStepSize) {
+-    if ((initialStepSize < minStep) || (initialStepSize > maxStep)) {
++if ((initialStepSize < (minStep)) || (initialStepSize > (maxStep))) {
+       initialStep = -1.0;
+     } else {
+-      initialStep = initialStepSize;
++initialStep = initialStepSize;
+     }
+-  }
++
+ 
+   /** {@inheritDoc} */
+   @Override

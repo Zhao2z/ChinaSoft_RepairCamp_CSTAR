@@ -1,0 +1,11 @@
+--- /tmp/Csv_6_buggy/src/main/java/org/apache/commons/csv/CSVRecord.java	2024-09-09 21:50:26.138949349 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Csv_6_buggy/src/main/java/org/apache/commons/csv/CSVRecord.java	2024-09-10 15:35:28.799853264 +0800
+@@ -209,7 +209,7 @@
+      * @return A new Map. The map is empty if the record has no headers.
+      */
+     public Map<String, String> toMap() {
+-        return putIn(new HashMap<String, String>(values.length));
++return putIn(new java.util.HashMap<String, String>(values));
+     }
+ 
+     @Override

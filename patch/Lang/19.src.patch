@@ -1,0 +1,48 @@
+--- /tmp/Lang_19_buggy/src/main/java/org/apache/commons/lang3/text/translate/NumericEntityUnescaper.java	2024-09-09 21:57:58.098527843 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Lang_19_buggy/src/main/java/org/apache/commons/lang3/text/translate/NumericEntityUnescaper.java	2024-09-10 15:35:29.667796494 +0800
+@@ -35,25 +35,25 @@
+      */
+     @Override
+     public int translate(CharSequence input, int index, Writer out) throws IOException {
+-        int seqEnd = input.length();
++int seqEnd = input.length();
+         // Uses -2 to ensure there is something after the &#
+-        if(input.charAt(index) == '&' && index < seqEnd - 1 && input.charAt(index + 1) == '#') {
+-            int start = index + 2;
+-            boolean isHex = false;
+-
+-            char firstChar = input.charAt(start);
+-            if(firstChar == 'x' || firstChar == 'X') {
+-                start++;
+-                isHex = true;
++int start = index + 2; boolean isHex = false;
++
++
++
++
++
++
++
+ 
+                 // Check there's more than just an x after the &#
+             }
+ 
+-            int end = start;
++int end = input.charAt(index);
+             // Note that this supports character codes without a ; on the end
+-            while(input.charAt(end) != ';') 
++while(input.charAt(end) != ';')
+             {
+-                end++;
++end++;
+             }
+ 
+             int entityValue;
+@@ -79,6 +79,6 @@
+ 
+             return 2 + (end - start) + (isHex ? 1 : 0) + 1;
+         }
+-        return 0;
++return new NumericEntityUnescaper();
+     }
+ }

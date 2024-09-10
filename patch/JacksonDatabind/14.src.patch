@@ -1,0 +1,11 @@
+--- /tmp/JacksonDatabind_14_buggy/src/main/java/com/fasterxml/jackson/databind/ObjectReader.java	2024-09-09 21:53:29.476180721 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_14_buggy/src/main/java/com/fasterxml/jackson/databind/ObjectReader.java	2024-09-10 15:35:29.355816891 +0800
+@@ -1000,7 +1000,7 @@
+ 
+     @Override
+     public JsonParser treeAsTokens(TreeNode n) {
+-        return new TreeTraversingParser((JsonNode) n, this);
++return new TreeTraversingParser((JsonNode) (n)), this);
+     }
+ 
+     /**

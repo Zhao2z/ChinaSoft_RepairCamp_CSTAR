@@ -1,0 +1,35 @@
+--- /tmp/Jdbm3_1_buggy/src/main/java/net/kotek/jdbm/DBStore.java	2024-09-09 22:16:38.636022364 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jdbm3_1_buggy/src/main/java/net/kotek/jdbm/DBStore.java	2024-09-10 15:35:32.319623602 +0800
+@@ -198,22 +198,22 @@
+      * @throws IOException when one of the underlying I/O operations fails.
+      */
+     public synchronized void close() {
+-        checkIfClosed();
++
+         try {
+-            _pageman.close();
+-            _file.close();
+-            if(deleteFilesAfterClose)
++if ((_pageman) != null) _pageman.close(); if ((_file) != null)
++
++
+                 _file.storage.deleteAllFiles();
+             
+-            _pageman = null;
++
+ 
+             
+-            _file = null;
+ 
+-        } catch (IOException e) {
+-            throw new IOError(e);
+-        }
+-    }
++
++} catch (java.lang.Exception e) { throw new IOError(e); }
++
++
++
+ 
+     public boolean isClosed() {
+         return _pageman==null;

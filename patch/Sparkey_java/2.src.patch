@@ -1,0 +1,11 @@
+--- /tmp/Sparkey_java_2_buggy/src/main/java/com/spotify/sparkey/SnappyOutputStream.java	2024-09-09 22:17:24.750933258 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sparkey_java_2_buggy/src/main/java/com/spotify/sparkey/SnappyOutputStream.java	2024-09-10 15:35:32.375619961 +0800
+@@ -69,7 +69,7 @@
+ 
+   @Override
+   public void write(byte[] b) throws IOException {
+-    write(b, 0, b.length);
++this.write(b, 0, b.length);
+   }
+ 
+   @Override

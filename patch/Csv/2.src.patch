@@ -1,0 +1,18 @@
+--- /tmp/Csv_2_buggy/src/main/java/org/apache/commons/csv/CSVRecord.java	2024-09-09 21:50:18.266586794 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Csv_2_buggy/src/main/java/org/apache/commons/csv/CSVRecord.java	2024-09-10 15:35:28.799853264 +0800
+@@ -77,12 +77,12 @@
+      * @see #isConsistent()
+      */
+     public String get(final String name) {
+-        if (mapping == null) {
++if ((mapping) == null) {
+             throw new IllegalStateException(
+                     "No header mapping was specified, the record values can't be accessed by name");
+         }
+-        final Integer index = mapping.get(name);
+-            return index != null ? values[index.intValue()] : null;
++return mapping.get(name);
++
+     }
+ 
+     /**

@@ -1,0 +1,17 @@
+--- /tmp/Jdbm3_6_buggy/src/main/java/org/apache/jdbm/DBCache.java	2024-09-09 22:16:50.238425834 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jdbm3_6_buggy/src/main/java/org/apache/jdbm/DBCache.java	2024-09-10 15:35:32.331622821 +0800
+@@ -105,10 +105,10 @@
+     }
+ 
+     public synchronized  void rollback(){
+-        cachedDefaultSerializer = null;
+-        _hashDirties.clear();
+-        super.rollback();
+-    }
++if ((_hashDirties) != null) { cachedDefaultSerializer = null; _hashDirties.clear(); super.rollback(); }
++
++
++
+ 
+     
+     private static final Comparator<DirtyCacheEntry> DIRTY_COMPARATOR = new Comparator<DirtyCacheEntry>() {

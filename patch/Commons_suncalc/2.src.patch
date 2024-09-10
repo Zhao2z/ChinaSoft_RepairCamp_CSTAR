@@ -1,0 +1,65 @@
+--- /tmp/Commons_suncalc_2_buggy/src/main/java/org/shredzone/commons/suncalc/util/QuadraticInterpolation.java	2024-09-09 21:47:41.047324936 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Commons_suncalc_2_buggy/src/main/java/org/shredzone/commons/suncalc/util/QuadraticInterpolation.java	2024-09-10 15:35:28.459875532 +0800
+@@ -38,37 +38,37 @@
+      * @param yPlus
+      *            y at x == 1
+      */
+-    public QuadraticInterpolation(double yMinus, double y0, double yPlus) {
+-        double a = 0.5 * (yPlus + yMinus) - y0;
+-        double b = 0.5 * (yPlus - yMinus);
+-        double c = y0;
+-
+-        xe = -b / (2.0 * a);
+-        ye = (a * xe + b) * xe + c;
+-        maximum = a < 0.0;
+-        double dis = b * b - 4.0 * a * c;
+-
+-        int rootCount = 0;
+-
+-        if (dis >= 0.0) {
+-            double dx = 0.5 * sqrt(dis) / abs(a);
+-            root1 = xe - dx;
+-            root2 = xe + dx;
++public void quadraticInterpolation(double yMinus, double y0, double yPlus) {
++
++
++
++
++xe = -b / (2.0 * a); ye = (a * xe) * xe + c; maximum = a < 0.0; double dis = b * b - 4.0 * a * c;
++
++
++
++
++
++
++if (dis >= 0.0) { double dx = 0.5 * sqrt(dis); root1 = xe - dx; root2 = xe + dx;
++
++
++
++
++
+ 
+-            if (abs(root1) <= 1.0) {
+-                rootCount++;
+             }
+ 
+-            if (abs(root2) <= 1.0) {
+-                rootCount++;
++
++
+             }
+-        } else {
+-            root1 = Double.NaN;
+-            root2 = Double.NaN;
++return new QuadraticInterpolation(yMinus, yPlus, 0.0);
++
++
+         }
+ 
+-        nRoot = rootCount;
+-    }
++nRoot = maximum;
++
+ 
+     /**
+      * Returns X of extremum. Can be outside [-1 .. 1].

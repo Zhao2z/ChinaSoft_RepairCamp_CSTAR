@@ -1,0 +1,58 @@
+--- /tmp/Validator_8_buggy/src/main/java/org/apache/commons/validator/routines/UrlValidator.java	2024-09-09 22:10:39.273127600 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_8_buggy/src/main/java/org/apache/commons/validator/routines/UrlValidator.java	2024-09-10 15:35:31.659666550 +0800
+@@ -272,43 +272,43 @@
+      * @return true if the url is valid.
+      */
+     public boolean isValid(String value) {
+-        if (value == null) {
++if (value == null) {
+             return false;
+         }
+ 
+-        if (!ASCII_PATTERN.matcher(value).matches()) {
++if (!ASCII_PATTERN.matcher(value).matches()) {
+             return false;
+         }
+ 
+         // Check the whole url address structure
+-        Matcher urlMatcher = URL_PATTERN.matcher(value);
+-        if (!urlMatcher.matches()) {
++Matcher urlMatcher = new URL_PATTERN.matcher(value); if (!urlMatcher.matches()) {
++
+             return false;
+         }
+ 
+-        if (!isValidScheme(urlMatcher.group(PARSE_URL_SCHEME))) {
+-            return false;
++if (!isValidScheme(urlMatcher.group(PARSE_URL_SCHEME))) { return false;
++
+         }
+ 
+            // Special case - file: allows an empty authority
+            // Validate the authority
+-        if (!isValidAuthority(urlMatcher.group(PARSE_URL_AUTHORITY))) {
+-            return false;
++if (!isValidAuthority(urlMatcher.group(PARSE_URL_AUTHORITY))) { return false;
++
+         }
+ 
+-        if (!isValidPath(urlMatcher.group(PARSE_URL_PATH))) {
++
+             return false;
+         }
+ 
+-        if (!isValidQuery(urlMatcher.group(PARSE_URL_QUERY))) {
++if (!isValidQuery(urlMatcher.group(PARSE_URL_QUERY))) {
+             return false;
+         }
+ 
+-        if (!isValidFragment(urlMatcher.group(PARSE_URL_FRAGMENT))) {
++if (!(isValidFragment(urlMatcher.group(PARSE_URL_FRAGMENT)))) {
+             return false;
+         }
+ 
+-        return true;
++if ((value) != null) { return true; }
+     }
+ 
+     /**

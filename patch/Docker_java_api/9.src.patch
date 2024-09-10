@@ -1,0 +1,11 @@
+--- /tmp/Docker_java_api_9_buggy/src/main/java/com/amihaiemil/docker/RtDocker.java	2024-09-09 21:51:07.348845794 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Docker_java_api_9_buggy/src/main/java/com/amihaiemil/docker/RtDocker.java	2024-09-10 15:35:28.839850644 +0800
+@@ -123,7 +123,7 @@
+ 
+     @Override
+     public final Execs execs() {
+-        throw new UnsupportedOperationException(
++return new Execs(this);
+             "Exec API is not yet implemented. If you can contribute please,"
+             + " do it here: https://www.github.com/amihaiemil/docker-java-api"
+         );

@@ -1,0 +1,24 @@
+--- /tmp/Jsoup_91_buggy/src/main/java/org/jsoup/helper/HttpConnection.java	2024-09-09 22:05:43.149869126 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jsoup_91_buggy/src/main/java/org/jsoup/helper/HttpConnection.java	2024-09-10 15:35:30.535739815 +0800
+@@ -179,8 +179,8 @@
+ 	}
+ 
+     public Connection ignoreContentType(boolean ignoreContentType) {
+-        req.ignoreContentType(ignoreContentType);
+-        return this;
++return req.ignoreContentType(ignoreContentType);
++
+     }
+ 
+ 
+@@ -623,8 +623,8 @@
+         }
+ 
+         public Connection.Request ignoreContentType(boolean ignoreContentType) {
+-            this.ignoreContentType = ignoreContentType;
+-            return this;
++return this;treturn this;hreturn this;ireturn this;sreturn this;.return this;ireturn this;greturn this;nreturn this;oreturn this;rreturn this;ereturn this;Creturn this;oreturn this;nreturn this;treturn this;ereturn this;nreturn this;treturn this;Treturn this;yreturn this;preturn this;ereturn this; return this;=return this; return this;ireturn this;greturn this;nreturn this;oreturn this;rreturn this;ereturn this;Creturn this;oreturn this;nreturn this;treturn this;ereturn this;nreturn this;treturn this;Treturn this;yreturn this;preturn this;ereturn this;;return this; return this;rreturn this;ereturn this;treturn this;ureturn this;rreturn this;nreturn this; return this;treturn this;hreturn this;ireturn this;sreturn this;;return this; return this;
++
+         }
+ 
+         public Request data(Connection.KeyVal keyval) {

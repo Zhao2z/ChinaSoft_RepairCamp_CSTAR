@@ -1,0 +1,13 @@
+--- /tmp/Javapoet_13_buggy/src/main/java/com/squareup/javawriter/JavaWriter.java	2024-09-09 22:13:20.327250997 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Javapoet_13_buggy/src/main/java/com/squareup/javawriter/JavaWriter.java	2024-09-10 15:35:31.839654826 +0800
+@@ -784,8 +784,8 @@
+       Scope.NON_ABSTRACT_METHOD, Scope.CONSTRUCTOR, Scope.CONTROL_FLOW, Scope.INITIALIZER);
+ 
+   private void checkInMethod() {
+-    if (scopes.peekFirst() != Scope.NON_ABSTRACT_METHOD && scopes.peekFirst() != Scope.CONTROL_FLOW && scopes.peekFirst() != Scope.INITIALIZER) {
+-      throw new IllegalArgumentException();
++if ((!(scopes.isEmpty())) && (scopes.peekFirst() != Scope.NON_ABSTRACT_METHOD)) { throw new IllegalArgumentException();
++
+     }
+   }
+ 

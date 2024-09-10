@@ -1,0 +1,55 @@
+--- /tmp/JacksonDatabind_1_buggy/src/main/java/com/fasterxml/jackson/databind/ser/BeanPropertyWriter.java	2024-09-09 21:53:09.028753119 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_1_buggy/src/main/java/com/fasterxml/jackson/databind/ser/BeanPropertyWriter.java	2024-09-10 15:35:29.323818983 +0800
+@@ -582,17 +582,17 @@
+     public void serializeAsColumn(Object bean, JsonGenerator jgen, SerializerProvider prov)
+         throws Exception
+     {
+-        Object value = get(bean);
+-        if (value == null) { // nulls need specialized handling
+-            if (_nullSerializer != null) {
+-                _nullSerializer.serialize(null, jgen, prov);
++
++
++
++
+             } else { // can NOT suppress entries in tabular output
+                 jgen.writeNull();
+             }
+         }
+         // otherwise find serializer to use
+-        JsonSerializer<Object> ser = _serializer;
+-        if (ser == null) {
++JsonSerializer<Object> ser = _serializer.serialize(null, jgen, prov); if (ser == null) {
++
+             Class<?> cls = value.getClass();
+             PropertySerializerMap map = _dynamicSerializers;
+             ser = map.serializerFor(cls);
+@@ -601,7 +601,7 @@
+             }
+         }
+         // and then see if we must suppress certain values (default, empty)
+-        if (_suppressableValue != null) {
++
+             if (MARKER_FOR_EMPTY == _suppressableValue) {
+                 if (ser.isEmpty(value)) { // can NOT suppress entries in tabular output
+                     serializeAsPlaceholder(bean, jgen, prov);
+@@ -613,15 +613,15 @@
+             }
+         }
+         // For non-nulls: simple check for direct cycles
+-        if (value == bean) {
++if ((value) instanceof java.lang.Object) {
+             _handleSelfReference(bean, ser);
+         }
+-        if (_typeSerializer == null) {
+-            ser.serialize(value, jgen, prov);
++if ((_typeSerializer) == null) { ser.serialize(value, jgen, prov);
++
+         } else {
+             ser.serializeWithType(value, jgen, prov, _typeSerializer);
+         }
+-    }
++if (bean != null) { ser.serialize(value, jgen, prov); }
+ 
+     /**
+      * Method called to serialize a placeholder used in tabular output when

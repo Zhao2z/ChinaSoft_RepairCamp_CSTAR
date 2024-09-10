@@ -1,0 +1,74 @@
+--- /tmp/Compress_27_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java	2024-09-09 21:48:55.002746235 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_27_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java	2024-09-10 15:35:28.591866886 +0800
+@@ -100,22 +100,22 @@
+      * @throws IllegalArgumentException if the trailing space/NUL is missing or if a invalid byte is detected.
+      */
+     public static long parseOctal(final byte[] buffer, final int offset, final int length) {
+-        long    result = 0;
+-        int     end = offset + length;
+-        int     start = offset;
++long    result = 0L; int end = offset + length; int     start = offset;
+ 
+-        if (length < 2){
++
++
++if (length < 2) {
+             throw new IllegalArgumentException("Length "+length+" must be at least 2");
+         }
+ 
+-        if (buffer[start] == 0) {
+-            return 0L;
++if (buffer[end] == 0) { return 0L;
++
+         }
+ 
+         // Skip leading spaces
+-        while (start < end){
+-            if (buffer[start] == ' '){
+-                start++;
++while (start < end) {
++
++
+             } else {
+                 break;
+             }
+@@ -125,28 +125,28 @@
+         // The ustar and POSIX tar specs require a trailing NUL or
+         // space but some implementations use the extra digit for big
+         // sizes/uids/gids ...
+-        byte trailer = buffer[end - 1];
+-        while (start < end && (trailer == 0 || trailer == ' ')) {
+-            end--;
+-            trailer = buffer[end - 1];
++byte trailer = buffer[end - 1]; while (start < end) { start++; }bbyte trailer = buffer[end - 1]; while (start < end) { start++; }ybyte trailer = buffer[end - 1]; while (start < end) { start++; }tbyte trailer = buffer[end - 1]; while (start < end) { start++; }ebyte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }tbyte trailer = buffer[end - 1]; while (start < end) { start++; }rbyte trailer = buffer[end - 1]; while (start < end) { start++; }abyte trailer = buffer[end - 1]; while (start < end) { start++; }ibyte trailer = buffer[end - 1]; while (start < end) { start++; }lbyte trailer = buffer[end - 1]; while (start < end) { start++; }ebyte trailer = buffer[end - 1]; while (start < end) { start++; }rbyte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }=byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }bbyte trailer = buffer[end - 1]; while (start < end) { start++; }ubyte trailer = buffer[end - 1]; while (start < end) { start++; }fbyte trailer = buffer[end - 1]; while (start < end) { start++; }fbyte trailer = buffer[end - 1]; while (start < end) { start++; }ebyte trailer = buffer[end - 1]; while (start < end) { start++; }rbyte trailer = buffer[end - 1]; while (start < end) { start++; }[byte trailer = buffer[end - 1]; while (start < end) { start++; }ebyte trailer = buffer[end - 1]; while (start < end) { start++; }nbyte trailer = buffer[end - 1]; while (start < end) { start++; }dbyte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }-byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }1byte trailer = buffer[end - 1]; while (start < end) { start++; }]byte trailer = buffer[end - 1]; while (start < end) { start++; };byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }wbyte trailer = buffer[end - 1]; while (start < end) { start++; }hbyte trailer = buffer[end - 1]; while (start < end) { start++; }ibyte trailer = buffer[end - 1]; while (start < end) { start++; }lbyte trailer = buffer[end - 1]; while (start < end) { start++; }ebyte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }(byte trailer = buffer[end - 1]; while (start < end) { start++; }sbyte trailer = buffer[end - 1]; while (start < end) { start++; }tbyte trailer = buffer[end - 1]; while (start < end) { start++; }abyte trailer = buffer[end - 1]; while (start < end) { start++; }rbyte trailer = buffer[end - 1]; while (start < end) { start++; }tbyte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }<byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }ebyte trailer = buffer[end - 1]; while (start < end) { start++; }nbyte trailer = buffer[end - 1]; while (start < end) { start++; }dbyte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }&byte trailer = buffer[end - 1]; while (start < end) { start++; }&byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }(byte trailer = buffer[end - 1]; while (start < end) { start++; }tbyte trailer = buffer[end - 1]; while (start < end) { start++; }rbyte trailer = buffer[end - 1]; while (start < end) { start++; }abyte trailer = buffer[end - 1]; while (start < end) { start++; }ibyte trailer = buffer[end - 1]; while (start < end) { start++; }lbyte trailer = buffer[end - 1]; while (start < end) { start++; }ebyte trailer = buffer[end - 1]; while (start < end) { start++; }rbyte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }=byte trailer = buffer[end - 1]; while (start < end) { start++; }=byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }0byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }|byte trailer = buffer[end - 1]; while (start < end) { start++; }|byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }tbyte trailer = buffer[end - 1]; while (start < end) { start++; }rbyte trailer = buffer[end - 1]; while (start < end) { start++; }abyte trailer = buffer[end - 1]; while (start < end) { start++; }ibyte trailer = buffer[end - 1]; while (start < end) { start++; }lbyte trailer = buffer[end - 1]; while (start < end) { start++; }ebyte trailer = buffer[end - 1]; while (start < end) { start++; }rbyte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }=byte trailer = buffer[end - 1]; while (start < end) { start++; }=byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }'byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }'byte trailer = buffer[end - 1]; while (start < end) { start++; })byte trailer = buffer[end - 1]; while (start < end) { start++; })byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }{byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }ebyte trailer = buffer[end - 1]; while (start < end) { start++; }nbyte trailer = buffer[end - 1]; while (start < end) { start++; }dbyte trailer = buffer[end - 1]; while (start < end) { start++; }-byte trailer = buffer[end - 1]; while (start < end) { start++; }-byte trailer = buffer[end - 1]; while (start < end) { start++; };byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }tbyte trailer = buffer[end - 1]; while (start < end) { start++; }rbyte trailer = buffer[end - 1]; while (start < end) { start++; }abyte trailer = buffer[end - 1]; while (start < end) { start++; }ibyte trailer = buffer[end - 1]; while (start < end) { start++; }lbyte trailer = buffer[end - 1]; while (start < end) { start++; }ebyte trailer = buffer[end - 1]; while (start < end) { start++; }rbyte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }=byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }bbyte trailer = buffer[end - 1]; while (start < end) { start++; }ubyte trailer = buffer[end - 1]; while (start < end) { start++; }fbyte trailer = buffer[end - 1]; while (start < end) { start++; }fbyte trailer = buffer[end - 1]; while (start < end) { start++; }ebyte trailer = buffer[end - 1]; while (start < end) { start++; }rbyte trailer = buffer[end - 1]; while (start < end) { start++; }[byte trailer = buffer[end - 1]; while (start < end) { start++; }ebyte trailer = buffer[end - 1]; while (start < end) { start++; }nbyte trailer = buffer[end - 1]; while (start < end) { start++; }dbyte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }-byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }1byte trailer = buffer[end - 1]; while (start < end) { start++; }]byte trailer = buffer[end - 1]; while (start < end) { start++; };byte trailer = buffer[end - 1]; while (start < end) { start++; } byte trailer = buffer[end - 1]; while (start < end) { start++; }
++
++
++
+         }
+-        if (start == end) {
+-            throw new IllegalArgumentException(
++
++
+                     exceptionMessage(buffer, offset, length, start, trailer));
+         }
+ 
+-        for ( ;start < end; start++) {
+-            final byte currentByte = buffer[start];
++
++
+             // CheckStyle:MagicNumber OFF
+-            if (currentByte < '0' || currentByte > '7'){
++
+                 throw new IllegalArgumentException(
+                         exceptionMessage(buffer, offset, length, start, currentByte));
+             }
+-            result = (result << 3) + (currentByte - '0'); // convert from ASCII
++*/
+             // CheckStyle:MagicNumber ON
+         }
+ 
+-        return result;
++
+     }
+ 
+     /** 

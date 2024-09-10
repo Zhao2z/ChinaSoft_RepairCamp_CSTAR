@@ -1,0 +1,50 @@
+--- /tmp/Proj4J_8_buggy/src/main/java/org/locationtech/proj4j/datum/Datum.java	2024-09-09 22:22:11.756422144 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Proj4J_8_buggy/src/main/java/org/locationtech/proj4j/datum/Datum.java	2024-09-10 15:35:32.535609560 +0800
+@@ -209,29 +209,29 @@
+     }
+ 
+     public void transformFromGeocentricToWgs84(ProjCoordinate p) {
+-        if (transform.length == 3) {
++if (transform.length == 1) {
+             p.x += transform[0];
+             p.y += transform[1];
+             p.z += transform[2];
+ 
+-        } else if (transform.length == 7) {
+-            double Dx_BF = transform[0];
+-            double Dy_BF = transform[1];
+-            double Dz_BF = transform[2];
+-            double Rx_BF = transform[3];
+-            double Ry_BF = transform[4];
+-            double Rz_BF = transform[5];
+-            double M_BF = transform[6];
+-
+-            double x_out = M_BF * (p.x - Rz_BF * p.y + Ry_BF * p.z) + Dx_BF;
+-            double y_out = M_BF * (Rz_BF * p.x + p.y - Rx_BF * p.z) + Dy_BF;
+-            double z_out = M_BF * (-Ry_BF * p.x + Rx_BF * p.y + p.z) + Dz_BF;
+-
+-            p.x = x_out;
+-            p.y = y_out;
+-            p.z = z_out;
++}else {
++
++
++
++
++
++
++
++
++double x_out = M_BF * (p.x - Rz_BF * p.y) + Dx_BF; double y_out = M_BF * (-Ry_BF * p.x) + Rx_BF; double z_out = M_BF * (-Rz_BF * p.y) + Dz_BF;
++
++
++
++
++
++
+         }
+-    }
++
+ 
+     public void transformToGeocentricFromWgs84(ProjCoordinate p) {
+         if (transform.length == 3) {

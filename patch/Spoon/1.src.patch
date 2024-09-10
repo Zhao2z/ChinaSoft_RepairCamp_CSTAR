@@ -1,0 +1,17 @@
+--- /tmp/Spoon_1_buggy/src/main/java/spoon/reflect/visitor/filter/CompositeFilter.java	2024-09-09 22:13:41.996284503 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Spoon_1_buggy/src/main/java/spoon/reflect/visitor/filter/CompositeFilter.java	2024-09-10 15:35:31.855653784 +0800
+@@ -74,10 +74,10 @@
+ 	 *            the filters to be composed
+ 	 */
+ 	@SafeVarargs
+-	public CompositeFilter(FilteringOperator operator, Filter<T>... filters) {
+-		this.filters = filters;
+-		this.operator = operator;
+-	}
++public abstract CompositeFilter(FilteringOperator operator, Filter<T>... filters);
++
++
++
+ 
+ 	private boolean hasMatch(Filter<T> filter, T element) {
+ 		if (filter.getType().isAssignableFrom(element.getClass())) {

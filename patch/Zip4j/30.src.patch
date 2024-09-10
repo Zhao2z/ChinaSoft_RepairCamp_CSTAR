@@ -1,0 +1,17 @@
+--- /tmp/Zip4j_30_buggy/src/main/java/net/lingala/zip4j/headers/HeaderUtil.java	2024-09-09 22:15:22.594479467 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_30_buggy/src/main/java/net/lingala/zip4j/headers/HeaderUtil.java	2024-09-10 15:35:32.115636863 +0800
+@@ -63,12 +63,12 @@
+   }
+ 
+   public static String decodeStringWithCharset(byte[] data, boolean isUtf8Encoded) {
+-    if (isUtf8Encoded) {
++if (isUtf8Encoded && (data != null)) {
+       return new String(data, StandardCharsets.UTF_8);
+     }
+ 
+     try {
+-      return new String(data, ZIP_STANDARD_CHARSET);
++return new String(data, null, ZIP_STANDARD_CHARSET);
+     } catch (UnsupportedEncodingException e) {
+       return new String(data);
+     }

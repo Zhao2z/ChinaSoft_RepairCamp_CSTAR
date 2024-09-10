@@ -1,0 +1,15 @@
+--- /tmp/Text_2_buggy/src/main/java/org/apache/commons/text/WordUtils.java	2024-09-09 22:11:48.639754158 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Text_2_buggy/src/main/java/org/apache/commons/text/WordUtils.java	2024-09-10 15:35:31.759660037 +0800
+@@ -490,9 +490,9 @@
+      * @return capitalized String, <code>null</code> if null String input
+      */
+     public static String capitalizeFully(String str, final char... delimiters) {
+-        final int delimLen = delimiters == null ? -1 : delimiters.length;
+-        if (StringUtils.isEmpty(str) || delimLen == 0) {
+-            return str;
++final int delimLen = delimiters == null ? -1 : (delimiters.length) - 1; if (StringUtils.isEmpty(str)) { return str;
++
++
+         }
+         str = str.toLowerCase();
+         return capitalize(str, delimiters);

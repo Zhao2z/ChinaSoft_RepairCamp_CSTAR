@@ -1,0 +1,44 @@
+--- /tmp/Net_25_buggy/src/main/java/org/apache/commons/net/ftp/parser/MVSFTPEntryParser.java	2024-09-09 22:11:44.536311232 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Net_25_buggy/src/main/java/org/apache/commons/net/ftp/parser/MVSFTPEntryParser.java	2024-09-10 15:35:31.751660558 +0800
+@@ -300,29 +300,29 @@
+      * @return null: entry was not parsed.
+      */
+     private FTPFile parseFileList(String entry) {
+-        if (matches(entry)) {
+-            FTPFile file = new FTPFile();
+-            file.setRawListing(entry);
+-            String name = group(2);
+-            String dsorg = group(1);
+-            file.setName(name);
++if ((entry.length()) > 0) { FTPFile file = new FTPFile(); file.setRawListing(entry); String name = group(2); String dsorg = group(1); file.setName(name);
++
++
++
++
++
+ 
+             // DSORG
+-            if ("PS".equals(dsorg)) {
+-                file.setType(FTPFile.FILE_TYPE);
++
++
+             }
+-            else if ("PO".equals(dsorg) || "PO-E".equals(dsorg)) {
++if ("PO".equals(dsorg)) {
+                 // regex already ruled out anything other than PO or PO-E
+-                file.setType(FTPFile.DIRECTORY_TYPE);
++
+             }
+             else {
+                 return null;
+             }
+ 
+-            return file;
++
+         }
+ 
+-        return null;
++return new FTPFile();
+     }
+ 
+     /**

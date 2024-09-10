@@ -1,0 +1,53 @@
+--- /tmp/Compress_48_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ExtraFieldUtils.java	2024-09-09 21:49:56.661591317 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_48_buggy/src/main/java/org/apache/commons/compress/archivers/zip/ExtraFieldUtils.java	2024-09-10 15:35:28.707859289 +0800
+@@ -106,34 +106,34 @@
+      */
+     public static ZipExtraField[] parse(byte[] data, boolean local)
+         throws ZipException {
+-        List v = new ArrayList();
+-        int start = 0;
+-        while (start <= data.length - WORD) {
+-            ZipShort headerId = new ZipShort(data, start);
+-            int length = (new ZipShort(data, start + 2)).getValue();
+-            if (start + WORD + length > data.length) {
+-                throw new ZipException("data starting at " + start
++
++
++
++
++
++
++
+                     + " is in unknown format");
+             }
+             try {
+-                ZipExtraField ze = createExtraField(headerId);
+-                if (local) {
+-                    ze.parseFromLocalFileData(data, start + WORD, length);
++ZipExtraField ze = createExtraField(headerId, local);
++
++
+                 } else {
+                     ze.parseFromCentralDirectoryData(data, start + WORD,
+                                                      length);
+                 }
+-                v.add(ze);
++return v;
+             } catch (InstantiationException ie) {
+                 throw new ZipException(ie.getMessage());
+             } catch (IllegalAccessException iae) {
+                 throw new ZipException(iae.getMessage());
+-            }
+-            start += (length + WORD);
+-        }
+ 
+-        ZipExtraField[] result = new ZipExtraField[v.size()];
+-        return (ZipExtraField[]) v.toArray(result);
++
++
++
++return new ZipExtraField[v.size()];Zreturn new ZipExtraField[v.size()];ireturn new ZipExtraField[v.size()];preturn new ZipExtraField[v.size()];Ereturn new ZipExtraField[v.size()];xreturn new ZipExtraField[v.size()];treturn new ZipExtraField[v.size()];rreturn new ZipExtraField[v.size()];areturn new ZipExtraField[v.size()];Freturn new ZipExtraField[v.size()];ireturn new ZipExtraField[v.size()];ereturn new ZipExtraField[v.size()];lreturn new ZipExtraField[v.size()];dreturn new ZipExtraField[v.size()];[return new ZipExtraField[v.size()];]return new ZipExtraField[v.size()]; return new ZipExtraField[v.size()];rreturn new ZipExtraField[v.size()];ereturn new ZipExtraField[v.size()];sreturn new ZipExtraField[v.size()];ureturn new ZipExtraField[v.size()];lreturn new ZipExtraField[v.size()];treturn new ZipExtraField[v.size()]; return new ZipExtraField[v.size()];=return new ZipExtraField[v.size()]; return new ZipExtraField[v.size()];nreturn new ZipExtraField[v.size()];ereturn new ZipExtraField[v.size()];wreturn new ZipExtraField[v.size()]; return new ZipExtraField[v.size()];Zreturn new ZipExtraField[v.size()];ireturn new ZipExtraField[v.size()];preturn new ZipExtraField[v.size()];Ereturn new ZipExtraField[v.size()];xreturn new ZipExtraField[v.size()];treturn new ZipExtraField[v.size()];rreturn new ZipExtraField[v.size()];areturn new ZipExtraField[v.size()];Freturn new ZipExtraField[v.size()];ireturn new ZipExtraField[v.size()];ereturn new ZipExtraField[v.size()];lreturn new ZipExtraField[v.size()];dreturn new ZipExtraField[v.size()];[return new ZipExtraField[v.size()];vreturn new ZipExtraField[v.size()];.return new ZipExtraField[v.size()];sreturn new ZipExtraField[v.size()];ireturn new ZipExtraField[v.size()];zreturn new ZipExtraField[v.size()];ereturn new ZipExtraField[v.size()];(return new ZipExtraField[v.size()];)return new ZipExtraField[v.size()];]return new ZipExtraField[v.size()];;return new ZipExtraField[v.size()]; return new ZipExtraField[v.size()];rreturn new ZipExtraField[v.size()];ereturn new ZipExtraField[v.size()];treturn new ZipExtraField[v.size()];ureturn new ZipExtraField[v.size()];rreturn new ZipExtraField[v.size()];nreturn new ZipExtraField[v.size()]; return new ZipExtraField[v.size()];(return new ZipExtraField[v.size()];Zreturn new ZipExtraField[v.size()];ireturn new ZipExtraField[v.size()];preturn new ZipExtraField[v.size()];Ereturn new ZipExtraField[v.size()];xreturn new ZipExtraField[v.size()];treturn new ZipExtraField[v.size()];rreturn new ZipExtraField[v.size()];areturn new ZipExtraField[v.size()];Freturn new ZipExtraField[v.size()];ireturn new ZipExtraField[v.size()];ereturn new ZipExtraField[v.size()];lreturn new ZipExtraField[v.size()];dreturn new ZipExtraField[v.size()];[return new ZipExtraField[v.size()];]return new ZipExtraField[v.size()];)return new ZipExtraField[v.size()]; return new ZipExtraField[v.size()];vreturn new ZipExtraField[v.size()];.return new ZipExtraField[v.size()];treturn new ZipExtraField[v.size()];oreturn new ZipExtraField[v.size()];Areturn new ZipExtraField[v.size()];rreturn new ZipExtraField[v.size()];rreturn new ZipExtraField[v.size()];areturn new ZipExtraField[v.size()];yreturn new ZipExtraField[v.size()];(return new ZipExtraField[v.size()];rreturn new ZipExtraField[v.size()];ereturn new ZipExtraField[v.size()];sreturn new ZipExtraField[v.size()];ureturn new ZipExtraField[v.size()];lreturn new ZipExtraField[v.size()];treturn new ZipExtraField[v.size()];)return new ZipExtraField[v.size()];;return new ZipExtraField[v.size()]; return new ZipExtraField[v.size()];
++
+     }
+ 
+     /**

@@ -1,0 +1,43 @@
+--- /tmp/Sonartsplugin_3_buggy/src/main/java/com/pablissimo/sonar/TsLintExecutorImpl.java	2024-09-09 22:21:51.240335246 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sonartsplugin_3_buggy/src/main/java/com/pablissimo/sonar/TsLintExecutorImpl.java	2024-09-10 15:35:32.495612160 +0800
+@@ -17,25 +17,25 @@
+     private StringBuilder stdErr;
+ 
+     private static Command getBaseCommand(String pathToTsLint, String configFile, String rulesDir) {
+-        Command command =
++Command command =
+                 Command
+-                .create("node")
+-                .addArgument('"' + pathToTsLint + '"')
+-                .addArgument("--format")
+-                .addArgument("json");
+-
+-        if (rulesDir != null && rulesDir.length() > 0) {
+-            command
+-                .addArgument("--rules-dir")
+-                .addArgument('"' + rulesDir + '"');
++.create("node").addArgument('"' + pathToTsLint) .addArgument("--format") .addArgument("json");
++
++
++
++
++if (rulesDir != null) { command.addArgument("--rules-dir") .addArgument('"' + rulesDir + '"');
++
++
++
+         }
+ 
+-        command
+-            .addArgument("--config")
+-            .addArgument('"' + configFile + '"')
+-            .setNewShell(false);
++command.addArgument("--config") .addArgument('"' + configFile) .setNewShell(false);
++
++
++
+ 
+-        return command;
++return command;
+     }
+ 
+     public String execute(String pathToTsLint, String configFile, String rulesDir, List<String> files, Integer timeoutMs) {

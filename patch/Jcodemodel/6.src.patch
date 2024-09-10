@@ -1,0 +1,11 @@
+--- /tmp/Jcodemodel_6_buggy/src/main/java/com/helger/jcodemodel/JCodeModel.java	2024-09-09 22:16:36.060376753 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcodemodel_6_buggy/src/main/java/com/helger/jcodemodel/JCodeModel.java	2024-09-10 15:35:32.319623602 +0800
+@@ -284,7 +284,7 @@
+   @Nonnull
+   public JDirectClass directClass (@Nonnull final String name)
+   {
+-    return directClass (EClassType.CLASS, name);
++return directClass(EClassType.CLASS, name, false);
+   }
+ 
+   /**

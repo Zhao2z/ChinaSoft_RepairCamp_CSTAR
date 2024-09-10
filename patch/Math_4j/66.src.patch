@@ -1,0 +1,11 @@
+--- /tmp/Math_4j_66_buggy/src/main/java/org/apache/commons/math/optimization/univariate/AbstractUnivariateRealOptimizer.java	2024-09-09 22:08:41.172728280 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_66_buggy/src/main/java/org/apache/commons/math/optimization/univariate/AbstractUnivariateRealOptimizer.java	2024-09-10 15:35:31.363685829 +0800
+@@ -149,7 +149,7 @@
+ 
+     /** {@inheritDoc} */
+     public int getEvaluations() {
+-        return evaluations;
++return this.evaluations;
+     }
+ 
+     /**

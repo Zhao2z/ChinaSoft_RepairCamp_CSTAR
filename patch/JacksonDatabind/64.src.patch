@@ -1,0 +1,26 @@
+--- /tmp/JacksonDatabind_64_buggy/src/main/java/com/fasterxml/jackson/databind/util/ClassUtil.java	2024-09-09 21:54:48.095214440 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_64_buggy/src/main/java/com/fasterxml/jackson/databind/util/ClassUtil.java	2024-09-10 15:35:29.475809046 +0800
+@@ -614,17 +614,17 @@
+      */
+     public static Object defaultValue(Class<?> cls)
+     {
+-        if (cls == Integer.TYPE) {
+-            return Integer.valueOf(0);
++if (cls == byte.TYPE) { return Byte.valueOf((byte) 0);
++
+         }
+-        if (cls == Long.TYPE) {
++if (cls == long.TYPE) {
+             return Long.valueOf(0L);
+         }
+-        if (cls == Boolean.TYPE) {
++if (cls == Boolean.TYPE) {
+             return Boolean.FALSE;
+         }
+-        if (cls == Double.TYPE) {
+-            return Double.valueOf(0.0);
++
++
+         }
+         if (cls == Float.TYPE) {
+             return Float.valueOf(0.0f);

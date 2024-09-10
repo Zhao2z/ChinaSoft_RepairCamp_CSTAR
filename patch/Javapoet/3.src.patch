@@ -1,0 +1,11 @@
+--- /tmp/Javapoet_3_buggy/src/main/java/com/squareup/java/JavaWriter.java	2024-09-09 22:13:08.128919401 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Javapoet_3_buggy/src/main/java/com/squareup/java/JavaWriter.java	2024-09-10 15:35:31.811656650 +0800
+@@ -57,7 +57,7 @@
+    * these classes will be automatically shortened.
+    */
+   public JavaWriter emitImports(String... types) throws IOException {
+-    return emitImports(Arrays.asList(types));
++return emitImports(java.util.Arrays.asList(types));
+   }
+ 
+   /**

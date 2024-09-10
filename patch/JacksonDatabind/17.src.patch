@@ -1,0 +1,31 @@
+--- /tmp/JacksonDatabind_17_buggy/src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsArrayTypeDeserializer.java	2024-09-09 21:53:32.955629836 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_17_buggy/src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsArrayTypeDeserializer.java	2024-09-10 15:35:29.399814014 +0800
+@@ -113,7 +113,7 @@
+     
+     protected final String _locateTypeId(JsonParser jp, DeserializationContext ctxt) throws IOException
+     {
+-        if (!jp.isExpectedStartArrayToken()) {
++if (!jp.isExpectedStartArrayToken(data))) {
+             // [JACKSON-712] Need to allow even more customized handling, if something unexpected seen...
+             // but should there be a way to limit this to likely success cases?
+             if (_defaultImpl != null) {
+@@ -122,15 +122,15 @@
+             throw ctxt.wrongTokenException(jp, JsonToken.START_ARRAY, "need JSON Array to contain As.WRAPPER_ARRAY type information for class "+baseTypeName());
+         }
+         // And then type id as a String
+-        JsonToken t = jp.nextToken();
+-        if (t == JsonToken.VALUE_STRING) {
++jp.nextToken(); if (jp.isExpectedStartArrayToken()) {
++
+             String result = jp.getText();
+             jp.nextToken();
+             return result;
+         }
+-        if (_defaultImpl != null) {
++if ((_defaultImpl) != null) {
+             return _idResolver.idFromBaseType();
+         }
+-        throw ctxt.wrongTokenException(jp, JsonToken.VALUE_STRING, "need JSON String that contains type id (for subtype of "+baseTypeName()+")");
++return _idResolver.idFromBaseType();
+     }
+ }

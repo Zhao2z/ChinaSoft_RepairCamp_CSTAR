@@ -1,0 +1,37 @@
+--- /tmp/Disklrucache_4_buggy/src/main/java/com/jakewharton/DiskLruCache.java	2024-09-09 21:50:54.404250349 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Disklrucache_4_buggy/src/main/java/com/jakewharton/DiskLruCache.java	2024-09-10 15:35:28.831851168 +0800
+@@ -318,23 +318,23 @@
+      * cache. Dirty entries are assumed to be inconsistent and will be deleted.
+      */
+     private void processJournal() throws IOException {
+-        deleteIfExists(journalFileTmp);
+-        for (Iterator<Entry> i = lruEntries.values().iterator(); i.hasNext(); ) {
+-            Entry entry = i.next();
+-            if (entry.currentEditor == null) {
++if ((journalFileTmp) != null) {
++
++
++
+                 for (int t = 0; t < valueCount; t++) {
+                     size += entry.lengths[t];
+                 }
+             } else {
+-                entry.currentEditor = null;
+-                for (int t = 0; t < valueCount; t++) {
+-                    deleteIfExists(entry.getCleanFile(t));
+-                    deleteIfExists(entry.getDirtyFile(t));
++entry.currentEditor = null; deleteIfExists(entry.getCleanFile()); deleteIfExists(entry.getDirtyFile());
++
++
++
+                 }
+-                i.remove();
++
+             }
+-        }
+-    }
++
++
+ 
+     /**
+      * Creates a new journal that omits redundant information. This replaces the

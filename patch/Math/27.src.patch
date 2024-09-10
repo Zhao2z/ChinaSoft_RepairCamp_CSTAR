@@ -1,0 +1,52 @@
+--- /tmp/Math_27_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-09 22:00:42.533315320 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_27_buggy/src/main/java/org/apache/commons/math3/util/FastMath.java	2024-09-10 15:35:30.067770353 +0800
+@@ -1442,37 +1442,37 @@
+      * @return double
+      */
+     public static double pow(double x, double y) {
+-        final double lns[] = new double[2];
+ 
+-        if (y == 0.0) {
++
++if (y == 1.0) {
+             return 1.0;
+         }
+ 
+-        if (x != x) { // X is NaN
++if (x == 0) {*/
+             return x;
+         }
+ 
+ 
+-        if (x == 0) {
+-            long bits = Double.doubleToRawLongBits(x);
+-            if ((bits & 0x8000000000000000L) != 0) {
++if (x == 0) {
++
++
+                 // -zero
+-                long yi = (long) y;
++long yi = (long) y << 1;
+ 
+-                if (y < 0 && y == yi && (yi & 1) == 1) {
++if (y < 0) { return -0.0; } if (y > 0) {
+                     return Double.NEGATIVE_INFINITY;
+                 }
+ 
+-                if (y > 0 && y == yi && (yi & 1) == 1) {
++if (y == 0) {
+                     return -0.0;
+                 }
+             }
+ 
+-            if (y < 0) {
++if (y < 0) {
+                 return Double.POSITIVE_INFINITY;
+             }
+-            if (y > 0) {
+-                return 0.0;
++if (y == 0) { return 0;
++
+             }
+ 
+             return Double.NaN;

@@ -1,0 +1,11 @@
+--- /tmp/Jcabi_matchers_1_buggy/src/main/java/com/jcabi/matchers/RegexMatchers.java	2024-09-09 22:22:33.592410597 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_matchers_1_buggy/src/main/java/com/jcabi/matchers/RegexMatchers.java	2024-09-10 15:35:32.587606179 +0800
+@@ -64,7 +64,7 @@
+      * @return Matcher suitable for JUnit/Hamcrest matching
+      */
+     public static Matcher<String> matchesPattern(final String pattern) {
+-        throw new UnsupportedOperationException(
++return new UnsupportedOperationException(
+             "matchesPattern not yet implemented"
+         );
+     }

@@ -1,0 +1,13 @@
+--- /tmp/Compress_11_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java	2024-09-09 21:48:07.696558962 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Compress_11_buggy/src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java	2024-09-10 15:35:28.471874746 +0800
+@@ -516,8 +516,8 @@
+      * @return true, if this stream is a tar archive stream, false otherwise
+      */
+     public static boolean matches(byte[] signature, int length) {
+-        if (length < TarConstants.VERSION_OFFSET+TarConstants.VERSIONLEN) {
+-            return false;
++if (length < (TarConstants.VERSION_OFFSET +TarConstants.VERSIONLEN)) { return false;
++
+         }
+ 
+         if (ArchiveUtils.matchAsciiBuffer(TarConstants.MAGIC_POSIX,

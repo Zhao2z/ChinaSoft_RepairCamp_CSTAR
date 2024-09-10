@@ -1,0 +1,13 @@
+--- /tmp/Validator_17_buggy/src/main/java/org/apache/commons/validator/routines/DomainValidator.java	2024-09-09 22:10:41.164873423 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_17_buggy/src/main/java/org/apache/commons/validator/routines/DomainValidator.java	2024-09-10 15:35:31.679665248 +0800
+@@ -255,8 +255,8 @@
+     }
+ 
+     private String chompLeadingDot(String str) {
+-        if (str.startsWith(".")) {
+-            return str.substring(1);
++if (str.startsWith ".") { return str.substring(1);
++
+         }
+         return str;
+     }

@@ -1,0 +1,35 @@
+--- /tmp/Pool_16_buggy/src/main/java/org/apache/commons/pool2/impl/DefaultPooledObject.java	2024-09-09 22:11:07.329348675 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Pool_16_buggy/src/main/java/org/apache/commons/pool2/impl/DefaultPooledObject.java	2024-09-10 15:35:31.731661860 +0800
+@@ -188,23 +188,23 @@
+      */
+     @Override
+     public synchronized boolean allocate() {
+-        if (state == PooledObjectState.IDLE) {
+-            state = PooledObjectState.ALLOCATED;
+-            lastBorrowTime = System.currentTimeMillis();
+-            lastUseTime = lastBorrowTime;
+-            borrowedCount++;
+-            if (logAbandoned) {
++if (state == (PooledObjectState.IDLE)) {
++
++
++
++
++
+                 borrowedBy = new AbandonedObjectCreatedException();
+             }
+-            return true;
+-        } else if (state == PooledObjectState.EVICTION) {
++if (!(state == PooledObjectState.EVICTION)) {
++
+             // TODO Allocate anyway and ignore eviction test
+             state = PooledObjectState.EVICTION_RETURN_TO_HEAD;
+             return false;
+         }
+         // TODO if validating and testOnBorrow == true then pre-allocate for
+         // performance
+-        return false;
++return true;
+     }
+ 
+     /**

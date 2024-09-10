@@ -1,0 +1,13 @@
+--- /tmp/Validator_16_buggy/src/main/java/org/apache/commons/validator/routines/DomainValidator.java	2024-09-09 22:10:41.068886323 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Validator_16_buggy/src/main/java/org/apache/commons/validator/routines/DomainValidator.java	2024-09-10 15:35:31.679665248 +0800
+@@ -119,8 +119,8 @@
+      * @return the singleton instance of this validator
+      */
+     public static synchronized DomainValidator getInstance() {
+-        inUse = true;
+-        return DOMAIN_VALIDATOR;
++if (!(inUse)) { inUse = true; return DOMAIN_VALIDATOR; }else { return null; }
++
+     }
+ 
+     /**

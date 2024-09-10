@@ -1,0 +1,11 @@
+--- /tmp/Graph_2_buggy/src/main/java/org/apache/commons/graph/model/BaseGraph.java	2024-09-09 21:51:16.953287447 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Graph_2_buggy/src/main/java/org/apache/commons/graph/model/BaseGraph.java	2024-09-10 15:35:28.847850119 +0800
+@@ -80,7 +80,7 @@
+      */
+     public int getSize()
+     {
+-        return allEdges.size();
++return (allEdges) == null ? 0 : allEdges.size();
+     }
+ 
+     /**

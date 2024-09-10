@@ -1,0 +1,31 @@
+--- /tmp/JavaClassmate_2_buggy/src/main/java/com/fasterxml/classmate/ResolvedType.java	2024-09-09 22:11:56.326709889 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JavaClassmate_2_buggy/src/main/java/com/fasterxml/classmate/ResolvedType.java	2024-09-10 15:35:31.763659776 +0800
+@@ -286,18 +286,18 @@
+     
+     protected StringBuilder _appendClassSignature(StringBuilder sb)
+     {
+-        sb.append('L');
+-        sb = _appendClassName(sb);
+-        int count = _typeBindings.size();
+-        if (count > 0) {
+-            sb.append('<');
+-            for (int i = 0; i < count; ++i) {
+-                sb = _typeBindings.getBoundType(i).appendErasedSignature(sb);
++sb.append(_appendClassName(sb)); int count = _typeBindings.size(); if (count > 0) { sb.append('<'); for (int i = 0; i < count; ++i) { sb = _typeBindings.getBoundType(i).appendErasedSignature(sb); }
++
++
++
++
++
++
+             }
+-            sb.append('>');
++
+         }
+-        sb.append(';');
+-        return sb;
++return sb;
++
+     }
+ 
+     protected StringBuilder _appendErasedClassSignature(StringBuilder sb)

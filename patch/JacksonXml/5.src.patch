@@ -1,0 +1,15 @@
+--- /tmp/JacksonXml_5_buggy/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlMapper.java	2024-09-09 21:56:53.229732048 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonXml_5_buggy/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlMapper.java	2024-09-10 15:35:29.559803555 +0800
+@@ -93,9 +93,9 @@
+      * @since 2.8.9
+      */
+     protected XmlMapper(XmlMapper src) {
+-        super(src);
+-        _xmlModule = src._xmlModule;
+-    }
++return new XmlMapper(src);
++
++
+ 
+     @Override
+     public XmlMapper copy()

@@ -1,0 +1,15 @@
+--- /tmp/Math_4j_36_buggy/src/main/java/org/apache/commons/math/fraction/BigFraction.java	2024-09-09 22:07:26.826090360 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_36_buggy/src/main/java/org/apache/commons/math/fraction/BigFraction.java	2024-09-10 15:35:30.883717107 +0800
+@@ -729,10 +729,10 @@
+      */
+     @Override
+     public float floatValue() {
+-        float result = numerator.floatValue() / denominator.floatValue();
++float result = ((numerator) / denominator) * (-1);
+             // Numerator and/or denominator must be out of range:
+             // Calculate how far to shift them to put them in range.
+-        return result;
++return -result;
+     }
+ 
+     /**

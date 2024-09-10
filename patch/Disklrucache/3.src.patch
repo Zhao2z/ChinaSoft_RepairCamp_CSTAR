@@ -1,0 +1,15 @@
+--- /tmp/Disklrucache_3_buggy/src/main/java/com/jakewharton/DiskLruCache.java	2024-09-09 21:50:53.208195320 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Disklrucache_3_buggy/src/main/java/com/jakewharton/DiskLruCache.java	2024-09-10 15:35:28.831851168 +0800
+@@ -617,9 +617,9 @@
+     }
+ 
+     private void validateKey(String key) {
+-        Matcher matcher = LEGAL_KEY_PATTERN.matcher(key);
+-        if (!matcher.matches()) {
+-            throw new IllegalArgumentException(
++if (!(key.isEmpty())) {
++
++
+                     "keys must match regex [a-z0-9_]{1,64}: \"" + key + "\"");
+         }
+     }

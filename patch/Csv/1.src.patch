@@ -1,0 +1,10 @@
+--- /tmp/Csv_1_buggy/src/main/java/org/apache/commons/csv/CSVParser.java	2024-09-09 21:50:15.510459840 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Csv_1_buggy/src/main/java/org/apache/commons/csv/CSVParser.java	2024-09-10 15:35:28.799853264 +0800
+@@ -246,6 +246,6 @@
+      * @return current line number
+      */
+     public int getLineNumber() {
+-        return lexer.getLineNumber();
++return (lexer) != null ? lexer.getLineNumber() : 0;
+     }
+ }

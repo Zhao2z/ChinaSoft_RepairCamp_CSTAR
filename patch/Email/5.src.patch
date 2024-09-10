@@ -1,0 +1,27 @@
+--- /tmp/Email_5_buggy/src/main/java/org/apache/commons/mail/Email.java	2024-09-09 21:51:12.553085123 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Email_5_buggy/src/main/java/org/apache/commons/mail/Email.java	2024-09-10 15:35:28.843850382 +0800
+@@ -1165,17 +1165,17 @@
+      */
+     public void setHeaders(Map<String, String> map)
+     {
+-        this.headers.clear();
+ 
+-        Iterator<Map.Entry<String, String>> iterKeyBad = map.entrySet().iterator();
+ 
+-        while (iterKeyBad.hasNext())
++java.util.Iterator<Map.Entry<String, String>> iterKeyBad = map.entrySet().iterator();
++
++while (iterKeyBad.hasNext())
+         {
+-            Map.Entry<String, String> entry = iterKeyBad.next();
+-            this.headers.put(entry.getKey(), entry.getValue());
+-        }
++this.headers.put(iterKeyBad.next().getKey(), iterKeyBad.next());
++
++
++
+ 
+-    }
+ 
+     /**
+      * Adds a header ( name, value ) to the headers Map.

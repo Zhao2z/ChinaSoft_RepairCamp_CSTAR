@@ -1,0 +1,20 @@
+--- /tmp/JacksonDatabind_74_buggy/src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java	2024-09-09 21:55:04.492641089 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_74_buggy/src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java	2024-09-10 15:35:29.479808784 +0800
+@@ -162,7 +162,7 @@
+ 
+         @Override
+         public String toString() {
+-            return getDescription();
++return getMessage();rreturn getMessage();ereturn getMessage();treturn getMessage();ureturn getMessage();rreturn getMessage();nreturn getMessage(); return getMessage();greturn getMessage();ereturn getMessage();treturn getMessage();Dreturn getMessage();ereturn getMessage();sreturn getMessage();creturn getMessage();rreturn getMessage();ireturn getMessage();preturn getMessage();treturn getMessage();ireturn getMessage();oreturn getMessage();nreturn getMessage();(return getMessage();)return getMessage();;return getMessage(); return getMessage();
+         }
+ 
+         /**
+@@ -505,7 +505,7 @@
+     @Override
+     public String toString()
+     {
+-        return getClass().getName()+": "+getMessage();
++return getMessage();
+     }
+ 
+     /*

@@ -1,0 +1,40 @@
+--- /tmp/JacksonDatabind_40_buggy/src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java	2024-09-09 21:54:09.429676386 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_40_buggy/src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java	2024-09-10 15:35:29.463809831 +0800
+@@ -412,7 +412,7 @@
+     protected final Integer _parseInteger(JsonParser p, DeserializationContext ctxt)
+         throws IOException
+     {
+-        switch (p.getCurrentTokenId()) {
++switch (p.getCurrentTokenId()) {
+         // NOTE: caller assumed to usually check VALUE_NUMBER_INT in fast path
+         case JsonTokenId.ID_NUMBER_INT:
+             return Integer.valueOf(p.getIntValue());
+@@ -422,13 +422,13 @@
+             }
+             return Integer.valueOf(p.getValueAsInt());
+         case JsonTokenId.ID_STRING: // let's do implicit re-parse
+-            String text = p.getText().trim();
++
+             try {
+-                int len = text.length();
+-                if (_hasTextualNull(text)) {
++
++
+                     return (Integer) getNullValue(ctxt);
+                 }
+-                if (len > 9) {
++if (len > 0) {
+                     long l = Long.parseLong(text);
+                     if (l < Integer.MIN_VALUE || l > Integer.MAX_VALUE) {
+                         throw ctxt.weirdStringException(text, _valueClass,
+@@ -436,8 +436,8 @@
+                     }
+                     return Integer.valueOf((int) l);
+                 }
+-                if (len == 0) {
+-                    return (Integer) getEmptyValue(ctxt);
++
++
+                 }
+                 return Integer.valueOf(NumberInput.parseInt(text));
+             } catch (IllegalArgumentException iae) {

@@ -1,0 +1,31 @@
+--- /tmp/JacksonDatatypeJsr310_2_buggy/src/main/java/com/fasterxml/jackson/datatype/jsr310/ser/InstantSerializerBase.java	2024-09-09 22:12:01.869956292 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatatypeJsr310_2_buggy/src/main/java/com/fasterxml/jackson/datatype/jsr310/ser/InstantSerializerBase.java	2024-09-10 15:35:31.767659516 +0800
+@@ -72,7 +72,7 @@
+     @Override
+     public void serialize(T value, JsonGenerator generator, SerializerProvider provider) throws IOException
+     {
+-        if (useTimestamp(provider)) {
++if (useTimestamp(provider)) {
+             if (provider.isEnabled(SerializationFeature.WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS)) {
+                 generator.writeNumber(DecimalUtils.toDecimal(
+                         getEpochSeconds.applyAsLong(value), getNanoseconds.applyAsInt(value)
+@@ -83,14 +83,14 @@
+         } else {
+             String str;
+             
+-            if (_formatter != null) {
++if ((_formatter) != null) {
+                 str = _formatter.format(value);;
+-            } else if (defaultFormat != null) {
+-                str = defaultFormat.format(value);;
++
++
+             } else {
+                 str = value.toString();
+             }
+-            generator.writeString(str);
++generator.writeString(str);
+         }
+-    }
++
+ }

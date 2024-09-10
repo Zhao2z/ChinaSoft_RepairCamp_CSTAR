@@ -1,0 +1,17 @@
+--- /tmp/Zip4j_26_buggy/src/main/java/net/lingala/zip4j/io/inputstream/ZipEntryInputStream.java	2024-09-09 22:15:15.375471465 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_26_buggy/src/main/java/net/lingala/zip4j/io/inputstream/ZipEntryInputStream.java	2024-09-10 15:35:32.091638424 +0800
+@@ -56,11 +56,11 @@
+ 
+   public int readRawFully(byte[] b) throws  IOException {
+ 
+-    int readLen = inputStream.read(b);
++int readLen = inputStream.read(b, 0, b.length);
+ 
+ 
+-    if (readLen != b.length) {
+-      readLen = readUntilBufferIsFull(b, readLen);
++if (readLen != 1) { readLen = readUntilBufferIsFull(b, readLen);
++
+ 
+       if (readLen != b.length) {
+         throw new IOException("Cannot read fully into byte buffer");

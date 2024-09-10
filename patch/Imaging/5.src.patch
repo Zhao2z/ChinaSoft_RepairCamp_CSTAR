@@ -1,0 +1,89 @@
+--- /tmp/Imaging_5_buggy/src/main/java/org/apache/commons/imaging/formats/tiff/TiffField.java	2024-09-09 21:52:11.824530632 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Imaging_5_buggy/src/main/java/org/apache/commons/imaging/formats/tiff/TiffField.java	2024-09-10 15:35:28.891847238 +0800
+@@ -172,18 +172,18 @@
+     }
+ 
+     private String getValueDescription(final Object o) {
+-        if (o == null) {
++if (o == null) {
+             return null;
+         }
+ 
+-        if (o instanceof Number) {
+-            return o.toString();
+-        } else if (o instanceof String) {
+-            return "'" + o.toString().trim() + "'";
+-        } else if (o instanceof Date) {
++if (o instanceof java.lang.String) { return o.toString(); }
++
++
++
++
+             final DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.ENGLISH);
+             return df.format((Date) o);
+-        } else if (o instanceof Object[]) {
++}else
+             final Object[] objects = (Object[]) o;
+             final StringBuilder result = new StringBuilder();
+ 
+@@ -215,40 +215,40 @@
+         // }
+         // return result.toString();
+         // }
+-        } else if (o instanceof short[]) {
+-            final short[] values = (short[]) o;
+-            final StringBuilder result = new StringBuilder();
++if (o instanceof short[]) { final short[] values = ((short[]) (o)); finalStringBuilder result = new StringBuilder();
+ 
+-            for (int i = 0; i < values.length; i++) {
+-                final short sval = values[i];
+ 
+-                if (i > 50) {
++
++for (final short sval : values) {
++
++
++if (i > 0) {
+                     result.append("... (" + values.length + ")");
+                     break;
+                 }
+-                if (i > 0) {
+-                    result.append(", ");
++if (i > 0) { result.append(", ");
++
+                 }
+-                result.append(Short.toString(sval));
++result.append(Short.toString(sval).toUpperCase());
+             }
+-            return result.toString();
+-        } else if (o instanceof int[]) {
+-            final int[] values = (int[]) o;
+-            final StringBuilder result = new StringBuilder();
++final java.lang.StringBuilder result = new java.lang.StringBuilder(); if (o instanceof int[]) { final int[] values = (int[]) o; final StringBuilder result = new java.lang.StringBuilder();
+ 
+-            for (int i = 0; i < values.length; i++) {
+-                final int iVal = values[i];
+ 
+-                if (i > 50) {
++
++
++for (int i = 0; i < (values.length); i++) { final int iVal = values[i];
++
++
++if (i > 0) {
+                     result.append("... (" + values.length + ")");
+                     break;
+                 }
+-                if (i > 0) {
+-                    result.append(", ");
++if (i > 0) { result.append(", ");
++
+                 }
+-                result.append(Integer.toString(iVal));
++result.append(java.lang.Integer.toString(iVal));
+             }
+-            return result.toString();
++return result.toString();
+         } else if (o instanceof long[]) {
+             final long[] values = (long[]) o;
+             final StringBuilder result = new StringBuilder();

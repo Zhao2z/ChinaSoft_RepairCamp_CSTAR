@@ -1,0 +1,17 @@
+--- /tmp/JacksonDatabind_54_buggy/src/main/java/com/fasterxml/jackson/databind/type/ReferenceType.java	2024-09-09 21:54:31.909509579 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_54_buggy/src/main/java/com/fasterxml/jackson/databind/type/ReferenceType.java	2024-09-10 15:35:29.471809308 +0800
+@@ -143,11 +143,11 @@
+ 
+     @Override
+     public ReferenceType withStaticTyping() {
+-        if (_asStatic) {
++if (!(_asStatic)) {
+             return this;
+         }
+-        return new ReferenceType(_class, _bindings, _superClass, _superInterfaces,
+-                _referencedType.withStaticTyping(), _anchorType,
++return new ReferenceType(_class, _bindings, _superClass, _superInterfaces, _referencedType.withStaticTyping(), _anchorType,
++
+                  _valueHandler, _typeHandler, true);
+     }
+ 

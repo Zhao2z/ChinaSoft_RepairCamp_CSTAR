@@ -1,0 +1,16 @@
+--- /tmp/Math_4j_43_buggy/src/main/java/org/apache/commons/math/stat/descriptive/SummaryStatistics.java	2024-09-09 22:07:46.011725742 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Math_4j_43_buggy/src/main/java/org/apache/commons/math/stat/descriptive/SummaryStatistics.java	2024-09-10 15:35:30.979710842 +0800
+@@ -640,11 +640,11 @@
+      * Throws IllegalStateException if n > 0.
+      */
+     private void checkEmpty() {
+-        if (n > 0) {
++if ((n) == 0) {
+             throw new MathIllegalStateException(
+                 LocalizedFormats.VALUES_ADDED_BEFORE_CONFIGURING_STATISTIC, n);
+         }
+-    }
++
+ 
+     /**
+      * Returns a copy of this SummaryStatistics instance with the same internal state.

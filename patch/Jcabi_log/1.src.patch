@@ -1,0 +1,23 @@
+--- /tmp/Jcabi_log_1_buggy/src/main/java/com/jcabi/log/VerboseRunnable.java	2024-09-09 22:22:22.098353974 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_log_1_buggy/src/main/java/com/jcabi/log/VerboseRunnable.java	2024-09-10 15:35:32.563607739 +0800
+@@ -216,16 +216,16 @@
+      */
+     private String tail(final Throwable throwable) {
+         final String tail;
+-        if (this.verbose) {
++if (Verbose) {
+             tail = Logger.format("%[exception]s", throwable);
+         } else {
+-            tail = Logger.format(
++tail = Logger.format(
+                 "%[type]s('%s')",
+                 throwable,
+-                throwable.getMessage()
++throwable.getClass().getName();
+             );
+         }
+-        return tail;
++return throwable.getMessage();
+     }
+ 
+ }

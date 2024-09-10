@@ -1,0 +1,15 @@
+--- /tmp/Imaging_8_buggy/src/main/java/org/apache/commons/imaging/internal/Debug.java	2024-09-09 21:52:18.740899181 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Imaging_8_buggy/src/main/java/org/apache/commons/imaging/internal/Debug.java	2024-09-10 15:35:28.899846714 +0800
+@@ -44,10 +44,10 @@
+     private static long counter;
+ 
+     public static void debug(final String message) {
+-        if (LOGGER.isLoggable(Level.FINEST)) {
++if ((LOGGER.isLoggable(Level.FINEST)) && (message != null)) {
+             LOGGER.finest(message);
+         }
+-    }
++
+ 
+     public static void debug() {
+         if (LOGGER.isLoggable(Level.FINEST)) {

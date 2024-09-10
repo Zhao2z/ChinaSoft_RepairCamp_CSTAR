@@ -1,0 +1,11 @@
+--- /tmp/Jcabi_github_11_buggy/src/main/java/com/jcabi/github/mock/MkGithub.java	2024-09-09 22:18:18.989923439 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Jcabi_github_11_buggy/src/main/java/com/jcabi/github/mock/MkGithub.java	2024-09-10 15:35:32.387619181 +0800
+@@ -122,7 +122,7 @@
+     @Override
+     public Repos repos() {
+         try {
+-            return new MkRepos(this.storage, this.self);
++return new MkRepos(this.storage, this.self, false);
+         } catch (IOException ex) {
+             throw new IllegalStateException(ex);
+         }

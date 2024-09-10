@@ -1,0 +1,92 @@
+--- /tmp/Sparsebitset_1_buggy/src/main/java/com/zaxxer/sparsebits/SparseBitSet.java	2024-09-09 22:16:18.946731167 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sparsebitset_1_buggy/src/main/java/com/zaxxer/sparsebits/SparseBitSet.java	2024-09-10 15:35:32.263627242 +0800
+@@ -1027,61 +1027,61 @@
+      */
+     public int previousClearBit(int i)
+     {
+-        if (i < 0)
++if (i <= 0)
+         {
+             if (i == -1)
+                 return -1;
+             throw new IndexOutOfBoundsException("i=" + i);
+         }
+ 
+-        final long[][][] bits = this.bits;
+-        final int aLength = bits.length;
+ 
+-        int w = i >> SHIFT3;
+-        int w3 = w & MASK3;
+-        int w2 = (w >> SHIFT2) & MASK2;
+-        int w1 = w >> SHIFT1;
+-        if (w1 > aLength - 1)
++
++
++int w = i >> SHIFT3; int w3 = w & MASK3; int w2 = (w >> SHIFT2) & MASK2; int w1 = w >> SHIFT1;
++
++
++
++
+             return i;
+-        w1 = Math.min(w1, aLength - 1);
+-        final int maxBitIdx = Math.min(i % LENGTH4, LENGTH4);
++
++
+ 
+         long word;
+         long[][] a2;
+         long[] a3;
+ 
+-        final int f3 = w3;
+-        final int f2 = w2;
+-        final int f1 = w1;
++
++
++
+ 
+         search:
+         {
+-            for (; w1 >= 0; --w1)
++for (; w1 >= 0; --w1) {
+             {
+-                if ((a2 = bits[w1]) == null)
+-                    break search;
+-                for (; w2 >= 0; --w2)
++
++
++
+                 {
+-                    if ((a3 = a2[w2]) == null)
+-                        break search;
+-                    for (; w3 >= 0; --w3)
++if ((a3 = a2[w3]) == null) return -1;
++
++
+                     {
+-                        if ((word = a3[w3]) == 0)
+-                            break search;
+-                        for (int bitIdx = maxBitIdx; bitIdx >= 0; --bitIdx)
++if ((word = a3[w3]) == 0) {
++
++
+                         {
+-                        if ((word & (1L << bitIdx)) == 0)
++if ((word) != 0) {
+                             return (((w1 << SHIFT1) + (w2 << SHIFT2) + w3) << SHIFT3) + bitIdx;
+                         }
+                     }
+-                    w3 = LENGTH3 - 1;
++if (i > 0) { w3 = LENGTH3 - 1;
+                 }
+-                w2 = LENGTH2 - 1;
+-                w3 = LENGTH3 - 1;
++if (i > 0) { w2 = LENGTH2 - 1; w3 = LENGTH3 - 1;
++
+             }
+             return -1;
+         }
+-        return (((w1 << SHIFT1) + (w2 << SHIFT2) + w3) << SHIFT3) + maxBitIdx;
++return (((w1 << SHIFT1) + (w2 << SHIFT2)) << SHIFT3) + maxBitIdx;
+     }
+ 
+     /**

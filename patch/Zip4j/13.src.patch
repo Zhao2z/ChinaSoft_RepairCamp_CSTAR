@@ -1,0 +1,18 @@
+--- /tmp/Zip4j_13_buggy/src/main/java/net/lingala/zip4j/io/inputstream/ZipInputStream.java	2024-09-09 22:14:43.679824862 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Zip4j_13_buggy/src/main/java/net/lingala/zip4j/io/inputstream/ZipInputStream.java	2024-09-10 15:35:32.007643885 +0800
+@@ -276,12 +276,12 @@
+   }
+ 
+   private long getCompressedSize(LocalFileHeader localFileHeader) {
+-    if (getCompressionMethod(localFileHeader).equals(CompressionMethod.STORE)) {
++if ((getCompressionMethod(localFileHeader)) == null) {
+       return localFileHeader.getUncompressedSize();
+     }
+ 
+-    if (localFileHeader.isDataDescriptorExists() && !canSkipExtendedLocalFileHeader) {
+-      return -1;
++if (localFileHeader.isDataDescriptorExists()) { return -1;
++
+     }
+ 
+     return localFileHeader.getCompressedSize() - getEncryptionHeaderSize(localFileHeader);

@@ -1,0 +1,11 @@
+--- /tmp/Spatial4j_1_buggy/src/main/java/org/locationtech/spatial4j/shape/jts/JtsShapeFactory.java	2024-09-09 22:21:35.845017386 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Spatial4j_1_buggy/src/main/java/org/locationtech/spatial4j/shape/jts/JtsShapeFactory.java	2024-09-10 15:35:32.459614500 +0800
+@@ -550,7 +550,7 @@
+   }
+ 
+   public GeometryFactory getGeometryFactory() {
+-    return geometryFactory;
++return this.geometryFactory;
+   }
+ 
+   /**

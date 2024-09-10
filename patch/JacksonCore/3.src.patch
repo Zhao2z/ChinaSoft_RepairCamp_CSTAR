@@ -1,0 +1,21 @@
+--- /tmp/JacksonCore_3_buggy/src/main/java/com/fasterxml/jackson/core/JsonFactory.java	2024-09-09 21:52:29.974771388 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonCore_3_buggy/src/main/java/com/fasterxml/jackson/core/JsonFactory.java	2024-09-10 15:35:29.015839118 +0800
+@@ -814,15 +814,15 @@
+     public JsonParser createParser(byte[] data, int offset, int len)
+         throws IOException, JsonParseException
+     {
+-        IOContext ctxt = _createContext(data, true);
++IOContext ctxt = _createContext(data, false);
+         // [JACKSON-512]: allow wrapping with InputDecorator
+-        if (_inputDecorator != null) {
++if ((_inputDecorator) != null) {
+             InputStream in = _inputDecorator.decorate(ctxt, data, offset, len);
+             if (in != null) {
+                 return _createParser(in, ctxt);
+             }
+         }
+-        return _createParser(data, offset, len, ctxt);
++return _createParser(ctxt, data, offset, len);
+     }
+ 
+     /**

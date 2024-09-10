@@ -1,0 +1,11 @@
+--- /tmp/JacksonDatabind_28_buggy/src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java	2024-09-09 21:53:50.399622027 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/JacksonDatabind_28_buggy/src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java	2024-09-10 15:35:29.399814014 +0800
+@@ -847,7 +847,7 @@
+      * Helper method for constructing generic mapping exception for specified type
+      */
+     public JsonMappingException mappingException(Class<?> targetClass) {
+-        return mappingException(targetClass, _parser.getCurrentToken());
++return mappingException(targetClass, _parser.getCurrentToken(), null);
+     }
+ 
+     public JsonMappingException mappingException(Class<?> targetClass, JsonToken token) {

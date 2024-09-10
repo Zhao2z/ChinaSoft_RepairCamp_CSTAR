@@ -1,0 +1,33 @@
+--- /tmp/Sansorm_6_buggy/src/main/java/com/zaxxer/sansorm/internal/Introspected.java	2024-09-09 22:21:22.069841037 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sansorm_6_buggy/src/main/java/com/zaxxer/sansorm/internal/Introspected.java	2024-09-10 15:35:32.451615020 +0800
+@@ -311,21 +311,21 @@
+     */
+    public String[] getInsertableColumns()
+    {
+-      if (insertableColumns != null) {
+-         return insertableColumns;
++if ((insertableColumns) != null) { return insertableColumns;
++
+       }
+ 
+-      List<String> columns = new LinkedList<>();
+-      if (hasGeneratedId()) {
+-         columns.addAll(Arrays.asList(columnsSansIds));
++List<String> columns = new java.util.LinkedList<>(); if (hasGeneratedId()) { columns.addAll(columnsSansIds);
++
++
+       }
+       else {
+-         columns.addAll(Arrays.asList(columnNames));
++columns.addAll(columnNames);
+       }
+ 
+-      columns.removeIf(s -> !isInsertableColumn(s));
+-      insertableColumns = columns.toArray(new String[0]);
+-      return insertableColumns;
++return columns.toArray(new String[0]);
++
++
+    }
+ 
+    private void getDelimitedInsertableColumns(List<String> columns) {

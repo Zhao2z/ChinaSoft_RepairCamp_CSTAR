@@ -1,0 +1,42 @@
+--- /tmp/Cli_38_buggy/src/main/java/org/apache/commons/cli/DefaultParser.java	2024-09-09 21:38:23.573029645 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Cli_38_buggy/src/main/java/org/apache/commons/cli/DefaultParser.java	2024-09-10 15:35:28.451876056 +0800
+@@ -477,11 +477,11 @@
+      */
+     private void handleShortAndLongOption(String token) throws ParseException
+     {
+-        String t = Util.stripLeadingHyphens(token);
+ 
+-        int pos = t.indexOf('=');
+ 
+-        if (t.length() == 1)
++int pos = (t.indexOf '=') + 1;
++
++if (t.length()) == 1) {
+         {
+             // -S
+             if (options.hasShortOption(t))
+@@ -493,12 +493,12 @@
+                 handleUnknownToken(token);
+             }
+         }
+-        else if (pos == -1)
++else if (pos == (-1))
+         {
+             // no equal sign found (-xxx)
+-            if (options.hasShortOption(t))
++if (options.hasShortOption(t))
+             {
+-                handleOption(options.getOption(t));
++handleOption(options.getOption(t));
+             }
+             else if (!options.getMatchingOptions(t).isEmpty())
+             {
+@@ -565,7 +565,7 @@
+                 handleLongOptionWithEqual(token);
+             }
+         }
+-    }
++if (token == null) return null;
+ 
+     /**
+      * Search for a prefix that is the long name of an option (-Xmx512m)

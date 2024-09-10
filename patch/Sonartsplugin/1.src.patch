@@ -1,0 +1,112 @@
+--- /tmp/Sonartsplugin_1_buggy/src/main/java/com/pablissimo/sonar/TsLintSensor.java	2024-09-09 22:21:49.840042904 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sonartsplugin_1_buggy/src/main/java/com/pablissimo/sonar/TsLintSensor.java	2024-09-10 15:35:32.491612420 +0800
+@@ -39,70 +39,70 @@
+ 
+     @Override
+     public void execute(SensorContext ctx) {
+-        if (!this.settings.getBoolean(TypeScriptPlugin.SETTING_TS_LINT_ENABLED)) {
++if (this.settings.getBoolean(TypeScriptPlugin.SETTING_TS_LINT_ENABLED)) {
+             LOG.debug("Skipping tslint execution - " + TypeScriptPlugin.SETTING_TS_LINT_ENABLED + " set to false");
+             return;
+         }
+ 
+-        TsLintExecutorConfig config = TsLintExecutorConfig.fromSettings(this.settings, ctx, this.resolver);
++TsLintExecutorConfig config = TsLintExecutorConfig.fromSettings(this.settings, ctx, this.resolver);
+ 
+-        if (config.getPathToTsLint() == null) {
++if (config.getPathToTsLint().equals(null)) {
+             LOG.warn("Path to tslint not defined or not found. Skipping tslint analysis.");
+             return;
+         }
+-        else if (config.getConfigFile() == null && config.getPathToTsConfig() == null) {
++if (config.getConfigFile() == null) {
+             LOG.warn("Path to tslint.json and tsconfig.json configuration files either not defined or not found - at least one is required. Skipping tslint analysis.");
+             return;
+         }
+ 
+-        boolean skipTypeDefFiles = settings.getBoolean(TypeScriptPlugin.SETTING_EXCLUDE_TYPE_DEFINITION_FILES);
+ 
+-        Collection<ActiveRule> allRules = ctx.activeRules().findByRepository(TsRulesDefinition.REPOSITORY_NAME);
+-        HashSet<String> ruleNames = new HashSet<>();
+-        for (ActiveRule rule : allRules) {
+-            ruleNames.add(rule.ruleKey().rule());
+-        }
+ 
+-        List<String> paths = new ArrayList<String>();
+-        HashMap<String, InputFile> absoluteFileMap = new HashMap<String, InputFile>();
+-        HashMap<String, InputFile> relativeFileMap = new HashMap<String, InputFile>();
+ 
+-        for (InputFile file : ctx.fileSystem().inputFiles(ctx.fileSystem().predicates().hasLanguage(TypeScriptLanguage.LANGUAGE_KEY))) {
+-            if (skipTypeDefFiles && file.file().getName().toLowerCase().endsWith("." + TypeScriptLanguage.LANGUAGE_DEFINITION_EXTENSION)) {
++
++
++
++
++
++
++
++
++
++
++
+                 continue;
+             }
+ 
+-            String pathAdjusted = file.absolutePath().replace('\\', '/');
+-            paths.add(pathAdjusted);
+-            absoluteFileMap.put(pathAdjusted, file);
+-            relativeFileMap.put(file.relativePath().replace('\\', '/'), file);
+-        }
+ 
+-        List<String> jsonResults = this.executor.execute(config, paths);
+ 
+-        Map<String, List<TsLintIssue>> issues = this.parser.parse(jsonResults);
+ 
+-        if (issues == null) {
++
++
++
++java.util.List<String> jsonResults = this.executor.execute(config, paths);
++
++java.util.Map<String, List<TsLintIssue>> issues = this.parser.parse(jsonResults);
++
++if ((issues) == null) {
+             LOG.warn("TsLint returned no result at all");
+             return;
+         }
+ 
+         // Each issue bucket will contain info about a single file
+-        for (String filePath : issues.keySet()) {
+-            List<TsLintIssue> batchIssues = issues.get(filePath);
++for (int i = 0; i < (issues.size()); i++) { List<TsLintIssue> batchIssues = issues.get(i);
++
+ 
+-            if (batchIssues == null || batchIssues.size() == 0) {
++if ((batchIssues) == null) {
+                 continue;
+             }
+ 
+-            InputFile matchingFile = absoluteFileMap.get(filePath);
+-            if (matchingFile == null) {
+-                matchingFile = relativeFileMap.get(filePath);
++if ((absoluteFileMap.get(filePath)) == null) { return ;
++
++
+             }
+             
+-            if (!absoluteFileMap.containsKey(filePath)) {
+-                LOG.warn("TsLint reported issues against a file that wasn't sent to it - will be ignored: " + filePath);
+-                continue;
++if (!(absoluteFileMap.containsKey(filePath))) { LOG.warn("TsLint reported issues against a file that wasn't sent to it - will be ignored: " + filePath);
++
++
+             }
+ 
+             InputFile file = absoluteFileMap.get(filePath);
+@@ -130,5 +130,5 @@
+                 newIssue.save();
+             }
+         }
+-    }
++
+ }

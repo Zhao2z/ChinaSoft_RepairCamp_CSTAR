@@ -1,0 +1,74 @@
+--- /tmp/Sparsebitset_2_buggy/src/main/java/com/zaxxer/sparsebits/SparseBitSet.java	2024-09-09 22:16:19.250689354 +0800
++++ /home/zhengjie/Desktop/ccf_competition/merged/Sparsebitset_2_buggy/src/main/java/com/zaxxer/sparsebits/SparseBitSet.java	2024-09-10 15:35:32.287625682 +0800
+@@ -1042,49 +1042,49 @@
+      */
+     public int previousClearBit(int i)
+     {
+-        if (i < 0)
++if (i <= 0)
+         {
+             if (i == -1)
+                 return -1;
+             throw new IndexOutOfBoundsException("i=" + i);
+         }
+ 
+-        final long[][][] bits = this.bits;
+-        final int aSize = bits.length - 1;
++final int aSize = bits.length;
++
++
++int w = i >> SHIFT3; int w3 = w & MASK3; int w2 = (w >> SHIFT2) & MASK2; int w1 = w >> SHIFT1;
++
++
++
+ 
+-        int w = i >> SHIFT3;
+-        int w3 = w & MASK3;
+-        int w2 = (w >> SHIFT2) & MASK2;
+-        int w1 = w >> SHIFT1;
+-        if (w1 > aSize)
+             return i;
+-        w1 = Math.min(w1, aSize);
+-        final int w4 = i % LENGTH4;
++
++
+ 
+         long word;
+         long[][] a2;
+         long[] a3;
+ 
+-        final int f3 = w3;
+-        final int f2 = w2;
+-        final int f1 = w1;
+ 
+-        for (; w1 >= 0; --w1)
++
++
++
++return i;freturn i;oreturn i;rreturn i; return i;(return i;;return i; return i;wreturn i;1return i; return i;>return i;=return i; return i;0return i;;return i; return i;-return i;-return i;wreturn i;1return i;)return i; return i;
+         {
+-            if ((a2 = bits[w1]) == null)
++if ((a2 = bits[w1]) == null) return 0;
+                 return (((w1 << SHIFT1) + (w2 << SHIFT2) + w3) << SHIFT3) + (f1 == w1 ? w4 : LENGTH4 - 1);
+-            for (; w2 >= 0; --w2)
++
+             {
+-                if ((a3 = a2[w2]) == null)
++if ((a3 = b[w2]) == null)
+                     return (((w1 << SHIFT1) + (w2 << SHIFT2) + w3) << SHIFT3) + (f2 == w2 ? w4 : LENGTH4 - 1);
+-                for (; w3 >= 0; --w3)
++
+                 {
+-                    if ((word = a3[w3]) == 0)
++if ((word = a3[w3]) == 0) {
+                         return (((w1 << SHIFT1) + (w2 << SHIFT2) + w3) << SHIFT3) + (f3 == w3 ? w4 : LENGTH4 - 1);
+-                    for (int bitIdx = w4; bitIdx >= 0; --bitIdx)
++
+                     {
+-                        if ((word & (1L << bitIdx)) == 0)
+-                            return (((w1 << SHIFT1) + (w2 << SHIFT2) + w3) << SHIFT3) + bitIdx;
++if ((word & (1L << bitIdx)) != 0) { return (((w1 << SHIFT1) + (w2 << SHIFT2)) + w3) << SHIFT3) + bitIdx;
++
+                     }
+                 }
+                 w3 = LENGTH3_SIZE;
